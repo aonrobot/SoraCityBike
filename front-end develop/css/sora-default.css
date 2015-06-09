@@ -34,6 +34,7 @@ p {
 hr {
     max-width: 400px;
     border-color: #999999;
+	
 }
 
 .brand ,
@@ -43,7 +44,7 @@ hr {
 
 .navbar-brand {
     text-transform: uppercase;
-    font-weight: 900;
+    font-weight: 200;
     letter-spacing: 2px;
 }
 
@@ -115,18 +116,24 @@ footer p {
 	margin: auto;
    
 }
+.red-text{
+	color:#F00;
+}
 @media screen and (min-width:768px) {
     .brand {
         display: inherit;
         margin: 0;
-        padding: 20px 0 20px;
-        text-align: center;
         font-size: 2em;
         font-weight: 200;
         line-height: normal;
         color: #000;
     }
-	
+	.brand-logo {
+        padding:1em;
+    }
+	.brand-social {
+        padding:1em;
+    }
 
     .top-divider {
         margin-top: 0;
@@ -157,6 +164,7 @@ footer p {
     .navbar-header {
         display: none;
     }
+	
 
     .navbar {
         min-height: 0;
@@ -166,6 +174,7 @@ footer p {
         border: none;
         background: #fff;
         background: rgba(255,255,255,0.9);
+		margin:-1em;
     }
 
     .nav>li>a {
@@ -218,5 +227,6 @@ footer p {
         display: table;
         clear: both;
     }
+	
 }
 
