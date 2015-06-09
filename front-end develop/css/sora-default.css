@@ -114,6 +114,7 @@ footer p {
 }
 .top-menu{
 	margin: auto;
+	
    
 }
 .red-text{
@@ -121,18 +122,17 @@ footer p {
 }
 @media screen and (min-width:768px) {
     .brand {
+		padding:1em;
         display: inherit;
-        margin: 0;
-        font-size: 2em;
+        font-size: 1.5em;
         font-weight: 200;
-        line-height: normal;
         color: #000;
     }
 	.brand-logo {
-        padding:1em;
+       
     }
 	.brand-social {
-        padding:1em;
+       
     }
 
     .top-divider {
