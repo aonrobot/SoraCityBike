@@ -36,10 +36,26 @@
                     <ul class="nav" id="side-menu">
                     	
                  		<!-- Start A First Menu -->
-                        <li class="active">
+                        <li>
                             <a href="dashboard.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
+                        <li>
+                            <a href="dashboard.php"><i class="fa fa-home fa-fw"></i> Home Page</a>
+                        </li>
 
+                        <li>
+                            <a href="dashboard.php"><i class="fa fa-cubes fa-fw"></i> Category</a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php"><i class="fa fa-book fa-fw"></i> Content</a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php"><i class="fa fa-bars fa-fw"></i> Menu</a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php"><i class="fa fa-picture-o fa-fw"></i> Slide</a>
+                        </li>
+                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
