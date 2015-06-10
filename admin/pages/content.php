@@ -14,28 +14,28 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form role="form">
+                                    <form method="post" role="form">
                                     	
                                         <div class="form-group">
                                             <label>Tilte</label>
-                                            <input class="form-control" placeholder="Enter Title Name">
+                                            <input name="title" class="form-control" placeholder="Enter Title Name">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Author</label>
-                                            <input class="form-control" placeholder="Enter Author Name">
+                                            <input name="author" class="form-control" placeholder="Enter Author Name">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Slug</label>
-                                            <input class="form-control" placeholder="Enter Slug Name">
+                                            <input name="slug" class="form-control" placeholder="Enter Slug Name">
                                         </div>
 
 
                                         <div class="form-group">
                                             <label>Content</label>
-                                            <textarea class="form-control" rows="3"></textarea>
-                                        </div>
+                                            <textarea name="content" class="form-control" rows="3"></textarea>
+                                        </div> 
                    
                                         <button type="submit" class="btn btn-default">Submit Button</button>
                                         <button type="reset" class="btn btn-default">Reset Button</button>
