@@ -55,6 +55,9 @@
                         <li>
                             <a href="index.php?p=slide"><i class="fa fa-picture-o fa-fw"></i> Slide</a>
                         </li>
+                        <li>
+                            <a href="index.php?p=TestContent"><i class="fa fa-terminal fa-fw"></i> TestContent</a>
+                        </li>
                         
                     </ul>
                 </div>

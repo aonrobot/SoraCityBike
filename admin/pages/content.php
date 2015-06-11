@@ -14,7 +14,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="post" role="form">
+                                    <form method="post" role="form" action="index.php?p=TestContent">
                                     	
                                         <div class="form-group">
                                             <label>Tilte</label>
@@ -35,7 +35,7 @@
                                         <div class="form-group">
                                             <label>Content</label>
                                             <textarea name="content" class="form-control" rows="3"></textarea>
-                                        </div> 
+                                        </div>                           
                    
                                         <button type="submit" class="btn btn-default">Submit Button</button>
                                         <button type="reset" class="btn btn-default">Reset Button</button>
