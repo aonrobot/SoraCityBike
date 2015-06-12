@@ -127,14 +127,20 @@ footer p {
         font-size: 1.5em;
         font-weight: 200;
         color: #000;
+        width: 100%;
     }
 	.brand-logo {
-       
+       text-align: center;
     }
 	.brand-social {
-       
+        padding-top: 1em;
     }
-
+    .social_icon{
+        max-width: 0.75em;
+        margin-left: 0.75em;
+        margin-right: 0.75em;
+        float: right;
+    }
     .top-divider {
         margin-top: 0;
     }
@@ -174,7 +180,8 @@ footer p {
         border: none;
         background: #fff;
         background: rgba(255,255,255,0.9);
-		margin:-1em;
+		width: auto;
+
     }
 
     .nav>li>a {
