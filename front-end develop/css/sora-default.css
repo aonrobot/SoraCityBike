@@ -38,7 +38,7 @@ hr {
 }
 .font{
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 2px;
 }
 
@@ -170,6 +170,7 @@ footer p {
 
     .navbar {
         border-radius: 0;
+        margin-top: 1em;
     }
 
     .navbar-header {
@@ -195,21 +196,21 @@ footer p {
   		color: #000;
   		text-decoration: none;
     }
-	.nav>li>a:hover:before {
+	.nav>li>div:hover:before {
 	  visibility: visible;
 	  -webkit-transform: scaleX(1);
 	  transform: scaleX(1);
 	}
-	.nav>li>a:hover {
+	.nav>li>div:hover {
   		color: #000;
 	}
-	.nav>li>a:before {
+	.nav>li>div:before {
 	  content: "";
 	  position: absolute;
-	  width: 100%;
+	  width: 80%;
 	  height: 0.75px;
-	  bottom: 1em;
-	  left: 0em;
+	  bottom: 0.5em;
+	  left: 0.4em;
 	  background-color: #000;
 	  visibility: hidden;
 	  -webkit-transform: scaleX(0);
