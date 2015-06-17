@@ -36,6 +36,7 @@ hr {
     border-color: #999999;
 	
 }
+
 .font{
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
@@ -97,7 +98,12 @@ hr {
     font-weight: 400;
     letter-spacing: 1px;
 }
+.hidden-slider{
 
+}
+.hidden-btn{
+    text-decoration: underline;
+}
 .img-border {
     float: none;
     margin: 0 auto 0;
@@ -231,6 +237,9 @@ footer p {
         margin: 0 auto;
         table-layout: fixed;
         font-size: 1em;
+    }
+    .content{
+        margin: auto;
     }
 }
 
