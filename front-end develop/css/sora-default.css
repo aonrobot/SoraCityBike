@@ -196,7 +196,7 @@ footer p {
 
     }
 
-    .nav>li>a {
+    .nav>li>div {
         padding: 20px;
 		position: relative;
   		color: #000;
