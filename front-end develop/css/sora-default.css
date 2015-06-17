@@ -36,10 +36,7 @@ hr {
     border-color: #999999;
 	
 }
-@font-face {
-font-family: GraublauWeb;
-src: url("path-to-the-font-file/GraublauWeb.otf") format("opentype");
-}
+
 .font{
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
@@ -101,7 +98,9 @@ src: url("path-to-the-font-file/GraublauWeb.otf") format("opentype");
     font-weight: 400;
     letter-spacing: 1px;
 }
+.hidden-slider{
 
+}
 .hidden-btn{
     text-decoration: underline;
 }
@@ -197,7 +196,7 @@ footer p {
 
     }
 
-    .nav>li>div {
+    .nav>li>a {
         padding: 20px;
 		position: relative;
   		color: #000;
@@ -216,7 +215,7 @@ footer p {
 	  position: absolute;
 	  width: 80%;
 	  height: 0.75px;
-	  bottom: 1em;
+	  bottom: 0.45em;
 	  left: 0.4em;
 	  background-color: #000;
 	  visibility: hidden;
