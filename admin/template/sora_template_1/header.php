@@ -46,8 +46,15 @@
 		
 		<?php //include('config/tiny.php'); ?>
 		
+		<!-- Tiny Editoe 
+		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.1.2/tinymce.min.js"></script>
-    	<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.1.2/jquery.tinymce.min.js"></script>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.1.2/jquery.tinymce.min.js"></script> -->
+    	
+    	<!-- CKEditor -->
+    	
+    	<script src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script> 
+  		<script src="//cdn.ckeditor.com/4.4.3/standard/adapters/jquery.js"></script> 
     	
     	<!-- Grid Manager JavaScript -->
 		<script src="components/grid_manager/dist/js/jquery.gridmanager.js"></script>
