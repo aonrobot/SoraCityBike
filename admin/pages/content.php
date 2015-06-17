@@ -34,8 +34,16 @@
 
                                         <div class="form-group">
                                             <label>Content</label>
-                                            <textarea name="content" class="form-control" rows="3"></textarea>
-                                        </div>                           
+                                            
+                                            <div id="mycanvas">
+											    <div class="row">
+											        <div class="col-md-6"><p>Content</p></div>
+											        <div class="col-md-6"><p>Content</p></div>
+											    </div>
+											</div>
+											
+                                        </div>
+                                                      
                    
                                         <button type="submit" class="btn btn-default">Submit Button</button>
                                         <button type="reset" class="btn btn-default">Reset Button</button>
@@ -58,4 +66,16 @@
 	<!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
+
+<script> 
+    $(document).ready(function(){
+        $("#mycanvas").gridmanager();
+        
+    });
+    
+    $( "#save_content" ).click(function() {
+	  alert( "Handler for .click() called." );
+	});
+	
+</script> 
 
