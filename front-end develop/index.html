@@ -255,7 +255,7 @@
           </div> 
 
       </div>
-          <!-- <div class="swiper-slide">
+          <div class="swiper-slide">
               <div class="slidein" > 
                <img src="img/slide-1.jpg" alt="" > 
                <span class="caption simple-caption" >
@@ -287,7 +287,7 @@
                       </p>		
                   </span>
               </div> 
-          </div> -->
+          </div>
 
 
 
@@ -302,27 +302,10 @@
 
   </div>
 
-  <!-- Swiper JS -->
-  <script src="js/swiper.min.js"></script>
 
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper('.swiper-container', {
-        scrollbar: '.swiper-scrollbar',
-        scrollbarHide: false,
-        slidesPerView: 'auto',
-        centeredSlides: false,
-        spaceBetween: 0,
-        grabCursor: false,
-
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev'
-
-    });
-</script>
 <div class="hidden-slider" align="center">
 
-    <div id="hideMe" style="display:none;">I want to hide this by pressing the button above</div>
+    <div class="hidden-content" id="hideMe" style="display:none;">I want to hide this by pressing the button above</div>
 
     <button class="hidden-btn font btn btn-default" onclick="toggle_visibility('hideMe')">more slide</button> 
     
@@ -377,7 +360,24 @@
         interval: 5000 //changes the speed
     })
 </script>
+ <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
 
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+        scrollbar: '.swiper-scrollbar',
+        scrollbarHide: false,
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 0,
+        grabCursor: false,
+
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+
+    });
+</script>
 </body>
 
 </html>

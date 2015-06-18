@@ -109,9 +109,16 @@ hr {
     letter-spacing: 1px;
 }
 .hidden-slider{
-
+    margin-top: 2em;
+   
+}
+.hidden-content{
+    background-color: #aaa;
+    color: #fff;
+    height: 300px;
 }
 .hidden-btn{
+    margin-top: 1em;
     text-decoration: underline;
 }
 .img-border {
