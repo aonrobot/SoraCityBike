@@ -60,7 +60,16 @@
 		<script src="components/grid_manager/dist/js/jquery.gridmanager.js"></script>
 		
 		<!-- Metis Menu Plugin JavaScript -->
-		<script src="components/metisMenu/dist/metisMenu.min.js"></script>		
+		<script src="components/metisMenu/dist/metisMenu.min.js"></script>	
+		
+		<!-- Import Only Page has s table -->
+		<!-- DataTables JavaScript -->
+		<?php if(!strcmp($_GET['a'], 'list')){?> 		
+		<link href="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+		<link href="components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+		<script src="components/datatables/media/js/jquery.dataTables.min.js"></script>
+		<script src="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+		<?php }?>
 		
 		<!-- Custom Theme JavaScript -->
 		<script src="<?php echo $D_TEMPLATE; ?>dist/js/sb-admin-2.js"></script>

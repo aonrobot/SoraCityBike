@@ -47,7 +47,16 @@
                             <a href="index.php?p=category"><i class="fa fa-cubes fa-fw"></i> Category</a>
                         </li>
                         <li>
-                            <a href="index.php?p=content"><i class="fa fa-book fa-fw"></i> Content</a>
+                            <a href=""><i class="fa fa-book fa-fw"></i> Content</a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="index.php?p=content&a=list">All Content</a>
+                                </li>
+                                <li>
+                                    <a href="index.php?p=content&a=add">Add Content</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="index.php?p=menu"><i class="fa fa-bars fa-fw"></i> Menu</a>
