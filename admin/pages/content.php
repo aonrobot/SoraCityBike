@@ -11,7 +11,7 @@
 				    
                 <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            <b>All Content</b>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -62,7 +62,7 @@
 				
 				<div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Form Elements
+                            <b>Create Content</b>
                         </div>
                         <div class="panel-body">
                             <div class="row">

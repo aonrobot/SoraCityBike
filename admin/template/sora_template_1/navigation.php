@@ -50,10 +50,10 @@
                             <a href=""><i class="fa fa-book fa-fw"></i> Content</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="index.php?p=content&a=list">All Content</a>
+                                    <a href="index.php?p=content&a=list">Show All Content</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?p=content&a=add">Add Content</a>
+                                    <a href="index.php?p=content&a=add">Create Content</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
