@@ -11,7 +11,7 @@
 
     <title>Sora City Bike</title>
     <!-- Swiper Slider css -->
-    <link rel="stylesheet" href="css/swiper.min.css">
+    <link href="css/swiper.min.css" rel="stylesheet" >
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -19,21 +19,23 @@
 
     <!-- Fonts -->
     
-    <link href="fonts/Pero-Bold.otf" rel="stylesheet" type="text/css"><link href="fonts/Pero-Bold.otf" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    
+    
 
     <style>
 
         .swiper-container {
             width: 100%;
-            height: 470px;
+            height: 40%;
             margin: none;
         }
         .swiper-slide {
             text-align: center;
             font-size: 18px;
             background: #fff;
-            width:50%;
+            width:auto;
+            height:100%;
+            margin:none;
 
             /* Center slide text vertically */
             display: -webkit-box;
@@ -59,10 +61,10 @@
 
     <div class="brand row ">
         <div class="col-xs-4 brand-social">
-            <img class="social_icon" src="img/icon/icon-fb-type2.png"/>
-            <img class="social_icon" src="img/icon/icon-pt-type2.png"/>
-            <img class="social_icon" src="img/icon/icon-tt-type2.png"/>
-            <img class="social_icon" src="img/icon/icon-ig-type2.png"/>
+            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="img/icon/icon-fb-type2.png"/></a>
+            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="img/icon/icon-pt-type2.png"/></a>
+            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-tt')" onmouseout="logo_mouseout('icon-tt')" id="icon-tt" src="img/icon/icon-tt-type2.png"/></a>
+            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="img/icon/icon-ig-type2.png"/></a>
         </div>
         <div class="col-xs-4 brand-logo">
             <img class="logo_img" src="img/LOGO (with cloud)2.jpg"/>
@@ -82,18 +84,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    
+
                 </button>
                 <a class="navbar-brand" href="index.html">Sora City Bike</a>
             </div>
-            
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <hr style="max-width: 95%;">
                 <ul class="nav navbar-nav">
                     <li id="menu_1">
 
-                        <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             concept
                             <!--  <span class="red-text">+</span> -->
                         </div>
@@ -106,7 +108,7 @@
                         
                     </li>
                     <li id="menu_2">
-                     <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                     <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         bikes
                         <span class="red-text">+</span>
                     </div>
@@ -118,7 +120,7 @@
                     </ul>
                 </li>
                 <li id="menu_3">
-                    <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         gears
                         <span class="red-text">+</span>
                     </div>
@@ -130,7 +132,7 @@
                     </ul>
                 </li>
                 <li id="menu_4">
-                    <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         café
                         <span class="red-text">+</span>
                     </div>
@@ -142,7 +144,7 @@
                     </ul>
                 </li>
                 <li id="menu_5">
-                    <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         gallery
                         <span class="red-text">+</span>
                     </div>
@@ -154,7 +156,7 @@
                     </ul>
                 </li>
                 <li id="menu_6">
-                    <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         location
                         <span class="red-text">+</span>
                     </div>
@@ -166,7 +168,7 @@
                     </ul>
                 </li>
                 <li id="menu_7">
-                    <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         partners
                         <span class="red-text">+</span>
                     </div>
@@ -178,7 +180,7 @@
                     </ul>
                 </li>
                 <li id="menu_8">
-                    <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         projects
                         <span class="red-text">+</span>
                     </div>
@@ -190,7 +192,7 @@
                     </ul>
                 </li>
                 <li id="menu_9">
-                    <div class="font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <div class="pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         blog
                         <span class="red-text">+</span>
                     </div>
@@ -217,55 +219,93 @@
     <!-- Wrapper for slides -->
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-           <img src="img/slide-1.jpg" alt="">
-       </div>
-       <div class="swiper-slide">
-        <img src="img/slide-2.jpg" alt="">
-    </div>
-    <div class="swiper-slide">
-        <img  src="img/slide-3.jpg" alt="">
-    </div>
-    <div class="swiper-slide">
-        <img  src="img/slide-1.jpg" alt="">
-    </div>
-    <div class="swiper-slide">
-        <img  src="img/slide-2.jpg" alt="">
-    </div>
-    <div class="swiper-slide">
-        <img  src="img/slide-3.jpg" alt="">
-    </div>
-</div>
+         <div class="slidein" > 
+             <img src="img/slide-1.jpg" alt="" > 
+             <span class="caption simple-caption" >
+              <h3 style="margin-left:10px;">Simple Caption</h1>	
+                  <p style="margin-left:10px; color:white;"> Hello my name is pusit nice to meet you. This is first image.
+                  </p>		
+              </span>
+          </div> 
 
-<!--navigation buttons-->
-<div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div>
-<!-- Add Scrollbar -->
-<div class="swiper-scrollbar"></div>
+      </div>
 
 
-</div>
 
-<!-- Swiper JS -->
-<script src="js/swiper.min.js"></script>
+      <div class="swiper-slide">
+         <div class="slidein" > 
+             <img src="img/slide-2.jpg" alt="" > 
+             <span class="caption simple-caption" >
+              <h3 style="margin-left:10px;">Simple Caption1</h1>	
+                  <p style="margin-left:10px; color:white;"> This is second image.
+                  </p>		
+              </span>
+          </div> 
 
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        scrollbar: '.swiper-scrollbar',
-        scrollbarHide: false,
-        slidesPerView: 'auto',
-        centeredSlides: false,
-        spaceBetween: 0,
-        grabCursor: true,
+      </div>
+      <div class="swiper-slide">
 
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev'
+         <div class="slidein" > 
+             <img src="img/slide-3.jpg" alt="" > 
+             <span class="caption simple-caption" >
+              <h3 style="margin-left:10px;">Simple Caption2</h1>	
+                  <p style="margin-left:10px; color:white;"> This is third image.
+                  </p>		
+              </span>
+          </div> 
 
-    });
-</script>
+      </div>
+          <div class="swiper-slide">
+              <div class="slidein" > 
+               <img src="img/slide-1.jpg" alt="" > 
+               <span class="caption simple-caption" >
+                  <h3 style="margin-left:10px;">Simple Caption3</h1>	
+                      <p style="margin-left:10px; color:white;"> This is 4th image.
+                      </p>		
+                  </span>
+              </div> 
+
+          </div>
+          <div class="swiper-slide">
+              <div class="slidein" > 
+               <img src="img/slide-2.jpg" alt="" > 
+               <span class="caption simple-caption" >
+                  <h3 style="margin-left:10px;">Simple Caption4</h1>	
+                      <p style="margin-left:10px; color:white;"> This is 5th image.
+                      </p>		
+                  </span>
+              </div> 
+
+          </div>
+
+          <div class="swiper-slide ">
+           <div class="slidein" > 
+               <img src="img/slide-3.jpg" alt="" > 
+               <span class="caption simple-caption" >
+                  <h3 style="margin-left:10px;">Simple Caption5</h1>	
+                      <p style="margin-left:10px; color:white;"> This is 6th image.
+                      </p>		
+                  </span>
+              </div> 
+          </div>
+
+
+
+      </div>
+
+      <!--navigation buttons-->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <!-- Add Scrollbar -->
+      <div class="swiper-scrollbar"></div>
+
+
+  </div>
+
+
 <div class="hidden-slider" align="center">
 
-    <div id="hideMe">I want to hide this by pressing the button above</div>
+    <div class="hidden-content" id="hideMe" style="display:none;">I want to hide this by pressing the button above</div>
 
     <button class="hidden-btn font btn btn-default" onclick="toggle_visibility('hideMe')">more slide</button> 
     
@@ -320,7 +360,24 @@
         interval: 5000 //changes the speed
     })
 </script>
+ <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
 
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+        scrollbar: '.swiper-scrollbar',
+        scrollbarHide: false,
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 0,
+        grabCursor: false,
+
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+
+    });
+</script>
 </body>
 
 </html>
