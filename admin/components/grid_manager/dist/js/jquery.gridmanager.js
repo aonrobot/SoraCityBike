@@ -284,8 +284,25 @@
           canvas.html(temp_html);
         };
 
-
-
+		/**
+         * Get Content
+         * @method initControls
+         * @returns null
+        */
+		gm.getContent = function() {
+			
+		  var canvas = gm.$el.find("#" + gm.options.canvasId);
+		  gm.deinitCanvas();
+		  $("#say_some").val(canvas.html());
+		  gm.mode="html";
+		  var editedSource=canvas.find("textarea").val();
+          canvas.html(editedSource);
+          gm.initCanvas();
+          gm.mode="visual";
+          
+		};
+		
+		
         /**
          * Add click functionality to the buttons
          * @method initControls
@@ -314,7 +331,7 @@
             }).on("click", ".gm-edit-mode", function(){
               if(gm.mode === "visual"){
                  gm.deinitCanvas();
-                 canvas.html($('<textarea/>').attr("name",'txt_content').attr("cols", 130).attr("rows", 25).val(canvas.html()));
+                 canvas.html($('<textarea/>').attr("cols", 130).attr("rows", 25).val(canvas.html()));
                  gm.mode="html";
                  $(this).parent().find(".gm-preview, .gm-layout-mode > button").prop('disabled', true);
               } else {
@@ -1234,10 +1251,8 @@
                * edit mode (visual): canvas.html()
                */
               content = gm.mode !== "visual" ? canvas.find('textarea').val() : canvas.html();
-
               // Clean any temp class strings
               canvas.html(gm.cleanSubstring(gm.options.classRenameSuffix, content, ''));
-
               // Clean column markup
               canvas.find(gm.options.colSelector)
                   .removeAttr("style")

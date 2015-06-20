@@ -15,6 +15,8 @@
                                 echo $data['create_time']; 
                                 echo "<br>";
                             } 
+                            $count = $database->count("language");
+                            echo 'Number of langiage = '.$count;
 					?>
                 	<h3><?php echo $_GET['p']; ?></h3>
                 	<h4><?php echo 'Parameter -> '.$_POST['txt_content']; ?></h4>

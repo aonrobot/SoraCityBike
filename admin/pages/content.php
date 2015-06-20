@@ -26,6 +26,7 @@
                                             <th>Status</th>
                                             <th>Type</th>
                                             <th>Modified</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,6 +42,10 @@
                                             <td class="center"><?php echo $data['cont_status'];?></td>
                                             <td class="center"><?php echo $data['cont_type'];?></td>
                                             <td class="center"><?php echo $data['cont_modified'];?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i>
+                                                <button type="button" class="btn btn-danger"  style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
+                                            </td>
                                         </tr>
                                         
                                             <?php }?>
@@ -67,7 +72,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="post" role="form" action="index.php?p=TestContent">
+                                    <form method="post" role="form" action="index.php?p=query&a=addContent">
                                     	
                                         <div class="form-group">
                                             <label>Tilte</label>
@@ -76,7 +81,7 @@
                                         
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input name="title" class="form-control" placeholder="Enter Content Name">
+                                            <input name="name" class="form-control" placeholder="Enter Content Name">
                                         </div>
                                         
                                         <div class="form-group">
@@ -91,64 +96,61 @@
                                         
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                            <select name="status" class="form-control">
+                                                <option>Push</option>
+                                                <option>Wait</option>
                                             </select>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Type</label>
-                                            <select class="form-control">
-                                                <option>Normal</option>
-                                                <option>Story</option>
-                                                <option>News</option>
+                                            <select name="type" class="form-control">
+                                                <option>content</option>
+                                                <option>story</option>
+                                                <option>news</option>
                                             </select>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Category</label><br>
+                                            <?php 
+                                                $datas = $database->select("category", "*");
+                                            ?>
+                                            <?php foreach ($datas as $data) { ?>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Checkbox 1
+                                                    <input name="category[]" type="checkbox" value="<?php echo $data['cat_id'];?>"> <?php echo $data['name'];?>
                                                 </label>
                                             </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="">Checkbox 2
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="">Checkbox 3
-                                                </label>
-                                            </div>
+                                            <?php }?>
                                             
                                         </div>
-
+                                          
                                         <div class="form-group">
-                                            <h2>Content</h2>
-                                            <!-- Pull in Database from language list -->
-                                            <label>English</label>
-	                                            <div id="mycanvas">
+                                                <?php 
+                                                    $count = $database->count("language", "*");
+                                                    $datas = $database->select("language", "*");
+                                                ?> 
+                                                <!-- Pull in Database from language list -->
+                                                <label>Language</label>
+                                                <select name="lang" class="form-control">
+                                                <?php foreach ($datas as $data) { ?>
+                                                <option value="<?php echo $data['lang_id'];?>"><?php echo $data['lang_name'];?></option>
+                                                <?php } ?>
+                                                </select>
+                                        </div>    
+                                        
+                                        <div class="form-group">
+                                                <label>Content</label>
+	                                            <div id="canvas">
 												    <div class="row">
 												        <!-- Pull in Database from english language content -->
 												    </div>
-												</div>
-											<label>Thai</label>
-	                                            <div id="mycanvas2">
-												    <div class="row">
-												        <!-- Pull in Database from thai language content -->
-												    </div>
-												</div>
-											
-                                        </div>                          
-                   
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
+												</div>										
+                                        </div>    
+                                         
+                                        <textarea name="txt_content" id="say_some" style="display:none;">-</textarea>
+                                        <button type="submit" class="btn btn-primary save_btn">Create Content</button>
                                     </form>
                                 </div>
                                 <!-- /.col-lg-12 (nested) -->
@@ -168,27 +170,28 @@
 	</div>
 	<!-- /.container-fluid -->
 </div>
-<!-- /#page-wrapper -->
+<!-- / #page-wrapper -->
 
-<script>
+<script type="text/javascript">
 
-	//Loop to create
-    $(document).ready(function(){
-        $("#mycanvas").gridmanager();  
+    $(document).ready(function(){ 
+           $("#canvas").gridmanager({
+               debug: 1
+           });    
     });
-    $(document).ready(function(){
-        $("#mycanvas2").gridmanager();  
-    });
-    //
     
-    $( "#save_content" ).click(function() {
-	  alert( "Handler for .click() called." );
-	});
-	
-	//DataTable
-	$('#dataTables-example').DataTable({
-                responsive: true
+    $(document).ready(function(){ 
+        var gm = jQuery("#canvas").data('gridmanager');
+        $(".save_btn").on("click", function(e){
+            gm.getContent();
+        });
     });
+    
+	<?php if(!strcmp($_GET['a'], 'list')){?> 
+    	//DataTable
+    	$('#dataTables-example').DataTable({
+                    responsive: true
+        });
+    <?php }?>
 	
-</script> 
-
+</script>
