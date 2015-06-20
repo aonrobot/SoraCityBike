@@ -55,7 +55,6 @@
                           <!-- /.table-responsive -->
                     </div>
                       <!-- /.panel-body -->
-                        <?php //echo 'data -> '.print_r($datas); ?>
                 </div>
                  <!-- /.panel -->
 				    
@@ -97,8 +96,12 @@
                                         <div class="form-group">
                                             <label>Status</label>
                                             <select name="status" class="form-control">
-                                                <option>Push</option>
-                                                <option>Wait</option>
+                                                <option>Published</option>
+                                                <option>Future</option>
+                                                <option>Draft</option>
+                                                <option>Pending</option>
+                                                <option>Private</option>
+                                                <option>Trash</option>
                                             </select>
                                         </div>
                                         
@@ -106,8 +109,6 @@
                                             <label>Type</label>
                                             <select name="type" class="form-control">
                                                 <option>content</option>
-                                                <option>story</option>
-                                                <option>news</option>
                                             </select>
                                         </div>
                                         
