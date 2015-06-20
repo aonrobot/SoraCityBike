@@ -7,7 +7,7 @@
 				
 				<h1 class="page-header"><i class="fa fa-book fa-1x"></i> Content Management</h1>
 				
-				<?php if(!strcmp($_GET['a'], 'list')){?>
+				<?php if(!strcmp($_GET['s'], 'show')){?>
 				    
                 <div class="panel panel-default">
                         <div class="panel-heading">
@@ -60,9 +60,7 @@
 				    
 				<?php }?> 
 				
-				
-				
-				<?php if(!strcmp($_GET['a'], 'add')){?>				
+				<?php if(!strcmp($_GET['s'], 'create')){?>				
 				
 				<div class="panel panel-default">
                         <div class="panel-heading">
@@ -120,7 +118,7 @@
                                             <?php foreach ($datas as $data) { ?>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input name="category[]" type="checkbox" value="<?php echo $data['cat_id'];?>"> <?php echo $data['name'];?>
+                                                    <input name="category[]" type="checkbox" value="<?php echo $data['cat_id'];?>"> <?php echo $data['cat_name'];?>
                                                 </label>
                                             </div>
                                             <?php }?>
@@ -164,6 +162,83 @@
                     <!-- /.panel -->
                 <?php }?>
 				
+				<?php if(!strcmp($_GET['s'], 'language')){?>
+				    
+				    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <b>Create New Language</b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form method="post" role="form" action="index.php?p=query&a=addlang">
+                                        
+                                        <div class="col-lg-4 form-group">
+                                            <label>Language Code</label>
+                                            <input name="code" class="form-control" placeholder="Enter Language Code Name">
+                                        </div>
+                                        
+                                        <div class="col-lg-4 form-group">
+                                            <label>Language Name</label>
+                                            <input name="name" class="form-control" placeholder="Enter Language Name">
+                                        </div>
+                                        
+                                        <div class="col-lg-2">
+                                            <button style="margin-top: 20px;" type="submit" class="btn btn-primary save_btn">Add Language</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-12 (nested) -->
+                               
+                                </div>
+                                <!-- /.row (nested) -->
+                           </div>
+                          <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                        
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>All Category</b>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>id</th>
+                                                <th>Code</th>
+                                                <th>Language Name</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                                $datas = $database->select("language","*");           
+                                                foreach ($datas as $data) {
+                                        ?>            
+                                            <tr>
+                                                <td><?php echo $data['lang_id'];?></td>
+                                                <td><?php echo $data['lang_code'];?></td>
+                                                <td><?php echo $data['lang_name'];?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i>
+                                                    <button type="button" class="btn btn-danger"><i class="fa fa-recycle"> Delete</i>
+                                                </td>
+                                            </tr>
+                                            
+                                        <?php }?>
+                                        </tbody>
+                                    </table>
+                             </div>
+                              <!-- /.table-responsive -->
+                        </div>
+                          <!-- /.panel-body -->
+                    </div>
+                     <!-- /.panel -->
+				    
+				<?php }?>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>

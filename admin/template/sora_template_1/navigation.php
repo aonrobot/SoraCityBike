@@ -39,40 +39,39 @@
                         <li>
                             <a href="index.php?p=dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
+                        
                         <li>
                             <a href="index.php?p=homepage"><i class="fa fa-home fa-fw"></i> Home Page</a>
                         </li>
 
                         <li>
                             <a href="index.php?p=category"><i class="fa fa-cubes fa-fw"></i> Category</a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="index.php?p=category&a=list">Show All Category</a>
-                                </li>
-                                <li>
-                                    <a href="index.php?p=category&a=add">Create Category</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
                         </li>
+                        
                         <li>
                             <a href=""><i class="fa fa-book fa-fw"></i> Content</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="index.php?p=content&a=list">Show All Content</a>
+                                    <a href="index.php?p=content&s=show">Show All Content</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?p=content&a=add">Create Content</a>
+                                    <a href="index.php?p=content&s=create">Create Content</a>
+                                </li>
+                                <li>
+                                    <a href="index.php?p=content&s=language">language</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
                         <li>
                             <a href="index.php?p=menu"><i class="fa fa-bars fa-fw"></i> Menu</a>
                         </li>
+                        
                         <li>
                             <a href="index.php?p=slide"><i class="fa fa-picture-o fa-fw"></i> Slide</a>
                         </li>
+                        
                         <li>
                             <a href="index.php?p=TestContent"><i class="fa fa-terminal fa-fw"></i> TestContent</a>
                         </li>
