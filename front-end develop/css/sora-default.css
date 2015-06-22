@@ -5,6 +5,7 @@
  */
 
  body {
+
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     /*background: url('../img/bg.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -75,15 +76,6 @@ hr {
     min-width: 100%;
 }
 
-.brand-before,
-.brand-name {
-    text-transform: capitalize;
-}
-
-.brand-before {
-    margin: 15px 0;
-}
-
 .brand-name {
     margin: 0;
     font-size: 4em;
@@ -109,18 +101,39 @@ hr {
     letter-spacing: 1px;
 }
 .hidden-slider{
-    margin-top: 2em;
-   
+
+
 }
 .hidden-content{
     background-color: #aaa;
     color: #fff;
-    height: 300px;
-    
+    transition: height 0.5s;
+    -moz-transition: height 0.5s; /* Firefox 4 */
+    -webkit-transition: height 0.5s; /* Safari and Chrome */
+    -o-transition: height 0.5s; /* Opera */
 }
+
 .hidden-btn{
     margin-top: 1em;
     text-decoration: underline;
+}
+
+.category{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.category-box{
+    padding: 2em;
+
+    height: 300px;
+
+}
+.category-img{
+    display: inline-block;
+  width: 200px;
+  height: 200px;
+  
+
 }
 .img-border {
     float: none;
@@ -163,7 +176,7 @@ footer p {
     max-height: 4em;
 }
 .brand-logo {
- text-align: center;
+   text-align: center;
 }
 .brand-social {
     padding-top: 1em;
@@ -221,26 +234,26 @@ footer p {
     text-decoration: none;
 }
 .nav>li>div:hover:before {
- visibility: visible;
- -webkit-transform: scaleX(1);
- transform: scaleX(1);
+   visibility: visible;
+   -webkit-transform: scaleX(1);
+   transform: scaleX(1);
 }
 .nav>li>div:hover {
     color: #000;
 }
 .nav>li>div:before {
- content: "";
- position: absolute;
- width: 80%;
- height: 0.75px;
- bottom: 0.45em;
- left: 0.4em;
- background-color: #000;
- visibility: hidden;
- -webkit-transform: scaleX(0);
- transform: scaleX(0);
- -webkit-transition: all 0.3s ease-in-out 0s;
- transition: all 0.3s ease-in-out 0s;
+   content: "";
+   position: absolute;
+   width: 80%;
+   height: 0.75px;
+   bottom: 0.45em;
+   left: 0.4em;
+   background-color: #000;
+   visibility: hidden;
+   -webkit-transform: scaleX(0);
+   transform: scaleX(0);
+   -webkit-transition: all 0.3s ease-in-out 0s;
+   transition: all 0.3s ease-in-out 0s;
 }
 
 
