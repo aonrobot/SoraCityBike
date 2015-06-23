@@ -6,12 +6,7 @@
 
  body {
 
-    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    /*background: url('../img/bg.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;*/
+    
 }
 @font-face { 
     font-family: pero; 
@@ -56,6 +51,11 @@ hr {
 .large-font{
     font-size: 2em;
 }
+.underline{
+    display:inline-block;
+    border-bottom:1px solid black;
+    padding-bottom:5px; 
+}
 
 .brand ,
 .address-bar {
@@ -96,7 +96,7 @@ hr {
 }
 .hidden-content{
     
-    color: #fff;
+    color: #000;
     transition: height 0.5s;
     -moz-transition: height 0.5s; /* Firefox 4 */
     -webkit-transition: height 0.5s; /* Safari and Chrome */
@@ -111,24 +111,34 @@ hr {
 
 .category{
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 5em;
 }
 .category-box{
-    padding: 2em;
+    padding: 5em;
     height: 350px;
-    background-color: #aaa;
+   
 
 }
 .category-img{
     display: inline-block;
     width: 100%;
     height: 100%;
-
-
+}
+.text-header{
+    text-align: left;
+    font-size: 15px;
+    font-weight: 400;
+    
+}
+.text-content{
+    text-align: left;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 120%;
 }
 
-
 footer {
+    margin-top: 8em;
     background: #fff;
     background: rgba(255,255,255,0.9);
 }
@@ -238,15 +248,8 @@ footer p {
 }
 .content{
     margin: auto;
+    margin-bottom: 5em;
 }
 }
 
-@media screen and (min-width:1200px) {
-    .box:after {
-        content: '';
-        display: table;
-        clear: both;
-    }
-
-}
 
