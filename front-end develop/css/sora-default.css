@@ -90,8 +90,9 @@ hr {
 }
 
 .hidden-slider{
-    background-color: #aaa;
+   
     padding: 1em;
+    margin-bottom: 4em;
 }
 .hidden-content{
     
@@ -103,11 +104,9 @@ hr {
 }
 
 .hidden-btn{
-    color: #fff;
     margin-top: 1em;
     text-decoration: underline;
-    background-color: #aaa;
-    border-color: #aaa;
+    
 }
 
 .category{
