@@ -58,7 +58,7 @@
                                     <a href="index.php?p=content&s=create">Create Content</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?p=content&s=language">language</a>
+                                    <a href="index.php?p=content&s=language">Language</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
