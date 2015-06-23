@@ -76,11 +76,7 @@ hr {
 .red-text{
     color: red;
 }
-.tagline-divider {
-    margin: 15px auto 3px;
-    max-width: 250px;
-    border-color: #999999;
-}
+
 
 .box {
     margin-bottom: 20px;
@@ -125,6 +121,8 @@ hr {
     height: 100%;
 }
 .text-header{
+    margin-top: 1em;
+    margin-bottom: 1em;
     text-align: left;
     font-size: 15px;
     font-weight: 400;
