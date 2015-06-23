@@ -6,7 +6,11 @@
 
  body {
 
-    
+    background-color: #f8f8f8;
+}
+.bg-gray{
+    background-color: #f8f8f8 !important;
+    border-color: #f8f8f8 !important;
 }
 @font-face { 
     font-family: pero; 
@@ -72,6 +76,7 @@ hr {
 
     font-weight: 400;
     letter-spacing: 3px;
+
 }
 .red-text{
     color: red;
@@ -106,11 +111,10 @@ hr {
 }
 
 .category{
-    margin-top: 2em;
     margin-bottom: 5em;
 }
 .category-box{
-    padding: 5em;
+    padding: 4em;
     height: 350px;
    
 
@@ -217,6 +221,7 @@ footer p {
     color: #000;
 }
 .nav>li>div:before {
+
  content: "";
  position: absolute;
  width: 80%;
