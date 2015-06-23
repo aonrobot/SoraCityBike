@@ -53,7 +53,9 @@ hr {
     font-weight: 400;
     letter-spacing: 2px;
 }
-
+.large-font{
+    font-size: 2em;
+}
 
 .brand ,
 .address-bar {
@@ -71,16 +73,9 @@ hr {
     font-weight: 400;
     letter-spacing: 3px;
 }
-
-.img-full {
-    min-width: 100%;
+.red-text{
+    color: red;
 }
-
-.brand-name {
-    margin: 0;
-    font-size: 4em;
-}
-
 .tagline-divider {
     margin: 15px auto 3px;
     max-width: 250px;
@@ -94,18 +89,12 @@ hr {
     background: rgba(255,255,255,0.9);
 }
 
-.intro-text {
-    text-transform: uppercase;
-    font-size: 1.25em;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
 .hidden-slider{
-
-
+    background-color: #aaa;
+    padding: 1em;
 }
 .hidden-content{
-    background-color: #aaa;
+    
     color: #fff;
     transition: height 0.5s;
     -moz-transition: height 0.5s; /* Firefox 4 */
@@ -114,8 +103,11 @@ hr {
 }
 
 .hidden-btn{
+    color: #fff;
     margin-top: 1em;
     text-decoration: underline;
+    background-color: #aaa;
+    border-color: #aaa;
 }
 
 .category{
@@ -124,27 +116,18 @@ hr {
 }
 .category-box{
     padding: 2em;
-
-    height: 300px;
+    height: 350px;
+    background-color: #aaa;
 
 }
 .category-img{
     display: inline-block;
-  width: 200px;
-  height: 200px;
-  
+    width: 100%;
+    height: 100%;
+
 
 }
-.img-border {
-    float: none;
-    margin: 0 auto 0;
-    border: #999999 solid 1px;
-}
 
-.img-left {
-    float: none;
-    margin: 0 auto 0;
-}
 
 footer {
     background: #fff;
@@ -157,12 +140,9 @@ footer p {
 }
 .top-menu{
 	margin: auto;
-	
 
 }
-.red-text{
-	color:#F00;
-}
+
 @media screen and (min-width:768px) {
     .brand {
       padding:1em;
@@ -176,7 +156,7 @@ footer p {
     max-height: 4em;
 }
 .brand-logo {
-   text-align: center;
+ text-align: center;
 }
 .brand-social {
     padding-top: 1em;
@@ -192,18 +172,6 @@ footer p {
 }
 
 
-.address-bar {
-    display: inherit;
-    margin: 0;
-    padding: 0 0 40px;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    text-transform: uppercase;
-    font-size: 1.25em;
-    font-weight: 400;
-    letter-spacing: 3px;
-    color: #fff;
-}
 
 .navbar {
     border-radius: 0;
@@ -234,26 +202,26 @@ footer p {
     text-decoration: none;
 }
 .nav>li>div:hover:before {
-   visibility: visible;
-   -webkit-transform: scaleX(1);
-   transform: scaleX(1);
+ visibility: visible;
+ -webkit-transform: scaleX(1);
+ transform: scaleX(1);
 }
 .nav>li>div:hover {
     color: #000;
 }
 .nav>li>div:before {
-   content: "";
-   position: absolute;
-   width: 80%;
-   height: 0.75px;
-   bottom: 0.45em;
-   left: 0.4em;
-   background-color: #000;
-   visibility: hidden;
-   -webkit-transform: scaleX(0);
-   transform: scaleX(0);
-   -webkit-transition: all 0.3s ease-in-out 0s;
-   transition: all 0.3s ease-in-out 0s;
+ content: "";
+ position: absolute;
+ width: 80%;
+ height: 0.75px;
+ bottom: 0.45em;
+ left: 0.4em;
+ background-color: #000;
+ visibility: hidden;
+ -webkit-transform: scaleX(0);
+ transform: scaleX(0);
+ -webkit-transition: all 0.3s ease-in-out 0s;
+ transition: all 0.3s ease-in-out 0s;
 }
 
 
