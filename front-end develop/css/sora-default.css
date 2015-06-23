@@ -42,8 +42,9 @@ p {
 }
 
 hr {
-    max-width: 400px;
-    border-color: #999999;
+    
+    
+    border-color: #bbb;
 
 }
 
@@ -92,11 +93,11 @@ hr {
 
 .hidden-slider{
    
-    padding: 1em;
+    padding-top: 1em;
     
 }
 .hidden-content{
-    
+    background-color: #7c7c7c;
     color: #000;
     transition: height 0.5s;
     -moz-transition: height 0.5s; /* Firefox 4 */
@@ -106,8 +107,11 @@ hr {
 
 .hidden-btn{
     margin-top: 1em;
-    text-decoration: underline;
+   
     
+}
+.hidden-btn:hover{
+     text-decoration: underline;
 }
 .mid-line{
     max-width:70%;
@@ -115,7 +119,7 @@ hr {
 }
 .category{
     margin-bottom: 1em;
-    margin-top: 1em;
+    margin-top: 3em;
 }
 .category-box{
     
