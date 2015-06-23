@@ -127,9 +127,12 @@ hr {
     padding-right:3em ;
     padding-top:1em 
     height: auto;
-     
     overflow: hidden;
 
+}
+.content-box{
+    margin-left: 20em ;
+    margin-right: 20em;
 }
 .index-img{
     display: inline-block;
