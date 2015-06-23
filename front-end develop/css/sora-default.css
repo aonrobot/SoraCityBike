@@ -93,7 +93,7 @@ hr {
 .hidden-slider{
    
     padding: 1em;
-    margin-bottom: 4em;
+    
 }
 .hidden-content{
     
@@ -109,20 +109,33 @@ hr {
     text-decoration: underline;
     
 }
-
+.mid-line{
+    max-width:70%;
+    margin-top:4em;
+}
 .category{
-    margin-bottom: 5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 .category-box{
-    padding: 4em;
-    height: 350px;
-   
+    
+    padding-left:3em ;
+    padding-right:3em ;
+    padding-top:1em 
+    height: auto;
+     
+    overflow: hidden;
 
+}
+.index-img{
+    display: inline-block;
+    width: 100%;
+    
 }
 .category-img{
     display: inline-block;
     width: 100%;
-    height: 100%;
+   
 }
 .text-header{
     margin-top: 1em;
