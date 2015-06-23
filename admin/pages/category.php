@@ -15,7 +15,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="post" role="form" action="index.php?p=query&a=addCategory">
+                                    <form method="post" role="form" action="query.php?a=addCategory">
                                         
                                         <div class="col-lg-4 form-group">
                                             <label>Name</label>
@@ -76,8 +76,8 @@
                                             <td><?php echo $data['cat_name'];?></td>
                                             <td><?php echo $data['cat_type'];?></td>
                                             <td>
-                                                <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i>
-                                                <button type="button" class="btn btn-danger"><i class="fa fa-recycle"> Delete</i>
+                                                <a href="#" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i>
+                                                <a href="query.php?a=del&w=category&i=<?php echo $data['cat_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
                                         
