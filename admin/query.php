@@ -1,14 +1,39 @@
-<!-- SQL --> 
-
 <?php
+
+    /* SQL 
+    
+        a = Action
+        s = Sub Page
+        w = what
+        i = id
+        l = language
+    
+    */ 
+    
+    // Include Medoo
+    require_once '../components/medoo.min.php';
+    
+    // Initialize
+    $database = new medoo(array(
+        'database_type' => 'mysql',
+        'database_name' => 'sora_db',
+        'server' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8'
+    ));
+
 
     //////////////////////////////////////////////   INSERT  //////////////////////////////////////////////////
 
     if(!strcmp($_GET['a'], 'addContent')){
         
           $date = date('Y-m-d H:i:s');
+          
+        
           $database->insert("content", array(
-                "user_id" => "1",
+                "cont_lang_id" => $_POST['lang'],
+                "cont_name" => $_POST['name'],
                 "cont_name" => $_POST['name'],
                 "cont_author" => $_POST['author'],
                 "cont_slug" => $_POST['slug'],
@@ -18,14 +43,37 @@
            ));
            
            $last = $database->max("content", "id");
-           $database->insert("content_translation", array(
+           
+           //Language Insert           
+           //Get All id of Language
+           $datas = $database->select("language","lang_id");
+           $lang_id = array();           
+           foreach ($datas as $data) {
+                array_push($lang_id,$data);                        
+           }
+           foreach ($lang_id as $id) {
+                
+                $database->insert("content_translation", array(
                 "cont_id" => $last,
-                "lang_id" => $_POST['lang'],
+                "lang_id" => $id,
                 "cont_title" => $_POST['title'],
                 "cont_content" => $_POST['txt_content']
-           ));
+                ));
+                
+           }
+
+            //Category Insert
+            $category = $_POST['category'];
+            foreach ($category as $cat) {
+                
+                $database->insert("category_relationships", array(
+                "cont_id" => $last,
+                "cat_id" => $cat,
+                ));  
+            }
            
-           header( 'Location: http://127.0.0.1/SoraCityBike/admin/index.php?p=content&a=list' ) ;
+           header( 'Location: index.php?p=content&s=show' ) ;
+           exit();
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +87,8 @@
            ));
            
            
-           header( 'Location: http://127.0.0.1/SoraCityBike/admin/index.php?p=content&a=list' ) ;
+           header( 'Location: index.php?p=category' ) ;
+           exit();
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +101,127 @@
            ));
            
            
-           header( 'Location: http://127.0.0.1/SoraCityBike/admin/index.php?p=content&a=list' ) ;
+           header( 'Location: index.php?p=content&s=language' ) ;
+           exit();
     }
+
+    /////////////////////////////////////////////// UPDATE ////////////////////////////////////////////////////////////////////////
+    
+    if(!strcmp($_GET['a'], 'updateContent')){
+    
+        $database->update("content_translation", array(
+            "cont_title" => $_POST['title'],
+            "cont_content" => $_POST['txt_content'],
+            
+        ), array(
+            "AND" => array("cont_id" => $_POST['content_id'], "lang_id" => $_POST['lang'])
+        ));
+        
+        $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
+        
+        header( $head ) ;
+        exit();
+    
+    }
+    
+    if(!strcmp($_GET['a'], 'updateContentInfo')){
+    
+        $database->update("content", array(
+            "cont_name" => $_POST['name'],
+            "cont_author" => $_POST['author'],
+            "cont_slug" => $_POST['slug'],
+            "cont_status" => $_POST['status'],
+            "cont_type" => $_POST['type'],
+            
+        ), array("id" => $_POST['content_id']
+        ));
+        
+        //Delete All Content In Cat Relationship
+        $database->delete("category_relationships", array("cont_id" => $_POST['content_id']));
+        
+        //Insert New
+        $category = $_POST['category'];
+            foreach ($category as $cat) {
+                
+                $database->insert("category_relationships", array(
+                "cont_id" => $_POST['content_id'],
+                "cat_id" => $cat,
+                ));  
+            }
+        
+        
+        $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
+        
+        header( $head ) ;
+        exit();
+    
+    }
+        
+    /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
+    
+    if(!strcmp($_GET['a'], 'del')){
+        
+        /*
+         * 
+         * 1 -> Content Delete
+         * 2 -> Category
+         * 3 -> Language
+         * 
+         */
+        
+        switch ($_GET['w']) {
+            
+            case 'content':
+            
+                $database->delete("content_meta", array("cont_id" => $_GET['i'])); 
+                $database->delete("content_translation", array("cont_id" => $_GET['i'])); 
+                $database->delete("category_relationships", array("cont_id" => $_GET['i']));
+                $database->delete("content", array("id" => $_GET['i']));
+                
+                header( 'Location: index.php?p=content&s=show' ) ;
+                exit();               
+                break;
+                
+            case 'category':
+            
+                $count_cont = $database->count("category_relationships", array(
+                    "cat_id" => $_GET['i']
+                ));
+                
+                if($count_cont == 0) {
+                    $database->delete("category", array("cat_id" => $_GET['i']));
+                    header( 'Location: index.php?p=category' ) ;
+                    exit();                     
+                }   
+                else {
+                    header( 'Location: index.php?p=error&a=delCat' ) ;
+                    exit();
+                }          
+                break;
+                
+            case 'lang':
+            
+                $count_lang = $database->count("content_translation", array(
+                    "lang_id" => $_GET['i']
+                ));
+                
+                if($count_lang == 0) {
+                    $database->delete("language", array("lang_id" => $_GET['i']));
+                    header( 'Location: index.php?p=content&s=language' ) ;
+                    exit();                     
+                }   
+                else {
+                    header( 'Location: index.php?p=error&a=delLang' ) ;
+                    exit();
+                }          
+                break;
+                                
+        }
+        
+        
+    }
+    
+    header( 'Location: index.php' ) ;
+    exit();
     
 ?>
