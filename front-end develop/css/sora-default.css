@@ -82,7 +82,12 @@ hr {
 .red-text{
     color: red;
 }
+.dropdown-span{
+    height: 20px; 
+    border-color: #000;
+    margin: -3px;
 
+}
 
 .box {
     margin-bottom: 20px;
