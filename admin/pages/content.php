@@ -34,9 +34,13 @@
                                             
                                             "[<]content_translation" => array("id" => "cont_id"),
                                             
-                                            ), array('id','cont_lang_id','cont_name','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified'));           
+                                            ), array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified'));           
                                             
                                             foreach ($datas as $data) {
+                                                
+                                                if(!strcmp($data['lang_id'], $data['cont_lang_id'])){
+                                                    
+                                                    //echo $data['lang_id'] . " and " . $data['cont_lang_id'] . '<br>';
                                     ?>            
                                         <tr>
                                             <td><?php echo $data['cont_title'];?></td>
@@ -60,7 +64,7 @@
                                             </td>
                                         </tr>
                                         
-                                            <?php }?>
+                                            <?php continue;} }?>
                                     </tbody>
                                 </table>
                          </div>
