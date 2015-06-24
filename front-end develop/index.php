@@ -69,10 +69,9 @@
         <div class="col-xs-4 brand-logo ">
             <img class="logo_img" src="img/LOGO-(with-cloud)2.png"/>
         </div>
-        <div class="col-xs-4 brand-time " align="left">
-        not php
+        <div class="pero-font time-text col-xs-4 brand-time " align="center">
             <?php 
-              echo "hi";
+            echo date('D d M');
             ?>
         </div>
 
