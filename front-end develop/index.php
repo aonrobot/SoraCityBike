@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="shortcut icon" href="img/favicon2.png">
+    <link rel="icon" href="img/favicon2.png">
+    
     <title>Sora City Bike</title>
     <!-- Swiper Slider css -->
     <link href="css/swiper.min.css" rel="stylesheet" >
@@ -26,19 +28,15 @@
 
         .swiper-container {
             width: 100%;
-         
+            height: 40%;
             margin: none;
         }
         .swiper-slide {
-			
-		
-			width: auto;
-			height: 403px;
-			
             text-align: center;
             font-size: 18px;
             background: #fff;
-          
+            width:auto;
+            height:100%;
             margin:none;
 
             /* Center slide text vertically */
@@ -73,10 +71,9 @@
         <div class="col-xs-4 brand-logo ">
             <img class="logo_img" src="img/LOGO-(with-cloud)2.png"/>
         </div>
-        <div class="col-xs-4 brand-time " align="left">
-        not php
+        <div class="pero-font time-text col-xs-4 brand-time " align="center">
             <?php 
-              echo "hi";
+            echo date('D d M');
             ?>
         </div>
 
@@ -268,20 +265,6 @@
 
           </div>
           <div class="swiper-slide">
-
-           <div class="slidein" > 
-               <img src="img/slide-7.jpg" alt=""  > 
-               <span class="caption simple-caption" >
-                  <h3 style="margin-left:10px;">Simple Caption2</h1>	
-                      <p style="margin-left:10px; color:white;"> This is third image.
-                      </p>		
-                  </span>
-              </div> 
-
-          </div>
-         
-          
-          <div class="swiper-slide">
               <div class="slidein" > 
                  <img src="img/slide-1.jpg" alt="" > 
                  <span class="caption simple-caption" >
@@ -322,18 +305,17 @@
       <!--navigation buttons-->
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
-
+      <!-- Add Scrollbar -->
+      <div class="swiper-scrollbar"></div>
 
 
   </div>
 
-<!--slide video -->
+
   <div class="hidden-slider" align="center">
 
-    <div class="hidden-content" id="hideMe" style="display:none;">
-    
+    <div class="hidden-content" id="hideMe" style="display:none;">I want to hide this by pressing the button above</div>
 
-	</div>
     <button class="bg-gray hidden-btn pero-font btn btn-default" onclick="toggle_visibility('hideMe')">more slide</button> 
     
 </div>
@@ -420,8 +402,8 @@
 <!-- Initialize Swiper -->
 <script>
     var swiper = new Swiper('.swiper-container', {
-  
-        
+        scrollbar: '.swiper-scrollbar',
+        scrollbarHide: false,
         slidesPerView: 'auto',
         centeredSlides: false,
         spaceBetween: 0,
