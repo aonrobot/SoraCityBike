@@ -1,11 +1,20 @@
+
+
 <div class="content row">
    <div class="container" align="center">
     <h4 class="pero-font large-font underline   ">stories</h4>
 
 
+    
+
+        <?php 
+ //include('content.php'); 
+
+ //$datas = $database->select("content_translation","*");
+ //echo $datas[0]["cont_content"];
+ ?>
+    
     <div class="row category pero-font">
-
-
       <div class="col-md-6 category-box">
         <img src="img/slide-3.jpg" class="index-img"/>
         <p class="pero-font text-header"> KINFOLK ISSUE SIXTEEN: THE ESSENTIALS ISSUE </p>

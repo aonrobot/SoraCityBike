@@ -1,4 +1,39 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="img/favicon2.png">
+  <link rel="icon" href="img/favicon2.png">
+
+  <title>Sora City Bike</title>
+  <link href="css/swiper.min.css" rel="stylesheet" >
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/sora-default.css" rel="stylesheet">
+
+</head>
+<?php
+
+  // Include Medoo
+  require_once '../components/medoo.min.php';
+  
+  // Initialize
+  $database = new medoo(array(
+      'database_type' => 'mysql',
+      'database_name' => 'sora_db',
+      'server' => 'localhost',
+      'username' => 'root',
+      'password' => '',
+      'charset' => 'utf8'
+  ));
+  ?>
+
+<body>  
 <div class="brand row">
         <div class="col-xs-4 brand-social ">
             <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="img/icon/icon-fb-type2.png"/></a>
