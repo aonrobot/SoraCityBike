@@ -16,7 +16,9 @@
     font-family: pero; 
     src: url(/fonts/Pero-Bold.otf ) format("truetype"); 
 }
-
+b{
+    font-weight: 600;
+}
 .pero-font {
     font-family: pero , verdana, helvetica, sans-serif;
     font-weight: 300;
