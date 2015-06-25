@@ -78,6 +78,24 @@
   <div class="swiper-button-prev swiper-button-prev1"></div>
 </div>
 
+<script>
+ var swiper1 = new Swiper('.swiper1', {
+
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 0,
+        grabCursor: false,
+
+        nextButton: '.swiper-button-next1',
+        prevButton: '.swiper-button-prev1'
+
+    });
+  
+  
+  
+</script>
+
+
 
 <div class="hidden-slider" align="center">
   <div class="hidden-content" id="hideMe" style="display:none; ">
