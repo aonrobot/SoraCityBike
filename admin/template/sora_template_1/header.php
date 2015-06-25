@@ -25,6 +25,9 @@
 		<!-- Custom Fonts -->
 		<link href="components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		
+		<!-- File Upload CSS -->
+		<link href="components/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+		
 		<!------------------------    JS     ----------------------------------------->
 		
 		
@@ -70,6 +73,9 @@
 		<script src="components/datatables/media/js/jquery.dataTables.min.js"></script>
 		<script src="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 		<?php }?>
+		
+		<!-- File Upload JavaScript -->
+		<script src="components/bootstrap-fileinput-master/js/fileinput.min.js" type="text/javascript"></script>
 		
 		<!-- Custom Theme JavaScript -->
 		<script src="<?php echo $D_TEMPLATE; ?>dist/js/sb-admin-2.js"></script>
