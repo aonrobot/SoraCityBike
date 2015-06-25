@@ -55,7 +55,7 @@
  <nav class="bg-gray navbar navbar-default " role="navigation">
         <div class="bg-gray container top-menu ">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header" align="center">
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -68,7 +68,7 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="center">
                 
                 <ul class="nav navbar-nav">
                     <li id="menu_1">

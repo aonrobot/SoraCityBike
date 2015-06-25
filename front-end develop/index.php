@@ -1,42 +1,35 @@
 
 
 
-
-
-
  <?php include('top-menu.php'); ?>
  <?php include('slide.php'); ?>
- <hr class="mid-line">
+ <hr style="max-width:70%;margin-top:2em;">
  <?php include('content.php'); ?>
-
-
- <hr style="max-width: 70%;">
+ <hr style="max-width:70%;">
  <?php include('footer.php'); ?>
 
  <!-- jQuery -->
  <script src="js/jquery.js"></script>
  <script src="js/sora-default.js"></script>
  <script src="js/bootstrap.min.js"></script>
-  <script src="js/swiper.min.js"></script>
+ <script src="js/swiper.min.js"></script>
  
- <script>
-  $('.carousel').carousel({
-        interval: 5000 //changes the speed
-      })
-</script>
+
 <script>
-  var swiper = new Swiper('.swiper-container', {
-    scrollbar: '.swiper-scrollbar',
-    scrollbarHide: false,
-    slidesPerView: 'auto',
-    centeredSlides: false,
-    spaceBetween: 0,
-    grabCursor: false,
+ var swiper1 = new Swiper('.swiper1', {
 
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev'
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 0,
+        grabCursor: false,
 
-  });
+        nextButton: '.swiper-button-next1',
+        prevButton: '.swiper-button-prev1'
+
+    });
+	
+	
+	
 </script>
 </body>
 
