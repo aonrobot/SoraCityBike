@@ -1,10 +1,10 @@
 
 
-
- <?php include('top-menu.php'); ?>
+ <?php include('../config/config.php'); ?>
+ <?php include('header.php'); ?>
  <?php include('slide.php'); ?>
- <hr style="max-width:70%;margin-top:2em;">
- <?php include('content.php'); ?>
+
+ <?php include($page.'.php'); ?>
  <hr style="max-width:70%;">
  <?php include('footer.php'); ?>
 
