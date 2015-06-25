@@ -16,9 +16,6 @@
     font-family: pero; 
     src: url(/fonts/Pero-Bold.otf ) format("truetype"); 
 }
-i{
-    
-}
 b{
     font-weight: 600;
 }
@@ -108,11 +105,15 @@ hr {
 }
 
 .hidden-slider{
- 
-    padding-top: 1em;
-    
+   width:100%;
+   height:100%;
+   
+
 }
 .hidden-content{
+
+	height:100%;
+	
     background-color: #7c7c7c;
     color: #000;
     transition: height 0.5s;
@@ -123,46 +124,50 @@ hr {
 
 .hidden-btn{
     margin-top: 1em;
-    
+   
     
 }
 .hidden-btn:hover{
-   text-decoration: underline;
+     text-decoration: underline;
 }
-.mid-line{
-    max-width:70%;
-    margin-top:4em;
-}
+
+
 
 
 
 .swiper-container {
-  width: 100%;
-  height: 40%;
-  margin: none;
-}
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  width:auto;
-  height:100%;
-  margin:none;
+      width: 100%;
+     
+      margin: none;
+    }
+	
+	
+	
+    .swiper-slide {
+      
+			width: auto;
+			height: 403px;
+			
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+          
+            margin:none;
 
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack:center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack:center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
 .category{
     margin-bottom: 1em;
     margin-top: 3em;
@@ -188,7 +193,7 @@ hr {
 .category-img{
     display: inline-block;
     width: 100%;
-    
+   
 }
 .text-header{
     margin-top: 1em;
@@ -233,7 +238,7 @@ footer p {
     max-height: 4em;
 }
 .brand-logo {
-   text-align: center;
+ text-align: center;
 }
 .brand-social {
     padding-top: 1em;
@@ -279,27 +284,27 @@ footer p {
     text-decoration: none;
 }
 .nav>li>div:hover:before {
-   visibility: visible;
-   -webkit-transform: scaleX(1);
-   transform: scaleX(1);
+ visibility: visible;
+ -webkit-transform: scaleX(1);
+ transform: scaleX(1);
 }
 .nav>li>div:hover {
     color: #000;
 }
 .nav>li>div:before {
 
-   content: "";
-   position: absolute;
-   width: 80%;
-   height: 0.75px;
-   bottom: 0.45em;
-   left: 0.4em;
-   background-color: #000;
-   visibility: hidden;
-   -webkit-transform: scaleX(0);
-   transform: scaleX(0);
-   -webkit-transition: all 0.3s ease-in-out 0s;
-   transition: all 0.3s ease-in-out 0s;
+ content: "";
+ position: absolute;
+ width: 80%;
+ height: 0.75px;
+ bottom: 0.45em;
+ left: 0.4em;
+ background-color: #000;
+ visibility: hidden;
+ -webkit-transform: scaleX(0);
+ transform: scaleX(0);
+ -webkit-transition: all 0.3s ease-in-out 0s;
+ transition: all 0.3s ease-in-out 0s;
 }
 
 

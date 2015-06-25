@@ -6,9 +6,27 @@ function toggle_visibility(id) {
 	}
 	else {
 	e.style.display = 'block';
-	e.style.height = '200px';
+	e.style.height = '403px';
+	 var swiper2 = new Swiper('.swiper2', {
+  
+        
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 0,
+        grabCursor: false,
+
+        nextButton: '.swiper-button-next2',
+        prevButton: '.swiper-button-prev2'
+
+    });
+
+	
+	
+	
 	}
 }
+
+
 
 function logo_mousein(id) {
 	var e = document.getElementById(id);
