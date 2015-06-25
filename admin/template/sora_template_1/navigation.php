@@ -52,10 +52,10 @@
                             <a href=""><i class="fa fa-book fa-fw"></i> Content</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="index.php?p=content&s=show">Show All Content</a>
+                                    <a href="index.php?p=content&s=create">Create Content</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?p=content&s=create">Create Content</a>
+                                    <a href="index.php?p=content&s=show">Show All Content</a>
                                 </li>
                                 <li>
                                     <a href="index.php?p=content&s=language">Language</a>
