@@ -173,13 +173,16 @@ hr {
     margin-top: 3em;
 }
 .category-box{
-    
+    margin-top: 30px;
     padding-left:3em ;
     padding-right:3em ;
-    padding-top:1em 
-    height: auto;
+    padding-top:1em ;
+    height: 400px;
     overflow: hidden;
-
+}
+.con-content{
+    padding-right: 5em;
+    padding-left: 5em;
 }
 .content-box{
     margin-left: 20em ;
