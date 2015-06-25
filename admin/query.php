@@ -19,7 +19,7 @@
         'database_name' => 'sora_db',
         'server' => 'localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'charset' => 'utf8'
     ));
 
