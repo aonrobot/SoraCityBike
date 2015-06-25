@@ -6,23 +6,20 @@
   <p class="pero-font">Kinfolk is a slow lifestyle magazine that explores ways for readers to simplify their lives<br>
    cultivate community and spend more time with their friends and family.</p>
    <?php 
-   
+
 
    $datas = $database->select("content_translation","*");
  //echo $datas[0]["cont_content"];
    ?>
-   
+
    <div class="row category pero-font">
     <div class="col-md-6 category-box">
       <img src="img/slide-3.jpg" class="index-img"/>
-
       <p class="pero-font text-header"> 
-        <?php
-        echo $datas[0]["cont_content"];
-        
-        ?> 
+        <?php echo $datas[1]["cont_title"]; ?> 
       </p>
-      <p class="pero-font text-content"> A look inside Kinfolk Issue Sixteen: The Essentials Issue, which will explore what we all consider the basic building blocks in life to be.
+      <p class="pero-font text-content">
+       <?php echo $datas[1]["cont_description"]; ?> 
         <a href="">READ MORE</a>
       </p>
     </div>
@@ -52,7 +49,7 @@
       </p>        
     </div>
   </div>
-  
+
 </div>
 
 
