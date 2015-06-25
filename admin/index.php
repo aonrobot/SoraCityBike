@@ -1,6 +1,6 @@
 <?php 
 
-include('config/srcb_config.php');
+include('../config/srcb_config.php');
 
 include($D_TEMPLATE.'header.php'); // Page Header 
 
