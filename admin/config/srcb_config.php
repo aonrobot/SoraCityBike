@@ -22,7 +22,7 @@
 	#include ('../config/connection.php');
 	
 	# Functions:
-
+    //include('functions/modal.php'); 
 	
 	# Site Setup:
 	$site_title = 'SORA City Bike Admin';
