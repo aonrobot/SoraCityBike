@@ -111,11 +111,6 @@
                                         </div> 
                                         
                                         <div class="form-group">
-                                            <label>Tilte</label>
-                                            <input name="title" class="form-control" placeholder="Enter Content Title">
-                                        </div>  
-                                        
-                                        <div class="form-group">
                                             <label>Name</label>
                                             <input name="name" class="form-control" placeholder="Enter Content Name">
                                         </div>
@@ -180,7 +175,12 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-12">                                                                              
+                                <div class="col-lg-12">   
+                                    
+                                        <div class="form-group">
+                                            <label>Tilte</label>
+                                            <input name="title" class="form-control" placeholder="Enter Content Title">
+                                        </div>                                                                            
                                         
                                         <div class="form-group">
                                             <label>Description</label>
