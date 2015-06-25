@@ -44,8 +44,16 @@
            
            $last = $database->max("content", "id");
            
-           //Language Insert           
+           //Language Insert
+           $database->insert("content_translation", array(
+                "cont_id" => $last,
+                "lang_id" => $_POST['lang'],
+                "cont_title" => $_POST['title'],
+                "cont_content" => $_POST['txt_content'],
+                "cont_description" => $_POST['description']
+           ));           
            //Get All id of Language
+           /*
            $datas = $database->select("language","lang_id");
            $lang_id = array();           
            foreach ($datas as $data) {
@@ -57,10 +65,12 @@
                 "cont_id" => $last,
                 "lang_id" => $id,
                 "cont_title" => $_POST['title'],
-                "cont_content" => $_POST['txt_content']
+                "cont_content" => $_POST['txt_content'],
+                "cont_description" => $_POST['description']
                 ));
                 
            }
+           */
 
             //Category Insert
             $category = $_POST['category'];
@@ -108,15 +118,57 @@
     /////////////////////////////////////////////// UPDATE ////////////////////////////////////////////////////////////////////////
     
     if(!strcmp($_GET['a'], 'updateContent')){
-    
-        $database->update("content_translation", array(
-            "cont_title" => $_POST['title'],
-            "cont_content" => $_POST['txt_content'],
+        
+        $chk_lang = $database->count("content_translation", array(
+                    "AND" => array("cont_id" => $_POST['content_id'], "lang_id" => $_POST['lang'])
+                ));
+                
+        if($chk_lang==0){
             
-        ), array(
-            "AND" => array("cont_id" => $_POST['content_id'], "lang_id" => $_POST['lang'])
+            $other_lang_content = $database->select("content_translation","*",array("cont_id" => $_POST['content_id']));
+            
+            $database->insert("content_translation", array(
+                "cont_id" => $_POST['content_id'],
+                "lang_id" => $_POST['lang'],
+                "cont_title" => $other_lang_content[0]['cont_title'],
+                "cont_content" => $other_lang_content[0]['cont_content'],
+                "cont_description" => $other_lang_content[0]['cont_description']
+           ));
+        }
+        else{
+            $database->update("content_translation", array(
+                "cont_title" => $_POST['title'],
+                "cont_content" => $_POST['txt_content'],
+                "cont_description" => $_POST['description']
+                
+            ), array(
+                "AND" => array("cont_id" => $_POST['content_id'], "lang_id" => $_POST['lang'])
+            ));
+        }
+        
+        $database->update("content", array(
+            "cont_name" => $_POST['name'],
+            "cont_author" => $_POST['author'],
+            "cont_slug" => $_POST['slug'],
+            "cont_status" => $_POST['status'],
+            "cont_type" => $_POST['type'],
+            
+        ), array("id" => $_POST['content_id']
         ));
         
+        //Delete All Content In Cat Relationship
+        $database->delete("category_relationships", array("cont_id" => $_POST['content_id']));
+        
+        //Insert New
+        $category = $_POST['category'];
+            foreach ($category as $cat) {
+                
+                $database->insert("category_relationships", array(
+                "cont_id" => $_POST['content_id'],
+                "cat_id" => $cat,
+                ));  
+            }
+             
         $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
         
         header( $head ) ;
@@ -124,7 +176,7 @@
     
     }
     
-    if(!strcmp($_GET['a'], 'updateContentInfo')){
+    /*if(!strcmp($_GET['a'], 'updateContentInfo')){
     
         $database->update("content", array(
             "cont_name" => $_POST['name'],
@@ -155,7 +207,7 @@
         header( $head ) ;
         exit();
     
-    }
+    }*/
         
     /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
     

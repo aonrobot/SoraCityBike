@@ -1,3 +1,4 @@
+
 <!-- Page Content -->
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -41,9 +42,10 @@
                                                 if(!strcmp($data['lang_id'], $data['cont_lang_id'])){
                                                     
                                                     //echo $data['lang_id'] . " and " . $data['cont_lang_id'] . '<br>';
+                                                    $link_edit = "index.php?p=content&a=edit&id=".$data['id']."&lang=".$data['cont_lang_id'];
                                     ?>            
                                         <tr>
-                                            <td><?php echo $data['cont_title'];?></td>
+                                            <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><?php echo $data['cont_name'];?></td>
                                             <td class="center"><?php echo $data['cont_status'];?></td>
                                             <td class="center"><?php echo $data['cont_type'];?></td>
@@ -59,14 +61,14 @@
                                             </td>
                                             <td class="center"><?php echo $data['cont_modified'];?></td>
                                             <td>
-                                                <a href="index.php?p=content&a=edit&id=<?php echo $data['id'];?>&lang=<?php echo $data['cont_lang_id'];?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i>
-                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
                                         
                                             <?php continue;} }?>
                                     </tbody>
                                 </table>
+                                
                          </div>
                           <!-- /.table-responsive -->
                     </div>
@@ -78,7 +80,7 @@
 				
 				<?php if(!strcmp($_GET['s'], 'create')){?>				
 				
-				<form method="post" role="form" action="query.php?a=addContent">
+				<form method="post" role="form" action="query.php?a=addContent" enctype="multipart/form-data">
 				
 				<div class="panel panel-default">
                         <div class="panel-heading">
@@ -101,6 +103,12 @@
                                                 <?php } ?>
                                                 </select>
                                         </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Thumbnail</label>
+                                            <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
+                                            <input name="thumb" type="hidden">
+                                        </div> 
                                         
                                         <div class="form-group">
                                             <label>Tilte</label>
@@ -168,13 +176,19 @@
                     
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Content</b>
+                            <b>Default Language Content</b>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">                                                                              
                                         
                                         <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea name="description" class="form-control" rows="3" style="resize: none;"></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Content</label>
                                                 <div id="canvas">
                                                     <div class="row">
                                                         <!-- Pull in Database from english language content -->
@@ -189,14 +203,18 @@
                                
                             </div>
                             <!-- /.row (nested) -->
+                            
+                            <button type="submit" class="btn btn-primary save_btn">Create Content</button>
+                    
+                        </form>
+                        
                         </div>
                         <!-- /.panel-body -->
+                         
                     </div>
                     <!-- /.panel -->
                     
-                    <button type="submit" class="btn btn-primary save_btn">Create Content</button>
                     
-                    </form>
                     
                     
                 <?php }?>
@@ -208,17 +226,27 @@
                             
                             $id = $_GET['id'];      // Content Id
                             $lang = $_GET['lang'];  // Default Language Id
+                            $lang_name = $database->select("language", "lang_name" , array("lang_id" => $lang));
+                            $lang_name = $lang_name[0];
                             
                             // Language Select
                             $count = $database->count("language", "*");
                             $languages = $database->select("language", "*");
                             
+                            // Check Did it have language in category_relationships
+                            $chk_lang = $database->count("content_translation", array(
+                                "AND" => array("cont_id" => $id, "lang_id" => $lang)
+                            ));
+                            
+                            //All Available Language
+                            $available_langs = $database->select("content_translation",array("[>]language" => array("lang_id" => "lang_id")),array("lang_name"),array("cont_id" => $id,));
+                            
                             //Content Select
                             $contents = $database->select("content", array(
                                             
-                            "[<]content_translation" => array("id" => "cont_id"),
+                            "[><]content_translation" => array("id" => "cont_id"),
                                             
-                            ), array('id','cont_lang_id','cont_name','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_title','cont_content','lang_id'
+                            ), array('id','cont_lang_id','cont_name','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_title','cont_content','cont_description','lang_id'
                             ), array("AND" => array("id" => $id, "lang_id" => $lang)) // Where
                             );
                             
@@ -227,18 +255,29 @@
                     
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Content</b>
+                            <b>Multilanguage Content </b><br>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form method="post" role="form" action="query.php?a=updateContent">
+                                        
+                                        <div class="form-group">
+                                            
+                                            <label><i class="fa fa-language fa-2x"></i> Available Language </label>
+                                            <?php foreach ($available_langs as $available_lang) { ?>
+                                                
+                                                    <code><?php echo $available_lang['lang_name'];?></code>&nbsp;
+                                                
+                                            <?php } ?>   
+                                            
+                                        </div>
                                                                                     
                                         <div class="form-group">
                                             
                                                 <!-- Pull in Database from language list -->
                                                 <label>Language</label>
-                                                <select name="lang" class="form-control" onchange="location = 'index.php?p=content&a=edit&id=1&lang='+this.options[this.selectedIndex].value";>
+                                                <select name="lang" class="form-control" onchange="location = 'index.php?p=content&a=edit&id=<?php echo $id;?>&lang='+this.options[this.selectedIndex].value";>
                                                     
                                                 <?php foreach ($languages as $data) { 
                                                         if($data['lang_id'] == $lang) {?>
@@ -254,9 +293,22 @@
                                                 </select>
                                         </div>
                                         
+                                        <?php if($chk_lang == 0){ ?>
+                                                <input name="content_id" type="hidden" value="<?php echo $id;?>" />                                           
+                                                <button type="submit" class="btn btn-success">Create <?php echo $lang_name;?> Language Content</button>  
+                                                    
+                                        <?php } else { ;?>
+                                        
+                                        
                                         <div class="form-group">
                                             <label>Tilte</label>
                                             <input name="title" class="form-control" placeholder="Enter Content Title" value="<?php echo $contents[0]['cont_title'];?>">
+                                        </div>
+                                        <br />
+                                        
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea name="description" class="form-control" rows="3" style="resize: none;"><?php echo $contents[0]['cont_description'];?></textarea>
                                         </div>    
                                         
                                         <div class="form-group">
@@ -266,13 +318,11 @@
                                                 </div>                                      
                                         </div>    
                                          
-                                        <textarea name="txt_content" id="say_some" style="display:none;">-</textarea>
                                         
-                                        <input name="content_id" type="hidden" value="<?php echo $id;?>" />
                                         
-                                        <button type="submit" class="btn btn-primary save_btn">Update Content</button>
-                    
-                                    </form>
+                                        <?php } ;?>
+                                                    
+                                    
                                         
                                 </div>
                                 <!-- /.col-lg-12 (nested) -->
@@ -292,8 +342,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        
-                                    <form method="post" role="form" action="query.php?a=updateContentInfo">
+                                     
                                         
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -355,13 +404,21 @@
                                          
                                          <input name="lang" type="hidden" value="<?php echo $lang;?>" />
                                         
-                                         <button type="submit" class="btn btn-primary save_btn">Update Content Info</button>
+                                         <div class="col-lg-12">   
+                                                                                       
+                                                <textarea name="txt_content" id="say_some" style="display:none;">-</textarea>
+                                        
+                                                <input name="content_id" type="hidden" value="<?php echo $id;?>" />
+                                                
+                                                <button type="submit" class="btn btn-primary save_btn">Update Content</button>
                     
-                                    </form>
+                                                </form>
+                                         </div>
                                             
                                     </div>
                                     <!-- /.col-lg-12 (nested) -->
-                                   
+                                    
+                                                                       
                                 </div>
                                 <!-- /.row (nested) -->
                             </div>
@@ -434,7 +491,7 @@
                                                 <td><?php echo $data['lang_name'];?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i>
-                                                    <?php if($data['lang_id'] != 1){?>
+                                                    <?php if($data['lang_id']){?>
                                                     <a href="query.php?a=del&w=lang&i=<?php echo $data['lang_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
                                                     <?php };?>
                                                 </td>
@@ -463,6 +520,11 @@
 
 <script type="text/javascript">
 
+    $("#input-700").fileinput({
+        uploadUrl: "http://localhost/uploads/thumbnail/",  
+        maxFileCount: 1
+    });
+
     $(document).ready(function(){ 
            $("#canvas").gridmanager({
                debug: 1
@@ -470,10 +532,10 @@
     });
     
     $(document).ready(function(){ 
-        var gm = jQuery("#canvas").data('gridmanager');
-        $(".save_btn").on("click", function(e){
-            gm.getContent();
-        });
+            var gm = jQuery("#canvas").data('gridmanager');
+            $(".save_btn").on("click", function(e){
+                gm.getContent();
+            });
     });
     
 	<?php if(!strcmp($_GET['a'], 'list')){?> 
