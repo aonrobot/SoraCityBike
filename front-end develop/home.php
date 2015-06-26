@@ -19,7 +19,7 @@
     <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
     <p class="pero-font text-content">
     <?php echo $data["cont_description"]; ?> 
-    <a href="">READ MORE</a>
+    <a href=""><b>READ MORE</b></a>
     </p>
     </div>
    <?php } ?>

@@ -20,21 +20,24 @@
 <?php
 
   // Include Medoo
-  require_once '../components/medoo.min.php';
-  
+require_once '../components/medoo.min.php';
+
   // Initialize
-  $database = new medoo(array(
-      'database_type' => 'mysql',
-      'database_name' => 'sora_db',
-      'server' => 'localhost',
-      'username' => 'root',
-      'password' => 'root',
-      'charset' => 'utf8'
+$database = new medoo(array(
+  'database_type' => 'mysql',
+  'database_name' => 'sora_db',
+  'server' => 'localhost',
+  'username' => 'root',
+  'password' => 'root',
+  'charset' => 'utf8'
   ));
   ?>
+  <?php 
+  $datas = $database->select("category","cat_name");
+  ?>
 
-<body>  
-<div class="brand row">
+  <body>  
+    <div class="brand row">
         <div class="col-xs-4 brand-social ">
             <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="img/icon/icon-fb-type2.png"/></a>
             <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="img/icon/icon-pt-type2.png"/></a>
@@ -52,7 +55,7 @@
 
 
     </div>
- <nav class="bg-gray navbar navbar-default " role="navigation">
+    <nav class="bg-gray navbar navbar-default " role="navigation">
         <div class="bg-gray container top-menu ">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" align="center">
@@ -64,37 +67,38 @@
                     <span class="icon-bar"></span>
 
                 </button>
-                <a class="navbar-brand" href="index.html">Sora City Bike</a>
+                <a class="pero-font navbar-brand" href="index.html"><b>Sora City Bike</b></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="center">
-                
+
                 <ul class="nav navbar-nav">
                     <li id="menu_1">
-
                         <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             concept
-                            <!--  <span class="red-text">+</span> -->
+                            <span><img class="dropdown-span" src="img/down-btn.png"/></span>
                         </div>
-                       <!--  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">dude</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
-                        </ul> -->
-                        
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <?php
+                            foreach ($datas as $data ) {
+                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data.'</a></li>' ;
+                            }
+                            ?>
+                        </ul>
                     </li>
+
                     <li id="menu_2">
                        <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         bikes
                         <span><img class="dropdown-span" src="img/down-btn.png"/></span>
                     </div>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
+                        <?php
+                        foreach ($datas as $data ) {
+                            echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data.'</a></li>' ;
+                        }
+                        ?>
                     </ul>
                 </li>
                 <li id="menu_3">
