@@ -74,6 +74,22 @@ $database = new medoo(array(
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="center">
 
                 <ul class="nav navbar-nav">
+
+                <!--<///?php for ($i=0; $i<10 ; $i++) {  ?>
+                    <///?php echo '<li id="menu_'.$i.'">'?>
+                        <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            concept
+                            <span><img class="dropdown-span" src="img/down-btn.png"/></span>
+                        </div>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <?php
+                            ///foreach ($datas as $data ) {
+                               /// echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data.'</a></li>' ;}
+                            ?>
+                        </ul>
+                    </li>
+                <///?php } ?>-->
+
                     <li id="menu_1">
                         <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             concept
