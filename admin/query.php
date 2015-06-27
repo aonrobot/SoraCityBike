@@ -337,6 +337,8 @@
         
         $database->update("content_meta", array("meta_value" => $_GET['structure']),array("meta_id" => '1'));
         
+        // !!!!! MUST TO DEL JUNK OBJ !!!!!!
+        
         echo '[{"sucess":1}]';
 
     }
