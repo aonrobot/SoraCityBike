@@ -22,7 +22,7 @@
         'password' => 'root',
         'charset' => 'utf8'
     ));
-
+    
 
     //////////////////////////////////////////////   INSERT  //////////////////////////////////////////////////
 
@@ -31,7 +31,7 @@
           $date = date('Y-m-d H:i:s');
           
         
-          $database->insert("content", array(
+          $last = $database->insert("content", array(
                 "cont_lang_id" => $_POST['lang'],
                 "cont_name" => $_POST['name'],
                 "cont_name" => $_POST['name'],
@@ -42,7 +42,7 @@
                 "cont_type" => $_POST['type']
            ));
            
-           $last = $database->max("content", "id");
+           //$last = $database->max("content", "id");
            
            //Language Insert
            $database->insert("content_translation", array(
@@ -114,6 +114,8 @@
            header( 'Location: index.php?p=content&s=language' ) ;
            exit();
     }
+
+    
 
     /////////////////////////////////////////////// UPDATE ////////////////////////////////////////////////////////////////////////
     
@@ -272,8 +274,71 @@
         
         
     }
+
+    /////////////////////////////////////////////// MENU MANAGEMENT //////////////////////////////////////////////////////////////////
     
-    header( 'Location: index.php' ) ;
-    exit();
+    if(!strcmp($_GET['a'], 'addObject')){
+        
+        $last_obj = $database->insert("object", array(
+                "obj_name" => $_GET['name'],
+                "obj_url" => $_GET['url'],
+                "obj_type" => $_GET['type'],
+           ));  
+           
+        $obj_name = $database->select("object",array('obj_id','obj_name'),array("obj_id"=>$last_obj)); 
+    
+        echo json_encode($obj_name); 
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    function json2array($json)
+    {
+        $array = json_decode($json, true);
+                    
+        $objs = array();
+                             
+        for($i = 1 ; $i < count($array) ; $i++){
+            if($array[$i]['children'][0]['id'] == ''){
+                $obj = array("obj_id"=>$array[$i]['id'], "parent_id"=>"0", "menu_order"=>$i);
+                array_push($objs,$obj);
+            }else{
+                $obj = array("obj_id"=>$array[$i]['id'], "parent_id"=>"0", "menu_order"=>$i);
+                array_push($objs,$obj);
+                for($j = 0 ; $j < count($array[$i]['children']) ; $j++){
+                    $obj = array("obj_id"=>$array[$i]['children'][$j]['id'], "parent_id"=>$array[$i]['id'], "menu_order"=>$j+1);
+                    array_push($objs,$obj);
+                }
+            }
+        }
+        
+        return $objs;
+    }
+    
+    if(!strcmp($_GET['a'], 'saveMenu')){
+        
+        $json_out = $_GET['out'];
+        $json_del = $_GET['delete'];
+        
+        //$obj = array("obj_id"=>'', "parent_id"=>'', "menu_order"=>'');
+        
+        $outputs = json2array($json_out);
+        $deletes = json2array($json_del);
+        
+        $database->delete("menu","*");
+        
+        foreach ($outputs as $output) {
+            $database->insert("menu", array(
+                "obj_id" => $output['obj_id'],
+                "parent_id" => $output['parent_id'],
+                "menu_order" => $output['menu_order']
+            ));
+        }
+        
+        $database->update("content_meta", array("meta_value" => $_GET['structure']),array("meta_id" => '1'));
+        
+        echo '[{"sucess":1}]';
+
+    }
     
 ?>

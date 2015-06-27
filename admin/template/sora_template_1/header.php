@@ -28,6 +28,9 @@
 		<!-- File Upload CSS -->
 		<link href="components/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 		
+		<!-- Menu Nestable -->
+        <link href="components/menu-nestable/jquery.nestable.css" rel="stylesheet" type="text/css">
+		
 		<!------------------------    JS     ----------------------------------------->
 		
 		
@@ -68,11 +71,14 @@
 		<!-- Import Only Page has s table -->
 		<!-- DataTables JavaScript -->
 		<?php if(!strcmp($_GET['a'], 'list')){?> 		
-		<link href="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-		<link href="components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
-		<script src="components/datatables/media/js/jquery.dataTables.min.js"></script>
-		<script src="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    		<link href="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    		<link href="components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    		<script src="components/datatables/media/js/jquery.dataTables.min.js"></script>
+    		<script src="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 		<?php }?>
+		
+		<!-- Chained Selection JavaScript -->
+		<script src="components/jquery_chained/jquery.chained.min.js"></script>
 		
 		<!-- File Upload JavaScript -->
 		<script src="components/bootstrap-fileinput-master/js/fileinput.min.js" type="text/javascript"></script>
