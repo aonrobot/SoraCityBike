@@ -33,7 +33,10 @@ $database = new medoo(array(
   ));
   ?>
   <?php 
-  $datas = $database->select("category","*");
+   
+   $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*");
+  
+
   ?>
 
   <body>  
@@ -50,6 +53,7 @@ $database = new medoo(array(
         <div class="pero-font time-text col-xs-4 brand-time " align="center">
             <?php 
             echo date('D d M');
+            echo $top_menu[0]['parent_id']
             ?>
         </div>
 
@@ -75,16 +79,17 @@ $database = new medoo(array(
 
                 <ul class="nav navbar-nav">
 
-                <?php for ($i=0; $i<9 ; $i++) {  ?>
-                    <?php echo '<li id="menu_'.$i.'">'?>
+                <?php foreach ($top_menu as $menu ) {  ?>
+                    <?php echo '<li id="menu_'.$menu['menu_id'].'">'?>
                         <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            <?php echo $datas[0]['cat_name']; ?>
+                            <?php echo $menu['obj_name']; ?>
                             <span><img class="dropdown-span" src="img/down-btn.png"/></span>
                         </div>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <?php
-                            foreach ($datas as $data ) {
-                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data['cat_name'].'</a></li>' ;}
+                            
+                            foreach ($top_menu as $data ) {
+                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data['obj_name'].'</a></li>' ;}
                             ?>
                         </ul>
                     </li>
