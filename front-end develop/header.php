@@ -33,7 +33,7 @@ $database = new medoo(array(
   ));
   ?>
   <?php 
-  $datas = $database->select("category","cat_name");
+  $datas = $database->select("category","*");
   ?>
 
   <body>  
@@ -75,132 +75,23 @@ $database = new medoo(array(
 
                 <ul class="nav navbar-nav">
 
-                <!--<///?php for ($i=0; $i<10 ; $i++) {  ?>
-                    <///?php echo '<li id="menu_'.$i.'">'?>
+                <?php for ($i=0; $i<9 ; $i++) {  ?>
+                    <?php echo '<li id="menu_'.$i.'">'?>
                         <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            concept
-                            <span><img class="dropdown-span" src="img/down-btn.png"/></span>
-                        </div>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <?php
-                            ///foreach ($datas as $data ) {
-                               /// echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data.'</a></li>' ;}
-                            ?>
-                        </ul>
-                    </li>
-                <///?php } ?>-->
-
-                    <li id="menu_1">
-                        <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            concept
+                            <?php echo $datas[0]['cat_name']; ?>
                             <span><img class="dropdown-span" src="img/down-btn.png"/></span>
                         </div>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <?php
                             foreach ($datas as $data ) {
-                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data.'</a></li>' ;
-                            }
+                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data['cat_name'].'</a></li>' ;}
                             ?>
                         </ul>
                     </li>
+                <?php } ?>
 
-                    <li id="menu_2">
-                       <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        bikes
-                        <span><img class="dropdown-span" src="img/down-btn.png"/></span>
-                    </div>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <?php
-                        foreach ($datas as $data ) {
-                            echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data.'</a></li>' ;
-                        }
-                        ?>
-                    </ul>
-                </li>
-                <li id="menu_3">
-                    <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        gears
-                        <span><img class="dropdown-span" src="img/down-btn.png"/></span>
-                    </div>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
 
-                    </ul>
-                </li>
-                <li id="menu_4">
-                    <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        café
-                        <span><img class="dropdown-span" src="img/down-btn.png"/></span>
-                    </div>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
-                    </ul>
-                </li>
-                <li id="menu_5">
-                    <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        gallery
-                        <span><img class="dropdown-span" src="img/down-btn.png"/></span>
-                    </div>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
-                    </ul>
-                </li>
-                <li id="menu_6">
-                    <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        location
-                        <!-- <span class="red-text">+</span> -->
-                    </div>
-                    <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
-                    </ul> -->
-                </li>
-                <li id="menu_7">
-                    <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        partners
-                        <span><img class="dropdown-span" src="img/down-btn.png"/></span>
-                    </div>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
-                    </ul>
-                </li>
-                <li id="menu_8">
-                    <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        projects
-                        <!-- <span class="red-text">+</span> -->
-                    </div>
-                    <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
-                    </ul> -->
-                </li>
-                <li id="menu_9">
-                    <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        blog
-                        <!-- <span class="red-text">+</span> -->
-                    </div>
-                    <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-
-                    </ul> -->
-                </li>
+                    
             </ul>
             
         </div>
