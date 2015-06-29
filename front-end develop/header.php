@@ -48,7 +48,7 @@ require_once '../components/medoo.min.php';
             <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="img/icon/icon-ig-type2.png"/></a>
         </div>
         <div class="col-xs-4 brand-logo ">
-            <img class="logo_img" src="img/LOGO-(with-cloud)2.png"/>
+            <a href="index.php"><img class="logo_img" src="img/LOGO-(with-cloud)2.png"/></a>
         </div>
         <div class="pero-font time-text col-xs-4 brand-time " align="center">
             <?php 
