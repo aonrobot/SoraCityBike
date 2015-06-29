@@ -25,7 +25,9 @@ b{
     font-size: 1.1em;
     letter-spacing: 2px; 
 }
-
+.uppercase{
+    text-transform: uppercase;
+}
 h1,
 h2,
 h3,
