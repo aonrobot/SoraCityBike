@@ -31,11 +31,9 @@ $database = new medoo(array(
   'password' => 'root',
   'charset' => 'utf8'
   ));
-  ?>
-  <?php 
    
-   $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*");
-  
+    $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*");
+   //$top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
 
   ?>
 
@@ -89,7 +87,7 @@ $database = new medoo(array(
                             <?php
                             
                             foreach ($top_menu as $data ) {
-                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data['obj_name'].'</a></li>' ;}
+                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$data['obj_url'].'">'.$data['obj_name'].'</a></li>' ;}
                             ?>
                         </ul>
                     </li>
