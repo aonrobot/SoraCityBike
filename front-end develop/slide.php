@@ -1,4 +1,4 @@
-<div class="swiper-container swiper1 ">
+<div class="swiper-container swiper1" style="display:block;">
 
   <!-- Wrapper for slides -->
   <div class="swiper-wrapper">
@@ -79,7 +79,7 @@
 </div>
 
 <!-- slide with zoom picture -->
-<div class="swiper-container swiper3">
+<div class="swiper-container swiper3" style="display:none;">
 
     <!-- Wrapper for slides -->
     <div class="swiper-wrapper" style="cursor:pointer;">
