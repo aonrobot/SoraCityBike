@@ -31,6 +31,23 @@
 	
 	
 </script>
+
+<script>
+ var swiper3 = new Swiper('.swiper3', {
+
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 0,
+        grabCursor: false,
+
+        nextButton: '.swiper-button-next3',
+        prevButton: '.swiper-button-prev3'
+
+    });
+  
+  
+  
+</script>
 </body>
 
 </html>

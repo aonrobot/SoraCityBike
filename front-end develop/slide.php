@@ -79,7 +79,7 @@
 </div>
 
 <!-- slide with zoom picture -->
-<div class="swiper-container">
+<div class="swiper-container swiper3">
 
     <!-- Wrapper for slides -->
     <div class="swiper-wrapper" style="cursor:pointer;">
@@ -128,17 +128,14 @@
       </div>
 
       <!--navigation buttons-->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-
-
-
+      <div class="swiper-button-next swiper-button-next3"></div>
+      <div class="swiper-button-prev swiper-button-prev3"></div>
 
   </div>
     
 
            
-           <div id="largeImgPanel" onclick="hideMe(this);" onMouseOver="alert("fuck");">
+           <div id="largeImgPanel" onclick="hideImg(this);">
            <img id="largeImg" style="margin: 0; padding: 0;" />
  			 </div>
 
@@ -157,7 +154,7 @@
                 if(document.selection) document.selection.empty();
                 if(window.getSelection) window.getSelection().removeAllRanges();
             }
-    function hideMe(obj) {
+    function hideImg(obj) {
 			
                 obj.style.visibility = 'hidden';
 			
