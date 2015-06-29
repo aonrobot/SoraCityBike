@@ -23,7 +23,7 @@
 require_once '../components/medoo.min.php';
 
   // Initialize
-$database = new medoo(array(
+    $database = new medoo(array(
   'database_type' => 'mysql',
   'database_name' => 'sora_db',
   'server' => 'localhost',
@@ -32,8 +32,10 @@ $database = new medoo(array(
   'charset' => 'utf8'
   ));
    
-    $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*");
-   //$top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
+    $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
+    $sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
+    $lang=$database->select("language",'*');
+
 
   ?>
 
@@ -50,11 +52,16 @@ $database = new medoo(array(
         </div>
         <div class="pero-font time-text col-xs-4 brand-time " align="center">
             <?php 
-            echo date('D d M');
-            echo $top_menu[0]['parent_id']
+            echo $_SESSION["lang"];
+            echo date('D d M').'<br>';
+            foreach ($lang as $a) {
+               echo '<button class="bg-gray pero-font btn btn-default uppercase"> '.$a['lang_code'].' </span>';
+               
+
+            }
+
             ?>
         </div>
-
 
     </div>
     <nav class="bg-gray navbar navbar-default " role="navigation">
@@ -86,8 +93,13 @@ $database = new medoo(array(
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <?php
                             
-                            foreach ($top_menu as $data ) {
-                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$data['obj_url'].'">'.$data['obj_name'].'</a></li>' ;}
+                           foreach ($sub_menu as $a ) {
+                                $sub=$a['parent_id'];
+                                $top=$menu['obj_id'];
+                                if ($sub==$top) {
+                                    echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$a['obj_url'].'">'.$a['obj_name'].'</a></li>' ;}
+                                }
+                                
                             ?>
                         </ul>
                     </li>
