@@ -65,7 +65,7 @@
                         </li>
                         
                         <li>
-                            <a href="index.php?p=menu"><i class="fa fa-bars fa-fw"></i> Menu</a>
+                            <a href="index.php?p=menu2"><i class="fa fa-bars fa-fw"></i> Menu</a>
                         </li>
                         
                         <li>
@@ -74,6 +74,10 @@
                         
                         <li>
                             <a href="index.php?p=TestContent"><i class="fa fa-terminal fa-fw"></i> TestContent</a>
+                        </li>
+                        
+                        <li>
+                            <a href="index.php?p=TestEdit"><i class="fa fa-terminal fa-fw"></i> TestEdit</a>
                         </li>
                         
                     </ul>
