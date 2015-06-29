@@ -1,14 +1,14 @@
 <!-- Page Content -->
 <div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><i class="fa fa-dashboard fa-1x"></i> Menu</h1>
-				<?php
-				
-				// JSON TO ARRAY CODE 
-				
-				/*
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><i class="fa fa-dashboard fa-1x"></i> Menu</h1>
+                <?php
+                
+                // JSON TO ARRAY CODE 
+                
+                /*
                     $json = '[{"id":0},{"id":107,"children":[{"id":108},{"id":109},{"id":111}]},{"id":110},{"id":112}]';
                     echo "<pre>";
                     print_r(json_decode($json, true));
@@ -43,9 +43,9 @@
                     print_r($objs);
                     echo "</pre>";
                     */
-				?> 
-				    
-    				<div class="panel panel-default">
+                ?> 
+                    
+                    <div class="panel panel-default">
                             <div class="panel-heading">
                                 <b>Add Menu</b>
                             </div>
@@ -122,44 +122,27 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Menu</label>
-                                                
-                                                 <div class="cf nestable-lists">
-                    
-                                                    <!---- Create Zone -->           
-                                                    <div class="dd" id="nestable">
-                                                        <!-- <li class="dd-item" data-id="0"><div class="dd-handle">Create Zone</div></li> -->
-                                                        <ol id="sora-menu" class="dd-list">
-                                                            <?php
+                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Menu Stucture</h3>
+                                                <section id="demo">
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
+                                                        
+                                                       <?php
                                                                     $menu = $database->select("content_meta",'meta_value',array("meta_id"=>'1'));
                                                                     echo $menu[0];        
-                                                            ?>
-                                                        </ol>
-                                                    </div>
-                                                    
-                                                    <!---- Delete Zone -->
-                                                    <div class="dd" id="nestable-delete">
-                                                        <ol class="dd-list">
-                                                            <li class="dd-item" data-id="0">
-                                                                <div class="dd-handle">Delete Zone</div>
-                                                            </li>
-                                                        </ol>
-                                                    </div>
-                                                    
-                                                </div>
+                                                       ?>
+                                                       
+                                                   </ol>
+                                              
+                                                </section><!-- END #demo -->
                                                 
                                             </div>
                                         </div> 
-                                        
-                                        <div class="col-lg-12"><div class="form-group"></div></div>
-                                        <div class="col-lg-12"><div class="form-group"></div></div>
+
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Result Data</label>
-                                                <input name="menu-output" type="text" id="nestable-output"></input>
-                                                <input name="menu-output-delete" type="text" id="nestable-delete-output"></input>
+                                                <p><em>Note: This demo has the <code>maxLevels</code> option set to '4'.</em></p>
                                                 <input name="menu-structure" type="hidden" id="menu-structure"></input>
-                                                <br><br><button id="save-menu" class="btn btn-primary"><i class="fa fa-send fa-1x"></i> Save Menu</button>
+                                                <br><br><button id="toArray" name="toArray" class="btn btn-primary"><i class="fa fa-send fa-1x"></i> Save Menu</button>
                                             </div>
                                         </div>
       
@@ -169,113 +152,20 @@
                             </div>
                     </div>
                 
-			</div>
-			<!-- /.col-lg-12 -->
-		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.container-fluid -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
 
-<!-- Menu -->
-<script src="components/menu-nestable/jquery.nestable.js"></script>
+<!-- Menu II -->
+<script src="components/nestedSortable/jquery.mjs.nestedSortable.js"></script>
 
 <script type="text/javascript">
 
-    // MENU I
-    
-    $(document).ready(function()
-    {
-        var updateOutput = function(e)
-        {
-            var list   = e.length ? e : $(e.target),
-                output = list.data('output');
-            if (window.JSON) {
-                output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
-            } else {
-                output.val('JSON browser support required for this demo.');
-            }
-        };
-        
-        // activate Nestable for list 1
-        $('#nestable').nestable({
-            group: 1,
-            maxDepth: 2
-        })
-        .on('change', updateOutput);
-        
-        $('#nestable').change(function(){
-           $("#menu-structure").val("");
-           $("#menu-structure").val($("#sora-menu").html()); 
-        });
-        
-        // activate Nestable for list 2
-        $('#nestable-delete').nestable({
-            group: 1,
-            maxDepth: 1
-        })
-        .on('change', updateOutput);
-        
-        $("#create-item").click(function(){
-            
-            //---------------------------------------  POST FORM -----------------------------------
-            var formData = {
-                'a'                 : 'addObject',
-                'name'              : $('input[name=name]').val(),
-                'url'               : $('input[name=url]').val(),
-                'type'              : $('select[name=type]').val()
-            };
-             
-            $.ajax({                                     
-              url: 'query.php',                            
-              data: formData,
-              dataType: 'json',                                            
-              success: function(data)          
-              {
-                var obj_id = data[0]['obj_id'];              //get id
-                var obj_name = data[0]['obj_name'];          //get name
-                
-                $("#sora-menu").append(" <li class='dd-item' data-id='"+obj_id+"'><div class='dd-handle'>"+obj_name+"</div></li>");
-                $("#nestable").trigger("change");
-                $("#nestable-delete").trigger("change");
-                $("#menu-structure").val("");
-                $("#menu-structure").val($("#sora-menu").html());
-                $(".form-control[name=name]").val("");
-                $(".form-control[name=url]").val("");
-              } 
-            });
-
-        });
-        
-        $("#save-menu").click(function(){
-            
-            //---------------------------------------  POST FORM -----------------------------------
-            var formData = {
-                'a'                 : 'saveMenu',
-                'out'              : $('input[name=menu-output]').val(),
-                'delete'               : $('input[name=menu-output-delete]').val(),
-                'structure'              : $('input[name=menu-structure]').val()
-            };
-             
-            $.ajax({                                     
-              url: 'query.php',                            
-              data: formData,
-              dataType: 'json',                               
-              success: function(data)          
-              {
-                  alert("Save Success");  
-              } 
-            });
-
-        });        
-
-        // output initial serialised data
-        updateOutput($('#nestable').data('output', $('#nestable-output')));
-        updateOutput($('#nestable-delete').data('output', $('#nestable-delete-output')));
-        
-    });
-    
     //Chained Selection
     
     $(document).ready(function(){
@@ -303,8 +193,151 @@
             
         });
         
-        
-    });
+         $("#create-item").click(function(){
+            
+            //---------------------------------------  POST FORM -----------------------------------
+            var formData = {
+                'a'                 : 'addObject',
+                'name'              : $('input[name=name]').val(),
+                'url'               : $('input[name=url]').val(),
+                'type'              : $('select[name=type]').val()
+            };
+             
+            $.ajax({                                     
+              url: 'query.php',                            
+              data: formData,
+              dataType: 'json',                                            
+              success: function(data)          
+              {
+                var obj_id = data[0]['obj_id'];              //get id
+                var obj_name = data[0]['obj_name'];          //get name
+                var obj_url = data[0]['obj_url'];            //get url
+                
+                $("#sora-menu").append(" <li class='mjs-nestedSortable-leaf' id='menuItem_"+obj_id+"'>"+
+                                         "<div class='menuDiv'>"+
+                                         "  <span title='Click to show/hide children' class='disclose ui-icon ui-icon-minusthick'>"+
+                                         "      <span></span>"+
+                                         "  </span>"+
+                                         "  <span title='Click to show/hide item editor' data-id='"+obj_id+"' class='expandEditor ui-icon ui-icon-triangle-1-n'>"+
+                                         "      <span></span>"+
+                                         "  </span>"+
+                                         "  <span>"+
+                                         "      <span data-id='"+obj_id+"' class='itemTitle'>"+obj_name+"</span>"+
+                                         "      <span title='Click to delete item.' data-id='"+obj_id+"' class='deleteMenu ui-icon ui-icon-closethick'>"+
+                                         "          <span></span>"+
+                                         "      </span>"+
+                                         "  </span>"+
+                                         "<div id='menuEdit"+obj_id+"' class='menuEdit'>"+
+                                         "  <p>"+
+                                                    obj_url+
+                                         "  </p>"+
+                                         "</div>"+
+                                         "</div>"+
+                                         "</li>");
+                                         
+                $("#menu-structure").val("");
+                $("#menu-structure").val($("#sora-menu").html()); 
+                $(".form-control[name=name]").val("");
+                $(".form-control[name=url]").val("");
+              } 
+            });
 
+           });
+        
+        
+    });     
+    
+    //Menu II
+    
+    $().ready(function(){
+            var ns = $('ol.sortable').nestedSortable({
+                forcePlaceholderSize: true,
+                handle: 'div',
+                helper: 'clone',
+                items: 'li',
+                opacity: .6,
+                placeholder: 'placeholder',
+                revert: 250,
+                tabSize: 25,
+                tolerance: 'pointer',
+                toleranceElement: '> div',
+                maxLevels: 2,
+                isTree: true,
+                expandOnHover: 700,
+                startCollapsed: false,
+                change: function(){
+                    console.log('Relocated item');
+                }
+            });
+            
+            $('.expandEditor').attr('title','Click to show/hide item editor');
+            $('.disclose').attr('title','Click to show/hide children');
+            $('.deleteMenu').attr('title', 'Click to delete item.');
+        
+            $('.disclose').on('click', function() {
+                $(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass('mjs-nestedSortable-expanded');
+                $(this).toggleClass('ui-icon-plusthick').toggleClass('ui-icon-minusthick');
+            });
+            
+            $('.expandEditor, .itemTitle').click(function(){
+                var id = $(this).attr('data-id');
+                $('#menuEdit'+id).toggle();
+                $(this).toggleClass('ui-icon-triangle-1-n').toggleClass('ui-icon-triangle-1-s');
+            });
+            
+            $('.deleteMenu').click(function(){
+                var id = $(this).attr('data-id');
+                $('#menuItem_'+id).remove();
+            });
+                
+            $('#serialize').click(function(){
+                serialized = $('ol.sortable').nestedSortable('serialize');
+                $('#serializeOutput').text(serialized+'\n\n');
+            })
+    
+            $('#toHierarchy').click(function(e){
+                hiered = $('ol.sortable').nestedSortable('toHierarchy', {startDepthCount: 0});
+                hiered = dump(hiered);
+                (typeof($('#toHierarchyOutput')[0].textContent) != 'undefined') ?
+                $('#toHierarchyOutput')[0].textContent = hiered : $('#toHierarchyOutput')[0].innerText = hiered;
+            })
+    
+            $('#toArray').click(function(e){
+               
+               // Update Menu Structure 
+               
+               $("#menu-structure").val("");
+               $("#menu-structure").val($("#sora-menu").html());
+               var formData = {
+                'a'                 : 'updateMenuStructure',
+                'structure'         : $('input[name=menu-structure]').val()
+               };
+                 
+               $.ajax({                                     
+                 url: 'query.php',                            
+                 data: formData,
+                 dataType: 'json',                               
+                 success: function(){} 
+               });
+               
+               ////////////////////////////  
+                
+               arraied = $('ol.sortable').nestedSortable('toArray', {startDepthCount: 0});
+               var jsonString = JSON.stringify(arraied);
+               //alert(jsonString);
+               $.ajax({
+                    type: "POST",
+                    url: "pages/update_menu.php",
+                    data: {data : jsonString}, 
+                    cache: false,
+            
+                    success: function(error){
+                        alert("Save Success");
+                    }
+                });
+
+            });
+            
+        });         
     
 </script>
