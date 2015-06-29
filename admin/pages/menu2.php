@@ -324,7 +324,7 @@
                 
                arraied = $('ol.sortable').nestedSortable('toArray', {startDepthCount: 0});
                var jsonString = JSON.stringify(arraied);
-               //alert(jsonString);
+               alert(jsonString);
                $.ajax({
                     type: "POST",
                     url: "pages/update_menu.php",

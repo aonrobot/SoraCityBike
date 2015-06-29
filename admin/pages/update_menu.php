@@ -1,7 +1,7 @@
 <?php
 
     // Include Medoo
-    require_once '../components/medoo.min.php';
+    require_once '../../components/medoo.min.php';
     
     // Initialize
     $database = new medoo(array(
@@ -21,9 +21,9 @@
     
     print_r($datas);
     
+    $database->query("DELETE FROM menu;");
+    
     foreach ($datas as $data) {
-        
-       
         
         if($data['depth'] == 0)continue;
         
@@ -43,6 +43,8 @@
             $even++;
         }
         else{
+            $parent = $data['parent_id'];
+            if($parent == null)$parent = "0";
             $database->insert("menu", array(
                 "menu_id" => $i,
                 "obj_id" => $data['item_id'],
@@ -55,6 +57,8 @@
 
         $i++;
     }
+
+    //var_dump($database->error());
     
 
 ?>
