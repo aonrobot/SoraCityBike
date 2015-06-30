@@ -12,6 +12,10 @@
 		
 		<!-- Bootstrap Core CSS -->
 		<link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Editable CSS -->
+        <link href="components/Editablecss/css/bootstrap-editable.css" rel="stylesheet">
+        
 		
 		<!-- MetisMenu CSS -->
 		<link href="components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">

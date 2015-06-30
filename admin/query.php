@@ -7,6 +7,7 @@
         w = what
         i = id
         l = language
+	    c = column 
     
     */ 
     
@@ -210,6 +211,23 @@
         exit();
     
     }*/
+    
+    
+    if(!strcmp($_GET['a'], 'editvalue')){
+    	$pk= $_POST['pk'];
+    	$value= $_POST['value'];
+		$column = $_GET['c'];
+		
+        $database->update("content", array(
+            $column => $value
+        
+        ), array("id" => $pk
+        ));
+    }
+    
+    
+    
+    
         
     /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
     
