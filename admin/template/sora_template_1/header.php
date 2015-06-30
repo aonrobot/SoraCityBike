@@ -32,8 +32,14 @@
 		<!-- File Upload CSS -->
 		<link href="components/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 		
-		<!-- Menu Nestable -->
-        <link href="components/menu-nestable/jquery.nestable.css" rel="stylesheet" type="text/css">
+		<!-- Menu Nestable 
+        <link href="components/menu-nestable/jquery.nestable.css" rel="stylesheet" type="text/css"> -->
+        
+        <!-- Menu Nestable II -->
+        <link href="components/nestedSortable/jquery.mjs.nestedSortable.css" rel="stylesheet" type="text/css">
+        
+        <!-- Jquery UI -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
 		
 		<!------------------------    JS     ----------------------------------------->
 		

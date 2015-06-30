@@ -1,5 +1,5 @@
 <?php
-
+	
 	// Include Medoo
 	require_once '../components/medoo.min.php';
 	
@@ -29,7 +29,7 @@
 	}
 	
 	# Page Setup:
-	
+	$_SESSION["lang"] = "1";
 	
 	# User Setup:
 
