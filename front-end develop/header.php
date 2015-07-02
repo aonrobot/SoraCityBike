@@ -19,18 +19,7 @@
 </head>
 <?php
 
-  // Include Medoo
-require_once '../components/medoo.min.php';
-
-  // Initialize
-    $database = new medoo(array(
-  'database_type' => 'mysql',
-  'database_name' => 'sora_db',
-  'server' => 'localhost',
-  'username' => 'root',
-  'password' => 'root',
-  'charset' => 'utf8'
-  ));
+ 
    
     $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
     $sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);

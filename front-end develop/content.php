@@ -1,14 +1,7 @@
 <?php
- $lang_id=1; 
+ $lang_session=2; 
  $id=$_GET["id"];
- $datas = $database->select("content_translation","*",["lang_id[=]"=>$lang_id]);
- 
-foreach ($datas as $data) {
-	echo $data["cont_id"];
-	}
-		
-
-
+ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lang_session,"cont_id[=]"=>$id]]);
 ?>
 
 <div class="content row">
@@ -17,9 +10,6 @@ foreach ($datas as $data) {
 		<?php 
 		echo $datas[0]["cont_content"];
 		?>
-
-
-
 	</div>
 
 

@@ -130,7 +130,7 @@
     <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
     <p class="pero-font text-content">
     <?php echo $data["cont_description"]; ?> 
-    <a href=""><b>READ MORE</b></a>
+    <?php echo '<a href="index.php?p=content&id='.$data["cont_id"].'"><b>READ MORE</b></a>'; ?>
     </p>
     </div>
    <?php } ?>
