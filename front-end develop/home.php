@@ -118,7 +118,8 @@
    
 
    <?php 
-   $datas = $database->select("content_translation","*");
+   $lang_id=2;
+   $datas = $database->select("content_translation","*",["lang_id[=]"=>$lang_id]);
     ?>
    
    <?php foreach ($datas as $data ) { ?>
