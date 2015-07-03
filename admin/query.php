@@ -7,6 +7,7 @@
         w = what
         i = id
         l = language
+	    c = column 
     
     */ 
     
@@ -161,7 +162,58 @@
     
     }
     
+    /*if(!strcmp($_GET['a'], 'updateContentInfo')){
+    
+        $database->update("content", array(
+            "cont_name" => $_POST['name'],
+            "cont_author" => $_POST['author'],
+            "cont_slug" => $_POST['slug'],
+            "cont_status" => $_POST['status'],
+            "cont_type" => $_POST['type'],
+            
+        ), array("id" => $_POST['content_id']
+        ));
+        
+        //Delete All Content In Cat Relationship
+        $database->delete("category_relationships", array("cont_id" => $_POST['content_id']));
+        
+        //Insert New
+        $category = $_POST['category'];
+            foreach ($category as $cat) {
+                
+                $database->insert("category_relationships", array(
+                "cont_id" => $_POST['content_id'],
+                "cat_id" => $cat,
+                ));  
+            }
+        
+        
+        $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
+        
+        header( $head ) ;
+        exit();
+    
+    }*/
+    
+    
+    if(!strcmp($_GET['a'], 'editvalue')){
+    	$pk= $_POST['pk'];
+    	$value= $_POST['value'];
+		$column = $_GET['c'];
+		
+        $database->update("content", array(
+            $column => $value
+        
+        ), array("id" => $pk
+        ));
+    }
+    
+    
+    
+    
+
     // (BACKUP CODE) UPDATE CONTENT INFO
+<<<<<<< HEAD
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -176,6 +228,9 @@
            header( 'Location: index.php?p=slide' ) ;
            exit();
     }
+=======
+
+>>>>>>> 5164e77533d73b64350216ce1ae947183ba10d66
         
     /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
     

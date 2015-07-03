@@ -1,5 +1,5 @@
 <?php
-
+	
 	// Include Medoo
 	require_once '../components/medoo.min.php';
 	
@@ -29,7 +29,7 @@
 	}
 	
 	# Page Setup:
-	
+	setcookie("lang_session",1,time()+1000);
 	
 	# User Setup:
 

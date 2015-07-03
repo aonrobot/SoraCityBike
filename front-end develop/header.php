@@ -17,42 +17,59 @@
   <link href="css/sora-default.css" rel="stylesheet">
 
 </head>
+
 <?php
 
-  // Include Medoo
-require_once '../components/medoo.min.php';
+ 
+   
+    $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
+    $sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
+    $lang=$database->select("language",'*');
 
-  // Initialize
-$database = new medoo(array(
-  'database_type' => 'mysql',
-  'database_name' => 'sora_db',
-  'server' => 'localhost',
-  'username' => 'root',
-  'password' => 'root',
-  'charset' => 'utf8'
-  ));
-  ?>
-  <?php 
-  $datas = $database->select("category","*");
+    if(isset($_GET['en'])) {
+  
+setcookie("lang_session",2);
+echo $_COOKIE["lang_session"];
+
+
+}
+ if(isset($_GET['th'])) {
+  
+setcookie("lang_session",1);
+echo $_COOKIE["lang_session"];
+
+
+}
+
+ 
   ?>
 
   <body>  
     <div class="brand row">
         <div class="col-xs-4 brand-social ">
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="img/icon/icon-fb-type2.png"/></a>
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="img/icon/icon-pt-type2.png"/></a>
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-tt')" onmouseout="logo_mouseout('icon-tt')" id="icon-tt" src="img/icon/icon-tt-type2.png"/></a>
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="img/icon/icon-ig-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="img/icon/icon-fb-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="img/icon/icon-pt-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-tt')" onmouseout="logo_mouseout('icon-tt')" id="icon-tt" src="img/icon/icon-tt-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="img/icon/icon-ig-type2.png"/></a>
         </div>
         <div class="col-xs-4 brand-logo ">
-            <img class="logo_img" src="img/LOGO-(with-cloud)2.png"/>
+            <a href="index.php"><img class="logo_img" src="img/LOGO-(with-cloud)2.png"/></a>
         </div>
-        <div class="pero-font time-text col-xs-4 brand-time " align="center">
+        <div class="pero-font time-text col-xs-4 brand-time "  align="center">
             <?php 
-            echo date('D d M');
+            if (true) {
+                
+            }
+            echo date('D d M').'<br>';
+            foreach ($lang as $a) {
+
+               echo '<a href="index.php?'.$a['lang_code'].'"><button class="bg-gray pero-font btn btn-default uppercase" > '.$a['lang_code'].' </button></a>';
+               
+
+            }
+
             ?>
         </div>
-
 
     </div>
     <nav class="bg-gray navbar navbar-default " role="navigation">
@@ -75,16 +92,21 @@ $database = new medoo(array(
 
                 <ul class="nav navbar-nav">
 
-                <?php for ($i=0; $i<9 ; $i++) {  ?>
-                    <?php echo '<li id="menu_'.$i.'">'?>
+                <?php foreach ($top_menu as $menu ) {  ?>
+                    <?php echo '<li id="menu_'.$menu['menu_id'].'">'?>
                         <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            <?php echo $datas[0]['cat_name']; ?>
+                            <?php echo $menu['obj_name']; ?>
                             <span><img class="dropdown-span" src="img/down-btn.png"/></span>
                         </div>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <?php
-                            foreach ($datas as $data ) {
-                                echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$data['cat_name'].'</a></li>' ;}
+                           foreach ($sub_menu as $a ) {
+                                $sub=$a['parent_id'];
+                                $top=$menu['obj_id'];
+                                if ($sub==$top) {
+                                    echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$a['obj_url'].'">'.$a['obj_name'].'</a></li>' ;}
+                                }
+                                
                             ?>
                         </ul>
                     </li>

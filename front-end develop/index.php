@@ -2,7 +2,13 @@
 
  <?php include('../config/config.php'); ?>
  <?php include('header.php'); ?>
- <?php include('slide.php'); ?>
+
+
+ <?php 
+if ($page!='home') {
+   include('slide.php');
+}
+ ?>
 
  <?php include($page.'.php'); ?>
  <hr style="max-width:70%;">

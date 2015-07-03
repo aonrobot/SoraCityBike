@@ -43,10 +43,10 @@
                                                     
                                                     //echo $data['lang_id'] . " and " . $data['cont_lang_id'] . '<br>';
                                                     $link_edit = "index.php?p=content&a=edit&id=".$data['id']."&lang=".$data['cont_lang_id'];
-                                    ?>            
+                                    ?>
                                         <tr>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
-                                            <td><?php echo $data['cont_name'];?></td>
+                                            <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
                                             <td class="center"><?php echo $data['cont_status'];?></td>
                                             <td class="center"><?php echo $data['cont_type'];?></td>
                                             <td>
@@ -536,7 +536,18 @@
             $(".save_btn").on("click", function(e){
                 gm.getContent();
             });
+            
+         $(function() {
+		  $.fn.editable.defaults.mode = 'inline';
+		
+		  $('.name').editable({});
+		});
+    
     });
+    
+    
+
+    
     
 	<?php if(!strcmp($_GET['a'], 'list')){?> 
     	//DataTable
@@ -546,3 +557,6 @@
     <?php }?>
 	
 </script>
+
+
+<script src="components/Editablecss/js/bootstrap-editable.js"></script>
