@@ -17,6 +17,7 @@
   <link href="css/sora-default.css" rel="stylesheet">
 
 </head>
+
 <?php
 
  
@@ -25,7 +26,22 @@
     $sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
     $lang=$database->select("language",'*');
 
+    if(isset($_GET['en'])) {
+  
+setcookie("lang_session",2);
+echo $_COOKIE["lang_session"];
 
+
+}
+ if(isset($_GET['th'])) {
+  
+setcookie("lang_session",1);
+echo $_COOKIE["lang_session"];
+
+
+}
+
+ 
   ?>
 
   <body>  
@@ -47,7 +63,7 @@
             echo date('D d M').'<br>';
             foreach ($lang as $a) {
 
-               echo '<a href="index.php?p=content&id=1"><button class="bg-gray pero-font btn btn-default uppercase" onclick="location.reload();"> '.$a['lang_code'].' </button></a>';
+               echo '<a href="index.php?'.$a['lang_code'].'"><button class="bg-gray pero-font btn btn-default uppercase" > '.$a['lang_code'].' </button></a>';
                
 
             }
@@ -84,7 +100,6 @@
                         </div>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <?php
-                            
                            foreach ($sub_menu as $a ) {
                                 $sub=$a['parent_id'];
                                 $top=$menu['obj_id'];

@@ -29,7 +29,7 @@
 	}
 	
 	# Page Setup:
-	$_SESSION["lang"] = "1";
+	setcookie("lang_session",1,time()+1000);
 	
 	# User Setup:
 
