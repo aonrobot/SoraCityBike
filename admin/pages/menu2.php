@@ -124,15 +124,7 @@
                                             <div class="form-group">
                                                 <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Menu Stucture</h3>
                                                 <section id="demo">
-                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
-                                                        
-                                                       <?php
-                                                                    $menu = $database->select("content_meta",'meta_value',array("meta_id"=>'1'));
-                                                                    echo $menu[0];        
-                                                       ?>
-                                                       
-                                                   </ol>
-                                              
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("content_meta",'meta_value',array("meta_key" => 'menu')); echo $menu[0]; ?> </ol>
                                                 </section><!-- END #demo -->
                                                 
                                             </div>
@@ -193,7 +185,7 @@
             
         });
         
-         $("#create-item").click(function(){
+        $("#create-item").click(function(){
             
             //---------------------------------------  POST FORM -----------------------------------
             var formData = {
@@ -203,18 +195,21 @@
                 'type'              : $('select[name=type]').val()
             };
              
-            $.ajax({                                     
-              url: 'query.php',                            
+            $.ajax({
+              type: "POST",                                     
+              url:  'pages/update_menu.php',
+              dataType: 'json',                             
               data: formData,
-              dataType: 'json',                                            
+                                                          
               success: function(data)          
               {
+                //alert(data);
                 var obj_id = data[0]['obj_id'];              //get id
                 var obj_name = data[0]['obj_name'];          //get name
                 var obj_url = data[0]['obj_url'];            //get url
                 
                 $("#sora-menu").append(" <li class='mjs-nestedSortable-leaf' id='menuItem_"+obj_id+"'>"+
-                                         "<div class='menuDiv'>"+
+                                         "<div class='menuDiv ui-sortable-handle'>"+
                                          "  <span title='Click to show/hide children' class='disclose ui-icon ui-icon-minusthick'>"+
                                          "      <span></span>"+
                                          "  </span>"+
@@ -239,6 +234,7 @@
                 $("#menu-structure").val($("#sora-menu").html()); 
                 $(".form-control[name=name]").val("");
                 $(".form-control[name=url]").val("");
+                $(document).trigger('readyAgain');
               } 
             });
 
@@ -249,7 +245,7 @@
     
     //Menu II
     
-    $().ready(function(){
+   $(document).on('ready readyAgain', function(){
             var ns = $('ol.sortable').nestedSortable({
                 forcePlaceholderSize: true,
                 handle: 'div',
@@ -287,6 +283,20 @@
             
             $('.deleteMenu').click(function(){
                 var id = $(this).attr('data-id');
+                
+                //Delete Ajax Query
+                
+                var formData = {
+                    'a'               : 'delMenu',
+                    'obj_id'          : id
+                };    
+                $.ajax({
+                     type: "POST",                                     
+                     url: 'pages/update_menu.php',                            
+                     data: formData,          
+                     success: function(){alert("Delete Success");} 
+                });
+                
                 $('#menuItem_'+id).remove();
             });
                 
@@ -308,15 +318,19 @@
                
                $("#menu-structure").val("");
                $("#menu-structure").val($("#sora-menu").html());
+               
+               //alert($("#sora-menu").html());
+               
                var formData = {
                 'a'                 : 'updateMenuStructure',
                 'structure'         : $('input[name=menu-structure]').val()
                };
                  
-               $.ajax({                                     
-                 url: 'query.php',                            
+               $.ajax({
+                 type: "POST",                                     
+                 url: 'pages/update_menu.php',                            
                  data: formData,
-                 dataType: 'json',                               
+                               
                  success: function(){} 
                });
                
@@ -324,14 +338,14 @@
                 
                arraied = $('ol.sortable').nestedSortable('toArray', {startDepthCount: 0});
                var jsonString = JSON.stringify(arraied);
-               alert(jsonString);
+               //alert(jsonString);
                $.ajax({
                     type: "POST",
                     url: "pages/update_menu.php",
                     data: {data : jsonString}, 
                     cache: false,
             
-                    success: function(error){
+                    success: function(){
                         alert("Save Success");
                     }
                 });

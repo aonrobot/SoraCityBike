@@ -76,12 +76,12 @@
 		
 		<!-- Import Only Page has s table -->
 		<!-- DataTables JavaScript -->
-		<?php if(!strcmp($_GET['a'], 'list')){?> 		
+		<?php //if(!strcmp($_GET['a'], 'list')){?> 		
     		<link href="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
     		<link href="components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     		<script src="components/datatables/media/js/jquery.dataTables.min.js"></script>
     		<script src="components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-		<?php }?>
+		<?php //}?>
 		
 		<!-- Chained Selection JavaScript -->
 		<script src="components/jquery_chained/jquery.chained.min.js"></script>
