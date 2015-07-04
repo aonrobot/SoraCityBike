@@ -213,6 +213,31 @@
     
 
     // (BACKUP CODE) UPDATE CONTENT INFO
+    
+    if(!strcmp($_GET['a'], 'addFav')){
+        
+        $cont_id = $_GET['i'];
+
+        $database->update("category_relationships", array(
+            'cont_order' => -1
+        
+        ), array("cont_id" => $cont_id));
+        
+        header( 'Location: index.php?p=category&a=edit&id='.$_GET['edit_id'] ) ;
+        exit();
+    }
+    if(!strcmp($_GET['a'], 'delFav')){
+        
+        $cont_id = $_GET['i'];
+
+        $database->update("category_relationships", array(
+            'cont_order' => 0
+        
+        ), array("cont_id" => $cont_id));
+        
+        header( 'Location: index.php?p=category&a=edit&id='.$_GET['edit_id'] ) ;
+        exit();
+    }
 
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
