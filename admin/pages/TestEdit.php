@@ -47,7 +47,7 @@
                                         <tr>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
-                                            <td class="center"><?php echo $data['cont_status'];?></td>
+                                            <td class="center"><a href="#" class="status" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_status" data-title="Edit below here">  <?php echo $data['cont_status'];?> </a></td>
                                             <td class="center"><?php echo $data['cont_type'];?></td>
                                             <td>
                                                 <?php   $cats = $database->select("category_relationships",array("[>]category" => array("cat_id" => "cat_id")),array("cat_name"),array("cont_id" => $data['id'],)); 
@@ -55,7 +55,7 @@
                                                         foreach ($cats as $cat) {
                                                 ?>
                                                 
-                                                    <code><?php echo $cat['cat_name'];?></code>&nbsp;
+                                                    <code><a href="#" class="category" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><?php echo $cat['cat_name'];?></a></code>&nbsp;
                                                 
                                                 <?php }?>
                                             </td>
@@ -537,17 +537,53 @@
                 gm.getContent();
             });
             
+            
+	
+           
          $(function() {
 		  $.fn.editable.defaults.mode = 'inline';
 		
 		  $('.name').editable({});
+		  $('.status').editable({
+			  	source: [
+	            {value: 'draft', text: 'draft'},
+	            {value: 'future', text: 'future'},
+	            {value: 'pending', text: 'pending'},
+	            {value: 'private', text: 'private'},
+	            {value: 'published', text: 'published'},
+	            {value: 'trash', text: 'trash'}
+	            
+	        ]
+			});
+			
+			
+			
+			 	
+			 	
+			 $('.category').editable({
+			 	
+			
+			 
+			 	
+			 	
+			 });
+			
+			
 		});
+		
+		
+		
+		
     
     });
+    /////////////////////////////////
+    
+  
     
     
-
+    ///////////////////////
     
+ 
     
 	<?php if(!strcmp($_GET['a'], 'list')){?> 
     	//DataTable
@@ -555,6 +591,9 @@
                     responsive: true
         });
     <?php }?>
+	
+	
+	
 	
 </script>
 

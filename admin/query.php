@@ -209,7 +209,17 @@
     }
     
     
-    
+     if(!strcmp($_GET['a'], 'editvalue2')){
+    	$pk= $_POST['pk'];
+    	$value= $_POST['value'];
+		$column = $_GET['c'];
+		
+        $database->update("category", array(
+            $column => $value
+        
+        ), array("id" => $pk
+        ));
+    }
     
 
     // (BACKUP CODE) UPDATE CONTENT INFO
