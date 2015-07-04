@@ -17,45 +17,53 @@
   <link href="css/sora-default.css" rel="stylesheet">
 
 </head>
+
 <?php
 
-  // Include Medoo
-require_once '../components/medoo.min.php';
-
-  // Initialize
-    $database = new medoo(array(
-  'database_type' => 'mysql',
-  'database_name' => 'sora_db',
-  'server' => 'localhost',
-  'username' => 'root',
-  'password' => 'root',
-  'charset' => 'utf8'
-  ));
+ 
    
     $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
     $sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
     $lang=$database->select("language",'*');
 
+    if(isset($_GET['en'])) {
+  
+setcookie("lang_session",2);
+echo $_COOKIE["lang_session"];
 
+
+}
+ if(isset($_GET['th'])) {
+  
+setcookie("lang_session",1);
+echo $_COOKIE["lang_session"];
+
+
+}
+
+ 
   ?>
 
   <body>  
     <div class="brand row">
         <div class="col-xs-4 brand-social ">
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="img/icon/icon-fb-type2.png"/></a>
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="img/icon/icon-pt-type2.png"/></a>
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-tt')" onmouseout="logo_mouseout('icon-tt')" id="icon-tt" src="img/icon/icon-tt-type2.png"/></a>
-            <a href="https://www.facebook.com/"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="img/icon/icon-ig-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="img/icon/icon-fb-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="img/icon/icon-pt-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-tt')" onmouseout="logo_mouseout('icon-tt')" id="icon-tt" src="img/icon/icon-tt-type2.png"/></a>
+            <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="img/icon/icon-ig-type2.png"/></a>
         </div>
         <div class="col-xs-4 brand-logo ">
             <a href="index.php"><img class="logo_img" src="img/LOGO-(with-cloud)2.png"/></a>
         </div>
-        <div class="pero-font time-text col-xs-4 brand-time " align="center">
+        <div class="pero-font time-text col-xs-4 brand-time "  align="center">
             <?php 
-            echo $_SESSION["lang"];
+            if (true) {
+                
+            }
             echo date('D d M').'<br>';
             foreach ($lang as $a) {
-               echo '<button class="bg-gray pero-font btn btn-default uppercase"> '.$a['lang_code'].' </span>';
+
+               echo '<a href="index.php?'.$a['lang_code'].'"><button class="bg-gray pero-font btn btn-default uppercase" > '.$a['lang_code'].' </button></a>';
                
 
             }
@@ -92,7 +100,6 @@ require_once '../components/medoo.min.php';
                         </div>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <?php
-                            
                            foreach ($sub_menu as $a ) {
                                 $sub=$a['parent_id'];
                                 $top=$menu['obj_id'];

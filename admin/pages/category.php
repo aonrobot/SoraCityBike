@@ -57,7 +57,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="show-cat">
                                     <thead>
                                         <tr>
                                             <th>id</th>
@@ -105,11 +105,10 @@
 
 <script type="text/javascript">
     
-	<?php if(!strcmp($_GET['a'], 'list')){?> 
-    	//DataTable
-    	$('#dataTables-example').DataTable({
-                    responsive: true
-        });
-    <?php }?>
+    //DataTable
+    $('#show-cat').DataTable({
+        responsive: true
+    });
+
 	
 </script>

@@ -1,7 +1,7 @@
 <footer>
-  <div class="container">
+  <div class="bg-gray container">
     <div class="row">
-      <div class="col-lg-12 text-right">
+      <div class="pero-font col-lg-12" align="center">
         <small>Copyright &copy; Your Website 2014</small>
       </div>
     </div>

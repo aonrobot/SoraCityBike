@@ -150,7 +150,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sora_db`.`slide` (
   `slide_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
+  `slide_name` VARCHAR(120) NOT NULL,
   `slide_type` VARCHAR(45) NOT NULL,
+  `slide_structure` TEXT NULL,
   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`slide_id`))
 ENGINE = InnoDB;
@@ -194,7 +196,9 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`slide_data` (
   `slide_id` BIGINT(120) NOT NULL,
   `slide_data_img_url` VARCHAR(255) NOT NULL,
   `slide_data_content` VARCHAR(200) NULL,
-  `slide_data_url` VARCHAR(255) NULL,
+  `slide_data_img_link` VARCHAR(255) NULL,
+  `slide_data_content_link` VARCHAR(255) NULL,
+  `slide_data_order` VARCHAR(45) NULL,
   PRIMARY KEY (`slide_data_id`),
   INDEX `slide_ID_fok_idx` (`slide_id` ASC),
   CONSTRAINT `slide_ID_fok`

@@ -223,7 +223,24 @@
     
 
     // (BACKUP CODE) UPDATE CONTENT INFO
+<<<<<<< HEAD
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    if(!strcmp($_GET['a'], 'addSlide')){
+        
+          $database->insert("slide", array(
+                "slide_name" => $_POST['name'],
+                "slide_type" => $_POST['type']
+           ));
+           
+           
+           header( 'Location: index.php?p=slide' ) ;
+           exit();
+    }
+=======
 
+>>>>>>> 5164e77533d73b64350216ce1ae947183ba10d66
         
     /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
     
@@ -283,85 +300,23 @@
                     exit();
                 }          
                 break;
+                
+            case 'slide':
+                
+                $slide_id = $_GET['i'];
+                
+                $database->delete("slide_data", array("slide_id" => $slide_id));
+                $database->delete("slide", array("slide_id" => $slide_id));
+                header( 'Location: index.php?p=slide' ) ;
+                exit();                     
+        
+                break;
                                 
         }
         
         
     }
 
-    /////////////////////////////////////////////// MENU MANAGEMENT //////////////////////////////////////////////////////////////////
-    
-    if(!strcmp($_GET['a'], 'addObject')){
-        
-        $last_obj = $database->insert("object", array(
-                "obj_name" => $_GET['name'],
-                "obj_url" => $_GET['url'],
-                "obj_type" => $_GET['type'],
-           ));  
-           
-        $obj_name = $database->select("object",array('obj_id','obj_name','obj_url'),array("obj_id"=>$last_obj)); 
-    
-        echo json_encode($obj_name); 
-    }
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    // (BACKUP CODE) JSON2ARRAY
-    
-    if(!strcmp($_GET['a'], 'updateMenuStructure')){
-        
-        $database->update("content_meta", array("meta_value" => $_GET['structure']),array("meta_id" => '1'));            
-    }
-    
-    if(!strcmp($_GET['a'], 'saveMenu')){
-        
-        // (BACKUP CODE) Menu I
-                
-        //Menu II
-        $datas = json_decode($_POST['data'],true);
-    
-        $i = 1;
-        $even = 1;
-        $odd = 1;
-        
-        print_r($datas);
-        
-        foreach ($datas as $data) {
-            
-           
-            
-            if($data['depth'] == 0)continue;
-            
-            // echo(($data['left']+$data['right']+$data['depth']) % 2);
-            // echo "<br>";
-            
-            if((($data['left']+$data['right']+$data['depth']) % 2) == 0){
-                $odd = 1;
-                $parent = $data['parent_id'];
-                if($parent == null)$parent = "0";
-                $database->insert("menu", array(
-                    "menu_id" => $i,
-                    "obj_id" => $data['item_id'],
-                    "parent_id" => $parent,
-                    "menu_order" => $even
-                ));
-                $even++;
-            }
-            else{
-                $database->insert("menu", array(
-                    "menu_id" => $i,
-                    "obj_id" => $data['item_id'],
-                    "parent_id" => $data['parent_id'],
-                    "menu_order" => $odd
-                ));
-                
-                $odd++;
-            }
-    
-            $i++;
-        }
-
-    }
 
     ////////////////////////////////// BACKUP CODE ZONE ///////////////////////////////////////////////////
     
@@ -488,6 +443,61 @@
             return $objs;
         }
          
+        */
+        
+        /*
+         * 
+         * 
+        
+        if(!strcmp($_GET['a'], 'saveMenu')){
+        
+        // (BACKUP CODE) Menu I
+                
+        //Menu II
+        $datas = json_decode($_POST['data'],true);
+    
+        $i = 1;
+        $even = 1;
+        $odd = 1;
+        
+        //print_r($datas);
+        
+        foreach ($datas as $data) {
+            
+           
+            
+            if($data['depth'] == 0)continue;
+            
+            // echo(($data['left']+$data['right']+$data['depth']) % 2);
+            // echo "<br>";
+            
+            if((($data['left']+$data['right']+$data['depth']) % 2) == 0){
+                $odd = 1;
+                $parent = $data['parent_id'];
+                if($parent == null)$parent = "0";
+                $database->insert("menu", array(
+                    "menu_id" => $i,
+                    "obj_id" => $data['item_id'],
+                    "parent_id" => $parent,
+                    "menu_order" => $even
+                ));
+                $even++;
+            }
+            else{
+                    $database->insert("menu", array(
+                        "menu_id" => $i,
+                        "obj_id" => $data['item_id'],
+                        "parent_id" => $data['parent_id'],
+                        "menu_order" => $odd
+                    ));
+                    
+                    $odd++;
+                }
+        
+                $i++;
+            }
+
+        }
         */
     
 ?>
