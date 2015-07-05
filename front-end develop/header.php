@@ -19,27 +19,22 @@
 </head>
 
 <?php
-
+    
  
-   
+    
     $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
     $sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
     $lang=$database->select("language",'*');
 
-    if(isset($_GET['en'])) {
-  
-setcookie("lang_session",2);
-echo $_COOKIE["lang_session"];
+    foreach ($lang as $key ) {
+       if(isset($_GET[$key['lang_code']])) {
+        setcookie("lang_session",$key['lang_id']);
+        
+    }
+    }
+    echo $_COOKIE["lang_session"];
 
 
-}
- if(isset($_GET['th'])) {
-  
-setcookie("lang_session",1);
-echo $_COOKIE["lang_session"];
-
-
-}
 
  
   ?>
