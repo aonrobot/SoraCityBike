@@ -92,23 +92,32 @@ echo $_COOKIE["lang_session"];
 
                 <ul class="nav navbar-nav">
 
-                <?php foreach ($top_menu as $menu ) {  ?>
-                    <?php echo '<li id="menu_'.$menu['menu_id'].'">'?>
-                        <div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <?php foreach ($top_menu as $menu ) { 
+                    echo '<li id="menu_'.$menu['menu_id'].'">';
+                    if (strpos($menu['obj_url'],'content') == true)
+                    $link = "'".$menu['obj_url']."'";
+                    else
+                     $link = "";    
+                    echo '<div class="bg-gray pero-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>
                             <?php echo $menu['obj_name']; ?>
-                            <span><img class="dropdown-span" src="img/down-btn.png"/></span>
+                            <?php if (strpos($menu['obj_url'],'content') == false) echo '<span><img class="dropdown-span" src="img/down-btn.png"/></span>'; ?>
                         </div>
+                        <?php if (strpos($menu['obj_url'],'content') == false) { ?>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <?php
                            foreach ($sub_menu as $a ) {
                                 $sub=$a['parent_id'];
                                 $top=$menu['obj_id'];
                                 if ($sub==$top) {
-                                    echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$a['obj_url'].'">'.$a['obj_name'].'</a></li>' ;}
+                                    echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$a['obj_url'].'">'.$a['obj_name'].'</a></li>' ;
+
+                                        
+                                    }
                                 }
                                 
                             ?>
                         </ul>
+                        <?php } ?>
                     </li>
                 <?php } ?>
 
