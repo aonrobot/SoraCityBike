@@ -14,7 +14,7 @@
 }
 @font-face { 
     font-family: pero; 
-    src: url(/fonts/Pero-Bold.otf ) format("truetype"); 
+    src: url(../fonts/Pero-Regular.otf ) format("truetype"); 
 }
 b{
     font-weight: 600;
@@ -35,13 +35,15 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    font-family: pero , verdana, helvetica, sans-serif;
+    font-weight: 300;
     letter-spacing: 1px;
 }
 
 p {
-    font-size: 1.25em;
+    font-family: pero , verdana, helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 1em;
     line-height: 1.6;
     color: #000;
 }
@@ -134,7 +136,10 @@ hr {
      text-decoration: underline;
 }
 
+.slide_pic{
 
+    
+}
 
 
 .swiper-container {
@@ -179,21 +184,26 @@ hr {
     padding-left:3em ;
     padding-right:3em ;
     padding-top:1em ;
-    height: 350px;
+    height: 100%;
     overflow: hidden;
 }
 
-.con-content{
+.head-content{
     padding-right: 5em;
     padding-left: 5em;
+}
+.title_content{
+    margin-bottom: 3em;
 }
 .content-box{
     margin-left: 20em ;
     margin-right: 20em;
 }
+
 .index-img{
     display: inline-block;
     width: 100%;
+    height: 300px;
     
 }
 .category-img{
@@ -206,8 +216,11 @@ hr {
     margin-bottom: 1em;
     text-align: left;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 600;
+    text-decoration: underline;
     
+}
+.main_content{
 }
 .text-content{
     text-align: left;
