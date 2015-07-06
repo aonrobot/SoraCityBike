@@ -15,15 +15,18 @@ CREATE SCHEMA IF NOT EXISTS `sora_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_ge
 USE `sora_db` ;
 
 -- -----------------------------------------------------
--- Table `sora_db`.`user`
+-- Table `sora_db`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`user` (
+CREATE TABLE IF NOT EXISTS `sora_db`.`users` (
   `user_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(16) NOT NULL,
-  `password` VARCHAR(32) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(64) NOT NULL,
+  `password_salt` VARCHAR(20) NOT NULL,
+  `name` VARCHAR(120) NOT NULL,
   `role` VARCHAR(45) NULL,
-  `email` VARCHAR(255) NULL,
-  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` DATETIME NOT NULL,
+  `attempt` VARCHAR(45) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`));
 
 
@@ -48,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`content` (
   INDEX `user_id_fk_idx` (`user_id` ASC),
   CONSTRAINT `user_id_fk`
     FOREIGN KEY (`user_id`)
-    REFERENCES `sora_db`.`user` (`user_id`)
+    REFERENCES `sora_db`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -194,6 +197,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `sora_db`.`slide_data` (
   `slide_data_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `slide_id` BIGINT(120) NOT NULL,
+  `slide_data_name` VARCHAR(120) NULL,
   `slide_data_img_url` VARCHAR(255) NOT NULL,
   `slide_data_content` VARCHAR(200) NULL,
   `slide_data_img_link` VARCHAR(255) NULL,
@@ -206,6 +210,17 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`slide_data` (
     REFERENCES `sora_db`.`slide` (`slide_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sora_db`.`resetTokens`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sora_db`.`resetTokens` (
+  `token` VARCHAR(40) NOT NULL,
+  `uid` BIGINT(120) NOT NULL,
+  `requested` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`token`))
 ENGINE = InnoDB;
 
 
