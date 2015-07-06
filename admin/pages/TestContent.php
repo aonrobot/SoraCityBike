@@ -20,6 +20,13 @@
 					?>
                 	<h3><?php echo $_GET['p']; ?></h3>
                 	<h4><?php echo 'Parameter -> '.$_POST['txt_content']; ?></h4>
+                	
+                	<?php
+                	           $string = "https://vimeo.com/113560451";
+                               $string = explode("https://vimeo.com/",$string);
+                               echo $string[1];
+                	       
+                	?>
                 </div>
 			</div>
 			<!-- /.col-lg-12 -->

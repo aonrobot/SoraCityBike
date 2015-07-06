@@ -106,16 +106,18 @@
     
     if(!strcmp($_GET['a'], 'updateContent')){
         
+        $cont_id = $_POST['content_id'];
+        
         $chk_lang = $database->count("content_translation", array(
-                    "AND" => array("cont_id" => $_POST['content_id'], "lang_id" => $_POST['lang'])
+                    "AND" => array("cont_id" => $cont_id, "lang_id" => $_POST['lang'])
                 ));
                 
         if($chk_lang==0){
             
-            $other_lang_content = $database->select("content_translation","*",array("cont_id" => $_POST['content_id']));
+            $other_lang_content = $database->select("content_translation","*",array("cont_id" => $cont_id));
             
             $database->insert("content_translation", array(
-                "cont_id" => $_POST['content_id'],
+                "cont_id" => $cont_id,
                 "lang_id" => $_POST['lang'],
                 "cont_title" => $other_lang_content[0]['cont_title'],
                 "cont_content" => $other_lang_content[0]['cont_content'],
@@ -129,7 +131,7 @@
                 "cont_description" => $_POST['description']
                 
             ), array(
-                "AND" => array("cont_id" => $_POST['content_id'], "lang_id" => $_POST['lang'])
+                "AND" => array("cont_id" => $cont_id, "lang_id" => $_POST['lang'])
             ));
         }
         
@@ -140,21 +142,36 @@
             "cont_status" => $_POST['status'],
             "cont_type" => $_POST['type'],
             
-        ), array("id" => $_POST['content_id']
+        ), array("id" => $cont_id
         ));
         
-        //Delete All Content In Cat Relationship
-        $database->delete("category_relationships", array("cont_id" => $_POST['content_id']));
+        //UPDATE CAT
         
-        //Insert New
-        $category = $_POST['category'];
-            foreach ($category as $cat) {
-                
-                $database->insert("category_relationships", array(
-                "cont_id" => $_POST['content_id'],
-                "cat_id" => $cat,
-                ));  
+        $new_cats = $_POST['category'];
+        
+        $old_cats = $database->select("category_relationships","cat_id",array("cont_id" => $cont_id));
+        
+  
+        foreach ($old_cats as $old_cat) {
+            if(!in_array($old_cat['cat_id'], $new_cats)){
+                $database->delete("category_relationships", array(
+                    "AND" => array("cont_id" => $cont_id, "cat_id" => $old_cat['cat_id'])
+                ));
             }
+        }
+
+        foreach ($new_cats as $new_cat) {
+            if(!in_array($new_cat, $old_cats)){
+                $database->insert("category_relationships", array(
+                "cont_id" => $cont_id,
+                "cat_id" => $new_cat,
+                )); 
+            }
+        }
+        
+        //Delete All Content In Cat Relationship
+        //$database->delete("category_relationships", array("cont_id" => $_POST['content_id']));
+
              
         $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
         
@@ -288,10 +305,19 @@
     
     if(!strcmp($_GET['a'], 'addSlide')){
         
-          $database->insert("slide", array(
+          $last_slide = $database->insert("slide", array(
                 "slide_name" => $_POST['name'],
                 "slide_type" => $_POST['type']
            ));
+           
+           if(!strcmp($_POST['type'], 'content')){
+           
+               $database->update("content", array(
+                    "slide_id" => $last_slide,
+               ),array(('id')=>$_POST['cont_id']));
+           
+           }
+           
            
            
            header( 'Location: index.php?p=slide' ) ;
@@ -362,6 +388,11 @@
                 
                 $slide_id = $_GET['i'];
                 
+                $database->update("content", array(
+                    "slide_id" => '0',
+                ),array(('slide_id')=>$slide_id));
+                
+                $database->delete("content_meta", array("meta_key" => 'slide:'.$slide_id));
                 $database->delete("slide_data", array("slide_id" => $slide_id));
                 $database->delete("slide", array("slide_id" => $slide_id));
                 header( 'Location: index.php?p=slide' ) ;

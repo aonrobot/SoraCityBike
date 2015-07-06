@@ -42,6 +42,30 @@
         echo json_encode($img); 
     }
     
+    else if(!strcmp($a, 'addVideo')){
+        
+        $str_url = $_POST['img_url'];
+        
+        if(strpos($str_url,'https://vimeo.com/') !== false){
+        
+            $str_url = explode("https://vimeo.com/",$str_url);
+            $video_url = "http://player.vimeo.com/video/".$str_url[1]."?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f";
+                    
+            $last_img = $database->insert("slide_data", array(
+                    "slide_id" => $_POST['slide_id'],
+                    "slide_data_name" => $_POST['img_name'],
+                    "slide_data_img_url" => $video_url,
+               ));  
+               
+            
+               
+            $img = $database->select("slide_data",array('slide_data_id','slide_data_name','slide_data_img_url')
+                                    ,array("slide_data_id"=>$last_img)); 
+        
+            echo json_encode($img); 
+        }
+    }
+    
     else if(!strcmp($a, 'delImgData')){
                 
         $database->delete("slide_data", array("slide_data_id" => $_POST['slide_data_id']));  
@@ -73,7 +97,7 @@
                "cont_id" => $cont_id[0],
                "meta_key" => 'slide:'.$_POST['slide_id'],
                "meta_value" => $_POST['structure']
-               ));  
+               )); 
                
         }else{
             

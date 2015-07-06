@@ -20,21 +20,22 @@
                                             <input name="name" class="form-control" placeholder="Enter Content Name">
                                         </div>
                                         
-                                        <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
                                         <div class="col-lg-2 form-group">
-                                            <label>Content</label>
-                                            <select class="form-control" name="item">
-                                                    <?php foreach ($contents as $content) { ?>
-                                                        <option value="<?php echo $content['id'];?>"><?php echo $content['cont_name'];?></option>
-                                                    <?php } ?>                                                 
+                                            <label>Type</label>
+                                            <select name="type" id="type" class="form-control">
+                                                <option value="content">Content Slide</option>
+                                                <option value="video">Video Slide</option>
+                                                <option value="home">Home Slide</option>  
                                             </select>
                                         </div>
                                         
-                                        <div class="col-lg-2 form-group">
-                                            <label>Type</label>
-                                            <select name="type" class="form-control">
-                                                <option value="content">Content Slide</option>
-                                                <option value="home">Home Slide</option>  
+                                        <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
+                                        <div class="col-lg-2 form-group" id="div-content">
+                                            <label>Content</label>
+                                            <select class="form-control" name="cont_id">
+                                                    <?php foreach ($contents as $content) { ?>
+                                                        <option value="<?php echo $content['id'];?>"><?php echo $content['cont_name'];?></option>
+                                                    <?php } ?>                                                 
                                             </select>
                                         </div>
 
@@ -54,7 +55,7 @@
                     
                 <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>All Category</b>
+                            <b>All Slide</b>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -87,7 +88,7 @@
                                             <td><?php echo $data['cont_name'];?></td>
                                             <td><?php echo $data['slide_type'];?></td>
                                             <td>
-                                                <a href="query.php?a=del&w=slide&i=<?php echo $data['slide.slide_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
+                                                <a href="query.php?a=del&w=slide&i=<?php echo $data['slide_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
                                             </td>
                                         </tr>
                                         
@@ -108,9 +109,16 @@
                     <?php
                             //Important Parameter 
                             
-                            $slide_id = $_GET['id'];      // Slide Id                            
+                            $slide_id = $_GET['id'];      // Slide Id
+                            $slide_type = $database->select("slide","slide_type",array("slide_id" => $slide_id));  
                             
+                            //Check This Slide Id has Content Data?
+                            $chk_cont_meta = $database->count("content_meta", array("meta_key" => 'slide:'.$slide_id));
+                            if($chk_cont_meta == 0) $database->delete("slide_data", array("slide_id" => $slide_id));                          
+                                        
                     ?>
+                    
+                    <?php if(!strcmp($slide_type[0], 'content') || !strcmp($slide_type[0], 'home')){?>
                     
                     <div class="panel panel-default">
                             <div class="panel-heading">
@@ -198,7 +206,80 @@
                                 </div>
                             </div>
                     </div>
+                    
+                    <?php }?>
                       
+                    <?php if(!strcmp($slide_type[0], 'video')){?>
+                    
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Add Video</b>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Video Name</label>
+                                                <input name="img_name" class="form-control" placeholder="Enter Video Name">
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Video URL</label>
+                                                <input name="img_url" class="form-control" placeholder="Enter Video URL">
+                                            </div>
+                                            <p><em>URL Must be this format(https://vimeo.com/[vidoe_id]) Example<code>https://vimeo.com/113560451</code></em></p>
+                                        </div>
+                                        
+                                        <div class="col-lg-12">
+                                            <input name="slide_id" type="hidden" value="<?php echo $slide_id;?>" />
+                                            <button id="create-video" class="btn btn-success"><i class="fa fa-leaf fa-1x"></i> Add Video</button>
+                                        </div>
+      
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Create Slide</b>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Slide Stucture</h3>
+                                                
+                                                <section id="demo">
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("content_meta",'meta_value',array("meta_key"=>'slide:'.$slide_id)); echo $menu[0]; ?> </ol>
+                                                </section><!-- END #demo -->
+                                                
+                                            </div>
+                                        </div> 
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <p><em>Note: This demo has the <code>maxLevels</code> option set to '4'.</em></p>
+                                                <input name="img-structure" type="hidden" id="img-structure"></input>
+                                                <br><br><button id="toArray" name="toArray" class="btn btn-primary"><i class="fa fa-send fa-1x"></i> Save Slide</button>
+                                            </div>
+                                        </div>
+      
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    
+                    <?php }?>
                     
                 <?php }?>
                  
@@ -223,6 +304,19 @@
          $('#show-slide').DataTable({
              responsive: true
          });
+         $('#type').change(function(){
+            
+            if($('#type').val() == "content"){
+                $('#div-content').show();
+            }
+            else if($('#type').val() == "video"){
+                $('#div-content').hide();
+            }
+            else{
+                $('#div-content').hide();
+            }
+            
+        });
     <?php }?>
     
     <?php if(!strcmp($_GET['a'], 'edit')){?>  
@@ -231,7 +325,8 @@
         
          $("#create-img").click(function(){
             
-            //---------------------------------------  POST FORM -----------------------------------
+            //---------------------------------------  POST FORM IMAGE-----------------------------------
+            
             var formData = {
                 'a'                     : 'addImg',
                 'slide_id'              : $('input[name=slide_id]').val(),
@@ -251,12 +346,15 @@
               success: function(data)          
               {
                 //alert(data);
+                //--------------------------------------- RETURN IMAGE!!!! ------------------------------------
+                
                 var slide_data_id = data[0]['slide_data_id'];               //get slide_data_id
                 var img_name = data[0]['slide_data_name'];                         //get image name
                 var img_url = data[0]['slide_data_img_url'];                           //get image url
                 var img_link = data[0]['slide_data_img_link'];                         //get image link
                 var content = data[0]['slide_data_content'];                           //get content
                 var content_link = data[0]['slide_data_content_link'];                 //get content_link
+
                 
                 $("#sora-menu").append(
                                          
@@ -302,6 +400,75 @@
                                         "</div>"+
                                         
                                         "</div></div></div></li> "
+                                        
+                                        );
+                                         
+                $("#img-structure").val("");
+                $("#img-structure").val($("#sora-menu").html()); 
+                
+                $(".form-control[name=img_name]").val("");
+                $(".form-control[name=img_url]").val("");
+                $(".form-control[name=img_link]").val("");
+                $(".form-control[name=content]").val("");
+                $(".form-control[name=content_link]").val("");
+                
+                $(document).trigger('readyAgain');
+              } 
+            });
+
+           });
+           
+           $("#create-video").click(function(){
+            
+            //---------------------------------------  POST FORM -----------------------------------
+            var formData = {
+                'a'                     : 'addVideo',
+                'slide_id'              : $('input[name=slide_id]').val(),
+                'img_name'              : $('input[name=img_name]').val(),
+                'img_url'               : $('input[name=img_url]').val(),
+
+            };
+             
+            $.ajax({
+              type: "POST",                                     
+              url:  'pages/update_slide.php',
+              dataType: 'json',                             
+              data: formData,
+                                                          
+              success: function(data)          
+              {
+                //alert(data);
+                var slide_data_id = data[0]['slide_data_id'];               //get slide_data_id
+                var img_name = data[0]['slide_data_name'];                         //get image name
+                var img_url = data[0]['slide_data_img_url'];                           //get image url
+                
+                $("#sora-menu").append(
+                                         
+                                        "<li class='mjs-nestedSortable-leaf' id='menuItem_"+slide_data_id+"'>"+
+                                        "<div class='menuDiv'>"+                                                         //Handle
+                                        "<span title='Click to show/hide children' class='disclose ui-icon ui-icon-minusthick'>"+
+                                        "<span></span>"+
+                                        "</span>"+
+                                        "<span title='Click to show/hide item editor' data-id='"+slide_data_id+"' class='expandEditor ui-icon ui-icon-triangle-1-n'>"+
+                                        "<span></span>"+
+                                        "</span>"+
+                                        "<span>"+
+                                        "<span data-id='"+slide_data_id+"' class='itemTitle'>"+img_name+"</span>"+
+                                        "<span title='Click to delete item.' data-id='"+slide_data_id+"' class='deleteMenu ui-icon ui-icon-closethick'>"+
+                                        "<span></span>"+
+                                        "</span>"+
+                                        "</span>"+
+                                        "<div id='menuEdit"+slide_data_id+"' class='menuEdit'>"+                         //Handle
+                                        "<div class='panel panel-primary'>"+
+                                        "<div class='panel-heading'>"+
+                                        "Video"+
+                                        "</div>"+
+                                        
+                                        "<iframe src='"+img_url+"' width='400' height='300' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>"+
+                                        
+                                        "</div>"+
+                                        
+                                        "</div></div></li>"
                                         
                                         );
                                          
