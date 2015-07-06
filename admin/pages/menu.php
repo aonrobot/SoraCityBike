@@ -285,9 +285,9 @@
         $('#type').change(function(){
             
             if($('#type').val() == "content")
-                $('#url').val('index.php?p=content&id='+$('#item').val());
+                $('#url').val($('#item').val());
             else if($('#type').val() == "category")
-                $('#url').val('index.php?p=category&id='+$('#item').val());
+                $('#url').val($('#item').val());
             else
                 $('#url').val('');
             
@@ -295,9 +295,9 @@
         $('#item').change(function(){
             
             if($('#type').val() == "content")
-                $('#url').val('index.php?p=content&id='+$('#item').val());
+                $('#url').val($('#item').val());
             else if($('#type').val() == "category")
-                $('#url').val('index.php?p=category&id='+$('#item').val());
+                $('#url').val($('#item').val());
             else
                 $('#url').val('');
             

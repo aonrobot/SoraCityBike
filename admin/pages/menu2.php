@@ -95,7 +95,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-lg-12">
+                                        <div id="div-url" class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Url</label>
                                                 <input id="url" name="url" class="form-control" placeholder="Enter Url">
@@ -166,22 +166,34 @@
         
         $('#type').change(function(){
             
-            if($('#type').val() == "content")
-                $('#url').val('index.php?p=content&id='+$('#item').val());
-            else if($('#type').val() == "category")
-                $('#url').val('index.php?p=category&id='+$('#item').val());
-            else
+            if($('#type').val() == "content"){
+                $('#div-url').hide();
+                $('#url').val($('#item').val());
+            }
+            else if($('#type').val() == "category"){
+                $('#div-url').hide();
+                $('#url').val($('#item').val());
+            }
+            else{
+                $('#div-url').show();
                 $('#url').val('');
+            }
             
         });
         $('#item').change(function(){
             
-            if($('#type').val() == "content")
-                $('#url').val('index.php?p=content&id='+$('#item').val());
-            else if($('#type').val() == "category")
-                $('#url').val('index.php?p=category&id='+$('#item').val());
-            else
+            if($('#type').val() == "content"){
+                $('#div-url').hide();
+                $('#url').val($('#item').val());
+            }
+            else if($('#type').val() == "category"){
+                $('#div-url').hide();
+                $('#url').val($('#item').val());
+            }
+            else{
+                $('#div-url').show();
                 $('#url').val('');
+            }
             
         });
         
@@ -207,8 +219,55 @@
                 var obj_id = data[0]['obj_id'];              //get id
                 var obj_name = data[0]['obj_name'];          //get name
                 var obj_url = data[0]['obj_url'];            //get url
+                var obj_type = data[0]['obj_type'];            //get type
                 
-                $("#sora-menu").append(" <li class='mjs-nestedSortable-leaf' id='menuItem_"+obj_id+"'>"+
+                if(obj_type == "content"){
+                    $("#sora-menu").append(" <li class='mjs-nestedSortable-leaf' id='menuItem_"+obj_id+"'>"+
+                                         "<div class='menuDiv ui-sortable-handle'>"+
+                                         "  <span title='Click to show/hide children' class='disclose ui-icon ui-icon-minusthick'>"+
+                                         "      <span></span>"+
+                                         "  </span>"+
+                                         "  <span title='Click to show/hide item editor' data-id='"+obj_id+"' class='expandEditor ui-icon ui-icon-triangle-1-n'>"+
+                                         "      <span></span>"+
+                                         "  </span>"+
+                                         "  <span>"+
+                                         "      <span data-id='"+obj_id+"' class='itemTitle'>"+obj_name+"</span>"+
+                                         "      <span title='Click to delete item.' data-id='"+obj_id+"' class='deleteMenu ui-icon ui-icon-closethick'>"+
+                                         "          <span></span>"+
+                                         "      </span>"+
+                                         "  </span>"+
+                                         "<div id='menuEdit"+obj_id+"' class='menuEdit'>"+
+                                         "  <p>"+
+                                                    "index.php?p=content&id="+obj_url+
+                                         "  </p>"+
+                                         "</div>"+
+                                         "</div>"+
+                                         "</li>");
+                }
+                else if(obj_type == "category"){
+                    $("#sora-menu").append(" <li class='mjs-nestedSortable-leaf' id='menuItem_"+obj_id+"'>"+
+                                         "<div class='menuDiv ui-sortable-handle'>"+
+                                         "  <span title='Click to show/hide children' class='disclose ui-icon ui-icon-minusthick'>"+
+                                         "      <span></span>"+
+                                         "  </span>"+
+                                         "  <span title='Click to show/hide item editor' data-id='"+obj_id+"' class='expandEditor ui-icon ui-icon-triangle-1-n'>"+
+                                         "      <span></span>"+
+                                         "  </span>"+
+                                         "  <span>"+
+                                         "      <span data-id='"+obj_id+"' class='itemTitle'>"+obj_name+"</span>"+
+                                         "      <span title='Click to delete item.' data-id='"+obj_id+"' class='deleteMenu ui-icon ui-icon-closethick'>"+
+                                         "          <span></span>"+
+                                         "      </span>"+
+                                         "  </span>"+
+                                         "<div id='menuEdit"+obj_id+"' class='menuEdit'>"+
+                                         "  <p>"+
+                                                    "index.php?p=category&id="+ obj_url+
+                                         "  </p>"+
+                                         "</div>"+
+                                         "</div>"+
+                                         "</li>");    
+                }else{
+                    $("#sora-menu").append(" <li class='mjs-nestedSortable-leaf' id='menuItem_"+obj_id+"'>"+
                                          "<div class='menuDiv ui-sortable-handle'>"+
                                          "  <span title='Click to show/hide children' class='disclose ui-icon ui-icon-minusthick'>"+
                                          "      <span></span>"+
@@ -228,8 +287,9 @@
                                          "  </p>"+
                                          "</div>"+
                                          "</div>"+
-                                         "</li>");
-                                         
+                                         "</li>");    
+                }
+                          
                 $("#menu-structure").val("");
                 $("#menu-structure").val($("#sora-menu").html()); 
                 $(".form-control[name=name]").val("");

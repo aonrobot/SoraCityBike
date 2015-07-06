@@ -32,7 +32,7 @@
                 "obj_type" => $_POST['type'],
            ));  
            
-        $obj_name = $database->select("object",array('obj_id','obj_name','obj_url'),array("obj_id"=>$last_obj)); 
+        $obj_name = $database->select("object",array('obj_id','obj_name','obj_url','obj_type'),array("obj_id"=>$last_obj)); 
     
         echo json_encode($obj_name); 
     }
