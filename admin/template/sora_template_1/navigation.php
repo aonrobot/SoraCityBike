@@ -61,7 +61,7 @@
                         </li>
                         
                         <li>
-                            <a href="index.php?p=menu2"><i class="fa fa-bars fa-fw"></i> Menu</a>
+                            <a href="index.php?p=menu"><i class="fa fa-bars fa-fw"></i> Menu</a>
                         </li>
                         
                         <li>

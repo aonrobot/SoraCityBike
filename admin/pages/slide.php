@@ -20,6 +20,16 @@
                                             <input name="name" class="form-control" placeholder="Enter Content Name">
                                         </div>
                                         
+                                        <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
+                                        <div class="col-lg-2 form-group">
+                                            <label>Content</label>
+                                            <select class="form-control" name="item">
+                                                    <?php foreach ($contents as $content) { ?>
+                                                        <option value="<?php echo $content['id'];?>"><?php echo $content['cont_name'];?></option>
+                                                    <?php } ?>                                                 
+                                            </select>
+                                        </div>
+                                        
                                         <div class="col-lg-2 form-group">
                                             <label>Type</label>
                                             <select name="type" class="form-control">
@@ -27,7 +37,7 @@
                                                 <option value="home">Home Slide</option>  
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-lg-2">
                                             <button style="margin-top: 20px;" type="submit" class="btn btn-primary save_btn">Create Slide</button>
                                         </div>
@@ -52,24 +62,32 @@
                                 <table class="table table-striped table-bordered table-hover" id="show-slide">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
                                             <th>Name</th>
+                                            <th>Content</th>
                                             <th>Type</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                            $datas = $database->select("slide","*");           
+                                            $datas = $database->select("slide", array(
+
+                                            "[>]content" => array("slide_id" => "slide_id"),
+
+                                            ),
+
+                                            array('slide.slide_id','cont_name','slide_name','slide_type')
+
+                                            );           
                                             foreach ($datas as $data) {
                                                 $link_edit = "index.php?p=slide&a=edit&id=".$data['slide_id'];
                                     ?>            
                                         <tr>
-                                            <td><?php echo $data['slide_id'];?></td>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['slide_name'];?></a></td>
+                                            <td><?php echo $data['cont_name'];?></td>
                                             <td><?php echo $data['slide_type'];?></td>
                                             <td>
-                                                <a href="query.php?a=del&w=slide&i=<?php echo $data['slide_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
+                                                <a href="query.php?a=del&w=slide&i=<?php echo $data['slide.slide_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
                                             </td>
                                         </tr>
                                         

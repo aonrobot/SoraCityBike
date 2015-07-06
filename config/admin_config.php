@@ -15,6 +15,8 @@
 
 	#Template Path
 	$GLOBALS['D_TEMPLATE'] = 'template/sora_template_1/';
+    
+    #Variable
 
 	// Setup File:
 	error_reporting(0);
