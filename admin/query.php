@@ -63,6 +63,7 @@
                $database->insert("category_relationships", array(
                "cont_id" => $last,
                "cat_id" => $cat,
+               "cont_oder" => 0
                ));  
            }
            
