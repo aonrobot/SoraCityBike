@@ -208,22 +208,27 @@
         ));
     }
     
-    
+   
      if(!strcmp($_GET['a'], 'editvalue2')){
     	$pk= $_POST['pk'];
     	$value= $_POST['value'];
-		$column = $_GET['c'];
 		
-        $database->update("category", array(
-            $column => $value
+        $database->delete("category_relationships", array("cont_id" => $pk));
         
-        ), array("id" => $pk
-        ));
-    }
+        //Insert New
+    
+            foreach ($value as $cat) {
+                
+                $database->insert("category_relationships", array(
+                "cont_id" => $pk,
+                "cat_id" => $cat,
+                ));  
+   	         }
+    	}
     
 
     // (BACKUP CODE) UPDATE CONTENT INFO
-<<<<<<< HEAD
+
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -238,10 +243,7 @@
            header( 'Location: index.php?p=slide' ) ;
            exit();
     }
-=======
 
->>>>>>> 5164e77533d73b64350216ce1ae947183ba10d66
-        
     /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
     
     if(!strcmp($_GET['a'], 'del')){
