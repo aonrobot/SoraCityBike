@@ -61,7 +61,7 @@
    
 
    <?php 
-   $lang_id=$_SESSION['lang_session'];
+   $lang_id=1;
    
 
 
