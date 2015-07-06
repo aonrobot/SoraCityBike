@@ -134,7 +134,10 @@ hr {
      text-decoration: underline;
 }
 
-
+.slide_pic{
+    max-width: 600px;
+    
+}
 
 
 .swiper-container {

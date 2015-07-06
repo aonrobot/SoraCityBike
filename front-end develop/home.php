@@ -1,78 +1,28 @@
 <div class="swiper-container swiper1" style="display:block;">
-
+ <div class="swiper-wrapper">
   <!-- Wrapper for slides -->
-  <div class="swiper-wrapper">
+  <?php 
+   $slide=$database->select("slide_data", ["[>]slide" => ["slide_id" => "slide_id"]],"*",["slide_name[=]" => 'home']);
+  foreach ($slide as $key) {
+    
+  
+  ?>
+ 
+
     <div class="swiper-slide">
      <div class="slidein" > 
-       <img src="img/slide-1.jpg" alt="" > 
+       <img src=<?php echo "'".$key['slide_data_img_url']."'"; ?> alt="" class="slide_pic"> 
        <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;">Simple Caption</h1> 
-          <p style="margin-left:10px; color:white;"> Hello my name is pusit nice to meet you. This is first image.
-          </p>    
+        <h3 style="margin-left:10px;"><?php echo $key['slide_data_name']; ?></h1> 
+          <p style="margin-left:10px; color:white;"> <?php echo $key['slide_data_content']; ?></p>    
         </span>
       </div> 
     </div>
-    <div class="swiper-slide">
-     <div class="slidein" > 
-       <img src="img/slide-2.jpg" alt="" > 
-       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;">Simple Caption1</h1>  
-          <p style="margin-left:10px; color:white;"> This is second image.
-          </p>    
-        </span>
-      </div> 
-    </div>
-    <div class="swiper-slide">
-     <div class="slidein" > 
-       <img src="img/slide-3.jpg" alt="" > 
-       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;">Simple Caption2</h1>  
-          <p style="margin-left:10px; color:white;"> This is third image.
-          </p>    
-        </span>
-      </div> 
-    </div>
-    <div class="swiper-slide">
-     <div class="slidein" > 
-       <img src="img/slide-7.jpg" alt=""  > 
-       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;">Simple Caption2</h1>  
-          <p style="margin-left:10px; color:white;"> This is third image.
-          </p>    
-        </span>
-      </div> 
-    </div>
-    <div class="swiper-slide">
-      <div class="slidein" > 
-       <img src="img/slide-1.jpg" alt="" > 
-       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;">Simple Caption3</h1>  
-          <p style="margin-left:10px; color:white;"> This is 4th image.
-          </p>    
-        </span>
-      </div> 
-    </div>
-    <div class="swiper-slide">
-      <div class="slidein" > 
-       <img src="img/slide-2.jpg" alt="" > 
-       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;">Simple Caption4</h1>  
-          <p style="margin-left:10px; color:white;"> This is 5th image.
-          </p>    
-        </span>
-      </div> 
-    </div>
-    <div class="swiper-slide">
-     <div class="slidein" > 
-       <img src="img/slide-3.jpg" alt="" > 
-       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;">Simple Caption5</h1>  
-          <p style="margin-left:10px; color:white;"> This is 6th image.
-          </p>    
-        </span>
-      </div> 
-    </div>
+
+  <?php } ?>  
   </div>
+
+  
   <!--navigation buttons-->
   <div class="swiper-button-next swiper-button-next1"></div>
   <div class="swiper-button-prev swiper-button-prev1"></div>
@@ -118,7 +68,7 @@
    
 
    <?php 
-   $lang_id=2;
+   $lang_id=1;
    
 
 
