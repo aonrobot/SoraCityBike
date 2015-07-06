@@ -47,7 +47,8 @@
                                         <tr>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
-                                            <td class="center"><a href="#" class="status" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_status" data-title="Edit below here">  <?php echo $data['cont_status'];?> </a></td>
+                                            <td class="center"><a href="#" class="status" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_status" data-title="Edit below here"  >  	
+                                            <?php echo $data['cont_status'];?>	</a></td>
                                             <td class="center"><?php echo $data['cont_type'];?></td>
                                             <td>
                                                 <?php   $cats = $database->select("category_relationships",array("[>]category" => array("cat_id" => "cat_id")),array("cat_name"),array("cont_id" => $data['id'],)); 
@@ -55,7 +56,7 @@
                                                         foreach ($cats as $cat) {
                                                 ?>
                                                 
-                                                    <code><a href="#" class="category" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><?php echo $cat['cat_name'];?></a></code>&nbsp;
+                                                    <code><a href="#" class="category" data-type="checklist" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><?php echo $cat['cat_name'];?></a></code><br>&nbsp;
                                                 
                                                 <?php }?>
                                             </td>
@@ -537,34 +538,65 @@
                 gm.getContent();
             });
             
+        var cat_src = [];
+        
             
+		$.ajax({
+		                                              
+		              url:  'pages/query_category.php',
+		              dataType: 'json',                            
 	
+		                                                          
+		              success: function(data)          
+		              {
+		            	
+						for(i = 0; i < data.length;i++)
+						{
+							
+							var cat_obj = {};
+							cat_obj["value"] = data[i]['cat_id'];
+		                	cat_obj["text"] = data[i]['cat_name'];
+		             
+		                	cat_src.push(cat_obj);
+		                
+		                	
+	    
+						}
+		                
+		                console.log(cat_src);
+							  
+		              
+		              } 
+	            	});
+			 	
            
          $(function() {
 		  $.fn.editable.defaults.mode = 'inline';
 		
 		  $('.name').editable({});
 		  $('.status').editable({
+				
 			  	source: [
-	            {value: 'draft', text: 'draft'},
+	            {text: 'draft', value: 'draft'},
 	            {value: 'future', text: 'future'},
 	            {value: 'pending', text: 'pending'},
 	            {value: 'private', text: 'private'},
 	            {value: 'published', text: 'published'},
 	            {value: 'trash', text: 'trash'}
 	            
+	            
 	        ]
+	        
+	     
 			});
 			
 			
-			
-			 	
+						 	
 			 	
 			 $('.category').editable({
-			 	
-			
-			 
-			 	
+				 	
+				source: cat_src	
+				 	
 			 	
 			 });
 			
@@ -585,12 +617,10 @@
     
  
     
-	<?php if(!strcmp($_GET['a'], 'list')){?> 
     	//DataTable
     	$('#dataTables-example').DataTable({
                     responsive: true
         });
-    <?php }?>
 	
 	
 	

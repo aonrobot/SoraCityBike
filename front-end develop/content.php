@@ -1,5 +1,5 @@
 <?php
- $lang_session=2; 
+ $lang_session=$_GET['lang']; 
  $id=$_GET["id"];
  $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lang_session,"cont_id[=]"=>$id]]);
 ?>
