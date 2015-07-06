@@ -526,9 +526,10 @@
     });
 
     $(document).ready(function(){
-           $("#canvas").gridmanager({
-               debug: 1
-           });
+
+        $("#canvas").gridmanager({
+            debug: 1
+        });
     });
 
     $(document).ready(function(){

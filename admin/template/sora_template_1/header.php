@@ -69,8 +69,8 @@
     	
     	<!-- CKEditor -->
     	
-    	<script src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script> 
-  		<script src="//cdn.ckeditor.com/4.4.3/standard/adapters/jquery.js"></script> 
+    	<script src="components/ckeditor/ckeditor.js"></script> 
+  		<script src="components/ckeditor/adapters/jquery.js"></script> 
     	
     	<!-- Grid Manager JavaScript -->
 		<script src="components/grid_manager/dist/js/jquery.gridmanager.js"></script>
