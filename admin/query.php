@@ -87,6 +87,7 @@
                    $database->insert("category_relationships", array(
                    "cont_id" => $last,
                    "cat_id" => $new_cat,
+                   "cont_order" => '0'
                    )); 
                }
            }
@@ -189,6 +190,7 @@
                 $database->insert("category_relationships", array(
                 "cont_id" => $cont_id,
                 "cat_id" => $new_cat,
+                "cont_order" => '0'
                 )); 
             }
         }
@@ -273,6 +275,7 @@
                     $database->insert("category_relationships", array(
                     "cont_id" => $pk,
                     "cat_id" => $new_cat,
+                    "cont_order" => '0'
                     )); 
                 }
             }

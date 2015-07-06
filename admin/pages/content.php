@@ -6,9 +6,11 @@
 			<div class="col-lg-12">
 				<!-- Start Content -->
 
-				<h1 class="page-header"><i class="fa fa-book fa-1x"></i> Content Management</h1>
+				
 
 				<?php if(!strcmp($_GET['s'], 'show')){?>
+				    
+				<h1 class="page-header"><i class="fa fa-book fa-1x"></i> Content Management</h1>
 
                 <div class="panel panel-default">
                         <div class="panel-heading">
@@ -82,6 +84,8 @@
 				<?php }?>
 
 				<?php if(!strcmp($_GET['s'], 'create')){?>
+				
+				<h1 class="page-header"><a href="index.php?p=content&s=show"><i class="fa fa-book fa-1x"></i></a> Create Content</h1>
 
 				<form method="post" role="form" action="query.php?a=addContent" enctype="multipart/form-data">
 
@@ -255,6 +259,8 @@
 
 
                     ?>
+                    
+                    <h1 class="page-header"><a href="index.php?p=content&s=show"><i class="fa fa-book fa-1x"></i></a> <?php echo $contents[0]['cont_title'];?></h1>
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
