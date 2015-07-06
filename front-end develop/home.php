@@ -78,6 +78,7 @@
 
     "[>]content_translation" => "cont_id"
 
+   // "[>]content" => "id"
     ),
 
    '*',
@@ -86,22 +87,18 @@
 
    );
 
-   // foreach ($datas as $key) {
-   //   echo $key['cont_id'].$key['cont_title'].'+';
-   // }   Check output
+    foreach ($datas as $key) {
+      echo $key['cont_id'].$key['cont_title'].'+';
+      $a=$database->select("content",'*',["id[=]"=>$key['cont_id']]);
+    }
+      echo $a[0]['cont_author'];
    ?>
    
-
-
-
-
-
-
 
    <?php foreach ($datas as $data ) { ?>
 
      <div class="col-md-6 category-box">
-      <img src="img/slide-3.jpg" class="index-img"/>
+      <img src= <?php echo "'".$data['cont_thumbnail']."'";?> class="index-img"/>
       <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
       <p class="pero-font text-content">
         <?php echo $data["cont_description"]; ?> 
