@@ -268,6 +268,18 @@
 	        ));
 	    }
     
+	if(!strcmp($_GET['a'], 'editvalueslide')){
+	    	$pk= $_POST['pk'];
+	    	$value= $_POST['value'];
+			$column = $_GET['c'];
+			
+	        $database->update("slide", array(
+	            $column => $value
+	        
+	        ), array("slide_id" => $pk
+	        ));
+	    }
+    
 	
     
 	

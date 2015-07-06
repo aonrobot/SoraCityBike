@@ -82,11 +82,13 @@
                                             );           
                                             foreach ($datas as $data) {
                                                 $link_edit = "index.php?p=slide&a=edit&id=".$data['slide_id'];
-                                    ?>            
+                                    ?>       
+                                    
+                  <!-- bite fixx herreeeeeeeeeeeeeeeeeeeee --->                       
                                         <tr>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['slide_name'];?></a></td>
                                             <td><?php echo $data['cont_name'];?></td>
-                                            <td><?php echo $data['slide_type'];?></td>
+                                            <td><a href="#" class="slidetype" data-type="select" data-pk="<?php echo $data['slide_id'];?>" data-url="query.php?a=editvalueslide&c=slide_type" data-title="Edit below here"  ><?php echo $data['slide_type'];?></a></td>
                                             <td>
                                                 <a href="query.php?a=del&w=slide&i=<?php echo $data['slide_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
                                             </td>
@@ -603,5 +605,32 @@
         });
         
    <?php }?>
-    
+   
+   
+   $(document).ready(function(){
+   	     $(function() {
+		 $.fn.editable.defaults.mode = 'inline';
+		
+		 $('.slidetype').editable({
+		 	
+		 	source: [ 
+		 		{value: 'content', text: 'content'},
+	            {value: 'video', text: 'video'},
+	            {value: 'home', text: 'home'}
+	            
+	            
+	        ]
+		 	
+		 	
+			 });
+    	});
+			
+			
+	});
+		
+            
+
 </script>
+
+
+<script src="components/Editablecss/js/bootstrap-editable.js"></script>
