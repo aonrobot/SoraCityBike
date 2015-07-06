@@ -545,7 +545,7 @@
 		                                              
 		              url:  'pages/query_category.php',
 		              dataType: 'json',                            
-	
+					  
 		                                                          
 		              success: function(data)          
 		              {
