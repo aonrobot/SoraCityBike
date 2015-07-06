@@ -38,6 +38,7 @@
                     }
             }
             echo  $_SESSION['lang_session'];
+            
 
 
 

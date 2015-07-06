@@ -61,23 +61,19 @@
    
 
    <?php 
-   $lang_id=1;
+   $lang_id=$_SESSION['lang_session'];
    
 
 
-   $datas = $database->select("category_relationships", array(
+   $datas = $database->select("category_relationships", 
 
-    "[>]category" => array("cat_id" => "cat_id"),
-
-    "[>]content_translation" => "cont_id"
+    array("[>]category" => array("cat_id" => "cat_id"),"[>]content_translation" => "cont_id"),
 
    // "[>]content" => "id"
-    ),
-
    '*',
 
+   //array("cat_type[=]"=>'story'));
    array("AND" => array("cat_type[=]"=>'story', "lang_id[=]"=>$lang_id))
-
    );
 
     //foreach ($datas as $key) {
