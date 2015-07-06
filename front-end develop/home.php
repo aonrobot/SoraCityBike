@@ -2,8 +2,8 @@
  <div class="swiper-wrapper">
   <!-- Wrapper for slides -->
   <?php 
-   $slide=$database->select("slide_data", ["[>]slide" => ["slide_id" => "slide_id"]],"*",["slide_name[=]" => 'home']);
-  foreach ($slide as $key) {
+   $slide=$database->select("slide_data", ["[>]slide" => ["slide_id" => "slide_id"]],"*",["slide_type[=]" => 'home']);
+  foreach ($slide as $a) {
     
   
   ?>
@@ -11,11 +11,11 @@
 
     <div class="swiper-slide">
      <div class="slidein" > 
-       <img src=<?php echo "'".$key['slide_data_img_url']."'"; ?> alt="" class="slide_pic"> 
-       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;"><?php echo $key['slide_data_name']; ?></h1> 
-          <p style="margin-left:10px; color:white;"> <?php echo $key['slide_data_content']; ?></p>    
-        </span>
+       <a href=<?php echo "'".$a['slide_data_img_link']."'"; ?>><img src=<?php echo "'".$a['slide_data_img_url']."'"; ?> alt="" class="swiper-slide"> </a>
+       <a href=<?php echo "'".$a['slide_data_content_link']."'"; ?>><span class="caption simple-caption" >
+        <h3 style="margin-left:10px;"><?php echo $a['slide_data_name']; ?></h3> 
+          <p style="margin-left:10px; color:white;"> <?php echo $a['slide_data_content']; ?></p>    
+        </span></a>
       </div> 
     </div>
 
@@ -33,21 +33,14 @@
     <div class="swiper-container swiper2" >
       <!-- Wrapper for slides -->
       <div class="swiper-wrapper">
+      <?php 
+      $slide_video = $database->select("slide_data",["[>]slide" => ["slide_id" => "slide_id"]],["slide_data_id","slide_data_name","slide_data_img_url"],["slide_type[=]"=>"video"]);
+      foreach ($slide_video as $key ) {
+      ?>
         <div class="bg-gray swiper-slide" >
-          <iframe src="http://player.vimeo.com/video/78083533?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          <iframe src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
-        <div class="bg-gray swiper-slide" >
-         <iframe src="http://player.vimeo.com/video/78083533?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-       </div>
-       <div class="bg-gray swiper-slide" >
-        <iframe src="http://player.vimeo.com/video/33205292?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>    
-      </div>
-      <div class="bg-gray swiper-slide" >
-        <iframe src="http://player.vimeo.com/video/71142382?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>   
-      </div>
-      <div class="bg-gray swiper-slide" >
-        <iframe src="http://player.vimeo.com/video/71377855?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-      </div>
+        <?php } ?>
     </div>
     <div class="swiper-button-next swiper-button-next2"></div>
     <div class="swiper-button-prev swiper-button-prev2"></div>
