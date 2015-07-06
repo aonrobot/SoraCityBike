@@ -33,21 +33,14 @@
     <div class="swiper-container swiper2" >
       <!-- Wrapper for slides -->
       <div class="swiper-wrapper">
+      <?php 
+      $slide_video = $database->select("slide_data",["[>]slide" => ["slide_id" => "slide_id"]],["slide_data_id","slide_data_name","slide_data_img_url"],["slide_type[=]"=>"video"]);
+      foreach ($slide_video as $key ) {
+      ?>
         <div class="bg-gray swiper-slide" >
-          <iframe src="http://player.vimeo.com/video/78083533?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          <iframe src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
-        <div class="bg-gray swiper-slide" >
-         <iframe src="http://player.vimeo.com/video/78083533?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-       </div>
-       <div class="bg-gray swiper-slide" >
-        <iframe src="http://player.vimeo.com/video/33205292?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>    
-      </div>
-      <div class="bg-gray swiper-slide" >
-        <iframe src="http://player.vimeo.com/video/71142382?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>   
-      </div>
-      <div class="bg-gray swiper-slide" >
-        <iframe src="http://player.vimeo.com/video/71377855?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f" width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-      </div>
+        <?php } ?>
     </div>
     <div class="swiper-button-next swiper-button-next2"></div>
     <div class="swiper-button-prev swiper-button-prev2"></div>
