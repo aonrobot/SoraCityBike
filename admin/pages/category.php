@@ -95,17 +95,17 @@
                  <!-- /.panel -->
 
                 <?php }?>
-                
-                
+
+
                 <?php if(!strcmp($_GET['a'], 'edit')){?>
-                    
+
                     <?php
-                            //Important Parameter 
-                            
-                            $cat_id = $_GET['id'];      // Slide Id                            
-                            
+                            //Important Parameter
+
+                            $cat_id = $_GET['id'];      // Slide Id
+
                     ?>
-                    
+
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <b><i class="fa fa-star fa-1x" style="color: #f1c40f;"></i> Favorite Content</b>
@@ -117,6 +117,7 @@
                                     <thead>
                                         <tr>
                                             <th>Un Favorite</th>
+
                                             <th>Title</th>
                                             <th>Name</th>
 
@@ -131,15 +132,15 @@
                                             $datas = $database->select("content", array(
 
                                             "[><]content_translation" => array("id" => "cont_id"),
-                                            
+
                                             "[><]category_relationships" => "cont_id"
 
-                                            ), 
-                                            
-                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified'),
-                                            
+                                            ),
+
+                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_order'),
+
                                             array("AND" => array("cat_id" => $cat_id, "cont_order" => '-1'))
-                                            
+
                                             );
 
                                             foreach ($datas as $data) {
@@ -159,6 +160,7 @@
                                                   $("#em-star").addClass("fa-star").removeClass("fa-star-o")
                                                 })
                                             </script>
+																						
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><?php echo $data['cont_name'];?></td>
 
@@ -188,7 +190,7 @@
                           <!-- /.panel-body -->
                     </div>
                      <!-- /.panel -->
-                     
+
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <b><i class="fa fa-book fa-1x" style="color: #3498db;"></i> All Content</b>
@@ -200,6 +202,7 @@
                                     <thead>
                                         <tr>
                                             <th>Favorite</th>
+																						<th>Ordering</th>
                                             <th>Title</th>
                                             <th>Name</th>
 
@@ -214,15 +217,15 @@
                                             $datas = $database->select("content", array(
 
                                             "[><]content_translation" => array("id" => "cont_id"),
-                                            
+
                                             "[><]category_relationships" => "cont_id"
 
-                                            ), 
-                                            
-                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified'),
-                                            
+                                            ),
+
+                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_order'),
+
                                             array("AND" => array("cat_id" => $cat_id, "cont_order[!]" => '-1'))
-                                            
+
                                             );
 
                                             foreach ($datas as $data) {
@@ -242,6 +245,7 @@
                                                   $("#em-star").addClass("fa-star-o").removeClass("fa-star")
                                                 })
                                             </script>
+																						<td><?php echo $data['cont_order'];?></td>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><?php echo $data['cont_name'];?></td>
 
@@ -271,7 +275,7 @@
                           <!-- /.panel-body -->
                     </div>
                      <!-- /.panel -->
-                    
+
                 <?php }?>
 
 
