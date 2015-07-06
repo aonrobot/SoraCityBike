@@ -29,7 +29,14 @@
 	}
 	
 	# Page Setup:
-	setcookie("lang_session",1,time()+1000);
+
+	$default_l=strtoupper (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
+	session_start();
+	$_SESSION['def_lang'] = $default_l;
+		if(empty($_SESSION['lang_session']))
+		$_SESSION['lang_session'] = 1;
+
+
 	
 	# User Setup:
 
