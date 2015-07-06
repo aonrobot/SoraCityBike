@@ -19,13 +19,12 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
 
     <?php 
     foreach ($slide as $key) { 
-      $i=1;
-      echo '<div class="slide_pic swiper-slide" > <img src='.$key['slide_data_img_url'].' onClick="showImage(id);" alt="" id='.$key['slide_data_id'].'> </div>';
-      $i=$i+1; }
+      echo '<div class="swiper-slide" > <img src='.$key['slide_data_img_url'].' onClick="showImage(id);" alt="" id='.$key['slide_data_id'].'> </div>';
+      }
       ?>
     </div>
 
-  </div>
+  
 
   <!--navigation buttons-->
   <div class="swiper-button-next swiper-button-next3"></div>

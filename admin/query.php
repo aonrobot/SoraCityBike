@@ -56,8 +56,8 @@
            
            //(BACKUP CODE) Get All id of Language
 
-           //Category Insert
-           $category = $_POST['category'];
+           //Category Insert Old
+           /*$category = $_POST['category'];
            foreach ($category as $cat) {
                 
                $database->insert("category_relationships", array(
@@ -65,6 +65,31 @@
                "cat_id" => $cat,
                "cont_oder" => 0
                ));  
+           }*/
+           
+           //Insert Cat
+           
+           $new_cats = $_POST['category'];
+            
+           $old_cats = $database->select("category_relationships","cat_id",array("cont_id" => $last));
+            
+      
+           foreach ($old_cats as $old_cat) {
+               if(!in_array($old_cat['cat_id'], $new_cats)){
+                   $database->delete("category_relationships", array(
+                       "AND" => array("cont_id" => $last, "cat_id" => $old_cat['cat_id'])
+                   ));
+               }
+           }
+   
+           foreach ($new_cats as $new_cat) {
+               if(!in_array($new_cat, $old_cats)){
+                   $database->insert("category_relationships", array(
+                   "cont_id" => $last,
+                   "cat_id" => $new_cat,
+                   "cont_order" => '0'
+                   )); 
+               }
            }
            
            header( 'Location: index.php?p=content&s=show' ) ;
@@ -165,6 +190,7 @@
                 $database->insert("category_relationships", array(
                 "cont_id" => $cont_id,
                 "cat_id" => $new_cat,
+                "cont_order" => '0'
                 )); 
             }
         }
@@ -228,20 +254,31 @@
     
    
      if(!strcmp($_GET['a'], 'editvalue2')){
-    	$pk= $_POST['pk'];
-    	$value= $_POST['value'];
-		
-        $database->delete("category_relationships", array("cont_id" => $pk));
-        
-        //Insert New
-    
-            foreach ($value as $cat) {
+        	$pk= $_POST['pk'];
+        	$value= $_POST['value'];
+
+            $new_cats = $value;
                 
-                $database->insert("category_relationships", array(
-                "cont_id" => $pk,
-                "cat_id" => $cat,
-                ));  
-   	         }
+            $old_cats = $database->select("category_relationships","cat_id",array("cont_id" => $pk));
+                
+          
+           foreach ($old_cats as $old_cat) {
+                if(!in_array($old_cat['cat_id'], $new_cats)){
+                    $database->delete("category_relationships", array(
+                        "AND" => array("cont_id" => $pk, "cat_id" => $old_cat['cat_id'])
+                    ));
+                }
+            }
+       
+            foreach ($new_cats as $new_cat) {
+                if(!in_array($new_cat, $old_cats)){
+                    $database->insert("category_relationships", array(
+                    "cont_id" => $pk,
+                    "cat_id" => $new_cat,
+                    "cont_order" => '0'
+                    )); 
+                }
+            }
     	}
     
 		if(!strcmp($_GET['a'], 'editvaluelang')){
@@ -357,7 +394,7 @@
                 $database->delete("content_translation", array("cont_id" => $_GET['i'])); 
                 $database->delete("category_relationships", array("cont_id" => $_GET['i']));
                 $database->delete("content", array("id" => $_GET['i']));
-                
+
                 header( 'Location: index.php?p=content&s=show' ) ;
                 exit();               
                 break;

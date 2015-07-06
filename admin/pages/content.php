@@ -6,9 +6,11 @@
 			<div class="col-lg-12">
 				<!-- Start Content -->
 
-				<h1 class="page-header"><i class="fa fa-book fa-1x"></i> Content Management</h1>
+				
 
 				<?php if(!strcmp($_GET['s'], 'show')){?>
+				    
+				<h1 class="page-header"><i class="fa fa-book fa-1x"></i> Content Management</h1>
 
                 <div class="panel panel-default">
                         <div class="panel-heading">
@@ -50,20 +52,21 @@
                                             <td class="center"><a href="#" class="status" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_status" data-title="Edit below here"  >  	
                                             <?php echo $data['cont_status'];?>	</a></td>
                                             <td class="center"><?php echo $data['cont_type'];?></td>
-                                            <td>
-                                                <?php   $cats = $database->select("category_relationships",array("[>]category" => array("cat_id" => "cat_id")),array("cat_name"),array("cont_id" => $data['id'],));
-
+                                            <?php   
+                                                        $cats = $database->select("category_relationships",array("[>]category" => array("cat_id" => "cat_id")),array("cat_name"),array("cont_id" => $data['id'],));
+                                                        $str_cat = "";
+                                                                                                                
                                                         foreach ($cats as $cat) {
-                                                ?>
+                                                            $str_cat = $str_cat.$cat['cat_name'].' ';
+                                                        }
+                                            ?>
                                                 
-                                                    <code><a href="#" class="category" data-type="checklist" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><?php echo $cat['cat_name'];?></a></code><br>&nbsp;
-                                                
-
-                                                <?php }?>
+                                            <td>
+                                                 <code><a href="#" class="category" data-type="checklist" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><?php echo $str_cat;?></a></code><br>&nbsp;
                                             </td>
                                             <td class="center"><?php echo $data['cont_modified'];?></td>
                                             <td>
-                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
 
@@ -81,6 +84,8 @@
 				<?php }?>
 
 				<?php if(!strcmp($_GET['s'], 'create')){?>
+				
+				<h1 class="page-header"><a href="index.php?p=content&s=show"><i class="fa fa-book fa-1x"></i></a> Create Content</h1>
 
 				<form method="post" role="form" action="query.php?a=addContent" enctype="multipart/form-data">
 
@@ -254,6 +259,8 @@
 
 
                     ?>
+                    
+                    <h1 class="page-header"><a href="index.php?p=content&s=show"><i class="fa fa-book fa-1x"></i></a> <?php echo $contents[0]['cont_title'];?></h1>
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
