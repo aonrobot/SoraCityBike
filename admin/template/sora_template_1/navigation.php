@@ -39,10 +39,6 @@
                         <li>
                             <a href="index.php?p=dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-                        
-                        <li>
-                            <a href="index.php?p=homepage"><i class="fa fa-home fa-fw"></i> Home Page</a>
-                        </li>
 
                         <li>
                             <a href="index.php?p=category"><i class="fa fa-cubes fa-fw"></i> Category</a>
