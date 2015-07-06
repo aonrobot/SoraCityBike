@@ -226,10 +226,37 @@
    	         }
     	}
     
+		if(!strcmp($_GET['a'], 'editvaluelang')){
+	    	$pk= $_POST['pk'];
+	    	$value= $_POST['value'];
+			$column = $_GET['c'];
+			
+	        $database->update("language", array(
+	            $column => $value
+	        
+	        ), array("lang_id" => $pk
+	        ));
+	    }
+		
+		if(!strcmp($_GET['a'], 'editvaluecat')){
+	    	$pk= $_POST['pk'];
+	    	$value= $_POST['value'];
+			$column = $_GET['c'];
+			
+	        $database->update("category", array(
+	            $column => $value
+	        
+	        ), array("cat_id" => $pk
+	        ));
+	    }
+    
+	
+    
+	
+	
 
     // (BACKUP CODE) UPDATE CONTENT INFO
-<<<<<<< HEAD
-=======
+
     
     if(!strcmp($_GET['a'], 'addFav')){
         
@@ -255,7 +282,7 @@
         header( 'Location: index.php?p=category&a=edit&id='.$_GET['edit_id'] ) ;
         exit();
     }
->>>>>>> c340bf6915696b7858bb9b3a6b766a607107a76c
+
 
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -272,10 +299,7 @@
            exit();
     }
 
-<<<<<<< HEAD
-=======
-        
->>>>>>> c340bf6915696b7858bb9b3a6b766a607107a76c
+
     /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
     
     if(!strcmp($_GET['a'], 'del')){

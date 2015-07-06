@@ -74,12 +74,13 @@
                                             foreach ($datas as $data) {
                                             $link_edit = "index.php?p=category&a=edit&id=".$data['cat_id'];
                                     ?>
+         <!-- bite edit here ------------------------------------------------------------------->
                                         <tr>
                                             <td><?php echo $data['cat_id'];?></td>
-                                            <td><a href="<?php echo $link_edit?>"><?php echo $data['cat_name'];?></a></td>
-                                            <td><?php echo $data['cat_type'];?></td>
+                                            <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_name" data-title="Edit below here" ><?php echo $data['cat_name'];?></a></td>
+                                            <td><a href="#" class="type" data-type="select" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_type" data-title="Edit below here" ><?php echo $data['cat_type'];?><a></td>
                                             <td>
-                                                <a href="#" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i>
+                                                
                                                 <a href="query.php?a=del&w=category&i=<?php echo $data['cat_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
@@ -301,4 +302,34 @@
     });
 
 
+	$(document).ready(function(){
+		$(function() {
+		  $.fn.editable.defaults.mode = 'inline';
+		
+		  $('.name').editable({});
+		  $('.type').editable({
+				
+			  	source: [
+	            
+	            {value: 'Category', text: 'Category'},
+	            {value: 'Story', text: 'Story'},
+	            {value: 'News', text: 'News'}
+	            
+	            
+	        ]
+	        
+	     
+			});
+
+ 		});
+ 			
+ 	 });
+			
+			
+
 </script>
+
+
+
+
+<script src="components/Editablecss/js/bootstrap-editable.js"></script>

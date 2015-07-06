@@ -487,12 +487,13 @@
                                                 $datas = $database->select("language","*");
                                                 foreach ($datas as $data) {
                                         ?>
+                 <!-- Bite did hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
                                             <tr>
                                                 <td><?php echo $data['lang_id'];?></td>
-                                                <td><?php echo $data['lang_code'];?></td>
-                                                <td><?php echo $data['lang_name'];?></td>
+                                                <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['lang_id'];?>" data-url="query.php?a=editvaluelang&c=lang_code" data-title="Edit below here" ><?php echo $data['lang_code'];?></a></td>
+                                                <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['lang_id'];?>" data-url="query.php?a=editvaluelang&c=lang_name" data-title="Edit below here" ><?php echo $data['lang_name'];?></a></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i>
+                                                    
                                                     <?php if($data['lang_id']){?>
                                                     <a href="query.php?a=del&w=lang&i=<?php echo $data['lang_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
                                                     <?php };?>
