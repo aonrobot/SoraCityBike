@@ -20,7 +20,7 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
     <?php 
     foreach ($slide as $key) { 
       $i=1;
-      echo '<div class="swiper-slide slide_pic" > <img src='.$key['slide_data_img_url'].' onClick="showImage(id);" alt="" id='.$key['slide_data_id'].'> </div>';
+      echo '<div class="slide_pic swiper-slide" > <img src='.$key['slide_data_img_url'].' onClick="showImage(id);" alt="" id='.$key['slide_data_id'].'> </div>';
       $i=$i+1; }
       ?>
     </div>
@@ -43,7 +43,7 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
 
  function showImage(a) {
 
-  alert(a);
+  //alert(a);
   var formData = {
     'id'         : a
   };
@@ -55,7 +55,7 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
    data: formData,
 
    success: function(data){
-    alert(data[0]);
+    //(data[0]);
     document.getElementById('largeImg').src = data[0];
     showLargeImagePanel();
     unselectAll();

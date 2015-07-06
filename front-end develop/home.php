@@ -61,7 +61,7 @@
 <hr style="max-width:70%;margin-top:2em;">
 
 <div class="content row">
- <div class="container con-content" align="center">
+ <div class="container head-content" align="center">
   <h4 class="pero-font large-font underline ">stories</h4>
   <p class="pero-font">Kinfolk is a slow lifestyle magazine that explores ways for readers to simplify their lives<br>
    cultivate community and spend more time with their friends and family.</p>
@@ -87,18 +87,21 @@
 
    );
 
-    foreach ($datas as $key) {
-      echo $key['cont_id'].$key['cont_title'].'+';
-      $a=$database->select("content",'*',["id[=]"=>$key['cont_id']]);
-    }
-      echo $a[0]['cont_author'];
+    //foreach ($datas as $key) {
+    // echo $key['cont_id'].$key['cont_title'].'+';
+      
+    //}
+      
    ?>
    
 
-   <?php foreach ($datas as $data ) { ?>
+   <?php foreach ($datas as $data ) {
+    $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
+      
+    ?>
 
      <div class="col-md-6 category-box">
-      <img src= <?php echo "'".$data['cont_thumbnail']."'";?> class="index-img"/>
+      <img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/>
       <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
       <p class="pero-font text-content">
         <?php echo $data["cont_description"]; ?> 
