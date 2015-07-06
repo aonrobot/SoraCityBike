@@ -14,7 +14,7 @@
 }
 @font-face { 
     font-family: pero; 
-    src: url(/fonts/Pero-Bold.otf ) format("truetype"); 
+    src: url(../fonts/Pero-Regular.otf ) format("truetype"); 
 }
 b{
     font-weight: 600;
@@ -35,12 +35,14 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    font-family: pero , verdana, helvetica, sans-serif;
+    font-weight: 300;
     letter-spacing: 1px;
 }
 
 p {
+    font-family: pero , verdana, helvetica, sans-serif;
+    font-weight: 300;
     font-size: 1.25em;
     line-height: 1.6;
     color: #000;
