@@ -288,6 +288,7 @@
          * Get Content
          * @method initControls
          * @returns null
+         * By MigrateToTheMoon
         */
 		gm.getContent = function() {
 			
@@ -1545,7 +1546,7 @@
 
         // Path to CK custom comfiguration
         ckeditor: {
-              customConfig: ""
+              customConfig : ""
         }
     };
 
