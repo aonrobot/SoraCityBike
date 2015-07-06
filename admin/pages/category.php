@@ -203,7 +203,7 @@
                                     <thead>
                                         <tr>
                                             <th>Favorite</th>
-																						<th>Ordering</th>
+											<th>Ordering</th>
                                             <th>Title</th>
                                             <th>Name</th>
 
@@ -228,6 +228,8 @@
                                             array("AND" => array("cat_id" => $cat_id, "cont_order[!]" => '-1'))
 
                                             );
+                                            
+                                            var_dump($database->error());
 
                                             foreach ($datas as $data) {
 
@@ -246,7 +248,7 @@
                                                   $("#em-star").addClass("fa-star-o").removeClass("fa-star")
                                                 })
                                             </script>
-																						<td><?php echo $data['cont_order'];?></td>
+											<td><?php echo $data['cont_order'];?></td>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><?php echo $data['cont_name'];?></td>
 

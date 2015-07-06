@@ -108,7 +108,7 @@
 
 </div>
 
- <hr style="max-width:70%;margin-top:2em;">
+<hr style="max-width:70%;margin-top:2em;">
 
 <div class="content row">
  <div class="container con-content" align="center">
@@ -119,24 +119,50 @@
 
    <?php 
    $lang_id=2;
-   $datas = $database->select("content_translation","*",["lang_id[=]"=>$lang_id]);
-    ?>
    
+
+
+   $datas = $database->select("category_relationships", array(
+
+    "[>]category" => array("cat_id" => "cat_id"),
+
+    "[>]content_translation" => "cont_id"
+
+    ),
+
+   '*',
+
+   array("AND" => array("cat_type[=]"=>'story', "lang_id[=]"=>$lang_id))
+
+   );
+
+   // foreach ($datas as $key) {
+   //   echo $key['cont_id'].$key['cont_title'].'+';
+   // }   Check output
+   ?>
+   
+
+
+
+
+
+
+
    <?php foreach ($datas as $data ) { ?>
 
-   
-   <div class="col-md-6 category-box">
-    <img src="img/slide-3.jpg" class="index-img"/>
-    <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
-    <p class="pero-font text-content">
-    <?php echo $data["cont_description"]; ?> 
-    <?php echo '<a href="index.php?p=content&id='.$data["cont_id"].'"><b>READ MORE</b></a>'; ?>
-    </p>
+     <div class="col-md-6 category-box">
+      <img src="img/slide-3.jpg" class="index-img"/>
+      <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
+      <p class="pero-font text-content">
+        <?php echo $data["cont_description"]; ?> 
+        <?php echo '<a href="index.php?p=content&id='.$data["cont_id"].'"><b>READ MORE</b></a>'; ?>
+      </p>
     </div>
-   <?php } ?>
+
+    <?php } ?>
 
 
-</div> 
+  </div> 
 
 
 </div>
