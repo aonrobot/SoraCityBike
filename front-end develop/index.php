@@ -20,7 +20,7 @@ if ($_SESSION['lang_session'] == 1) {
 <?php include('../config/config.php'); ?>
 <?php include('header.php'); ?>
 
-<hr style="max-width:70%;">
+
 <?php 
 if ($page!='home') {
  include('slide.php');

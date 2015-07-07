@@ -47,7 +47,7 @@
   </div>
 </div>
 
-<button class="bg-gray hidden-btn pero-font btn btn-default"  onclick="toggle_visibility('hideMe');">more slide</button> 
+<button class="bg-gray pero-font btn btn-default" onclick="toggle_visibility('hideMe');">show films <span><img id="video_btn" class="dropdown-span" src="img/down-btn.png" /></span></button> 
 
 </div>
 
@@ -89,7 +89,7 @@
       
     ?>
 
-     <div class="col-md-6 category-box">
+     <div class="col-md-4 category-box">
       <img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/>
       <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
       <p class="pero-font text-content">
@@ -105,3 +105,5 @@
 
 
 </div>
+
+
