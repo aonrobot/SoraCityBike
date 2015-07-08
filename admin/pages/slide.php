@@ -3,9 +3,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><i class="fa fa-sliders fa-1x"></i> Slide</h1>    
+                    
                 
-                <?php if(strcmp($_GET['a'], 'edit')){?>                 
+                <?php if(strcmp($_GET['a'], 'edit')){?>
+                <h1 class="page-header"><i class="fa fa-sliders fa-1x"></i> Slide</h1>                 
                 <div class="panel panel-default">
                         <div class="panel-heading">
                             <b>Create New Slide</b>
@@ -113,7 +114,7 @@
                             //Important Parameter 
                             
                             $slide_id = $_GET['id'];      // Slide Id
-                            $slide_type = $database->select("slide","slide_type",array("slide_id" => $slide_id));  
+                            $slide_type = $database->select("slide",array("slide_type","slide_name"),array("slide_id" => $slide_id));  
                             
                             //Check This Slide Id has Content Data?
                             $chk_cont_meta = $database->count("content_meta", array("meta_key" => 'slide:'.$slide_id));
@@ -121,8 +122,9 @@
                                         
                     ?>
                     
-                    <?php if(!strcmp($slide_type[0], 'content') || !strcmp($slide_type[0], 'home')){?>
-                    
+                    <?php if(!strcmp($slide_type[0]['slide_type'], 'content') || !strcmp($slide_type[0]['slide_type'], 'home')){?>
+                        
+                    <h1 class="page-header"><a href="index.php?p=slide"><i class="fa fa-sliders fa-1x"></i></a> <?php echo $slide_type[0]['slide_name'];?></h1>
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <b>Add Image</b>
@@ -212,8 +214,9 @@
                     
                     <?php }?>
                       
-                    <?php if(!strcmp($slide_type[0], 'video')){?>
-                    
+                    <?php if(!strcmp($slide_type[0]['slide_type'], 'video')){?>
+                        
+                    <h1 class="page-header"><a href="index.php?p=slide"><i class="fa fa-sliders fa-1x"></i></a> <?php echo $slide_type[0]['slide_name'];?></h1>
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <b>Add Video</b>
@@ -546,8 +549,10 @@
                      data: formData,          
                      success: function(error){alert("Delete Success");} 
                 });
-                
+
                 $('#menuItem_'+id).remove();
+                
+                $('#toArray').trigger('click');
             });
                 
             $('#serialize').click(function(){
