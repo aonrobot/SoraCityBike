@@ -108,6 +108,10 @@
 
                     ?>
                     <h1 class="page-header"><a href="index.php?p=category"><i class="fa fa-cubes fa-1x"></i></a> <?php echo $cat_name[0];?></h1>
+                    
+                    
+                    <!-- ===================================== Favorite Content ========================================== -->
+                    
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <b><i class="fa fa-star fa-1x" style="color: #f1c40f;"></i> Favorite Content</b>
@@ -153,7 +157,7 @@
                                                     $link_edit = "index.php?p=content&a=edit&id=".$data['id']."&lang=".$data['cont_lang_id'];
                                     ?>
                                         <tr>
-                                            <td><a href="query.php?a=delFav&i=<?php echo $data['id'];?>&edit_id=<?php echo $cat_id;?>" id="em-btn" class="btn btn-warning btn-circle btn-lg"><i id="em-star" class="fa fa-star fa-1x" style="color: #FFF0F0;"></i></td>
+                                            <td><a href="query.php?a=delFav&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" id="em-btn" class="btn btn-warning btn-circle btn-lg"><i id="em-star" class="fa fa-star fa-1x" style="color: #FFF0F0;"></i></td>
                                             <script>
                                                 $("#em-btn").mouseover(function(){
                                                   $("#em-star").addClass("fa-star-o").removeClass("fa-star")
@@ -179,7 +183,7 @@
                                             </td>
 
                                             <td>
-                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
 
@@ -192,6 +196,9 @@
                           <!-- /.panel-body -->
                     </div>
                      <!-- /.panel -->
+                     
+                     
+                     <!-- ===================================== Content ========================================== -->
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -239,7 +246,7 @@
                                                     $link_edit = "index.php?p=content&a=edit&id=".$data['id']."&lang=".$data['cont_lang_id'];
                                     ?>
                                         <tr>
-                                            <td><a href="query.php?a=addFav&i=<?php echo $data['id'];?>&edit_id=<?php echo $cat_id;?>" id="em-btn" class="btn btn-warning btn-circle btn-lg"><i id="em-star" class="fa fa-star-o fa-1x" style="color: #FFF0F0;"></i></td>
+                                            <td><a href="query.php?a=addFav&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" id="em-btn" class="btn btn-warning btn-circle btn-lg"><i id="em-star" class="fa fa-star-o fa-1x" style="color: #FFF0F0;"></i></td>
                                             <script>
                                                 $("#em-btn").mouseover(function(){
                                                   $("#em-star").addClass("fa-star").removeClass("fa-star-o")
@@ -265,7 +272,7 @@
                                             </td>
 
                                             <td>
-                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
 

@@ -25,6 +25,11 @@
                 	           $string = "https://vimeo.com/113560451";
                                $string = explode("https://vimeo.com/",$string);
                                echo $string[1];
+                               
+                               echo "<br><br>========================= ordering ========================<br><br>";
+                               $max_oder = $database->max("category_relationships", "cont_order", array("cat_id" => 2));
+                               if(!strcmp($max_oder, '')) echo "Not Have Content";
+                               else echo $max_oder;
                 	       
                 	?>
                 </div>

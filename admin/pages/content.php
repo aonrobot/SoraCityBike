@@ -112,12 +112,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Thumbnail</label>
-                                            <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
-                                            <input name="thumb" type="hidden">
-                                        </div>
-
-                                        <div class="form-group">
                                             <label>Name</label>
                                             <input name="name" class="form-control" placeholder="Enter Content Name">
                                         </div>
@@ -164,6 +158,12 @@
                                             </div>
                                             <?php }?>
 
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Thumbnail</label>
+                                            <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
+                                            <input name="thumb" type="hidden">
                                         </div>
 
                                 </div>
@@ -427,7 +427,6 @@
                                     </div>
                                     <!-- /.col-lg-12 (nested) -->
 
-
                                 </div>
                                 <!-- /.row (nested) -->
                             </div>
@@ -528,104 +527,99 @@
 </div>
 <!-- / #page-wrapper -->
 
-<script type="text/javascript">
+<script>
 
+    <?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
+        //DataTable
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    <?php }?>    
+    
+    $(document).ready(function() {
+
+    $("#canvas").gridmanager({
+        debug : 1
+    });
+    
     $("#input-700").fileinput({
-        uploadUrl: "http://localhost/uploads/thumbnail/",
-        maxFileCount: 1
+        uploadUrl : "http://localhost/uploads/thumbnail/",
+        maxFileCount : 1
     });
 
-    $(document).ready(function(){
-
-        $("#canvas").gridmanager({
-            debug: 1
+    });
+    
+    $(document).ready(function() {
+        var gm = jQuery("#canvas").data('gridmanager');
+        $(".save_btn").on("click", function(e) {
+            gm.getContent();
+    
         });
-    });
-
-    $(document).ready(function(){
-            var gm = jQuery("#canvas").data('gridmanager');
-            $(".save_btn").on("click", function(e){
-                gm.getContent();
-                
+        //bite was here
+        var cat_src = [];
+    
+        $.ajax({
+    
+            url : 'pages/query_category.php',
+            dataType : 'json',
+    
+            success : function(data) {
+    
+                for ( i = 0; i < data.length; i++) {
+    
+                    var cat_obj = {};
+                    cat_obj["value"] = data[i]['cat_id'];
+                    cat_obj["text"] = data[i]['cat_name'];
+    
+                    cat_src.push(cat_obj);
+    
+                }
+    
+                console.log(cat_src);
+    
+            }
+        });
+    
+        $(function() {
+            $.fn.editable.defaults.mode = 'inline';
+    
+            $('.name').editable({});
+            $('.status').editable({
+    
+                source : [{
+                    text : 'draft',
+                    value : 'draft'
+                }, {
+                    value : 'future',
+                    text : 'future'
+                }, {
+                    value : 'pending',
+                    text : 'pending'
+                }, {
+                    value : 'private',
+                    text : 'private'
+                }, {
+                    value : 'published',
+                    text : 'published'
+                }, {
+                    value : 'trash',
+                    text : 'trash'
+                }]
+    
             });
-          //bite was here  
-            var cat_src = [];
-        
-            
-		$.ajax({
-		                                              
-		              url:  'pages/query_category.php',
-		              dataType: 'json',                            
-	
-		                                                          
-		              success: function(data)          
-		              {
-		            	
-						for(i = 0; i < data.length;i++)
-						{
-							
-							var cat_obj = {};
-							cat_obj["value"] = data[i]['cat_id'];
-		                	cat_obj["text"] = data[i]['cat_name'];
-		             
-		                	cat_src.push(cat_obj);
-		                
-		                	
-	    
-						}
-		                
-		                console.log(cat_src);
-							  
-		              
-		              } 
-	            	});
-			 	
-           
-         $(function() {
-		  $.fn.editable.defaults.mode = 'inline';
-		
-		  $('.name').editable({});
-		  $('.status').editable({
-				
-			  	source: [
-	            {text: 'draft', value: 'draft'},
-	            {value: 'future', text: 'future'},
-	            {value: 'pending', text: 'pending'},
-	            {value: 'private', text: 'private'},
-	            {value: 'published', text: 'published'},
-	            {value: 'trash', text: 'trash'}
-	            
-	            
-	        ]
-	        
-	     
-			});
-			
-			
-						 	
-			 	
-			 $('.category').editable({
-				 	
-				source: cat_src	
-				 	
-			 	
-			 });
-			
-			
-		});
-		
-            
-            
-            
+    
+            $('.category').editable({
+    
+                source : cat_src
+    
+            });
+    
+        });
+    
     });
 
-	<?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
-    	//DataTable
-    	$('#dataTables-example').DataTable({
-                    responsive: true
-        });
-    <?php }?>
-
-	
+    
 </script>
+
+<script type="text/javascript" src="js/functions.js"></script>
 <script src="components/Editablecss/js/bootstrap-editable.js"></script>
