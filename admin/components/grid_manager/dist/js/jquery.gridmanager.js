@@ -1546,7 +1546,7 @@
 
         // Path to CK custom comfiguration
         ckeditor: {
-              customConfig : ""
+              customConfig : "http://127.0.0.1/SoraCityBike/admin/components/ckeditor/config.js"
         }
     };
 
