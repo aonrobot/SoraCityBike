@@ -22,6 +22,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Title</th>
                                             <th>Name</th>
                                             <th>Status</th>
@@ -35,9 +36,11 @@
                                     <?php
                                             $datas = $database->select("content", array(
 
-                                            "[<]content_translation" => array("id" => "cont_id"),
-
-                                            ), array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified'));
+                                            "[<]content_translation" => array("id" => "cont_id"),)
+                                            
+                                            ,array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_id')
+                                            
+                                            );
                                             
                                             foreach ($datas as $data) {
 
@@ -47,6 +50,7 @@
                                                     $link_edit = "index.php?p=content&a=edit&id=".$data['id']."&lang=".$data['cont_lang_id'];
                                     ?>
                                         <tr>
+                                            <td><?php echo $data['cont_id'];?></td>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
                                             <td class="center"><a href="#" class="status" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_status" data-title="Edit below here"  >  	
@@ -532,7 +536,8 @@
     <?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
         //DataTable
         $('#dataTables-example').DataTable({
-            responsive: true
+            responsive: true,
+            "order": [[ 0, "desc" ]]
         });
     <?php }?>    
     
