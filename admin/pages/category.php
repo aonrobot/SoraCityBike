@@ -68,7 +68,7 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                                                $datas = $database->select("category","*");
+                                                $datas = $database->select("category","*",array("ORDER" => "cat_id"));
                                                 foreach ($datas as $data) {
                                                 $link_edit = "index.php?p=category&a=edit&id=".$data['cat_id'];
                                         ?>
@@ -277,7 +277,7 @@
                                             </td>
 
                                             <td>
-                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
 
@@ -305,14 +305,22 @@
 
 <script type="text/javascript">
 
+    <?php if(strcmp($_GET['a'], 'edit')){?>
+        //DataTable
+        $('#show-cat').DataTable({
+            responsive: true,
+            "order": [[ 0, "desc" ]]
+        });
+    <?php }?>   
+
     //DataTable
     $('#show-content').DataTable({
         responsive: true,
-        "ordering": false,
+
     });
     $('#show-fav-content').DataTable({
         responsive: true,
-        "ordering": false,
+
     });
 
 
@@ -343,8 +351,4 @@
 			
 
 </script>
-
-
-
-
 <script src="components/Editablecss/js/bootstrap-editable.js"></script>
