@@ -24,3 +24,4 @@
 </div>
 <!-- /#page-wrapper -->
 
+<?php require_once 'functions/noti.php';?>

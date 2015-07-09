@@ -40,6 +40,10 @@
         
         <!-- Jquery UI -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+        
+        <!-- Notification -->
+        <link href="components/notification/toastr.css" rel="stylesheet"/>
+        
 		
 		<!------------------------    JS     ----------------------------------------->
 		
@@ -96,7 +100,8 @@
 		<!-- Custom Theme JavaScript -->
 		<script src="<?php echo $D_TEMPLATE; ?>dist/js/sb-admin-2.js"></script>
 		
-		
+		<!-- Notification JS -->
+		<script src="components/notification/toastr.js"></script>		
 	
 	</head>
 	

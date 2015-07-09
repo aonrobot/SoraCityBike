@@ -64,6 +64,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="show-slide">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Content</th>
                                             <th>Type</th>
@@ -87,6 +88,7 @@
                                     
                   <!-- bite fixx herreeeeeeeeeeeeeeeeeeeee --->                       
                                         <tr>
+                                            <td><?php echo $data['slide_id'];?></td>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['slide_name'];?></a></td>
                                             <td><?php echo $data['cont_name'];?></td>
                                             <td><a href="#" class="slidetype" data-type="select" data-pk="<?php echo $data['slide_id'];?>" data-url="query.php?a=editvalueslide&c=slide_type" data-title="Edit below here"  ><?php echo $data['slide_type'];?></a></td>
@@ -308,7 +310,8 @@
     <?php if(strcmp($_GET['a'], 'edit')){?> 
         //DataTable
          $('#show-slide').DataTable({
-             responsive: true
+             responsive: true,
+             "order": [[ 0, "desc" ]]
          });
          $('#type').change(function(){
             
@@ -418,6 +421,10 @@
                 $(".form-control[name=content]").val("");
                 $(".form-control[name=content_link]").val("");
                 
+                toastr["success"]("Add Image Item Success","Add Success");
+                
+                $('#toArray').trigger('click');
+                
                 $(document).trigger('readyAgain');
               } 
             });
@@ -426,7 +433,7 @@
            
            $("#create-video").click(function(){
             
-            //---------------------------------------  POST FORM -----------------------------------
+            //---------------------------------------  VDO -----------------------------------
             var formData = {
                 'a'                     : 'addVideo',
                 'slide_id'              : $('input[name=slide_id]').val(),
@@ -486,6 +493,10 @@
                 $(".form-control[name=img_link]").val("");
                 $(".form-control[name=content]").val("");
                 $(".form-control[name=content_link]").val("");
+                
+                toastr["success"]("Add Video Item Success","Add Success");
+                
+                $('#toArray').trigger('click');
                 
                 $(document).trigger('readyAgain');
               } 
@@ -547,7 +558,7 @@
                      type: "POST",                                     
                      url: 'pages/update_slide.php',                            
                      data: formData,          
-                     success: function(error){alert("Delete Success");} 
+                     success: function(){toastr["success"]("Delete Item Success","Delete Success");} 
                 });
 
                 $('#menuItem_'+id).remove();
@@ -587,7 +598,7 @@
                  url: 'pages/update_slide.php',                            
                  data: formData,
                                
-                 success: function(){} 
+                 success: function(){toastr["success"]("Update Slide Structure Success","Update Success");} 
                });
                
                ////////////////////////////  
@@ -602,7 +613,7 @@
                     cache: false,
             
                     success: function(){
-                        alert("Success");
+                        toastr["success"]("Save Slide Success","Save Success");
                     }
                 });
 

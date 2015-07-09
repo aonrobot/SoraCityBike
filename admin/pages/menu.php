@@ -294,6 +294,9 @@
                 $("#menu-structure").val($("#sora-menu").html()); 
                 $(".form-control[name=name]").val("");
                 $(".form-control[name=url]").val("");
+                
+                toastr["success"]("Add Menu Item Success","Add Success");
+                
                 $(document).trigger('readyAgain');
               } 
             });
@@ -354,10 +357,13 @@
                      type: "POST",                                     
                      url: 'pages/update_menu.php',                            
                      data: formData,          
-                     success: function(){alert("Delete Success");} 
+                     success: function(){toastr["success"]("Delete Item Success","Delete Success");} 
                 });
                 
                 $('#menuItem_'+id).remove();
+                
+                $('#toArray').trigger('click');
+                
             });
                 
             $('#serialize').click(function(){
@@ -391,7 +397,7 @@
                  url: 'pages/update_menu.php',                            
                  data: formData,
                                
-                 success: function(){} 
+                 success: function(){toastr["success"]("Update Menu Structure Success","Update Success");} 
                });
                
                ////////////////////////////  
@@ -406,7 +412,7 @@
                     cache: false,
             
                     success: function(){
-                        alert("Save Success");
+                        toastr["success"]("Save Menu Success","Save Success");
                     }
                 });
 

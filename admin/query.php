@@ -58,17 +58,6 @@
            
            //(BACKUP CODE) Get All id of Language
 
-           //Category Insert Old
-           /*$category = $_POST['category'];
-           foreach ($category as $cat) {
-                
-               $database->insert("category_relationships", array(
-               "cont_id" => $last,
-               "cat_id" => $cat,
-               "cont_oder" => 0
-               ));  
-           }*/
-           
            //Insert Cat
            
            $new_cats = $_POST['category'];
@@ -87,8 +76,8 @@
                    "cont_order" => $max_order // [ordering]
                    )); 
            }
-           
-           header( 'Location: index.php?p=content&s=show' ) ;
+
+           header( 'Location: index.php?p=content&s=show&noti=SAddContent' ) ;
            exit();
     }
     
@@ -103,7 +92,7 @@
            ));
            
            
-           header( 'Location: index.php?p=category' ) ;
+           header( 'Location: index.php?p=category&noti=SAddCategory' ) ;
            exit();
     }
     
@@ -117,7 +106,7 @@
            ));
            
            
-           header( 'Location: index.php?p=content&s=language' ) ;
+           header( 'Location: index.php?p=content&s=language&noti=SAddLang' ) ;
            exit();
     }
 
@@ -231,7 +220,7 @@
             }
         }
              
-        $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
+        $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'].'&noti=SUpdateContent';
         
         header( $head ) ;
         exit();
@@ -362,11 +351,13 @@
 			    $count = $database->count("category_relationships", array("cat_id" => $cat_id));
                 
                 if($value > $count){
-                    // Return Parameter Error    
+                    // Return Parameter Error
+                    header('Location: index.php?p=category&a=edit&id='.$_POST['content_id'].'&noti=EPCAT01UOD');    
                     exit();
                 }
                 if($value < 1){
-                    // Return Parameter Error 
+                    // Return Parameter Error
+                    header('Location: index.php?p=category&a=edit&id='.$_POST['content_id'].'&noti=EPCAT01UOD');  
                     exit();
                 }
 			    
@@ -417,10 +408,6 @@
                                              
                 $database->update("category_relationships", array($column => $value)
                 ,array("AND" => array("cont_id" => $pk, "cat_id" => $cat_id)));
-                
-                $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
-                header( $head ) ;
-                exit();
 			    
             }			
             else{
@@ -478,7 +465,7 @@
             'cont_order' => -1
         ), array("AND" => array("cont_id" => $cont_id, "cat_id" => $cat_id)));
         
-        header( 'Location: index.php?p=category&a=edit&id='.$cat_id ) ;
+        header( 'Location: index.php?p=category&a=edit&id='.$cat_id.'&noti=SAddFav') ;
         exit();
     }
     if(!strcmp($_GET['a'], 'delFav')){
@@ -498,7 +485,7 @@
             "cont_order" => $max_order++ // [ordering]
         ), array("AND" => array("cont_id" => $cont_id, "cat_id" => $cat_id))); 
         
-        header( 'Location: index.php?p=category&a=edit&id='.$cat_id ) ;
+        header( 'Location: index.php?p=category&a=edit&id='.$cat_id.'&noti=SDelFav' ) ;
         exit();
     }
 
@@ -521,7 +508,7 @@
            
            
            
-           header( 'Location: index.php?p=slide' ) ;
+           header( 'Location: index.php?p=slide&noti=SAddSlide' ) ;
            exit();
     }
 
@@ -583,7 +570,7 @@
                 //echo "<br><br>Delete Content<br>";
                 //var_dump($database->error());
 
-                header( 'Location: index.php?p=content&s=show' ) ;
+                header( 'Location: index.php?p=content&s=show&noti=SDelContent' ) ;
                 exit();               
                 break;
                 
@@ -595,11 +582,13 @@
                 
                 if($count_cont == 0) {
                     $database->delete("category", array("cat_id" => $_GET['i']));
-                    header( 'Location: index.php?p=category' ) ;
+
+                    header( 'Location: index.php?p=category&noti=SDelCategory' ) ;
                     exit();                     
                 }   
                 else {
-                    header( 'Location: index.php?p=error&a=delCat' ) ;
+
+                    header( 'Location: index.php?p=error&a=delCat&noti=EDelCategory' ) ;
                     exit();
                 }          
                 break;
@@ -612,11 +601,11 @@
                 
                 if($count_lang == 0) {
                     $database->delete("language", array("lang_id" => $_GET['i']));
-                    header( 'Location: index.php?p=content&s=language' ) ;
+                    header( 'Location: index.php?p=content&s=language&noti=SDelLang' ) ;
                     exit();                     
                 }   
                 else {
-                    header( 'Location: index.php?p=error&a=delLang' ) ;
+                    header( 'Location: index.php?p=error&a=delLang&noti=EDelLang' ) ;
                     exit();
                 }          
                 break;
@@ -632,7 +621,8 @@
                 $database->delete("content_meta", array("meta_key" => 'slide:'.$slide_id));
                 $database->delete("slide_data", array("slide_id" => $slide_id));
                 $database->delete("slide", array("slide_id" => $slide_id));
-                header( 'Location: index.php?p=slide' ) ;
+                
+                header( 'Location: index.php?p=slide&noti=SDelSlide' ) ;
                 exit();                     
         
                 break;
@@ -641,188 +631,5 @@
         
         
     }
-
-
-    ////////////////////////////////// BACKUP CODE ZONE ///////////////////////////////////////////////////
-    
-        /* 
-         * MENU I
-         * 
-        $json_out = $_GET['out'];
-        $json_del = $_GET['delete'];
-        
-        // $obj = array("obj_id"=>'', "parent_id"=>'', "menu_order"=>'');
-        
-        $outputs = json2array($json_out);
-        $deletes = json2array($json_del);
-        
-        
-        
-        $database->query("DELETE FROM menu;");
-        
-        $i = 1;
-        foreach ($outputs as $output) {
-            $database->insert("menu", array(
-                "menu_id" => $i,
-                "obj_id" => $output['obj_id'],
-                "parent_id" => $output['parent_id'],
-                "menu_order" => $output['menu_order']
-            ));
-            $i++;
-        }
-        
-        $database->update("content_meta", array("meta_value" => $_GET['structure']),array("meta_id" => '1'));
-        
-        // !!!!! MUST TO DEL JUNK OBJ !!!!!!
-        
-        echo '[{"sucess":1}]';
-        */
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        /*
-         * UPDATE CONTENT INFO
-         * 
-        if(!strcmp($_GET['a'], 'updateContentInfo')){
-    
-        $database->update("content", array(
-            "cont_name" => $_POST['name'],
-            "cont_author" => $_POST['author'],
-            "cont_slug" => $_POST['slug'],
-            "cont_status" => $_POST['status'],
-            "cont_type" => $_POST['type'],
-            
-        ), array("id" => $_POST['content_id']
-        ));
-        
-        //Delete All Content In Cat Relationship
-        $database->delete("category_relationships", array("cont_id" => $_POST['content_id']));
-        
-        //Insert New
-        $category = $_POST['category'];
-            foreach ($category as $cat) {
-                
-                $database->insert("category_relationships", array(
-                "cont_id" => $_POST['content_id'],
-                "cat_id" => $cat,
-                ));  
-            }
-        
-        
-        $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
-        
-        header( $head ) ;
-        exit();
-    
-        }
-        */
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        /*
-         * Get All id of Language
-         * 
-        $datas = $database->select("language","lang_id");
-        $lang_id = array();           
-        foreach ($datas as $data) {
-              array_push($lang_id,$data);                        
-        }
-        foreach ($lang_id as $id) {
-                
-              $database->insert("content_translation", array(
-              "cont_id" => $last,
-              "lang_id" => $id,
-              "cont_title" => $_POST['title'],
-              "cont_content" => $_POST['txt_content'],
-              "cont_description" => $_POST['description']
-              ));
-                
-        }
-        */
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        /*
-         * JSON2Array
-         * 
-        function json2array($json)
-        {
-            $array = json_decode($json, true);
-                        
-            $objs = array();
-                                 
-            for($i = 1 ; $i < count($array) ; $i++){
-                if(isset($array[$i]['children']) === false && empty($array[$i]['children']) === true){
-                    $obj = array("obj_id"=>$array[$i]['id'], "parent_id"=>"0", "menu_order"=>$i);
-                    array_push($objs,$obj);
-                }else{
-                    $obj = array("obj_id"=>$array[$i]['id'], "parent_id"=>"0", "menu_order"=>$i);
-                    array_push($objs,$obj);
-                    for($j = 0 ; $j < count($array[$i]['children']) ; $j++){
-                        $obj = array("obj_id"=>$array[$i]['children'][$j]['id'], "parent_id"=>$array[$i]['id'], "menu_order"=>$j+1);
-                        array_push($objs,$obj);
-                    }
-                }
-            }
-            
-            return $objs;
-        }
-         
-        */
-        
-        /*
-         * 
-         * 
-        
-        if(!strcmp($_GET['a'], 'saveMenu')){
-        
-        // (BACKUP CODE) Menu I
-                
-        //Menu II
-        $datas = json_decode($_POST['data'],true);
-    
-        $i = 1;
-        $even = 1;
-        $odd = 1;
-        
-        //print_r($datas);
-        
-        foreach ($datas as $data) {
-            
-           
-            
-            if($data['depth'] == 0)continue;
-            
-            // echo(($data['left']+$data['right']+$data['depth']) % 2);
-            // echo "<br>";
-            
-            if((($data['left']+$data['right']+$data['depth']) % 2) == 0){
-                $odd = 1;
-                $parent = $data['parent_id'];
-                if($parent == null)$parent = "0";
-                $database->insert("menu", array(
-                    "menu_id" => $i,
-                    "obj_id" => $data['item_id'],
-                    "parent_id" => $parent,
-                    "menu_order" => $even
-                ));
-                $even++;
-            }
-            else{
-                    $database->insert("menu", array(
-                        "menu_id" => $i,
-                        "obj_id" => $data['item_id'],
-                        "parent_id" => $data['parent_id'],
-                        "menu_order" => $odd
-                    ));
-                    
-                    $odd++;
-                }
-        
-                $i++;
-            }
-
-        }
-        */
     
 ?>
