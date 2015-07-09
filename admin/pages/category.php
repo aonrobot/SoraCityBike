@@ -72,7 +72,7 @@
                                                 foreach ($datas as $data) {
                                                 $link_edit = "index.php?p=category&a=edit&id=".$data['cat_id'];
                                         ?>
-             <!-- bite edit here ------------------------------------------------------------------->
+                                            <!------------------------------ bite and aon was here ------------------------------------------------------------------->
                                             <tr>
                                                 <td><?php echo $data['cat_id'];?></td>
                                                 <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_name" data-title="Edit below here" ><?php echo $data['cat_name'];?></a></td>
@@ -231,9 +231,9 @@
 
                                             ),
 
-                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_order'),
+                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_order','cont_id'),
 
-                                            array("AND" => array("cat_id" => $cat_id, "cont_order[!]" => '-1'))
+                                            array("AND" => array("cat_id" => $cat_id, "cont_order[!]" => '-1'),"ORDER" => "cont_order")
 
                                             );
                                             
@@ -255,24 +255,29 @@
                                                   $("#em-star").addClass("fa-star-o").removeClass("fa-star")
                                                 })
                                             </script>
-											<td><?php echo $data['cont_order'];?></td>
+                                            
+                                            <!------------------------ Ordering ----------------------------->
+											<td>
+											    <a href="#" class="ordering" data-type="text" data-pk="<?php echo $data['cont_id'];?>" data-url="query.php?a=editvaluecat&c=cont_order&cat_id=<?php echo $cat_id;?>" data-title="Edit below here" ><?php echo $data['cont_order'];?></a>
+											</td>
+											
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><?php echo $data['cont_name'];?></td>
 
                                             <td class="center"><?php echo $data['cont_type'];?></td>
                                             <td>
-                                                <?php   $cats = $database->select("category_relationships",array("[>]category" => array("cat_id" => "cat_id")),array("cat_name"),array("cont_id" => $data['id'],));
+                                                <?php   $cats = $database->select("category_relationships",array("[>]category" => array("cat_id" => "cat_id")),array("cat_name","category.cat_id"),array("cont_id" => $data['id'],));
 
                                                         foreach ($cats as $cat) {
                                                 ?>
 
-                                                    <code><?php echo $cat['cat_name'];?></code>&nbsp;
+                                                    <a href="index.php?p=category&a=edit&id=<?php echo $cat['cat_id'];?>"><code><?php echo $cat['cat_name'];?></code></a>&nbsp;
 
                                                 <?php }?>
                                             </td>
 
                                             <td>
-                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
 
@@ -316,6 +321,7 @@
 		  $.fn.editable.defaults.mode = 'inline';
 		
 		  $('.name').editable({});
+		  $('.ordering').editable({});
 		  $('.type').editable({
 				
 			  	source: [

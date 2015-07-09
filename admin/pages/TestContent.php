@@ -30,6 +30,39 @@
                                $max_oder = $database->max("category_relationships", "cont_order", array("cat_id" => 2));
                                if(!strcmp($max_oder, '')) echo "Not Have Content";
                                else echo $max_oder;
+                               
+                               // echo '<h2>'.var_dump($_POST['category']).'</h2>';
+//                                
+                               // $news = $_POST['category'];
+                               // $olds = $database->select("category_relationships","*",array("cont_id" => 91));
+                               // $old_cat = array();
+                               // foreach ($olds as $old) {
+                                   // array_push($old_cat,$old['cat_id']);
+                               // }
+                               // var_dump($old_cat);
+                               // foreach ($news as $new) {
+                                   // echo $new;
+                                   // if(!in_array($new, $old_cat)){
+                                   // echo 'Have New In Old';
+                                       // }
+                               // }
+                               
+                               echo "<br><br>========================= ordering update ========================<br><br>";
+                               
+                               $current_cont = $database->select("category_relationships","*",array("AND" => array("cont_id" => 88 , "cat_id" => 3)));
+                               
+                               $update_orders = $database->select("category_relationships",array("category_relationship_id","cont_order"),array(
+                                    "AND" => array("cat_id" => 3,"cont_order[<=]" => intval($current_cont[0]['cont_order']), "cont_order[>=]" => 2)
+                               ));
+                               
+                               echo $current_cont[0]['cont_order'];
+                               
+                               //echo gettype(7);
+                               echo "<pre>";
+                               var_dump($update_orders);
+                               echo "</pre>";
+                               
+                               if(intval($current_cont[0]['cont_order']) > 2) echo "Yess";
                 	       
                 	?>
                 </div>

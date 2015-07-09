@@ -172,6 +172,11 @@
         
         $old_cats = $database->select("category_relationships","*",array("cont_id" => $cont_id));
         
+        $old_cats_array = array();
+        foreach ($old_cats as $old_cat) {
+            array_push($old_cats_array,$old_cat['cat_id']);
+        }
+        
   
         foreach ($old_cats as $old_cat) {
             if(!in_array($old_cat['cat_id'], $new_cats)){
@@ -185,9 +190,7 @@
                 $below_orders = $database->select("category_relationships",array("category_relationship_id","cont_order"),array(
                     "AND" => array("cat_id" => $new_ordering_cat, "cont_order[>]" => $old_cat['cont_order'])
                 ));
-                  
-                console_log($below_order);
-                   
+                                     
                 foreach ($below_orders as $below_order) {
                     
                     $new_order = $below_order['cont_order'];
@@ -212,7 +215,7 @@
 
         foreach ($new_cats as $new_cat) {
             
-            if(!in_array($new_cat, $old_cats)){
+            if(!in_array($new_cat, $old_cats_array)){
                 
                 $max_order = $database->max("category_relationships", "cont_order", array("cat_id" => $new_cat));    // [ordering] max order in this cat
                 if(!strcmp($max_order, ''))$max_order = 0;
@@ -221,9 +224,9 @@
                 $max_order++;
                 
                 $database->insert("category_relationships", array(
-                "cont_id" => $cont_id,
-                "cat_id" => $new_cat,
-                "cont_order" => $max_order++ // [ordering]
+                    "cont_id" => $cont_id,
+                    "cat_id" => $new_cat,
+                    "cont_order" => $max_order // [ordering]
                 )); 
             }
         }
@@ -262,6 +265,10 @@
             
             $old_cats = $database->select("category_relationships","*",array("cont_id" => $cont_id));
             
+            $old_cats_array = array();
+            foreach ($old_cats as $old_cat) {
+                array_push($old_cats_array,$old_cat['cat_id']);
+            }
       
             foreach ($old_cats as $old_cat) {
                 if(!in_array($old_cat['cat_id'], $new_cats)){
@@ -304,7 +311,7 @@
     
             foreach ($new_cats as $new_cat) {
                 
-                if(!in_array($new_cat, $old_cats)){
+                if(!in_array($new_cat, $old_cats_array)){
                     
                     $max_order = $database->max("category_relationships", "cont_order", array("cat_id" => $new_cat));    // [ordering] max order in this cat
                     if(!strcmp($max_order, ''))$max_order = 0;
@@ -312,7 +319,7 @@
     
                     $max_order++;
                     
-                    $database->insert("category_relationships", array(
+                    $database->update("category_relationships", array(
                     "cont_id" => $cont_id,
                     "cat_id" => $new_cat,
                     "cont_order" => $max_order++ // [ordering]
@@ -334,15 +341,91 @@
 	    }
 		
 		if(!strcmp($_GET['a'], 'editvaluecat')){
-	    	$pk= $_POST['pk'];
+	    	$pk= $_POST['pk']; //If $colum = cont_order $pk = cont_id
 	    	$value= $_POST['value'];
 			$column = $_GET['c'];
+			$cat_id = $_GET['cat_id'];
 			
-	        $database->update("category", array(
-	            $column => $value
-	        
-	        ), array("cat_id" => $pk
-	        ));
+			if(!strcmp($column, 'cont_order')){
+			    
+                /*
+                 * SUPER    ORDERING FUNCTION
+                 * By       MigrateToTheMoon
+                 * Dev For  SoraCityBike
+                 * 
+                */
+                
+                //pk = current (cont_id)
+			    //value = new order number
+			    //cat_id = current (cat_id)
+			    
+			    $count = $database->count("category_relationships", array("cat_id" => $cat_id));
+                
+                if($value > $count){
+                    // Return Parameter Error    
+                    exit();
+                }
+                if($value < 1){
+                    // Return Parameter Error 
+                    exit();
+                }
+			    
+			    $current_cont = $database->select("category_relationships","*",array("AND" => array("cont_id" => $pk , "cat_id" => $cat_id)));
+                
+                if(intval($current_cont[0]['cont_order']) < $value){
+                    
+                    // Update Order Between 
+                    $update_orders = $database->select("category_relationships",array("category_relationship_id","cont_order"),array(
+                        "AND" => array("cat_id" => $cat_id,"cont_order[>=]" => intval($current_cont[0]['cont_order']), "cont_order[<=]" => $value)
+                    ));
+                    
+                    foreach ($update_orders as $update_order) {
+                                
+                        $new_order = $update_order['cont_order'];
+                        $new_order--;
+                                           
+                        $database->update("category_relationships"
+                                           
+                            , array("cont_order" => $new_order)
+                                              
+                            , array("category_relationship_id" => $update_order['category_relationship_id']));
+                                
+                    }
+                    
+                }
+                else if(intval($current_cont[0]['cont_order']) > $value){
+                    
+                    // Update Order Between 
+                    $update_orders = $database->select("category_relationships",array("category_relationship_id","cont_order"),array(
+                        "AND" => array("cat_id" => $cat_id,"cont_order[<=]" => intval($current_cont[0]['cont_order']), "cont_order[>=]" => $value)
+                    ));
+                    
+                    foreach ($update_orders as $update_order) {
+                                
+                        $new_order = $update_order['cont_order'];
+                        $new_order++;
+                                           
+                        $database->update("category_relationships"
+                                           
+                            , array("cont_order" => $new_order)
+                                              
+                            , array("category_relationship_id" => $update_order['category_relationship_id']));
+                                
+                    }
+                    
+                }
+                                             
+                $database->update("category_relationships", array($column => $value)
+                ,array("AND" => array("cont_id" => $pk, "cat_id" => $cat_id)));
+                
+                $head = 'Location: index.php?p=content&a=edit&id='.$_POST['content_id'].'&lang='.$_POST['lang'];
+                header( $head ) ;
+                exit();
+			    
+            }			
+            else{
+                $database->update("category", array($column => $value), array("cat_id" => $pk));
+            }
 	    }
     
 	if(!strcmp($_GET['a'], 'editvalueslide')){
@@ -371,12 +454,12 @@
         $cat_id = $_GET['cat_id'];
         
         $current_cat = $database->select("category_relationships","*",array("AND" => array("cont_id" => $cont_id , "cat_id" => $cat_id)));
-    
+        
         // Update Below Order     
         $below_orders = $database->select("category_relationships",array("category_relationship_id","cont_order"),array(
-            "AND" => array("cat_id" => $cat_id, "cont_order[>]" => $current_cat['cont_order'])
+            "AND" => array("cat_id" => $current_cat[0]['cat_id'], "cont_order[>]" => $current_cat[0]['cont_order'])
         ));
-                                             
+                                   
         foreach ($below_orders as $below_order) {
                         
             $new_order = $below_order['cont_order'];
