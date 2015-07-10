@@ -47,7 +47,7 @@
   </div>
 </div>
 
-<button class="bg-gray pero-font btn btn-default" onclick="toggle_visibility('hideMe');">show films <span><img id="video_btn" class="dropdown-span" src="img/down-btn.png" /></span></button> 
+<button class="bg-gray pero-font btn btn-default" onclick="toggle_visibility('hideMe');">show films <span><img id="video_btn" class="dropdown-span" src="components/img/down-btn.png" /></span></button> 
 
 </div>
 

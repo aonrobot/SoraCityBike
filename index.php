@@ -17,7 +17,7 @@ if ($_SESSION['lang_session'] == 1) {
 
 ?>
 
-<?php include('../config/config.php'); ?>
+<?php include('config/config.php'); ?>
 <?php include('header.php'); ?>
 
 
@@ -32,10 +32,10 @@ if ($page!='home') {
 <?php include('footer.php'); ?>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
-<script src="js/sora-default.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/swiper.min.js"></script>
+<script src="components/js/jquery.js"></script>
+<script src="components/js/sora-default.js"></script>
+<script src="components/js/bootstrap.min.js"></script>
+<script src="components/js/swiper.min.js"></script>
 
 
 <script>
@@ -67,10 +67,6 @@ if ($page!='home') {
     prevButton: '.swiper-button-prev3'
 
   });
-
-
-
 </script>
 </body>
-
 </html>
