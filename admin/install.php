@@ -347,7 +347,7 @@ function validEmail($email = ""){
                                         <input class="form-control" name="name" placeholder="Name">
                                     </div>
                                     <button name="submit" type='submit' class="btn btn-success">
-                                        Install
+                                        Finish Install :)
                                     </button>
                                     <button type="reset" class="btn btn-primary">
                                         Reset

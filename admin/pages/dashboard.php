@@ -9,6 +9,14 @@
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
+		<?php
+		  
+		      $count_cat = $database->count("category");
+              $count_cont = $database->count("content");
+              $count_lang = $database->count("language");
+              $count_slide = $database->count("slide");
+		
+		?>
 		<!-- /.row -->
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
@@ -16,19 +24,19 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-3">
-								<i class="fa fa-comments fa-5x"></i>
+								<i class="fa fa-cubes fa-5x"></i>
 							</div>
 							<div class="col-xs-9 text-right">
 								<div class="huge">
-									26
+									<?php echo $count_cat;?>
 								</div>
 								<div>
-									New Comments!
+									Category
 								</div>
 							</div>
 						</div>
 					</div>
-					<a href="#">
+					<a href="index.php?p=category">
 					<div class="panel-footer">
 						<span class="pull-left">View Details</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -41,19 +49,19 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-3">
-								<i class="fa fa-tasks fa-5x"></i>
+								<i class="fa fa-book fa-5x"></i>
 							</div>
 							<div class="col-xs-9 text-right">
 								<div class="huge">
-									12
+									<?php echo $count_cont;?>
 								</div>
 								<div>
-									New Tasks!
+									Content
 								</div>
 							</div>
 						</div>
 					</div>
-					<a href="#">
+					<a href="index.php?p=content&s=show">
 					<div class="panel-footer">
 						<span class="pull-left">View Details</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -67,19 +75,19 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-3">
-								<i class="fa fa-shopping-cart fa-5x"></i>
+								<i class="fa fa-sliders fa-5x"></i>
 							</div>
 							<div class="col-xs-9 text-right">
 								<div class="huge">
-									124
+									<?php echo $count_slide;?>
 								</div>
 								<div>
-									New Orders!
+									Slide
 								</div>
 							</div>
 						</div>
 					</div>
-					<a href="#">
+					<a href="index.php?p=slide">
 					<div class="panel-footer">
 						<span class="pull-left">View Details</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -92,19 +100,19 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-3">
-								<i class="fa fa-support fa-5x"></i>
+								<i class="fa fa-language fa-5x"></i>
 							</div>
 							<div class="col-xs-9 text-right">
 								<div class="huge">
-									13
+									<?php echo $count_lang;?>
 								</div>
 								<div>
-									Support Tickets!
+									Language
 								</div>
 							</div>
 						</div>
 					</div>
-					<a href="#">
+					<a href="index.php?p=content&s=language">
 					<div class="panel-footer">
 						<span class="pull-left">View Details</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -441,6 +441,7 @@
 
 				<?php if(!strcmp($_GET['s'], 'language')){?>
 
+				    <h1 class="page-header"><i class="fa fa-language fa-1x"></i> Language Management</h1>
 				    <div class="panel panel-default">
                         <div class="panel-heading">
                             <b>Create New Language</b>

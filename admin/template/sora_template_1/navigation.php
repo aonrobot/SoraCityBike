@@ -23,6 +23,8 @@
                         </li>
                         <li><a href="index.php?p=reset"><i class="fa fa-refresh fa-fw"></i> Forget Password</a>
                         </li>
+                        <li><a href="index.php?p=setup"><i class="fa fa-institution fa-fw"></i> Setup Site</a>
+                        </li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -38,8 +40,9 @@
                     <ul class="nav" id="side-menu">
                     	
                  		<!-- Start A First Menu -->
+                 		<?php $site_name = $database->select("site_meta","meta_value",array("meta_key" => 'site_name'));?>
                         <li>
-                            <a href="index.php?p=dashboard"><i class="fa fa-bicycle fa-fw"></i> sora city</a>
+                            <a href="index.php?p=dashboard"><i class="fa fa-bicycle fa-fw"></i> <?php echo $site_name[0];?></a>
                         </li>
 
                         <li>
