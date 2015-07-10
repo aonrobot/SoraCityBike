@@ -1,0 +1,161 @@
+body {
+	
+	margin: 0;
+	
+}
+
+.box-slider {
+
+		
+	
+	margin:0;
+	position: relative;
+	overflow: hidden;
+	cursor:pointer;
+	
+
+
+}
+
+.items-wrapper::-webkit-scrollbar{
+			-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0);
+			cursor:cell;
+			height:9px;
+		}
+		
+.items-wrapper::-webkit-scrollbar-track{
+			margin-left:20px;
+			margin-right:20px;
+			
+			
+		}
+.items-wrapper::-webkit-scrollbar-thumb{
+			border-radius:10px;		
+			background:rgba(0,0,0,.4);
+		}
+.items-wrapper::-webkit-scrollbar-thumb:hover{
+			
+			border-radius:10px;
+			background:rgba(0,0,0,0.5)
+		}
+		
+
+
+.box-slider .items-wrapper {
+	white-space: nowrap;
+	overflow: auto;
+
+	
+}
+.box-slider .item {
+	padding-bottom:10px;
+	display: inline-block;
+	text-align: center;
+	height:400px;
+	
+}
+.box-slider .itemvideo {
+	padding-bottom:10px;
+	display: inline-block;
+	text-align: center;
+	height:332px;
+	
+}
+iframe{
+	padding-bottom:10px;
+}
+.buttons button {
+	border: 0;
+	position: absolute;
+	top: 50%;
+	width: 33px;
+	height: 33px;
+	margin-top: -25px;
+	opacity: .5;
+	cursor: pointer;
+	outline:0;
+}
+.buttons button:hover{
+	opacity: 1;
+	outline:0;
+}
+.buttons .left {
+	left: -1px;
+	margin-left:20px;
+	background: url(../img/but_left.png);
+	
+}
+
+.buttons .right {
+	right: -1px;
+	margin-right:20px;
+	background: url(../img/but_right.png);
+}/* Image slidein Style */
+ 
+ 
+ 
+ .slidein{
+	margin: none;
+	cursor: pointer;
+	height: 100%;
+	float: left;
+	position: relative;
+	width: 100%;
+	border:none;
+	padding:none;
+}
+
+
+
+
+
+/* Caption Common Style */
+.slidein .caption  {
+	
+	margin:none;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	color: #fff;
+	z-index: 100;
+		-webkit-transition: all 500ms ease-out;
+		-moz-transition: all 500ms ease-out;
+		-o-transition: all 500ms ease-out;
+		-ms-transition: all 500ms ease-out;	
+		transition: all 500ms ease-out;
+	left: 0;
+	
+
+	
+}
+
+
+
+
+
+/** Caption 1: Simple **/
+.slidein .simple-caption {
+	margin:none;
+	height: 15%;
+	width: 100%;
+	display: block;
+	bottom: 0px;
+	text-align: left;
+	overflow:hidden;
+	
+	
+}
+
+
+
+/** Simple Caption :hover Behaviour **/
+.slidein .simple-caption:hover {
+
+	height: 40%;
+	width: 100%;
+	display: block;	
+	text-align: left;
+	overflow:hidden;
+	
+
+}
+

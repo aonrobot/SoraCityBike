@@ -67,8 +67,8 @@ p {
 }
 
 hr {
-    
-    
+
+
     border-color: #bbb;
 
 }
@@ -81,12 +81,7 @@ hr {
 .large-font{
     font-size: 2em;
 }
-.time-text{
-    
-    font-size: 10px;
-    padding-top: 1em;
-    padding-right: 3em;
-}
+
 .underline{
     display:inline-block;
     border-bottom:1px solid black;
@@ -129,16 +124,16 @@ hr {
 
 .hidden-slider{
     margin-top: 3em;
-   width:100%;
-   height:100%;
-   
+    width:100%;
+    height:100%;
+
 
 }
 .hidden-content{
 
 	height:100%;
 	
-    background-color: #7c7c7c;
+    
     color: #000;
     transition: height 0.5s;
     -moz-transition: height 0.5s; /* Firefox 4 */
@@ -148,50 +143,12 @@ hr {
 
 .hidden-btn{
     margin-top: 1em;
-   
+
     
 }
 
 
-.slide_pic{
-    max-width: 600px;   
-    z-index: -999;
-}
 
-
-.swiper-container {
-      width: 100%;
-     
-      margin: none;
-    }
-	
-	
-	
-    .swiper-slide {
-      
-			width: auto;
-			height: 403px;
-			
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-          
-            margin:none;
-
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack:center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
 .category{
     margin-bottom: 1em;
     margin-top: 3em;
@@ -224,7 +181,7 @@ hr {
 .category-img{
     display: inline-block;
     width: 100%;
-   
+
 }
 .text-header{
     margin-top: 1em;
@@ -259,56 +216,72 @@ footer p {
 
 }
 
- #largeImgPanel {
-           text-align: center;
-           visibility: hidden;
-           position: fixed;
-			padding:50px ;
-           z-index: 100;
-          	top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(100,100,100, 0.9);
-			
-		
-            }
+#largeImgPanel {
+ text-align: center;
+ visibility: hidden;
+ position: fixed;
+ padding:50px ;
+ z-index: 100;
+ top: 0; left: 0; width: 100%; height: 100%;
+ background-color: rgba(100,100,100, 0.9);
+
+
+}
 
 
 /*//////////////////////////////////////////////////////////////////////////////////*/
 
 @media screen and (min-width:768px) {
     .brand {
-      padding:1em;
+      padding:0.5em;
       display: inherit;
       font-size: 1.5em;
       font-weight: 200;
       color: #000;
       width: 100%;
+
   }
   .logo_img{
     max-height: 4em;
 }
 .brand-logo {
- text-align: center;
+   text-align: center;
 }
 .brand-social {
-    padding-top: 1em;
+
+}
+
+.brand-time{
+   
+}
+.time_text{
+    margin-left: 10px;
+    padding: 0px;
+    font-size: 10px;
+    
 }
 .social_icon{
-    max-width: 0.75em;
-    margin-left: 0.75em;
-    margin-right: 0.75em;
-    float: right;
+    width: 12px;
+    
+    margin: 0.5em;
+    
+
 }
 .top-divider {
     margin-top: 0;
 }
+.row_navbar{
+height: 25px;
+background-color: #eee;
+width: 100%;
+margin: 0px;
 
-
-
+}
 .navbar {
     border-radius: 0;
     margin-bottom: -0.2em;
     z-index: 10;
-    
+
 }
 
 .navbar-header {
@@ -323,7 +296,7 @@ footer p {
     max-width:100%;
     margin: 0;
     border-color: #ddd!important;
-   }
+}
 .navbar-default {
     border: none;
     background: #fff;
@@ -341,9 +314,6 @@ footer p {
     position: relative;
     color: #777;
     text-decoration: none;
-
-   
-
 }
 
 .nav>li>div:hover {
@@ -357,7 +327,9 @@ footer p {
 .navbar-nav>li>a {
     line-height: normal;
 }
-
+.dropdown-menu{
+    display: none;
+}
 .navbar-nav {
     display: table;
     float: none;
@@ -374,4 +346,157 @@ footer p {
 
 }
 
+.box-slider {
 
+        
+    
+    margin:0;
+    position: relative;
+    overflow: hidden;
+    cursor:pointer;
+    
+
+
+}
+
+.items-wrapper::-webkit-scrollbar{
+            -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0);
+            cursor:cell;
+            height:9px;
+        }
+        
+.items-wrapper::-webkit-scrollbar-track{
+            margin-left:20px;
+            margin-right:20px;
+            
+            
+        }
+.items-wrapper::-webkit-scrollbar-thumb{
+            border-radius:10px;     
+            background:rgba(0,0,0,.4);
+        }
+.items-wrapper::-webkit-scrollbar-thumb:hover{
+            
+            border-radius:10px;
+            background:rgba(0,0,0,0.5)
+        }
+        
+
+
+.box-slider .items-wrapper {
+    white-space: nowrap;
+    overflow: auto;
+
+    
+}
+.box-slider .item {
+    padding-bottom:10px;
+    display: inline-block;
+    text-align: center;
+    height:400px;
+    
+}
+.box-slider .itemvideo {
+    padding-bottom:10px;
+    display: inline-block;
+    text-align: center;
+    height:332px;
+    
+}
+iframe{
+    padding-bottom:10px;
+}
+.buttons button {
+    border: 0;
+    position: absolute;
+    top: 50%;
+    width: 33px;
+    height: 33px;
+    margin-top: -25px;
+    opacity: .5;
+    cursor: pointer;
+    outline:0;
+}
+.buttons button:hover{
+    opacity: 1;
+    outline:0;
+}
+.buttons .left {
+    left: -1px;
+    margin-left:20px;
+    background: url(but_left.png);
+    
+}
+
+.buttons .right {
+    right: -1px;
+    margin-right:20px;
+    background: url(but_right.png);
+}/* Image slidein Style */
+ 
+ 
+ 
+ .slidein{
+    margin: none;
+    cursor: pointer;
+    height: 100%;
+    float: left;
+    position: relative;
+    width: 100%;
+    border:none;
+    padding:none;
+}
+
+
+
+
+
+/* Caption Common Style */
+.slidein .caption  {
+    
+    margin:none;
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    color: #fff;
+    z-index: 100;
+        -webkit-transition: all 500ms ease-out;
+        -moz-transition: all 500ms ease-out;
+        -o-transition: all 500ms ease-out;
+        -ms-transition: all 500ms ease-out; 
+        transition: all 500ms ease-out;
+    left: 0;
+    
+
+    
+}
+
+
+
+
+
+/** Caption 1: Simple **/
+.slidein .simple-caption {
+    margin:none;
+    height: 15%;
+    width: 100%;
+    display: block;
+    bottom: 0px;
+    text-align: left;
+    overflow:hidden;
+    
+    
+}
+
+
+
+/** Simple Caption :hover Behaviour **/
+.slidein .simple-caption:hover {
+
+    height: 40%;
+    width: 100%;
+    display: block; 
+    text-align: left;
+    overflow:hidden;
+    
+
+}
