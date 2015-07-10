@@ -17,6 +17,8 @@
 	$admin_template = $database->select("site_meta","meta_value",array("meta_key" => 'admin_template'));
     
     $site_title = $database->select("site_meta","meta_value",array("meta_key" => 'site_title'));
+    
+    $site_path = $database->select("site_meta","meta_value",array("meta_key" => 'site_path'));
 
 	#Template Path
 	$GLOBALS['D_TEMPLATE'] = 'template/'.$admin_template[0].'/';

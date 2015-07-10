@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php?p=dashboard"><i class="fa fa-gear fa-fw"></i><?php echo ' '.$site_title; ?></a>
+                <a class="navbar-brand" href="<?php echo $site_path[0];?>"><i class="fa fa-gear fa-fw"></i><?php echo ' '.$site_title; ?></a>
             </div>
             
             <!-- /.navbar-header -->
