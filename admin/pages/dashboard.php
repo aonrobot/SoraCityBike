@@ -12,7 +12,7 @@
 		<?php
 		  
 		      $count_cat = $database->count("category");
-              $count_cont = $database->count("content");
+              $count_cont = $database->count("content",array('cont_type'=>'content'));
               $count_lang = $database->count("language");
               $count_slide = $database->count("slide");
 		

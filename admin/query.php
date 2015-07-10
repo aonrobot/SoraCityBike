@@ -21,6 +21,8 @@
     if(!strcmp($_GET['a'], 'addContent')){
         
           $date = date('Y-m-d H:i:s');
+        
+          $slug = sanitize($_POST['slug']);
           
         
           $last = $database->insert("content", array(
@@ -28,7 +30,7 @@
                 "cont_name" => $_POST['name'],
                 "cont_name" => $_POST['name'],
                 "cont_author" => $_POST['author'],
-                "cont_slug" => $_POST['slug'],
+                "cont_slug" => $slug,
                 "cont_status" => $_POST['status'],
                 "cont_modified" => $date,
                 "cont_type" => $_POST['type']

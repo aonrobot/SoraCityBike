@@ -18,6 +18,8 @@
     
     $site_title = $database->select("site_meta","meta_value",array("meta_key" => 'site_title'));
     
+    $site_name = $database->select("site_meta","meta_value",array("meta_key" => 'site_name'));
+    
     $site_path = $database->select("site_meta","meta_value",array("meta_key" => 'site_path'));
 
 	#Template Path
@@ -31,10 +33,11 @@
 	#include ('../config/connection.php');
 	
 	# Functions:
-    //include('functions/modal.php'); 
+    //include('functions/functions.php'); 
 	
 	# Site Setup:
 	$site_title = $site_title[0];
+    $site_name = $site_name[0];
 	
 	if (isset($_GET['p'])) {
 	

@@ -6,7 +6,7 @@
 			<div class="col-lg-12">
 				<!-- Start Content -->
 
-				
+				<?php $users = \Fr\LS::getUser();?>
 
 				<?php if(!strcmp($_GET['s'], 'show')){?>
 				    
@@ -120,7 +120,7 @@
 
                                         <div class="form-group">
                                             <label>Author</label>
-                                            <input name="author" class="form-control" placeholder="Enter Author Name">
+                                            <input name="author" class="form-control" placeholder="Enter Author Name" value="<?php echo $users['name'];?>">
                                         </div>
 
                                         <div class="form-group">
