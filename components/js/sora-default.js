@@ -10,19 +10,7 @@ function toggle_visibility(id) {
 	e.style.display = 'block';
 	e.style.height = '403px';
 	document.getElementById('video_btn').src = "components/img/up-btn.png";	
-	 var swiper2 = new Swiper('.swiper2', {
-  
-        
-        slidesPerView: 'auto',
-        centeredSlides: false,
-        spaceBetween: 0,
-        grabCursor: false,
-
-        nextButton: '.swiper-button-next2',
-        prevButton: '.swiper-button-prev2'
-
-    });
-
+	 
 	
 	
 	

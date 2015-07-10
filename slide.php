@@ -12,31 +12,30 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
 
 
 ?>
-<div class="swiper-container swiper3">
-
-  <!-- Wrapper for slides -->
-  <div class="swiper-wrapper " style="cursor:pointer;">
+<div id="leonardo_da_vinci_machines" class="box-slider">
+  <div class="items-wrapper">
+     <div class="item" >
 
     <?php 
-    foreach ($slide as $key) { 
-      echo '<div class="swiper-slide" > <img src='.$key['slide_data_img_url'].' onClick="showImage(id);" alt="" id='.$key['slide_data_id'].'> </div>';
-      }
-      ?>
-    </div>
+    foreach ($slide as $key) { ?>
+      
+   <img class="item" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>  onClick="showImage(id);" id=<?php echo '"'.$key['slide_data_id'].'"';?>>
+   <?php } ?>
+          </div>
+
+  </div>
 
   
-
-  <!--navigation buttons-->
-  <div class="swiper-button-next swiper-button-next3"></div>
-  <div class="swiper-button-prev swiper-button-prev3"></div>
-
+  <div class="buttons">
+    <button  class="left"></button>
+    <button class="right"></button>
+  </div>
 </div>
 
 
-
-<div id="largeImgPanel" onclick="hideImg(this);">
- <img id="largeImg" style="margin: 0; padding: 0;" />
-</div>
+           <div id="largeImgPanel" onclick="hideMe(this);">
+           <img id="largeImg" style="margin: 0; padding: 0; height:500px;" />
+  </div>
 
 <script>
 

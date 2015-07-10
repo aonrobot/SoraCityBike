@@ -9,13 +9,14 @@
               <meta name="viewport" content="width=device-width, initial-scale=1">
               <meta name="description" content="">
               <meta name="author" content="">
-              <link rel="shortcut icon" href="img/favicon2.png">
-              <link rel="icon" href="img/favicon2.png">
+              <link rel="shortcut icon" href="components/img/favicon2.png">
+              <link rel="icon" href="components/img/favicon2.png">
 
               <title>Sora City Bike</title>
-              <link href="components/css/swiper.min.css" rel="stylesheet" >
+              
               <link href="components/css/bootstrap.css" rel="stylesheet">
               <link href="components/css/sora-default.css" rel="stylesheet">
+              <link href="components/css/leo.css" rel="stylesheet">
               <script src="components/js/jquery.js"></script>
 
             </head>
@@ -27,6 +28,7 @@
             $top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
             $sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
             $lang=$database->select("language",'*');
+
 
             foreach ($lang as $key ) {
                 if (isset($_GET['lang'])) {  
@@ -105,10 +107,17 @@
 
                             <?php foreach ($top_menu as $menu ) { 
                                 echo '<li id="menu_'.$menu['menu_id'].'">';
-
-                                if ($menu['obj_type'] == 'content') $link = "'index.php?p=".$menu['obj_type']."&id=".$menu['obj_url']."'";
-                                elseif ($menu['obj_type'] == 'link') { $link ="'".$menu['obj_url']."'";  } 
-                                else $link = "";    
+                                if ($menu['obj_type'] == 'content') {
+                                  
+                                  $link = "'index.php?p=".$menu['obj_type']."&id=".$menu['obj_url']."'";
+                                  
+                                }
+                                elseif ($menu['obj_type'] == 'link') {
+                                 $link ="'".$menu['obj_url']."'";  
+                                } 
+                                else {
+                                  $link = "";
+                                }    
 
                                echo '<div class="bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>
                                <?php echo $menu['obj_name']; ?>

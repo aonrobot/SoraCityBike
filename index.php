@@ -35,38 +35,8 @@ if ($page!='home') {
 <script src="components/js/jquery.js"></script>
 <script src="components/js/sora-default.js"></script>
 <script src="components/js/bootstrap.min.js"></script>
-<script src="components/js/swiper.min.js"></script>
-
-
-<script>
-  var swiper1 = new Swiper('.swiper1', {
-
-    slidesPerView: 'auto',
-    centeredSlides: false,
-    spaceBetween: 0,
-    grabCursor: false,
-
-    nextButton: '.swiper-button-next1',
-    prevButton: '.swiper-button-prev1'
-
-  });
 
 
 
-</script>
-
-<script>
-  var swiper3 = new Swiper('.swiper3', {
-
-    slidesPerView: 'auto',
-    centeredSlides: false,
-    spaceBetween: 0,
-    grabCursor: false,
-
-    nextButton: '.swiper-button-next3',
-    prevButton: '.swiper-button-prev3'
-
-  });
-</script>
 </body>
 </html>
