@@ -13,18 +13,7 @@
     //Include Functions
     require_once 'functions/functions.php';
     
-    // Include Medoo
-    require_once '../components/medoo.min.php';
-    
-    // Initialize
-    $database = new medoo(array(
-        'database_type' => 'mysql',
-        'database_name' => 'sora_db',
-        'server' => 'localhost',
-        'username' => 'root',
-        'password' => 'root',
-        'charset' => 'utf8'
-    ));
+    include('../config/db_connect.php'); 
     
 
     //////////////////////////////////////////////   INSERT  //////////////////////////////////////////////////

@@ -18,7 +18,7 @@ USE `sora_db` ;
 -- Table `sora_db`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sora_db`.`users` (
-  `user_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
+  `id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(64) NOT NULL,
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`users` (
   `name` VARCHAR(120) NOT NULL,
   `role` VARCHAR(45) NULL,
   `created` DATETIME NOT NULL,
-  `attempt` VARCHAR(45) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`user_id`));
+  `attempt` VARCHAR(45) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`));
 
 
 -- -----------------------------------------------------
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`content` (
   INDEX `user_id_fk_idx` (`user_id` ASC),
   CONSTRAINT `user_id_fk`
     FOREIGN KEY (`user_id`)
-    REFERENCES `sora_db`.`users` (`user_id`)
+    REFERENCES `sora_db`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -221,6 +221,17 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`resetTokens` (
   `uid` BIGINT(120) NOT NULL,
   `requested` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`token`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sora_db`.`site_meta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sora_db`.`site_meta` (
+  `site_meta_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
+  `meta_key` VARCHAR(255) NOT NULL,
+  `meta_value` LONGTEXT NULL,
+  PRIMARY KEY (`site_meta_id`))
 ENGINE = InnoDB;
 
 

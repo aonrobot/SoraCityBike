@@ -17,12 +17,14 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="index.php?p=addUser"><i class="fa fa-plus fa-fw"></i> Add New Admin User</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="index.php?p=userInfo"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="index.php?p=reset"><i class="fa fa-refresh fa-fw"></i> Forget Password</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -37,7 +39,7 @@
                     	
                  		<!-- Start A First Menu -->
                         <li>
-                            <a href="index.php?p=dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.php?p=dashboard"><i class="fa fa-bicycle fa-fw"></i> sora city</a>
                         </li>
 
                         <li>
@@ -48,10 +50,10 @@
                             <a href=""><i class="fa fa-book fa-fw"></i> Content</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="index.php?p=content&s=create">Create Content</a>
+                                    <a href="index.php?p=content&s=show">Show All Content</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?p=content&s=show">Show All Content</a>
+                                    <a href="index.php?p=content&s=create">Create Content</a>
                                 </li>
                                 <li>
                                     <a href="index.php?p=content&s=language">Language</a>
