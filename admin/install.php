@@ -76,7 +76,7 @@ function rand_string($length) {
                     $name = $_POST['name'];
                     if ($username == "" || $email == "" || $password == '' || $retyped_password == '' || $name == '') {
                         echo "<h3 class='text-warning'>Fields Left Blank</h3>", "<p class='text-danger'>Some Fields were left blank. Please fill up all fields.</p>";
-                    } elseif ($password != $retyped_password) {
+                    } elseif (strcmp($password, $retyped_password)) {
                         echo "<h3 class='text-warning'>Passwords Don't Match</h3>", "<p class='text-danger'>The Passwords you entered didn't match</p>";
                     } else {
                         $filename = '../config/db_connect.php';
