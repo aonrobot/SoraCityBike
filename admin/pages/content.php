@@ -1,4 +1,3 @@
-
 <!-- Page Content -->
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -98,6 +97,13 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
+                                    
+                                        <div class="form-group">
+                                            <label>Type</label>
+                                            <select name="type" class="form-control">
+                                                <option value="content">Content</option>
+                                            </select>
+                                        </div>
 
                                         <div class="form-group">
                                                 <?php
@@ -139,14 +145,7 @@
                                                 <option value="trash">Trash</option>
                                             </select>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label>Type</label>
-                                            <select name="type" class="form-control">
-                                                <option value="content">Content</option>
-                                            </select>
-                                        </div>
-
+                                        
                                         <div class="form-group">
                                             <label>Category</label><br>
                                             <?php
@@ -212,7 +211,7 @@
 
                             </div>
                             <!-- /.row (nested) -->
-
+                            <input name="user_id" type="hidden" value="<?php echo $users['id'];?>">
                             <button type="submit" class="btn btn-primary save_btn">Create Content</button>
 
                         </form>
@@ -541,15 +540,15 @@
     <?php }?>    
     
     $(document).ready(function() {
-
-    $("#canvas").gridmanager({
-        debug : 1
-    });
-    
-    $("#input-700").fileinput({
-        uploadUrl : "http://localhost/uploads/thumbnail/",
-        maxFileCount : 1
-    });
+        
+        $("#canvas").gridmanager({
+            debug : 1
+        });
+        
+        $("#input-700").fileinput({
+            uploadUrl : "http://localhost/uploads/thumbnail/",
+            maxFileCount : 1
+        });
 
     });
     
