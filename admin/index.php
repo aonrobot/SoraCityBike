@@ -7,6 +7,7 @@ if(filesize($filename) == 0 || filesize($filenameconf) == 0){
     exit();
 }
 
+include ('../config/db_connect.php');
 //If Don't Have Any User First Use
 $chk_users = $database->count("users");
 if($chk_users == 0){
