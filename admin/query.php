@@ -102,7 +102,7 @@
           
           $url = $_POST['link'];
         
-          if((strpos($_POST['url'], 'http://')===false && strpos($_POST['url'], 'https://')===false) ) $url = 'http://'.$_POST['url'];
+          if((strpos($_POST['link'], 'http://')===false && strpos($_POST['link'], 'https://')===false) ) $url = 'http://'.$_POST['link'];
           
           $database->insert("content_meta", array(
                 "cont_id" => $last,
