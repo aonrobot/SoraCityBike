@@ -526,7 +526,7 @@
              
             $.ajax({
               type: "POST",                                     
-              url:  'pages/update_slide.php',
+              url:  '../functions/update_slide.php',
               dataType: 'json',                             
               data: formData,
                                                           
@@ -622,7 +622,7 @@
              
             $.ajax({
               type: "POST",                                     
-              url:  'pages/update_slide.php',
+              url:  '../functions/update_slide.php',
               dataType: 'json',                             
               data: formData,
                                                           
@@ -734,7 +734,7 @@
                 };    
                 $.ajax({
                      type: "POST",                                     
-                     url: 'pages/update_slide.php',                            
+                     url: '../functions/update_slide.php',                            
                      data: formData,          
                      success: function(){toastr["success"]("Delete Item Success","Delete Success");} 
                 });
@@ -773,7 +773,7 @@
                  
                $.ajax({
                  type: "POST",                                     
-                 url: 'pages/update_slide.php',                            
+                 url: '../functions/update_slide.php',                            
                  data: formData,
                                
                  success: function(){toastr["success"]("Update Slide Structure Success","Update Success");} 
@@ -786,7 +786,7 @@
                //alert(jsonString);
                $.ajax({
                     type: "POST",
-                    url: "pages/update_slide.php",
+                    url: "../functions/update_slide.php",
                     data: {data : jsonString}, 
                     cache: false,
             

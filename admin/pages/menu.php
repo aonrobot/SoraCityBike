@@ -209,7 +209,7 @@
              
             $.ajax({
               type: "POST",                                     
-              url:  'pages/update_menu.php',
+              url:  '../functions/update_menu.php',
               dataType: 'json',                             
               data: formData,
                                                           
@@ -355,7 +355,7 @@
                 };    
                 $.ajax({
                      type: "POST",                                     
-                     url: 'pages/update_menu.php',                            
+                     url: '../functions/update_menu.php',                            
                      data: formData,          
                      success: function(){toastr["success"]("Delete Item Success","Delete Success");} 
                 });
@@ -394,7 +394,7 @@
                  
                $.ajax({
                  type: "POST",                                     
-                 url: 'pages/update_menu.php',                            
+                 url: '../functions/update_menu.php',                            
                  data: formData,
                                
                  success: function(){toastr["success"]("Update Menu Structure Success","Update Success");} 
@@ -407,7 +407,7 @@
                //alert(jsonString);
                $.ajax({
                     type: "POST",
-                    url: "pages/update_menu.php",
+                    url: "../functions/update_menu.php",
                     data: {data : jsonString}, 
                     cache: false,
             
