@@ -92,8 +92,19 @@
         <?php if(!strcmp($_GET['noti'], 'SAddSlide')){?>
           toastr["success"]("Create Slide Success","Create Success");
         <?php }?>
+        <?php if(!strcmp($_GET['noti'], 'SUpdateSlide')){?>
+          toastr["success"]("Update Slide Success","Update Success");
+        <?php }?>
         <?php if(!strcmp($_GET['noti'], 'SDelSlide')){?>
           toastr["success"]("Delete Slide Success","Delete Success");
+        <?php }?>
+        
+        //Footer
+        <?php if(!strcmp($_GET['noti'], 'SAddFooter')){?>
+          toastr["success"]("Create Footer Success","Create Success");
+        <?php }?>
+        <?php if(!strcmp($_GET['noti'], 'SDelFooter')){?>
+          toastr["success"]("Delete Footer Success","Delete Success");
         <?php }?>
         
 	}); 
