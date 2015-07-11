@@ -21,9 +21,6 @@ function rand_string($length) {
     }
     return $random_str;
  }
-function validEmail($email = ""){
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
-  }
 
 ?>
 <!DOCTYPE html>
@@ -79,10 +76,6 @@ function validEmail($email = ""){
                     $name = $_POST['name'];
                     if ($username == "" || $email == "" || $password == '' || $retyped_password == '' || $name == '') {
                         echo "<h3 class='text-warning'>Fields Left Blank</h3>", "<p class='text-danger'>Some Fields were left blank. Please fill up all fields.</p>";
-                    } elseif (!validEmail($email)) {
-                        echo "<h3 class='text-warning'>E-Mail Is Not Valid</h3>", "<p class='text-danger'>The E-Mail you gave is not valid</p>";
-                    } elseif (!ctype_alnum($username)) {
-                        echo "<h3 class='text-warning'>Invalid Username</h3>", "<p class='text-danger'>The Username is not valid. Only ALPHANUMERIC characters are allowed and shouldn't exceed 10 characters.</p>";
                     } elseif ($password != $retyped_password) {
                         echo "<h3 class='text-warning'>Passwords Don't Match</h3>", "<p class='text-danger'>The Passwords you entered didn't match</p>";
                     } else {
