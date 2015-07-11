@@ -11,14 +11,22 @@
     else $a = $_POST['a'];
     
     if(!strcmp($a, 'addImg')){
-                
+        
+        $img_link = $_POST['img_link'];
+        
+        if((strpos($_POST['img_link'], 'http://')===false && strpos($_POST['img_link'], 'https://')===false) ) $img_link = 'http://'.$_POST['img_link'];
+        
+        $content_link = $_POST['content_link'];
+        
+        if((strpos($_POST['content_link'], 'http://')===false && strpos($_POST['content_link'], 'https://')===false) ) $content_link = 'http://'.$_POST['url'];        
+        
         $last_img = $database->insert("slide_data", array(
                 "slide_id" => $_POST['slide_id'],
                 "slide_data_name" => $_POST['img_name'],
                 "slide_data_img_url" => $_POST['img_url'],
-                "slide_data_img_link" => $_POST['img_link'],
+                "slide_data_img_link" => $img_link,
                 "slide_data_content" => $_POST['content'],
-                "slide_data_content_link" => $_POST['content_link'],
+                "slide_data_content_link" => $content_link,
            ));  
            
         
