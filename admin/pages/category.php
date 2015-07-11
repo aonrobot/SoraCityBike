@@ -183,7 +183,7 @@
                                             </td>
 
                                             <td>
-                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" class="btn btn-danger"  style="margin-right: 8px;" data-toggle="modal" data-target="#del_con" ><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>&cat_id=<?php echo $cat_id;?>" class="btn btn-danger"  style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
 
