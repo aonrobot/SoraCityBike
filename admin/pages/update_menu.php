@@ -49,6 +49,7 @@
                "cont_name" => 'menu-structure',
                "cont_slug" => 'menu-structure',
                "cont_status" => 'private',
+               "cont_type" => 'menu',
                "cont_thumbnail" => 'no',
                )); 
         }
