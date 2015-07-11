@@ -26,8 +26,8 @@
           
         
           $last = $database->insert("content", array(
+                "user_id" => $_POST['user_id'],
                 "cont_lang_id" => $_POST['lang'],
-                "cont_name" => $_POST['name'],
                 "cont_name" => $_POST['name'],
                 "cont_author" => $_POST['author'],
                 "cont_slug" => $slug,
@@ -89,6 +89,34 @@
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    if(!strcmp($_GET['a'], 'addFooter')){
+        
+          $last = $database->insert("content", array(
+                "user_id" => $_POST['user_id'],
+                "cont_name" => $_POST['title'],
+                "cont_status" => 'private',
+                "cont_type" => 'footer',
+                "cont_thumbnail" => 'no',
+                
+          ));
+          
+          $database->insert("content_meta", array(
+                "cont_id" => $last,
+                "meta_key" => 'footer.link',
+                "meta_value" => $_POST['link'],
+          ));
+          
+          $database->insert("content_meta", array(
+                "cont_id" => $last,
+                "meta_key" => 'footer.link_target',
+                "meta_value" => $_POST['link_target'],
+          ));
+           
+           
+          header( 'Location: index.php?p=footer&noti=SAddFooter' ) ;
+          exit();
+    }
+    
     if(!strcmp($_GET['a'], 'addlang')){
         
           $database->insert("language", array(
@@ -100,7 +128,33 @@
            header( 'Location: index.php?p=content&s=language&noti=SAddLang' ) ;
            exit();
     }
-
+    
+    if(!strcmp($_GET['a'], 'addSlide')){
+        
+          $last_slide = $database->insert("slide", array(
+                "slide_name" => $_POST['name'],
+                "slide_type" => $_POST['type']
+           ));
+           
+           if(!strcmp($_POST['type'], 'content')){
+           
+               $database->update("content", array(
+                    "slide_id" => $last_slide,
+               ),array(('id')=>$_POST['cont_id']));
+           
+           }
+           if(!strcmp($_POST['type'], 'category')){
+           
+               $database->update("category", array(
+                    "slide_id" => $last_slide,
+               ),array(('cat_id')=>$_POST['cat_id']));
+           
+           }
+           
+           
+           header( 'Location: index.php?p=slide&noti=SAddSlide' ) ;
+           exit();
+    }
     
 
     /////////////////////////////////////////////// UPDATE ////////////////////////////////////////////////////////////////////////
@@ -136,10 +190,12 @@
             ));
         }
         
+        $slug = sanitize($_POST['slug']);
+        
         $database->update("content", array(
             "cont_name" => $_POST['name'],
             "cont_author" => $_POST['author'],
-            "cont_slug" => $_POST['slug'],
+            "cont_slug" => $slug,
             "cont_status" => $_POST['status'],
             "cont_type" => $_POST['type'],
             
@@ -482,24 +538,53 @@
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    if(!strcmp($_GET['a'], 'addSlide')){
+    if(!strcmp($_GET['a'], 'updateSlide')){
         
-          $last_slide = $database->insert("slide", array(
-                "slide_name" => $_POST['name'],
+          $slide_id = $_POST['slide_id'];
+        
+          $database->update("slide", array(
                 "slide_type" => $_POST['type']
-           ));
+           ),array('slide_id' => $slide_id));
            
            if(!strcmp($_POST['type'], 'content')){
            
                $database->update("content", array(
-                    "slide_id" => $last_slide,
+                    "slide_id" => $slide_id,
                ),array(('id')=>$_POST['cont_id']));
+           
+           }
+           if(!strcmp($_POST['type'], 'category')){
+           
+               $database->update("category", array(
+                    "slide_id" => $slide_id,
+               ),array(('cat_id')=>$_POST['cat_id']));
+           
+           }
+           if(!strcmp($_POST['type'], 'video')){
+           
+               $database->update("content", array(
+                    "slide_id" => '',
+               ),array(('slide_id')=>$slide_id));
+               
+               $database->update("category", array(
+                    "slide_id" => '',
+               ),array(('slide_id')=>$slide_id));
+           
+           }
+           if(!strcmp($_POST['type'], 'home')){
+           
+               $database->update("content", array(
+                    "slide_id" => '',
+               ),array(('slide_id')=>$slide_id));
+               
+               $database->update("category", array(
+                    "slide_id" => '',
+               ),array(('slide_id')=>$slide_id));
            
            }
            
            
-           
-           header( 'Location: index.php?p=slide&noti=SAddSlide' ) ;
+           header( 'Location: index.php?p=slide&a=edit&id='.$slide_id.'&noti=SUpdateSlide' ) ;
            exit();
     }
 
@@ -614,6 +699,17 @@
                 $database->delete("slide", array("slide_id" => $slide_id));
                 
                 header( 'Location: index.php?p=slide&noti=SDelSlide' ) ;
+                exit();                     
+        
+                break;
+            
+            case 'footer':
+                
+                $database->delete("content_meta", array("cont_id" => $_GET['i']));
+                $database->delete("content", array("id" => $_GET['i']));
+                
+                
+                header( 'Location: index.php?p=footer&noti=SDelFooter' ) ;
                 exit();                     
         
                 break;
