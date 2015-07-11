@@ -100,10 +100,14 @@
                 
           ));
           
+          $url = $_POST['link'];
+        
+          if((strpos($_POST['url'], 'http://')===false && strpos($_POST['url'], 'https://')===false) ) $url = 'http://'.$_POST['url'];
+          
           $database->insert("content_meta", array(
                 "cont_id" => $last,
                 "meta_key" => 'footer.link',
-                "meta_value" => $_POST['link'],
+                "meta_value" => $url,
           ));
           
           $database->insert("content_meta", array(
