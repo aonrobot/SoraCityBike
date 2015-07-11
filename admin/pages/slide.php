@@ -25,6 +25,7 @@
                                             <label>Type</label>
                                             <select name="type" id="type" class="form-control">
                                                 <option value="content">Content Slide</option>
+                                                <option value="category">Category Slide</option>
                                                 <option value="video">Video Slide</option>
                                                 <option value="home">Home Slide</option>  
                                             </select>
@@ -36,6 +37,16 @@
                                             <select class="form-control" name="cont_id">
                                                     <?php foreach ($contents as $content) { ?>
                                                         <option value="<?php echo $content['id'];?>"><?php echo $content['cont_name'];?></option>
+                                                    <?php } ?>                                                 
+                                            </select>
+                                        </div>
+                                        
+                                        <?php $cats = $database->select("category", array('cat_id','cat_name')); ?>
+                                        <div class="col-lg-2 form-group" id="div-category">
+                                            <label>Category</label>
+                                            <select class="form-control" name="cat_id">
+                                                    <?php foreach ($cats as $cat) { ?>
+                                                        <option value="<?php echo $cat['id'];?>"><?php echo $cat['cat_name'];?></option>
                                                     <?php } ?>                                                 
                                             </select>
                                         </div>
@@ -66,7 +77,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Content</th>
+                                            <th>Slide Address</th>
                                             <th>Type</th>
                                             <th>Action</th>
                                         </tr>
@@ -76,10 +87,12 @@
                                             $datas = $database->select("slide", array(
 
                                             "[>]content" => array("slide_id" => "slide_id"),
+                                            
+                                            "[>]category" => array("slide_id" => "slide_id"),
 
                                             ),
 
-                                            array('slide.slide_id','cont_name','slide_name','slide_type')
+                                            array('slide.slide_id','cont_name','slide_name','slide_type','cat_name')
 
                                             );           
                                             foreach ($datas as $data) {
@@ -90,8 +103,14 @@
                                         <tr>
                                             <td><?php echo $data['slide_id'];?></td>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['slide_name'];?></a></td>
+                                            
+                                            <?php if(!strcmp($data['cont_name'], '')){?>
+                                            <td><?php echo $data['cat_name'];?></td>
+                                            <?php }else{?>
                                             <td><?php echo $data['cont_name'];?></td>
-                                            <td><a href="#" class="slidetype" data-type="select" data-pk="<?php echo $data['slide_id'];?>" data-url="query.php?a=editvalueslide&c=slide_type" data-title="Edit below here"  ><?php echo $data['slide_type'];?></a></td>
+                                            <?php }?>
+                                            
+                                            <td><?php echo $data['slide_type'];?></td>
                                             <td>
                                                 <a href="<?php echo $link_edit;?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i></a>
                                                 <a href="query.php?a=del&w=slide&i=<?php echo $data['slide_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
@@ -120,13 +139,70 @@
                             
                             //Check This Slide Id has Content Data?
                             $chk_cont_meta = $database->count("content_meta", array("meta_key" => 'slide:'.$slide_id));
-                            if($chk_cont_meta == 0) $database->delete("slide_data", array("slide_id" => $slide_id));                          
+                            if($chk_cont_meta == 0) $database->delete("slide_data", array("slide_id" => $slide_id));                        
                                         
                     ?>
                     
-                    <?php if(!strcmp($slide_type[0]['slide_type'], 'content') || !strcmp($slide_type[0]['slide_type'], 'home')){?>
+                    <?php if(!strcmp($slide_type[0]['slide_type'], 'content') || !strcmp($slide_type[0]['slide_type'], 'category') || !strcmp($slide_type[0]['slide_type'], 'home')){?>
                         
                     <h1 class="page-header"><a href="index.php?p=slide"><i class="fa fa-sliders fa-1x"></i></a> <?php echo $slide_type[0]['slide_name'];?></h1>
+                    
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Slide Info</b>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <form method="post" role="form" action="query.php?a=updateSlide">
+                                            
+                                            <div class="col-lg-4 form-group">
+                                                <label>Type</label>
+                                                <select name="type" id="type" class="form-control">
+                                                    <option value="content">Content Slide</option>
+                                                    <option value="category">Category Slide</option>
+                                                    <option value="video">Video Slide</option>
+                                                    <option value="home">Home Slide</option>  
+                                                </select>
+                                            </div>
+                                            
+                                            <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
+                                            <div class="col-lg-12 form-group" id="div-content">
+                                                <label>Content</label>
+                                                <select class="form-control" name="cont_id">
+                                                        <?php foreach ($contents as $content) { ?>
+                                                            <option value="<?php echo $content['id'];?>"><?php echo $content['cont_name'];?></option>
+                                                        <?php } ?>                                                 
+                                                </select>
+                                            </div>
+                                            
+                                            <?php $cats = $database->select("category", array('cat_id','cat_name')); ?>
+                                            <div class="col-lg-12 form-group" id="div-category">
+                                                <label>Category</label>
+                                                <select class="form-control" name="cat_id">
+                                                        <?php foreach ($cats as $cat) { ?>
+                                                            <option value="<?php echo $cat['id'];?>"><?php echo $cat['cat_name'];?></option>
+                                                        <?php } ?>                                                 
+                                                </select>
+                                            </div>
+    
+                                            <div class="col-lg-12">
+                                                <input name="slide_id" type="hidden" value="<?php echo $slide_id;?>">
+                                                <button style="margin-top: 20px;" type="submit" class="btn btn-primary save_btn">Update Slide Info</button>
+                                            </div>
+                                            
+                                        </form>
+                                    </div>
+                                    <!-- /.col-lg-12 (nested) -->
+                                   
+                                </div>
+                                <!-- /.row (nested) -->
+                           </div>
+                          <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    
+                    
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <b>Add Image</b>
@@ -219,6 +295,62 @@
                     <?php if(!strcmp($slide_type[0]['slide_type'], 'video')){?>
                         
                     <h1 class="page-header"><a href="index.php?p=slide"><i class="fa fa-sliders fa-1x"></i></a> <?php echo $slide_type[0]['slide_name'];?></h1>
+                    
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Slide Info</b>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <form method="post" role="form" action="query.php?a=updateSlide">
+                                            
+                                            <div class="col-lg-4 form-group">
+                                                <label>Type</label>
+                                                <select name="type" id="type" class="form-control">
+                                                    <option value="content"   <?php if(!strcmp($slide_type[0]['slide_type'], "content"))echo "selected";?> >Content Slide</option>
+                                                    <option value="category"  <?php if(!strcmp($slide_type[0]['slide_type'], "category"))echo "selected";?> >Category Slide</option>
+                                                    <option value="video"     <?php if(!strcmp($slide_type[0]['slide_type'], "video"))echo "selected";?> >Video Slide</option>
+                                                    <option value="home"      <?php if(!strcmp($slide_type[0]['slide_type'], "home"))echo "selected";?> >Home Slide</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
+                                            <div class="col-lg-12 form-group" id="div-content">
+                                                <label>Content</label>
+                                                <select class="form-control" name="cont_id">
+                                                        <?php foreach ($contents as $content) { ?>
+                                                            <option value="<?php echo $content['id'];?>"><?php echo $content['cont_name'];?></option>
+                                                        <?php } ?>                                                 
+                                                </select>
+                                            </div>
+                                            
+                                            <?php $cats = $database->select("category", array('cat_id','cat_name')); ?>
+                                            <div class="col-lg-12 form-group" id="div-category">
+                                                <label>Category</label>
+                                                <select class="form-control" name="cat_id">
+                                                        <?php foreach ($cats as $cat) { ?>
+                                                            <option value="<?php echo $cat['id'];?>"><?php echo $cat['cat_name'];?></option>
+                                                        <?php } ?>                                                 
+                                                </select>
+                                            </div>
+    
+                                            <div class="col-lg-12">
+                                                <input name="slide_id" type="hidden" value="<?php echo $slide_id;?>">
+                                                <button style="margin-top: 20px;" type="submit" class="btn btn-primary save_btn">Update Slide Info</button>
+                                            </div>
+                                            
+                                        </form>
+                                    </div>
+                                    <!-- /.col-lg-12 (nested) -->
+                                   
+                                </div>
+                                <!-- /.row (nested) -->
+                           </div>
+                          <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <b>Add Video</b>
@@ -317,20 +449,66 @@
             
             if($('#type').val() == "content"){
                 $('#div-content').show();
+                $('#div-category').hide();
+            }
+            else if($('#type').val() == "category"){
+                $('#div-category').show();
+                $('#div-content').hide();
             }
             else if($('#type').val() == "video"){
                 $('#div-content').hide();
+                $('#div-category').hide();
             }
             else{
                 $('#div-content').hide();
+                $('#div-category').hide();
             }
             
-        });
+       });
+       
     <?php }?>
     
     <?php if(!strcmp($_GET['a'], 'edit')){?>  
+        
+     $('#type').change(function(){
+            
+            if($('#type').val() == "content"){
+                $('#div-content').show();
+                $('#div-category').hide();
+            }
+            else if($('#type').val() == "category"){
+                $('#div-category').show();
+                $('#div-content').hide();
+            }
+            else if($('#type').val() == "video"){
+                $('#div-content').hide();
+                $('#div-category').hide();
+            }
+            else{
+                $('#div-content').hide();
+                $('#div-category').hide();
+            }
+            
+    });
     
     $(document).ready(function(){
+        
+         if($('#type').val() == "content"){
+             $('#div-content').show();
+             $('#div-category').hide();
+         }
+         else if($('#type').val() == "category"){
+             $('#div-category').show();
+             $('#div-content').hide();
+         }
+         else if($('#type').val() == "video"){
+             $('#div-content').hide();
+             $('#div-category').hide();
+         }
+         else{
+             $('#div-content').hide();
+             $('#div-category').hide();
+         }
         
          $("#create-img").click(function(){
             
@@ -631,9 +809,10 @@
 		 $('.slidetype').editable({
 		 	
 		 	source: [ 
-		 		{value: 'content', text: 'content'},
-	            {value: 'video', text: 'video'},
-	            {value: 'home', text: 'home'}
+		 		{value: 'content', text: 'Content'},
+		 		{value: 'category', text: 'Category'},
+	            {value: 'video', text: 'Video'},
+	            {value: 'home', text: 'Home'}
 	            
 	            
 	        ]
