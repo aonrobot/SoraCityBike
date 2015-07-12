@@ -156,16 +156,23 @@
                                     <div class="col-lg-12">
                                         <form method="post" role="form" action="query.php?a=updateSlide">
                                             
+                                            <?php
+                                                    // Check Where This Slide?
+                                                    $in_cont = $database->count("content", array("slide_id" => $slide_id));
+                                                    $in_cat = $database->count("category", array("slide_id" => $slide_id));
+                                                    
+                                            ?>
+                                            
                                             <div class="col-lg-4 form-group">
                                                 <label>Type</label>
                                                 <select name="type" id="type" class="form-control">
-                                                    <option value="content">Content Slide</option>
-                                                    <option value="category">Category Slide</option>
+                                                    <option value="content" <?php if($in_cont>0) echo "selected='true'";?> >Content Slide</option>
+                                                    <option value="category" <?php if($in_cat>0) echo "selected='true'";?> >Category Slide</option>
                                                     <option value="video">Video Slide</option>
                                                     <option value="home">Home Slide</option>  
                                                 </select>
                                             </div>
-                                            
+
                                             <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
                                             <div class="col-lg-12 form-group" id="div-content">
                                                 <label>Content</label>
@@ -181,11 +188,11 @@
                                                 <label>Category</label>
                                                 <select class="form-control" name="cat_id">
                                                         <?php foreach ($cats as $cat) { ?>
-                                                            <option value="<?php echo $cat['id'];?>"><?php echo $cat['cat_name'];?></option>
+                                                            <option value="<?php echo $cat['cat_id'];?>"><?php echo $cat['cat_name'];?></option>
                                                         <?php } ?>                                                 
                                                 </select>
                                             </div>
-    
+
                                             <div class="col-lg-12">
                                                 <input name="slide_id" type="hidden" value="<?php echo $slide_id;?>">
                                                 <button style="margin-top: 20px;" type="submit" class="btn btn-primary save_btn">Update Slide Info</button>
@@ -526,7 +533,7 @@
              
             $.ajax({
               type: "POST",                                     
-              url:  '../functions/update_slide.php',
+              url:  'functions/update_slide.php',
               dataType: 'json',                             
               data: formData,
                                                           
@@ -622,7 +629,7 @@
              
             $.ajax({
               type: "POST",                                     
-              url:  '../functions/update_slide.php',
+              url:  'functions/update_slide.php',
               dataType: 'json',                             
               data: formData,
                                                           
@@ -734,7 +741,7 @@
                 };    
                 $.ajax({
                      type: "POST",                                     
-                     url: '../functions/update_slide.php',                            
+                     url: 'functions/update_slide.php',                            
                      data: formData,          
                      success: function(){toastr["success"]("Delete Item Success","Delete Success");} 
                 });
@@ -773,7 +780,7 @@
                  
                $.ajax({
                  type: "POST",                                     
-                 url: '../functions/update_slide.php',                            
+                 url: 'functions/update_slide.php',                            
                  data: formData,
                                
                  success: function(){toastr["success"]("Update Slide Structure Success","Update Success");} 
@@ -786,7 +793,7 @@
                //alert(jsonString);
                $.ajax({
                     type: "POST",
-                    url: "../functions/update_slide.php",
+                    url: "functions/update_slide.php",
                     data: {data : jsonString}, 
                     cache: false,
             
