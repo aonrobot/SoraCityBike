@@ -2,8 +2,8 @@
       <div class="items-wrapper">
       <?php 
       $slide=$database->select("slide_data", ["[>]slide" => ["slide_id" => "slide_id"]],"*",["slide_type[=]" => 'home']);
-      foreach ($slide as $a) {?>
-            <div class="item" >
+      foreach ($slide as $a) {?><!-- 
+            --><div class="item" >
               <div class="slidein">
                 <img class="item" src=<?php echo "'".$a['slide_data_img_url']."'"; ?>>
                 <span class="caption simple-caption" >
@@ -11,8 +11,9 @@
                   <p style="margin-left:10px; color:white;"> <?php echo $a['slide_data_content']; ?></p>   
                 </span>
               </div>
-            </div>
-         <?php } ?>  
+            </div><!--
+			--><?php } ?>  
+         
   </div>
     <div class="buttons">
     <button  class="left left1"></button>
@@ -32,10 +33,7 @@
 <?php 
         $slide_video = $database->select("slide_data",["[>]slide" => ["slide_id" => "slide_id"]],["slide_data_id","slide_data_name","slide_data_img_url"],["slide_type[=]"=>"video"]);
         foreach ($slide_video as $key ) {
-          ?>
-  
-    <iframe class="itemvideo" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> width="590" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        <?php } ?>
+          ?><!-- --><iframe class="itemvideo" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> width="580" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><!-- --><?php } ?>
   </div>
   
   <div class="buttons">
