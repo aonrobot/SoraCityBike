@@ -124,7 +124,7 @@ function rand_string($length) {
                                 ),
                            ));
 
-                           header('Location: login.php');    
+                           header('Location: logout.php');    
                            exit();
                         }
                     }
@@ -213,9 +213,9 @@ function rand_string($length) {
                            $txt = " ),\n";
                            fwrite($configfile, $txt);
                            
-                           $txt = "'login_page' => /'".$site_path."/admin/login.php',\n";
+                           $txt = "'login_page' => '/".$site_path."/admin/login.php',\n";
                            fwrite($configfile, $txt);
-                           $txt = "'home_page' => /'".$site_path."/admin/index.php'\n";
+                           $txt = "'home_page' => '/".$site_path."/admin/index.php'\n";
                            fwrite($configfile, $txt);
                            
                            $txt = " ));\n";
