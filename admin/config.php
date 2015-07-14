@@ -12,7 +12,7 @@ require 'class.logsys.php';
  'no_login' => array(
  '',
  ),
-'login_page' => '//soracitybike/admin/login.php',
-'home_page' => '//soracitybike/admin/index.php'
+'login_page' => '/SoraCityBike/admin/login.php',
+'home_page' => '/SoraCityBike/admin/index.php'
  ));
 ?>

@@ -30,18 +30,18 @@
             $lang=$database->select("language",'*');
 
 
-            foreach ($lang as $key ) {
-                if (isset($_GET['lang'])) {  
-                     if($_GET['lang']==$key['lang_code']) {
-                        $_SESSION['lang_session'] = $key['lang_id'];
-                    }
-                }
-                else
-                    if($_SESSION['def_lang']==$key['lang_code']) {
-                        $_SESSION['lang_session'] = $key['lang_id'];
-                    }
-            }
-            //echo  $_SESSION['lang_session'];
+            // foreach ($lang as $key ) {
+            //     if (isset($_GET['lang'])) {  
+            //          if($_GET['lang']==$key['lang_code']) {
+            //             $_SESSION['lang_session'] = $key['lang_id'];
+            //         }
+            //     }
+            //     else
+            //         if($_SESSION['def_lang']==$key['lang_code']) {
+            //             $_SESSION['lang_session'] = $key['lang_id'];
+            //         }
+            // }
+            // //echo  $_SESSION['lang_session'];
             ?>
 
             <body> 

@@ -26,7 +26,7 @@
 <div class="hidden-slider" align="center">
   <div class="hidden-content" id="hideMe" style="display:none; ">
     
-\
+
 
 <div id="leonardo_da_vinci_machines" class="box-slider slide2">
 <div class="items-wrapper">
