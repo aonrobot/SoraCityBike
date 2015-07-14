@@ -3442,15 +3442,14 @@ tbody.collapse.in {
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0;
-  font-size: 14px;
+   font-family: pero; 
+    src: url(../fonts/Pero.otf ) format("truetype"); 
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: #f8f8f8;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, .15);
-  border-radius: 4px;
+  
  
 }
 .dropdown-menu.pull-right {
@@ -3474,9 +3473,11 @@ tbody.collapse.in {
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #262626;
+  
   text-decoration: none;
-  background-color: #f5f5f5;
+   color: #000;
+    font-weight: 500; 
+
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
