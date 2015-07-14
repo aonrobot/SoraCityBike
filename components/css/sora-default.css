@@ -280,7 +280,7 @@ margin: 0px;
 .navbar {
     border-radius: 0;
     margin-bottom: -0.2em;
-    z-index: 10;
+    z-index: 101;
 
 }
 

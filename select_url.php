@@ -1,7 +1,7 @@
 <?php
 
     // Include Medoo
-    require_once '../components/medoo.min.php';
+    require_once 'components/medoo.min.php';
     
     // Initialize
     $database = new medoo(array(
