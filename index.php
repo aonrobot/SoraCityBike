@@ -304,14 +304,16 @@ $lang=$database->select("language",'*');
             //array("AND" => array("cat_type[=]"=>'story', "lang_id[=]"=>$lang_id))
             array("ORDER"=>"cont_order")
             );
-
+             
             ?>
 
 
             <?php foreach ($datas as $data ) {
-              if ($data['cat_type']=='story') {
-              $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
 
+              if ($data['cat_type']=='story') {
+
+              $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
+              
               ?>
 
               <div class="col-md-4 category-box">
