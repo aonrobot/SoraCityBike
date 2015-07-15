@@ -1,7 +1,15 @@
 
 <?php 
 
+session_start();
 
+if(isset($_SESSION['lang_session']))
+ // $_SESSION['lang_session'] = 'nope lang';
+  echo $_SESSION['lang_session'];
+else{
+ $_SESSION['lang_session'] = 1;
+ echo $_SESSION['lang_session'];
+}
 // session_start();
 // $_SESSION['def_lang']=$default_l=strtoupper (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 1));
 
@@ -88,14 +96,30 @@ $lang=$database->select("language",'*');
             onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="components/img/icon/icon-pt-type2.png"/></a>
             <a href="https://www.vimeo.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
               onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src="components/img/icon/icon-ve-type2.png"/></a>
+               <?php
+              
+              foreach ($lang as $a) {?>
+
+                 <a href=""><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php echo '"a('."'".$a['lang_id']."'".');"'; ?>     ><?php echo $a['lang_code']; ?></button></a>
+                
               <?php
-              foreach ($lang as $a) {
-
-                echo '<a href="index.php?lang='.$a['lang_code'].'"><button class="time_text bg-gray pero-font btn btn-default lowercase" > '.$a['lang_code'].' </button></a>';
-
-
               }    
               ?>
+              <script type="text/javascript">
+              function a(e){
+                alert(e);
+                 $.ajax({
+                    type: 'POST',
+                    url: "change_lang.php",
+                    data: {
+                      lang: e
+                    }
+                  }).done(function() {
+                        alert('yeahhhh');
+                  });
+                 
+              }
+              </script>
             </div>
           </div>
 
@@ -134,7 +158,7 @@ $lang=$database->select("language",'*');
                     echo '<li id="menu_'.$menu['menu_id'].'">';
                     if ($menu['obj_type'] == 'content') {
 
-                      $link = "'index.php?p=".$menu['obj_type']."&id=".$menu['obj_url']."'";
+                      $link = "'content.php?&id=".$menu['obj_url']."'";
 
                     }
                     elseif ($menu['obj_type'] == 'link') {
@@ -325,19 +349,14 @@ function hideImg(obj) {
   <div class="pero-font container main_content" align="center">
         <h4 class="pero-font large-font underline   ">categorys</h4><br>
      <?php 
-           $lang_id=1;
+           $lang_id=$_SESSION['lang_session'];
            $id=$_GET["id"];
 
 
            $datas = $database->select("category_relationships", 
-
             array("[>]category" => array("cat_id" => "cat_id"),"[>]content_translation" => "cont_id")
-
             ,'*'
-
-            ,array("ORDER"=>"cont_order")
-            
-            
+            ,array("ORDER"=>"cont_order")                    
             );
             
             ?>

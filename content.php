@@ -1,6 +1,15 @@
 
 <?php 
 
+session_start();
+
+if(isset($_SESSION['lang_session']))
+ // $_SESSION['lang_session'] = 'nope lang';
+  echo $_SESSION['lang_session'];
+else{
+ $_SESSION['lang_session'] = 1;
+ echo $_SESSION['lang_session'];
+}
 
 // session_start();
 // $_SESSION['def_lang']=$default_l=strtoupper (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 1));
@@ -75,8 +84,6 @@ $lang=$database->select("language",'*');
       <?php 
       echo '<span class=" pero-font uppercase time_text">'.date('D j M').'</span>';
 
-
-
       ?>
     </div>
     <div class="col-xs-4 col-xs-offset-4 brand-social" align="center">
@@ -88,15 +95,32 @@ $lang=$database->select("language",'*');
             onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="components/img/icon/icon-pt-type2.png"/></a>
             <a href="https://www.vimeo.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
               onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src="components/img/icon/icon-ve-type2.png"/></a>
+              <br class="hid_br">
+               <?php
+              
+              foreach ($lang as $a) {?>
+
+                 <a href=""><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php echo '"a('."'".$a['lang_id']."'".');"'; ?>     ><?php echo $a['lang_code']; ?></button></a>
+                
               <?php
-              foreach ($lang as $a) {
-
-                echo '<a href="index.php?lang='.$a['lang_code'].'"><button class="time_text bg-gray pero-font btn btn-default lowercase" > '.$a['lang_code'].' </button></a>';
-
-
               }    
               ?>
-            </div>
+              <script type="text/javascript">
+              function a(e){
+                alert(e);
+                 $.ajax({
+                    type: 'POST',
+                    url: "change_lang.php",
+                    data: {
+                      lang: e
+                    }
+                  }).done(function() {
+                        alert('yeahhhh');
+                  });
+                 
+              }
+              </script>
+            
           </div>
 
           <div class="brand row">
@@ -108,6 +132,7 @@ $lang=$database->select("language",'*');
 
 
           </div>
+
           <hr class="top_line">
 
           <nav class="bg-gray navbar navbar-default " role="navigation" id="stickyheader">
@@ -134,7 +159,7 @@ $lang=$database->select("language",'*');
                     echo '<li id="menu_'.$menu['menu_id'].'">';
                     if ($menu['obj_type'] == 'content') {
 
-                      $link = "'index.php?p=".$menu['obj_type']."&id=".$menu['obj_url']."'";
+                      $link = "'content.php?&id=".$menu['obj_url']."'";
 
                     }
                     elseif ($menu['obj_type'] == 'link') {
@@ -176,7 +201,7 @@ $lang=$database->select("language",'*');
         </div>
         <!-- /.container -->
       </nav>
-
+    
       <div id="stickyalias"></div>
 <!-- ////////////////////////////////////    THIS  IS END OF TOPMENU       ///////////////////////////////////////////////////// -->
 
@@ -318,9 +343,9 @@ function hideImg(obj) {
         <?php
 // $lang_session=$_GET['lang']; 
 
- $lang_session=1;
+ $lang_id=$_SESSION['lang_session'];
  $id=$_GET["id"];
- $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lang_session,"cont_id[=]"=>$id]]);
+ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lang_id,"cont_id[=]"=>$id]]);
 ?>
 
 <div class="content row">
