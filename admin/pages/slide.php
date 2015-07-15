@@ -242,18 +242,29 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Content (Max 150 Character)</label>
-                                                <textarea id="content" style="resize: none;" name="content" class="form-control" rows="3" placeholder="Enter Image Content"></textarea></textarea>
+                                                <textarea id="content" style="resize: none;" name="content" class="form-control" rows="3" placeholder="Enter Image Content"></textarea>
                                             </div>
                                             <script>
+                                                
                                                 CKEDITOR.replace( 'content', {
-                                                     toolbar: [
+                                                                                                        
+                                                    wordcount: {
+                                                        showCharCount: true,
+                                                        maxWordCount: 4000,
+                                                        maxCharCount: 150,
+
+                                                    },      
+                                                                                                
+                                                    toolbar: [
                                                       [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],
                                                       { name: 'font', items: ['Font','FontSize'] },
                                                       '/',
                                                       { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline','-','JustifyLeft','JustifyCenter','JustifyRight','-','NumberedList','BulletedList','-','Link','Unlink','-','Source' ] },
                                                       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
                                                       { name: 'tools', items: [ 'Maximize' ] }
-                                                     ]}
+                                                     ]
+                                                     
+                                                    }
                                                 );
                                             </script>
                                         </div>
@@ -807,6 +818,7 @@
    
    
    $(document).ready(function(){
+       
                 
          if($('#type').val() == "content"){
              $('#div-content').show();
@@ -845,8 +857,8 @@
 			
 			
 	});
-		
-            
+	
+	
 
 </script>
 

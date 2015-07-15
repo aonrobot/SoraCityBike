@@ -16,13 +16,24 @@ CKEDITOR.editorConfig = function( config ) {
 	
 	config.extraPlugins = 'oembed,widget';
 	
-	config.extraPlugins = 'panelbutton';
+	config.extraPlugins = 'notification';
 	
-	config.extraPlugins = 'floatpanel';
+	config.extraPlugins = 'wordcount';
 	
-	config.extraPlugins = 'stylescombo';
-	
-	config.extraPlugins = 'colorbutton';
+	config.wordcount = {
+
+        // Whether or not you want to show the Word Count
+        showWordCount: true,
+    
+        // Whether or not you want to show the Char Count
+        showCharCount: true,
+        
+        // Maximum allowed Word Count
+        //maxWordCount: 4,
+    
+        // Maximum allowed Char Count
+        //maxCharCount: 10
+    };
 	
 	config.filebrowserBrowseUrl = roxyFileman;
 	
