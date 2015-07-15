@@ -964,7 +964,7 @@
             .addClass(gm.options.colClass)
             .addClass(gm.options.colDesktopClass + size)
             .addClass(gm.options.colTabletClass + size)
-            .addClass(gm.options.colPhoneClass + size)
+            .addClass(gm.options.colPhoneClass + 12) // SoraCity (Fix 12 Size For col-xs-) (original is [+ size])
             .addClass(gm.options.gmEditClass)
             .addClass(gm.options.colAdditionalClass)
             .html(gm.toolFactory(gm.options.colButtonsPrepend))
