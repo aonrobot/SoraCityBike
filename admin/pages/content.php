@@ -205,8 +205,26 @@
 
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="description" class="form-control" rows="3" style="resize: none;"></textarea>
+                                            <textarea id="description" name="description" class="form-control" rows="3" style="resize: none;"></textarea>
                                         </div>
+                                        <script>
+                                                
+                                                CKEDITOR.replace( 'description', {
+                                                                                                        
+                                                    wordcount: {
+                                                        showCharCount: true,
+                                                        maxWordCount: 4000,
+                                                        maxCharCount: 100,
+
+                                                    },      
+                                                                                                
+                                                    toolbar: [
+                                                      [ 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo' ],
+                                                     ]
+                                                     
+                                                    }
+                                                );
+                                            </script>
 
                                         <div class="form-group">
                                             <label>Content</label>
@@ -331,8 +349,26 @@
 
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="description" class="form-control" rows="3" style="resize: none;"><?php echo $contents[0]['cont_description'];?></textarea>
+                                            <textarea id="description" name="description" class="form-control" rows="3" style="resize: none;"><?php echo $contents[0]['cont_description'];?></textarea>
                                         </div>
+                                        <script>
+                                                
+                                                CKEDITOR.replace( 'description', {
+                                                                                                        
+                                                    wordcount: {
+                                                        showCharCount: true,
+                                                        maxWordCount: 4000,
+                                                        maxCharCount: 100,
+
+                                                    },      
+                                                                                                
+                                                    toolbar: [
+                                                      [ 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo' ],
+                                                     ]
+                                                     
+                                                    }
+                                                );
+                                            </script>
 
                                         <div class="form-group">
                                                 <label>Content</label>
