@@ -4,14 +4,9 @@
 
 session_start();
 
-if(isset($_SESSION['lang_session']))
- // $_SESSION['lang_session'] = 'nope lang';
-  echo $_SESSION['lang_session'];
-else{
+if(!isset($_SESSION['lang_session']))
  $_SESSION['lang_session'] = 1;
- echo $_SESSION['lang_session'];
 
-}
 
 // $_SESSION['def_lang']=$default_l=strtoupper (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 1));
 
@@ -108,7 +103,7 @@ $lang=$database->select("language",'*');
               ?>
               <script type="text/javascript">
               function a(e){
-                alert(e);
+                
                  $.ajax({
                     type: 'POST',
                     url: "change_lang.php",
@@ -116,7 +111,7 @@ $lang=$database->select("language",'*');
                       lang: e
                     }
                   }).done(function() {
-                        alert('yeahhhh');
+                       
                   });
                  
               }
