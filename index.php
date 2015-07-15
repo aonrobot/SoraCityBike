@@ -2,11 +2,20 @@
 <?php 
 
 
-// session_start();
+session_start();
+
+if(isset($_SESSION['lang_session']))
+ // $_SESSION['lang_session'] = 'nope lang';
+  echo $_SESSION['lang_session'];
+else{
+ $_SESSION['lang_session'] = 1;
+ echo $_SESSION['lang_session'];
+
+}
+
 // $_SESSION['def_lang']=$default_l=strtoupper (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 1));
 
-// if(!isset($_SESSION['lang_session']))
-//   $_SESSION['lang_session'] = 1;
+
 
 // $_SESSION['lang_session'] = $_SESSION['lang_session']+1;
 
@@ -15,14 +24,14 @@
 // }
 //session_destroy();
 
-?>
+ ?>
 
-<?php include('config/config.php'); ?>
-<!DOCTYPE html>
+ <?php include('config/config.php'); ?>
+ <!DOCTYPE html>
 
-<html lang="en">
+ <html lang="en">
 
-<head>
+ <head>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +78,7 @@ $lang=$database->select("language",'*');
 
 
 
-<!-- ////////////////////////////////////    THIS  IS TOP MENU       ///////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////    THIS  IS TOP MENU       ///////////////////////////////////////////////////// -->
   <div class="row row_navbar">
     <div class="col-xs-4 brand-time " align="center">
       <?php 
@@ -89,13 +98,29 @@ $lang=$database->select("language",'*');
             <a href="https://www.vimeo.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
               onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src="components/img/icon/icon-ve-type2.png"/></a>
               <?php
-              foreach ($lang as $a) {
+              
+              foreach ($lang as $a) {?>
 
-                echo '<a href="index.php?lang='.$a['lang_code'].'"><button class="time_text bg-gray pero-font btn btn-default lowercase" > '.$a['lang_code'].' </button></a>';
-
-
+                 <a href=""><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php echo '"a('."'".$a['lang_id']."'".');"'; ?>     ><?php echo $a['lang_code']; ?></button></a>
+                
+              <?php
               }    
               ?>
+              <script type="text/javascript">
+              function a(e){
+                alert(e);
+                 $.ajax({
+                    type: 'POST',
+                    url: "change_lang.php",
+                    data: {
+                      lang: e
+                    }
+                  }).done(function() {
+                        alert('yeahhhh');
+                  });
+                 
+              }
+              </script>
             </div>
           </div>
 
@@ -179,7 +204,7 @@ $lang=$database->select("language",'*');
       </nav>
 
       <div id="stickyalias"></div>
-<!-- ////////////////////////////////////    THIS  IS END OF TOPMENU       ///////////////////////////////////////////////////// -->
+      <!-- ////////////////////////////////////    THIS  IS END OF TOPMENU       ///////////////////////////////////////////////////// -->
 
       <script>
 
@@ -200,7 +225,7 @@ $lang=$database->select("language",'*');
 
       </script>
 
-<!-- ////////////////////////////////////    THIS  IS SLIDE       ///////////////////////////////////////////////////// -->
+      <!-- ////////////////////////////////////    THIS  IS SLIDE       ///////////////////////////////////////////////////// -->
 
       <div id="leonardo_da_vinci_machines" class="box-slider slide1">
         <div class="items-wrapper">
@@ -245,44 +270,44 @@ $lang=$database->select("language",'*');
           <button class="bg-gray pero-font btn btn-default" onclick="toggle_visibility('hideMe');">show films <span><img id="video_btn" class="dropdown-span" src="components/img/down-btn.png" /></span></button> 
         </div>
 
-          <script type="text/javascript" src="components/js/horizontal_box_slider.js"></script>
-          <script type="text/javascript" src="components/js/jquery.horizontal_box_slider.js"></script>
+        <script type="text/javascript" src="components/js/horizontal_box_slider.js"></script>
+        <script type="text/javascript" src="components/js/jquery.horizontal_box_slider.js"></script>
 
 
-          <script type="text/javascript">
-            var leonardo_da_vinci_machines = $(".slide1");
-            var items_wrapper = leonardo_da_vinci_machines.find(".items-wrapper");
-            var da_slider = items_wrapper.horizontalBoxSlider(".item");
-            var left_button = leonardo_da_vinci_machines.find(".left1");
-            var right_button = leonardo_da_vinci_machines.find(".right1");
+        <script type="text/javascript">
+          var leonardo_da_vinci_machines = $(".slide1");
+          var items_wrapper = leonardo_da_vinci_machines.find(".items-wrapper");
+          var da_slider = items_wrapper.horizontalBoxSlider(".item");
+          var left_button = leonardo_da_vinci_machines.find(".left1");
+          var right_button = leonardo_da_vinci_machines.find(".right1");
 
-            right_button.click(function(){
-              da_slider.next();
-            });
-            left_button.click(function(){
-              da_slider.previous();
-            });
+          right_button.click(function(){
+            da_slider.next();
+          });
+          left_button.click(function(){
+            da_slider.previous();
+          });
 
-            var leonardo_da_vinci_machines2 = $(".slide2");
-            var items_wrapper2 = leonardo_da_vinci_machines2.find(".items-wrapper");
-            var da_slider2 = items_wrapper2.horizontalBoxSlider(".itemvideo");
-            var left_button2 = leonardo_da_vinci_machines2.find(".left2");
-            var right_button2 = leonardo_da_vinci_machines2.find(".right2");
+          var leonardo_da_vinci_machines2 = $(".slide2");
+          var items_wrapper2 = leonardo_da_vinci_machines2.find(".items-wrapper");
+          var da_slider2 = items_wrapper2.horizontalBoxSlider(".itemvideo");
+          var left_button2 = leonardo_da_vinci_machines2.find(".left2");
+          var right_button2 = leonardo_da_vinci_machines2.find(".right2");
 
-            right_button2.click(function(){
-              da_slider2.next();
-            });
-            left_button2.click(function(){
-              da_slider2.previous();
-            });
-          </script>
+          right_button2.click(function(){
+            da_slider2.next();
+          });
+          left_button2.click(function(){
+            da_slider2.previous();
+          });
+        </script>
 
 
-<!-- ////////////////////////////////////    THIS  IS END OF SLIDE       ///////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////    THIS  IS END OF SLIDE       ///////////////////////////////////////////////////// -->
 
         <hr style="max-width:70%;margin-top:2em;">
 
-<!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
         <div class="content row">
          <div class="container head-content" align="center">
           <h4 class="pero-font large-font underline ">stories</h4>
@@ -291,7 +316,7 @@ $lang=$database->select("language",'*');
 
 
            <?php 
-           $lang_id=1;
+           $lang_id=$_SESSION['lang_session'];
 
 
 
@@ -301,10 +326,10 @@ $lang=$database->select("language",'*');
 
             ,'*',
 
-            //array("AND" => array("cat_type[=]"=>'story', "lang_id[=]"=>$lang_id))
-            array("ORDER"=>"cont_order")
+            array("AND" => array("cat_type[=]"=>'story', "lang_id[=]"=>$lang_id))
+            //array("ORDER"=>"cont_order")
             );
-             
+
             ?>
 
 
@@ -312,51 +337,51 @@ $lang=$database->select("language",'*');
 
               if ($data['cat_type']=='story') {
 
-              $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
-              
-              ?>
+                $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
 
-              <div class="col-md-4 category-box">
-                <img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/>
-                <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
-                <p class="pero-font text-content">
-                  <?php echo $data["cont_description"]; ?> 
-                  <?php echo '<a href="content.php?id='.$data["cont_id"].'"><b>READ MORE</b></a>'; ?>
-                </p>
-              </div>
+                ?>
 
-              <?php }} ?>
+                <div class="col-md-4 category-box">
+                  <img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/>
+                  <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
+                  <p class="pero-font text-content">
+                    <?php echo $data["cont_description"]; ?> 
+                    <?php echo '<a href="content.php?id='.$data["cont_id"].'"><b>READ MORE</b></a>'; ?>
+                  </p>
+                </div>
 
-
-            </div> 
+                <?php }} ?>
 
 
-          </div>
-
-<!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
+              </div> 
 
 
-          <hr style="max-width:70%;">
+            </div>
 
-          <footer>
-            <div class="bg-gray container">
-              <div class="row">
-                <div class="pero-font col-lg-12" align="center">
-                  <small>Copyright &copy; Your Website 2014</small>
+            <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
+
+
+            <hr style="max-width:70%;">
+
+            <footer>
+              <div class="bg-gray container">
+                <div class="row">
+                  <div class="pero-font col-lg-12" align="center">
+                    <small>Copyright &copy; Your Website 2014</small>
+                  </div>
                 </div>
               </div>
-            </div>
-          </footer>
+            </footer>
 
-          <!-- jQuery -->
-
+            <!-- jQuery -->
 
 
-          <script src="components/js/jquery.js"></script>
-          <script src="components/js/sora-default.js"></script>
-          <script src="components/js/bootstrap.min.js"></script>
-          <script src="components/js/bootstrap-hover-dropdown.js"></script>
+
+            <script src="components/js/jquery.js"></script>
+            <script src="components/js/sora-default.js"></script>
+            <script src="components/js/bootstrap.min.js"></script>
+            <script src="components/js/bootstrap-hover-dropdown.js"></script>
 
 
-        </body>
-        </html>
+          </body>
+          </html>
