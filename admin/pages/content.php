@@ -162,10 +162,23 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label>Thumbnail</label>
-                                            <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
-                                            <input name="thumb" type="hidden">
+                                            <label>Thumbnail</label><br>
+                                            <!-- <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
+                                            <input name="thumb" type="hidden"> -->
+                                            <a href="javascript:openCustomRoxy()"><img src="../uploads/blank_thumb.png" id="customRoxyImage" style="width:400px; height: 300px;"></a>
+                                            <input id="thumb" name="thumb" type="hidden" value="/uploads/blank_thumb.png">
+                                            <div id="roxyCustomPanel" style="display: none;">
+                                              <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
+                                            </div>
                                         </div>
+                                        <script>
+                                            function openCustomRoxy(){
+                                              $('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
+                                            }
+                                            function closeCustomRoxy(){
+                                              $('#roxyCustomPanel').dialog('close');
+                                            }
+                                        </script>
 
                                 </div>
                                 <!-- /.col-lg-12 (nested) -->
@@ -254,7 +267,7 @@
 
                             "[><]content_translation" => array("id" => "cont_id"),
 
-                            ), array('id','cont_lang_id','cont_name','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_title','cont_content','cont_description','lang_id'
+                            ), array('id','cont_lang_id','cont_name','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_title','cont_content','cont_description','cont_thumbnail','lang_id'
                             ), array("AND" => array("id" => $id, "lang_id" => $lang)) // Where
                             );
 
@@ -352,7 +365,27 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-
+                                        
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Thumbnail</label><br>
+                                                <!-- <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
+                                                <input name="thumb" type="hidden"> -->
+                                                <a href="javascript:openCustomRoxy()"><img src="<?php echo $contents[0]['cont_thumbnail'];?>" id="customRoxyImage" style="width:400px; height: 300px;"></a>
+                                                <input id="thumb" name="thumb" type="hidden" value="<?php echo $contents[0]['cont_thumbnail'];?>">
+                                                <div id="roxyCustomPanel" style="display: none;">
+                                                  <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                function openCustomRoxy(){
+                                                  $('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
+                                                }
+                                                function closeCustomRoxy(){
+                                                  $('#roxyCustomPanel').dialog('close');
+                                                }
+                                            </script>
+                                        </div>
 
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -545,10 +578,10 @@
             debug : 1
         });
         
-        $("#input-700").fileinput({
-            uploadUrl : "http://localhost/uploads/thumbnail/",
-            maxFileCount : 1
-        });
+        //$("#input-700").fileinput({
+        //    uploadUrl : "http://localhost/uploads/thumbnail/",
+        //    maxFileCount : 1
+        //});
 
     });
     
@@ -558,6 +591,8 @@
             gm.getContent();
     
         });
+        
+        <?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
         //bite was here
         var cat_src = [];
     
@@ -618,6 +653,7 @@
             });
     
         });
+        <?php }?> 
     
     });
 

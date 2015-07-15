@@ -33,7 +33,8 @@
                 "cont_slug" => $slug,
                 "cont_status" => $_POST['status'],
                 "cont_modified" => $date,
-                "cont_type" => $_POST['type']
+                "cont_type" => $_POST['type'],
+                "cont_thumbnail" => $_POST['thumb']
            ));
            
            //$last = $database->max("content", "id");
@@ -202,6 +203,7 @@
             "cont_slug" => $slug,
             "cont_status" => $_POST['status'],
             "cont_type" => $_POST['type'],
+            "cont_thumbnail" => $_POST['thumb']
             
         ), array("id" => $cont_id
         ));
