@@ -334,9 +334,9 @@
 				
 			  	source: [
 	            
-	            {value: 'Category', text: 'Category'},
-	            {value: 'Story', text: 'Story'},
-	            {value: 'News', text: 'News'}
+	            {value: 'category', text: 'Category'},
+	            {value: 'story', text: 'Story'},
+	            {value: 'news', text: 'News'}
 	            
 	            
 	        ]
