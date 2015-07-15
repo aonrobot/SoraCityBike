@@ -223,14 +223,35 @@
                                                 <label>Image Name</label>
                                                 <input name="img_name" class="form-control" placeholder="Enter Image Name">
                                             </div>
-                                        </div>
+                                        </div>                                      
                                         
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Image URL</label>
-                                                <input name="img_url" class="form-control" placeholder="Enter Image URL">
+                                                <label>Image URL</label><br>
+                                                <img src="../uploads/sora_new_image.png" id="customRoxyImage" style="width:400px; height: 300px;">
+                                                <input id="thumb" name="img_url" value="/uploads/sora_new_image.png" class="form-control" placeholder="Enter Image URL" style="margin-top: 13px;">
                                             </div>
                                         </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <a href="javascript:openCustomRoxy()" class="btn btn-success">Upload New Image</a>
+                                                <div id="roxyCustomPanel" style="display: none;">
+                                                  <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            function openCustomRoxy(){
+                                              $('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
+                                            }
+                                            function closeCustomRoxy(){
+                                              $('#roxyCustomPanel').dialog('close');
+                                            }
+                                            $('#thumb').change(function(){
+                                                $(window.parent.document).find('#customRoxyImage').attr('src', $('#thumb').val());        
+                                            });
+                                                                                    
+                                        </script>
                                         
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -609,7 +630,10 @@
                 $("#img-structure").val($("#sora-menu").html()); 
                 
                 $(".form-control[name=img_name]").val("");
-                $(".form-control[name=img_url]").val("");
+                
+                $('#customRoxyImage').attr('src', '../uploads/sora_new_image.png');  
+                $('#thumb').val("/uploads/sora_new_image.png");             
+
                 $(".form-control[name=img_link]").val("");
                 CKEDITOR.instances.content.setData('');
                 $(".form-control[name=content_link]").val("");
