@@ -165,8 +165,8 @@
                                             <label>Thumbnail</label><br>
                                             <!-- <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
                                             <input name="thumb" type="hidden"> -->
-                                            <a href="javascript:openCustomRoxy()"><img src="../uploads/blank_thumb.png" id="customRoxyImage" style="width:400px; height: 300px;"></a>
-                                            <input id="thumb" name="thumb" type="hidden" value="/uploads/blank_thumb.png">
+                                            <a href="javascript:openCustomRoxy()"><img src="../uploads/sora_admin/sora_blank_thumb.png" id="customRoxyImage" style="width:400px; height: 300px;"></a>
+                                            <input id="thumb" name="thumb" type="hidden" value="/uploads/sora_admin/sora_blank_thumb.png">
                                             <div id="roxyCustomPanel" style="display: none;">
                                               <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
                                             </div>

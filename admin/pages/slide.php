@@ -228,8 +228,8 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Image URL</label><br>
-                                                <img src="../uploads/sora_new_image.png" id="customRoxyImage" style="width:400px; height: 300px;">
-                                                <input id="thumb" name="img_url" value="/uploads/sora_new_image.png" class="form-control" placeholder="Enter Image URL" style="margin-top: 13px;">
+                                                <img src="../uploads/sora_admin/sora_new_image.png" id="customRoxyImage" style="width:400px; height: 300px;">
+                                                <input id="thumb" name="img_url" value="/uploads/sora_admin/sora_new_image.png" class="form-control" placeholder="Enter Image URL" style="margin-top: 13px;">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -631,8 +631,8 @@
                 
                 $(".form-control[name=img_name]").val("");
                 
-                $('#customRoxyImage').attr('src', '../uploads/sora_new_image.png');  
-                $('#thumb').val("/uploads/sora_new_image.png");             
+                $('#customRoxyImage').attr('src', '../uploads/sora_admin/sora_new_image.png');  
+                $('#thumb').val("/uploads/sora_admin/sora_new_image.png");             
 
                 $(".form-control[name=img_link]").val("");
                 CKEDITOR.instances.content.setData('');
