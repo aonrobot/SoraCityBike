@@ -511,27 +511,12 @@
     });
     
     $(document).ready(function(){
-        
-         if($('#type').val() == "content"){
-             $('#div-content').show();
-             $('#div-category').hide();
-         }
-         else if($('#type').val() == "category"){
-             $('#div-category').show();
-             $('#div-content').hide();
-         }
-         else if($('#type').val() == "video"){
-             $('#div-content').hide();
-             $('#div-category').hide();
-         }
-         else{
-             $('#div-content').hide();
-             $('#div-category').hide();
-         }
+                     
         
          $("#create-img").click(function(){
             
             //---------------------------------------  POST FORM IMAGE-----------------------------------
+            var cont_value = CKEDITOR.instances['content'].getData();
             
             var formData = {
                 'a'                     : 'addImg',
@@ -539,7 +524,7 @@
                 'img_name'              : $('input[name=img_name]').val(),
                 'img_url'               : $('input[name=img_url]').val(),
                 'img_link'              : $('input[name=img_link]').val(),
-                'content'               : $('textarea[name=content]').val(),
+                'content'               : cont_value,
                 'content_link'          : $('input[name=content_link]').val()
             };
              
@@ -615,7 +600,7 @@
                 $(".form-control[name=img_name]").val("");
                 $(".form-control[name=img_url]").val("");
                 $(".form-control[name=img_link]").val("");
-                $(".form-control[name=content]").val("");
+                CKEDITOR.instances.content.setData('');
                 $(".form-control[name=content_link]").val("");
                 
                 toastr["success"]("Add Image Item Success","Add Success");
@@ -822,6 +807,24 @@
    
    
    $(document).ready(function(){
+                
+         if($('#type').val() == "content"){
+             $('#div-content').show();
+             $('#div-category').hide();
+         }
+         else if($('#type').val() == "category"){
+             $('#div-category').show();
+             $('#div-content').hide();
+         }
+         else if($('#type').val() == "video"){
+             $('#div-content').hide();
+             $('#div-category').hide();
+         }
+         else{
+             $('#div-content').hide();
+             $('#div-category').hide();
+         }
+         
    	     $(function() {
 		 $.fn.editable.defaults.mode = 'inline';
 		

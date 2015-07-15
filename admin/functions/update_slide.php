@@ -14,11 +14,7 @@
         
         $img_link = $_POST['img_link'];
         
-        if((strpos($_POST['img_link'], 'http://')===false && strpos($_POST['img_link'], 'https://')===false) ) $img_link = 'http://'.$_POST['img_link'];
-        
-        $content_link = $_POST['content_link'];
-        
-        if((strpos($_POST['content_link'], 'http://')===false && strpos($_POST['content_link'], 'https://')===false) ) $content_link = 'http://'.$_POST['url'];        
+        $content_link = $_POST['content_link'];       
         
         $last_img = $database->insert("slide_data", array(
                 "slide_id" => $_POST['slide_id'],
