@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema sora_db
+-- Schema soracitybi_db
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema sora_db
+-- Schema soracitybi_db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `sora_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `sora_db` ;
+CREATE SCHEMA IF NOT EXISTS `soracitybi_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `soracitybi_db` ;
 
 -- -----------------------------------------------------
--- Table `sora_db`.`users`
+-- Table `soracitybi_db`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`users` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`users` (
   `id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`users` (
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`content`
+-- Table `soracitybi_db`.`content`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`content` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`content` (
   `id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT(120) NULL,
   `slide_id` BIGINT(120) NULL,
@@ -51,16 +51,16 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`content` (
   INDEX `user_id_fk_idx` (`user_id` ASC),
   CONSTRAINT `user_id_fk`
     FOREIGN KEY (`user_id`)
-    REFERENCES `sora_db`.`users` (`id`)
+    REFERENCES `soracitybi_db`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`language`
+-- Table `soracitybi_db`.`language`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`language` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`language` (
   `lang_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `lang_code` VARCHAR(8) NOT NULL,
   `lang_name` VARCHAR(45) NOT NULL,
@@ -69,9 +69,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`content_translation`
+-- Table `soracitybi_db`.`content_translation`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`content_translation` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`content_translation` (
   `trans_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `cont_id` BIGINT(120) NULL,
   `lang_id` BIGINT(120) NULL,
@@ -83,21 +83,21 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`content_translation` (
   INDEX `lang_code_idx` (`lang_id` ASC),
   CONSTRAINT `content_id_fk`
     FOREIGN KEY (`cont_id`)
-    REFERENCES `sora_db`.`content` (`id`)
+    REFERENCES `soracitybi_db`.`content` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `lang_code_fk`
     FOREIGN KEY (`lang_id`)
-    REFERENCES `sora_db`.`language` (`lang_id`)
+    REFERENCES `soracitybi_db`.`language` (`lang_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`content_meta`
+-- Table `soracitybi_db`.`content_meta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`content_meta` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`content_meta` (
   `meta_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `cont_id` BIGINT(120) NULL,
   `meta_key` VARCHAR(255) NOT NULL,
@@ -106,16 +106,16 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`content_meta` (
   INDEX `cont_id_fk_idx` (`cont_id` ASC),
   CONSTRAINT `cont_id_fk`
     FOREIGN KEY (`cont_id`)
-    REFERENCES `sora_db`.`content` (`id`)
+    REFERENCES `soracitybi_db`.`content` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`category`
+-- Table `soracitybi_db`.`category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`category` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`category` (
   `cat_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `slide_id` BIGINT(120) NULL,
   `cat_name` VARCHAR(255) NOT NULL,
@@ -126,9 +126,9 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`category` (
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`category_relationships`
+-- Table `soracitybi_db`.`category_relationships`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`category_relationships` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`category_relationships` (
   `category_relationship_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `cont_id` BIGINT(120) NOT NULL,
   `cat_id` BIGINT(120) NOT NULL,
@@ -137,21 +137,21 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`category_relationships` (
   INDEX `cat_id_idx` (`cat_id` ASC),
   CONSTRAINT `cont_id`
     FOREIGN KEY (`cont_id`)
-    REFERENCES `sora_db`.`content` (`id`)
+    REFERENCES `soracitybi_db`.`content` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `cat_id`
     FOREIGN KEY (`cat_id`)
-    REFERENCES `sora_db`.`category` (`cat_id`)
+    REFERENCES `soracitybi_db`.`category` (`cat_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`slide`
+-- Table `soracitybi_db`.`slide`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`slide` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`slide` (
   `slide_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `slide_name` VARCHAR(120) NOT NULL,
   `slide_type` VARCHAR(45) NOT NULL,
@@ -162,9 +162,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`object`
+-- Table `soracitybi_db`.`object`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`object` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`object` (
   `obj_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `obj_name` VARCHAR(120) NULL,
   `obj_url` VARCHAR(255) NULL,
@@ -174,9 +174,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`menu`
+-- Table `soracitybi_db`.`menu`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`menu` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`menu` (
   `menu_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `obj_id` BIGINT(120) NULL,
   `parent_id` BIGINT(120) NULL,
@@ -185,16 +185,16 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`menu` (
   INDEX `obj_id_fk_idx` (`obj_id` ASC),
   CONSTRAINT `obj_id_fk`
     FOREIGN KEY (`obj_id`)
-    REFERENCES `sora_db`.`object` (`obj_id`)
+    REFERENCES `soracitybi_db`.`object` (`obj_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`slide_data`
+-- Table `soracitybi_db`.`slide_data`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`slide_data` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`slide_data` (
   `slide_data_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `slide_id` BIGINT(120) NOT NULL,
   `slide_data_name` VARCHAR(120) NULL,
@@ -207,16 +207,16 @@ CREATE TABLE IF NOT EXISTS `sora_db`.`slide_data` (
   INDEX `slide_ID_fok_idx` (`slide_id` ASC),
   CONSTRAINT `slide_ID_fok`
     FOREIGN KEY (`slide_id`)
-    REFERENCES `sora_db`.`slide` (`slide_id`)
+    REFERENCES `soracitybi_db`.`slide` (`slide_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`resetTokens`
+-- Table `soracitybi_db`.`resetTokens`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`resetTokens` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`resetTokens` (
   `token` VARCHAR(40) NOT NULL,
   `uid` BIGINT(120) NOT NULL,
   `requested` VARCHAR(20) NOT NULL,
@@ -225,9 +225,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sora_db`.`site_meta`
+-- Table `soracitybi_db`.`site_meta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sora_db`.`site_meta` (
+CREATE TABLE IF NOT EXISTS `soracitybi_db`.`site_meta` (
   `site_meta_id` BIGINT(120) NOT NULL AUTO_INCREMENT,
   `meta_key` VARCHAR(255) NOT NULL,
   `meta_value` LONGTEXT NULL,

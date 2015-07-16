@@ -1,12 +1,5 @@
 <?php
 
-$filename = '../config/db_connect.php';
-$filenameconf = 'config.php';
-if(filesize($filename) == 0 || filesize($filenameconf) == 0){
-    header('Location: install.php');    
-    exit();
-}
-
 include ('../config/db_connect.php');
 //If Don't Have Any User First Use
 $chk_users = $database->count("users");
