@@ -1,8 +1,9 @@
 
 <?php 
 
-
 session_start();
+
+include('counter.php');
 
 if(!isset($_SESSION['lang_session']))
  $_SESSION['lang_session'] = 1;

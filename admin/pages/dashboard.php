@@ -1,3 +1,23 @@
+<?php
+
+    $counter_name = "../counter.txt";
+    
+    // Check if a text file exists. If not create one and initialize it to zero.
+    if (!file_exists($counter_name)) {
+      $f = fopen($counter_name, "w");
+      fwrite($f,"0");
+      fclose($f);
+    }
+    
+    // Read the current value of our counter file
+    $f = fopen($counter_name,"r");
+    $counterVal = fread($f, filesize($counter_name));
+    fclose($f);
+   
+    
+
+?>
+
 <!-- Page Content -->
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -121,6 +141,26 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="row">
+		    <div class="col-lg-12">
+                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Visitor
+                            <div class="pull-left">
+                                
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <p>You have visitor on this website <h2><strong><?php  echo $counterVal; ?></strong></h2> persons.</p>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>		        
+                
+            </div>
+		</div>
+		
 	</div>
 	<!-- /.container-fluid -->
 </div>
