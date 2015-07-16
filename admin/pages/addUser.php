@@ -49,26 +49,29 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form action="<?php echo \Fr\LS::curPageURL();?>" method="POST">
+								<form action="<?php echo \Fr\LS::curPageURL();?>" method="POST" data-toggle="validator">
 									<div class="form-group">
 										<label>Username</label>
-										<input class="form-control" name="username" placeholder="Username">
+										<input class="form-control" name="username" placeholder="Username" required>
 									</div>
 									<div class="form-group">
 										<label>Email</label>
-										<input class="form-control" name="email" placeholder="E-Mail">
+										<input class="form-control" name="email" placeholder="E-Mail" data-error="Bruh, that email address is invalid" type="email" required>
+										<div class="help-block with-errors"></div>
 									</div>
 									<div class="form-group">
 										<label>Password</label>
-										<input class="form-control" name="pass" type="password" placeholder="Password">
+										<input id="inputPassword" class="form-control" name="pass" type="password" placeholder="Password" data-minlength="8" required>
+										<span class="help-block">Minimum of 8 characters</span>
 									</div>
 									<div class="form-group">
 										<label>Retype Password Again</label>
-										<input class="form-control" name="retyped_password" type="password" placeholder="Retype Password">
+										<input id="inputPasswordConfirm" class="form-control" name="retyped_password" type="password" placeholder="Retype Password" data-match="#inputPassword" data-match-error="Whoops, these don't match" required>
 									</div>
+									<div class="help-block with-errors"></div>
 									<div class="form-group">
 										<label>Name</label>
-										<input class="form-control" name="name" placeholder="Name">
+										<input class="form-control" name="name" placeholder="Name" required=>
 									</div>
 									<button name="submit" type='submit' class="btn btn-success">
 										Add User

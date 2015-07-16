@@ -88,7 +88,7 @@
 				
 				<h1 class="page-header"><a href="index.php?p=content&s=show"><i class="fa fa-book fa-1x"></i></a> Create Content</h1>
 
-				<form method="post" role="form" action="query.php?a=addContent" enctype="multipart/form-data">
+				<form method="post" role="form" action="query.php?a=addContent" enctype="multipart/form-data" data-toggle="validator">
 
 				<div class="panel panel-default">
                         <div class="panel-heading">
@@ -121,7 +121,7 @@
 
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input name="name" class="form-control" placeholder="Enter Content Name">
+                                            <input name="name" class="form-control" placeholder="Enter Content Name" required>
                                         </div>
 
                                         <div class="form-group">
@@ -131,7 +131,7 @@
 
                                         <div class="form-group">
                                             <label>Slug</label>
-                                            <input name="slug" class="form-control" placeholder="Enter Slug Name">
+                                            <input name="slug" class="form-control" placeholder="Enter Slug Name" required>
                                         </div>
 
                                         <div class="form-group">
@@ -301,7 +301,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="post" role="form" action="query.php?a=updateContent">
+                                    <form method="post" role="form" action="query.php?a=updateContent" data-toggle="validator">
 
                                         <div class="form-group">
 
@@ -426,7 +426,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input name="name" class="form-control" placeholder="Enter Content Name" value="<?php echo $contents[0]['cont_name'];?>">
+                                                <input required name="name" class="form-control" placeholder="Enter Content Name" value="<?php echo $contents[0]['cont_name'];?>">
                                             </div>
 
                                             <div class="form-group">
@@ -436,7 +436,7 @@
 
                                             <div class="form-group">
                                                 <label>Slug</label>
-                                                <input name="slug" class="form-control" placeholder="Enter Slug Name" value="<?php echo $contents[0]['cont_slug'];?>">
+                                                <input required name="slug" class="form-control" placeholder="Enter Slug Name" value="<?php echo $contents[0]['cont_slug'];?>">
                                             </div>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -517,16 +517,16 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="post" role="form" action="query.php?a=addlang">
+                                    <form method="post" role="form" action="query.php?a=addlang" data-toggle="validator">
 
                                         <div class="col-lg-4 form-group">
                                             <label>Language Code</label>
-                                            <input name="code" class="form-control" placeholder="Enter Language Code Name">
+                                            <input name="code" class="form-control" placeholder="Enter Language Code Name" required>
                                         </div>
 
                                         <div class="col-lg-4 form-group">
                                             <label>Language Name</label>
-                                            <input name="name" class="form-control" placeholder="Enter Language Name">
+                                            <input name="name" class="form-control" placeholder="Enter Language Name" required>
                                         </div>
 
                                         <div class="col-lg-2">

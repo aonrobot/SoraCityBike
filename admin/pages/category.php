@@ -15,16 +15,16 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form method="post" role="form" action="query.php?a=addCategory">
+                                        <form method="post" role="form" action="query.php?a=addCategory" data-toggle="validator">
     
                                             <div class="col-lg-4 form-group">
                                                 <label>Name</label>
-                                                <input name="name" class="form-control" placeholder="Enter Content Name">
+                                                <input name="name" class="form-control" placeholder="Enter Content Name" required>
                                             </div>
     
                                             <div class="col-lg-4 form-group">
                                                 <label>Slug</label>
-                                                <input name="slug" class="form-control" placeholder="Enter Slug Name">
+                                                <input name="slug" class="form-control" placeholder="Enter Slug Name" required>
                                             </div>
     
                                             <div class="col-lg-2 form-group">

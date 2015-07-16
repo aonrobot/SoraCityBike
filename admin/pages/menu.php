@@ -52,11 +52,12 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-
+                                        
+                                    <form data-toggle="validator" role="form" action="javascript: void(0)">
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input name="name" class="form-control" placeholder="Enter Content Name">
+                                                <input name="name" class="form-control" placeholder="Enter Content Name" required>
                                             </div>
                                         </div>
                                         
@@ -105,7 +106,20 @@
                                         <div class="col-lg-6">
                                             <button id="create-item" class="btn btn-success"><i class="fa fa-leaf fa-1x"></i> Add Item</button>
                                         </div>
-      
+                                        
+                                    </form>
+                                    <script>
+                                            $(document).ready(function() {
+                                                 $('button[id="create-item"]').attr('disabled','disabled');
+                                                 $('input[name="name"]').keyup(function() {
+                                                    if($(this).val() != '') {
+                                                       $('button[id="create-item"]').removeAttr('disabled');
+                                                    }
+                                                    else{$('button[id="create-item"]').attr('disabled','disabled');}
+                                                 });   
+                                             });                                      
+                                    </script>>      
+                                    
                                     </div>
                                     
                                 </div>
@@ -296,6 +310,8 @@
                 $(".form-control[name=url]").val("");
                 
                 toastr["success"]("Add Menu Item Success","Add Success");
+                
+                $('#toArray').trigger('click');
                 
                 $(document).trigger('readyAgain');
               } 

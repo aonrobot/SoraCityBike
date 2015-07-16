@@ -14,11 +14,11 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="post" role="form" action="query.php?a=addSlide">
+                                    <form method="post" role="form" action="query.php?a=addSlide" data-toggle="validator">
                                         
                                         <div class="col-lg-4 form-group">
                                             <label>Slide Name</label>
-                                            <input name="name" class="form-control" placeholder="Enter Content Name">
+                                            <input name="name" class="form-control" placeholder="Enter Content Name" required="">
                                         </div>
                                         
                                         <div class="col-lg-2 form-group">
@@ -217,7 +217,8 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        
+                                    
+                                    <form data-toggle="validator" role="form" action="javascript: void(0)">    
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Image Name</label>
@@ -301,7 +302,20 @@
                                             <input name="slide_id" type="hidden" value="<?php echo $slide_id;?>" />
                                             <button id="create-img" class="btn btn-success"><i class="fa fa-leaf fa-1x"></i> Add Image</button>
                                         </div>
-      
+                                    
+                                    </form>
+                                    <script>
+                                            $(document).ready(function() {
+                                                 $('button[id="create-img"]').attr('disabled','disabled');
+                                                 $('input[name="img_name"]').keyup(function() {
+                                                    if($(this).val() != '') {
+                                                       $('button[id="create-img"]').removeAttr('disabled');
+                                                    }
+                                                    else{$('button[id="create-img"]').attr('disabled','disabled');}
+                                                 });   
+                                             });                                      
+                                    </script>
+                                    
                                     </div>
                                     
                                 </div>
@@ -409,7 +423,8 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        
+                                    
+                                    <form data-toggle="validator" role="form" action="javascript: void(0)">      
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Video Name</label>
@@ -430,7 +445,20 @@
                                             <input name="slide_id" type="hidden" value="<?php echo $slide_id;?>" />
                                             <button id="create-video" class="btn btn-success"><i class="fa fa-leaf fa-1x"></i> Add Video</button>
                                         </div>
-      
+                                        
+                                    </form>
+                                    <script>
+                                            $(document).ready(function() {
+                                                 $('button[id="create-video"]').attr('disabled','disabled');
+                                                 $('input[name="img_name"]').keyup(function() {
+                                                    if($(this).val() != '') {
+                                                       $('button[id="create-video"]').removeAttr('disabled');
+                                                    }
+                                                    else{$('button[id="create-video"]').attr('disabled','disabled');}
+                                                 });   
+                                             });                                      
+                                    </script>
+                                    
                                     </div>
                                     
                                 </div>

@@ -16,16 +16,16 @@
                         </div>
                         <div class="panel-body">
 
-                                    <form method="post" role="form" action="query.php?a=addFooter" enctype="multipart/form-data">
+                                    <form method="post" role="form" action="query.php?a=addFooter" enctype="multipart/form-data" data-toggle="validator">
                 
                                                         <div class="col-lg-4 form-group">
                                                             <label>Title</label>
-                                                            <input name="title" class="form-control" placeholder="Enter Content Name">
+                                                            <input name="title" class="form-control" placeholder="Enter Title Name" required>
                                                         </div>
                 
                                                         <div class="col-lg-4 form-group">
                                                             <label>Link</label>
-                                                            <input name="link" class="form-control" placeholder="Enter Slug Name">
+                                                            <input name="link" class="form-control" placeholder="Enter Link" required>
                                                         </div>
                 
                                                         <div class="col-lg-4 form-group">
