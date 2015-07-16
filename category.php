@@ -23,6 +23,18 @@ if(!isset($_SESSION['lang_session']))
 ?>
 
 <?php include('config/config.php'); ?>
+
+<?php
+
+
+$datas = $database->select("category",["cat_id","slide_id","cat_name"],["cat_id[=]"  => $_GET['id']]);
+$top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
+$sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
+$lang=$database->select("language",'*');
+
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -37,7 +49,7 @@ if(!isset($_SESSION['lang_session']))
   <link rel="shortcut icon" href="components/img/favicon2.png">
   <link rel="icon" href="components/img/favicon2.png">
 
-  <title>Sora City Bike</title>
+  <title><?php echo $datas[0]['cat_name'] ?> | Sora City Bike</title>
 
   <link href="components/css/bootstrap.css" rel="stylesheet">
   <link href="components/css/sora-default.css" rel="stylesheet">
@@ -46,28 +58,7 @@ if(!isset($_SESSION['lang_session']))
 
 </head>
 
-<?php
 
-
-
-$top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
-$sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
-$lang=$database->select("language",'*');
-
-
-            // foreach ($lang as $key ) {
-            //     if (isset($_GET['lang'])) {  
-            //          if($_GET['lang']==$key['lang_code']) {
-            //             $_SESSION['lang_session'] = $key['lang_id'];
-            //         }
-            //     }
-            //     else
-            //         if($_SESSION['def_lang']==$key['lang_code']) {
-            //             $_SESSION['lang_session'] = $key['lang_id'];
-            //         }
-            // }
-            // //echo  $_SESSION['lang_session'];
-?>
 
 <body> 
 
@@ -230,7 +221,7 @@ $lang=$database->select("language",'*');
 
 <!-- slide with zoom picture -->
 <?php 
- $datas = $database->select("category",["cat_id","slide_id"],["cat_id[=]"  => $_GET['id']]);
+ 
 
 foreach ($datas as $key) {
  $slide_id= $key['slide_id'];
@@ -353,7 +344,7 @@ function hideImg(obj) {
            $datas = $database->select("category_relationships", 
             array("[>]category" => array("cat_id" => "cat_id"),"[>]content_translation" => "cont_id")
             ,'*'
-            ,array("ORDER"=>"cont_order")                    
+            ,array("lang_id[=]"=>$lang_id,"ORDER"=>"cont_order")                    
             );
             
             ?>
@@ -361,7 +352,7 @@ function hideImg(obj) {
 
             <?php foreach ($datas as $data ) 
             {   
-            echo $data["cont_order"];
+            //echo $data["cont_order"];
                 if ($data['cat_id']==$id){
               $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
 

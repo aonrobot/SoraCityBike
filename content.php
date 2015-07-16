@@ -1,4 +1,4 @@
-
+<?php include('config/config.php'); ?>
 <?php 
 
 session_start();
@@ -21,8 +21,16 @@ if(!isset($_SESSION['lang_session']))
 //session_destroy();
 
 ?>
+<?php
+$datas = $database->select("content",["id","slide_id","cont_name"],["id[=]"  => $_GET['id']]);
+$site_name=$database->select("site_meta","*",["meta_key[=]" =>'site_name']);
+$top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
+$sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
+$lang=$database->select("language",'*');
 
-<?php include('config/config.php'); ?>
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -37,7 +45,7 @@ if(!isset($_SESSION['lang_session']))
   <link rel="shortcut icon" href="components/img/favicon2.png">
   <link rel="icon" href="components/img/favicon2.png">
 
-  <title>Sora City Bike</title>
+  <title> <?php echo $datas[0]['cont_name'];  ?> | Sora City Bike</title>
 
   <link href="components/css/bootstrap.css" rel="stylesheet">
   <link href="components/css/sora-default.css" rel="stylesheet">
@@ -46,28 +54,7 @@ if(!isset($_SESSION['lang_session']))
 
 </head>
 
-<?php
 
-
-
-$top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
-$sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
-$lang=$database->select("language",'*');
-
-
-            // foreach ($lang as $key ) {
-            //     if (isset($_GET['lang'])) {  
-            //          if($_GET['lang']==$key['lang_code']) {
-            //             $_SESSION['lang_session'] = $key['lang_id'];
-            //         }
-            //     }
-            //     else
-            //         if($_SESSION['def_lang']==$key['lang_code']) {
-            //             $_SESSION['lang_session'] = $key['lang_id'];
-            //         }
-            // }
-            // //echo  $_SESSION['lang_session'];
-?>
 
 <body> 
 
@@ -226,12 +213,16 @@ $lang=$database->select("language",'*');
 
 <!-- slide with zoom picture -->
 <?php 
- $datas = $database->select("content",["id","slide_id"],["id[=]"  => $_GET['id']]);
+ 
 
 foreach ($datas as $key) {
  $slide_id= $key['slide_id'];
 }
-$slide = $database->select("slide_data",["slide_data_id","slide_data_name","slide_data_img_url"],["slide_id[=]" => $slide_id]);
+$slide = $database->select("slide_data"
+  ,["slide_data_id","slide_data_name","slide_data_img_url"]
+  ,["slide_id[=]" => $slide_id]
+  ,["ORDER"=>"slide_data_order"]
+  );
 ?>
 <div id="leonardo_da_vinci_machines" class="box-slider">
   <div class="items-wrapper">

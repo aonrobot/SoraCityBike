@@ -226,7 +226,10 @@ $lang=$database->select("language",'*');
       <div id="leonardo_da_vinci_machines" class="box-slider slide1">
         <div class="items-wrapper">
           <?php 
-          $slide=$database->select("slide_data", ["[>]slide" => ["slide_id" => "slide_id"]],"*",["slide_type[=]" => 'home']);
+          $slide=$database->select("slide_data"
+            , ["[>]slide" => ["slide_id" => "slide_id"]]
+            ,"*"
+            ,["slide_type[=]" => 'home',"ORDER"=>"slide_data_order"]);
       foreach ($slide as $a) {?><!-- 
     --><div class="item" >
     <div class="slidein">
@@ -253,7 +256,10 @@ $lang=$database->select("language",'*');
           <div id="leonardo_da_vinci_machines" class="box-slider slide2">
             <div class="items-wrapper">
               <?php 
-              $slide_video = $database->select("slide_data",["[>]slide" => ["slide_id" => "slide_id"]],["slide_data_id","slide_data_name","slide_data_img_url"],["slide_type[=]"=>"video"]);
+              $slide_video = $database->select("slide_data"
+                ,["[>]slide" => ["slide_id" => "slide_id"]]
+                ,["slide_data_id","slide_data_name","slide_data_img_url"]
+                ,["slide_type[=]"=>"video"]);
               foreach ($slide_video as $key ) {
                 ?><!-- --><iframe class="itemvideo" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> width="580" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><!-- --><?php } ?>
               </div>
@@ -322,7 +328,7 @@ $lang=$database->select("language",'*');
 
             ,'*',
 
-            array("AND" => array("cat_type[=]"=>'story', "lang_id[=]"=>$lang_id))
+            array("AND" => array("cat_type[=]"=>'story', "lang_id[=]"=>$lang_id),"ORDER"=>"cont_order")
             //array("ORDER"=>"cont_order")
             );
 
