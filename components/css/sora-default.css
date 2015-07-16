@@ -475,11 +475,11 @@ iframe{
     position: absolute;
     color: #fff;
     z-index: 100;
-        -webkit-transition: all 500ms ease-out;
-        -moz-transition: all 500ms ease-out;
-        -o-transition: all 500ms ease-out;
-        -ms-transition: all 500ms ease-out; 
-        transition: all 500ms ease-out;
+        -webkit-transition: height 500ms ease-out;
+        -moz-transition: height 500ms ease-out;
+        -o-transition: height 500ms ease-out;
+        -ms-transition: height 500ms ease-out; 
+        transition: height 500ms ease-out;
     left: 0;
     
 
@@ -493,14 +493,14 @@ iframe{
 /** Caption 1: Simple **/
 .slidein .simple-caption {
     margin:none;
-    height: 15%;
+    height: 10%;
     width: 100%;
     display: block;
     bottom: 0px;
     text-align: left;
     overflow:hidden;
-    
-    
+    line-height: 120%;
+    padding: 10px;
 }
 
 
@@ -508,7 +508,7 @@ iframe{
 /** Simple Caption :hover Behaviour **/
 .slidein .simple-caption:hover {
 
-    height: 40%;
+    height: auto;
     width: 100%;
     display: block; 
     text-align: left;

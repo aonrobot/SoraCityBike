@@ -315,8 +315,7 @@ $lang=$database->select("language",'*');
         <div class="content row">
          <div class="container head-content" id="results" align="center">
           <h4 class="pero-font large-font underline ">stories</h4>
-          <p class="pero-font">Kinfolk is a slow lifestyle magazine that explores ways for readers to simplify their lives<br>
-           cultivate community and spend more time with their friends and family.</p>
+          
 
 
            <?php 
