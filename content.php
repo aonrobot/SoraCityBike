@@ -199,7 +199,7 @@ $lang=$database->select("language",'*');
 
             $('#stickyalias').css('display', 'block');
           } else {
-            $('#stickyheader').css({position: 'static', top: '0px'});
+            $('#stickyheader').css({position: 'relative', top: '0px'});
             $('#stickyalias').css('display', 'none');
           }
         });
