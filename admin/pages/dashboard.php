@@ -159,35 +159,6 @@
                     </div>		        
                 
             </div>
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-image fa-fw"></i> Upload Images
-                            <div class="pull-left">
-                                
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        
-                        <div class="panel-body">
-                            <a href="javascript:openCustomRoxy()" class="btn btn-success">Upload New File/Image</a>
-                            <div id="roxyCustomPanel" style="display: none;">
-                                <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                        <script>
-                                            function openCustomRoxy(){
-                                              $('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
-                                            }
-                                            function closeCustomRoxy(){
-                                              $('#roxyCustomPanel').dialog('close');
-                                            }
-                                                                                    
-                       </script>
-                    </div>              
-                
-            </div>
 		</div>
 		
 	</div>

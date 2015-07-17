@@ -74,16 +74,11 @@
                         </li>
                         
                         <li>
+                            <a href="index.php?p=filemanager"><i class="fa fa-file-image-o fa-fw"></i> Image Manager</a>
+                        </li>
+                        
+                        <li>
                             <a href="index.php?p=footer"><i class="fa fa-info fa-fw"></i> Footer</a>
-                        </li>
-                        
-                        
-                        <li>
-                            <a href="index.php?p=TestContent"><i class="fa fa-terminal fa-fw"></i> TestContent</a>
-                        </li>
-                        
-                        <li>
-                            <a href="index.php?p=TestEdit"><i class="fa fa-terminal fa-fw"></i> TestEdit</a>
                         </li>
                         
                     </ul>

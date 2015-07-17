@@ -146,7 +146,7 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <p><em>Note: This demo has the <code>maxLevels</code> option set to '4'.</em></p>
+                                                <p><em>This Menu has <code>max sub-menu</code> '2' Levels.</em></p>
                                                 <input name="menu-structure" type="hidden" id="menu-structure"></input>
                                                 <br><br><button id="toArray" name="toArray" class="btn btn-primary"><i class="fa fa-send fa-1x"></i> Save Menu</button>
                                             </div>

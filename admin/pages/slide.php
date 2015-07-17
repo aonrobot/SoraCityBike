@@ -2,7 +2,7 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="">
                     
                 
                 <?php if(strcmp($_GET['a'], 'edit')){?>
@@ -227,24 +227,44 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Image URL</label><br>
-                                                <img src="../uploads/sora_admin/sora_new_image.png" id="customRoxyImage" style="width:400px; height: 300px;">
-                                                <input id="thumb" name="img_url" value="/uploads/sora_admin/sora_new_image.png" class="form-control" placeholder="Enter Image URL" style="margin-top: 13px;">
+                                                <img src="../sora_new_image.png" id="customRoxyImage" style="width:300px; height: 200px;">
+                                                <input id="thumb" name="img_url" value="/sora_new_image.png" class="form-control" placeholder="Enter Image URL" style="margin-top: 13px;">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <a href="javascript:openCustomRoxy()" class="btn btn-primary">Select Image From Server</a>
-                                                <div id="roxyCustomPanel" style="display: none;">
-                                                  <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
+                                                
+                                                <a class="modalButton btn btn-primary" data-toggle="modal" data-src="components/fileman_custom/index.html?integration=custom" data-height=450 data-width=100% data-target="#file_modal">Select Image From Server</a>
+                                                
+                                                <div class="modal fade" id="file_modal" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+                                                      <div class="modal-dialog modal-lg">
+                                                         <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title" id="myModalLabel">Select Image</h4>
+                                                           </div>
+                                                         <div class="modal-body">
+                                                              <iframe frameborder="0"></iframe>
+                                                         </div>
+                                                        </div><!-- /.modal-content -->
+                                                     </div><!-- /.modal-dialog -->
+                                                  </div><!-- /.modal -->
                                                 </div>
+                                                
                                             </div>
-                                        </div>
+                                       
                                         <script>
-                                            function openCustomRoxy(){
-                                              $('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
-                                            }
+                                            $('a.modalButton').on('click', function(e) {
+                                                var src = $(this).attr('data-src');
+                                                var height = $(this).attr('data-height') || 300;
+                                                var width = $(this).attr('data-width') || 400;
+                                            
+                                                $("#file_modal iframe").attr({'src':src,
+                                                                           'height': height,
+                                                                           'width': width});
+                                            });
                                             function closeCustomRoxy(){
-                                              $('#roxyCustomPanel').dialog('close');
+                                              $('#file_modal').modal('hide');
                                             }
                                             $('#thumb').change(function(){
                                                 $(window.parent.document).find('#customRoxyImage').attr('src', $('#thumb').val());        
@@ -252,7 +272,7 @@
                                                                                     
                                         </script>
                                         
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Image Link (Where Do You Go, When Image Click)</label>
                                                 <input name="img_link" class="form-control" placeholder="Enter Image Link">
@@ -261,7 +281,8 @@
                                         
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Content (Max 150 Character)</label>
+                                                <label>Content <em>(Max <code>150 Character</code> And Max <code>3 Paragraphs</code>)</em></label>
+                                                
                                                 <textarea id="content" style="resize: none;" name="content" class="form-control" rows="3" placeholder="Enter Image Content"></textarea>
                                             </div>
                                             <script>
@@ -302,6 +323,7 @@
                                         </div>
                                     
                                     </form>
+                                   </div>
                                     <script>
                                             $(document).ready(function() {
                                                  $('button[id="create-img"]').attr('disabled','disabled');
@@ -341,7 +363,6 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <p><em>Note: This demo has the <code>maxLevels</code> option set to '4'.</em></p>
                                                 <input name="img-structure" type="hidden" id="img-structure"></input>
                                                 <br><br><button id="toArray" name="toArray" class="btn btn-primary"><i class="fa fa-send fa-1x"></i> Save Slide</button>
                                             </div>
@@ -500,9 +521,9 @@
                     
                 <?php }?>
                  
-                 
                 
-            </div>
+                
+            
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
@@ -510,6 +531,265 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
+
+<!-- Modal Edit -->
+
+<div class="modal fade" id="edit_name_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="edit_name_modal_label">Update Image</h4>
+      </div>
+      <div class="modal-body">
+          
+        <form data-toggle="validator" role="form" action="javascript: void(0)">
+          
+          <input name="slide_data_id" id="slide_data_id" type="hidden"/>
+          <div class="form-group">
+            <label>New Image Name</label>
+            <input name="update_img_name" id="update_img_name" class="form-control" placeholder="Enter Image Name" value="">
+          </div>
+          
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="update-img-name" class="btn btn-success" type="button">Update Name</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--    Edit Image  -->
+
+<div class="modal fade" id="edit_image_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        
+          <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="edit_image_modal_label">Update Image</h4>
+          </div>
+          
+          <div class="modal-body">
+          <div class="container-fluid">
+          <div class="row">
+              
+            <form data-toggle="validator" role="form" action="javascript: void(0)">
+              
+              <input name="slide_data_id_edit_image" id="slide_data_id_edit_image" type="hidden"/>
+              
+              <div class="col-lg-12">
+                  <div class="form-group">
+                      <label>Image URL</label><br>
+                      <img src="../sora_new_image.png" id="update_thumb_image" style="width:300px; height: 200px;">
+                      
+                  </div>
+              </div>
+              
+              <div class="col-lg-12">
+                  <div class="form-group"> 
+                      <a class="EditModalButton btn btn-primary" data-toggle="modal" data-src="components/fileman_custom_edit/index.html?integration=custom_edit" data-height=450 data-width=100% data-target="#edit_file_modal">Select Image From Server</a>
+                  </div>                                
+              </div>
+              <div class="col-lg-12">
+                  <div class="form-group"> 
+                      <input id="update_img_url" name="update_img_url" value="/sora_new_image.png" class="form-control" placeholder="Enter Image URL" style="margin-top: 13px;">                               
+                  </div>                                
+              </div>              
+              
+              <div class="col-lg-12">
+                  <div class="form-group">
+                      <label>Image Link (Where Do You Go, When Image Click)</label>
+                      <input id="update_img_link" name="update_img_link" class="form-control" placeholder="Enter Image Link" value="">
+                  </div>
+              </div>
+              
+            </form>
+          
+          </div>    <!-- Row -->
+          </div>    <!-- container-fluid -->  
+          </div>
+        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id="update-image" class="btn btn-success" type="button">Update Image</button>
+          </div>
+          
+     </div>
+  </div>
+</div>
+
+
+<!--    /Edit Image  -->
+
+
+<!--    Edit Content  -->
+
+<div class="modal fade" id="edit_content_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        
+          <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="edit_content_modal_label">Update Content</h4>
+          </div>
+          
+          <div class="modal-body">
+          <div class="container-fluid">
+          <div class="row">
+              
+            <form data-toggle="validator" role="form" action="javascript: void(0)">
+              
+              <input name="slide_data_id_edit_content" id="slide_data_id_edit_content" type="hidden"/>
+              
+              <div class="col-lg-12">
+                <div class="form-group">
+                    <label>Content <em>(Max <code>
+                            150 Character</code> And Max <code>
+                            3 Paragraphs</code>)</em></label>
+                    <textarea id="update_content" style="resize: none;" name="update_content" class="form-control" rows="3" placeholder="Enter Image Content"></textarea>
+            
+                </div>
+                <script>
+                    CKEDITOR.replace('update_content', {
+            
+                        wordcount : {
+                            showCharCount : true,
+                            maxWordCount : 4000,
+                            maxCharCount : 150,
+            
+                        },
+            
+                        toolbar : [['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], {
+                            name : 'font',
+                            items : ['Font', 'FontSize']
+                        }, '/', {
+                            name : 'basicstyles',
+                            items : ['Bold', 'Italic', 'Underline', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink', '-', 'Source']
+                        }, {
+                            name : 'colors',
+                            items : ['TextColor', 'BGColor']
+                        }, {
+                            name : 'tools',
+                            items : ['Maximize']
+                        }]
+            
+                    });
+                </script>
+            </div>
+            
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label>Content Link (Where Do You Go, When Content Click)</label>
+                    <input id="update_content_link" name="update_content_link" class="form-control" placeholder="Enter Content Link">
+                </div>
+            </div>             
+              
+            </form>
+          
+          </div>    <!-- Row -->
+          </div>    <!-- container-fluid -->  
+          </div>
+        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id="update-content" class="btn btn-success" type="button">Update Content</button>
+          </div>
+          
+     </div>
+  </div>
+</div>
+
+
+<!--    /Edit Content  -->
+
+
+<!-- Modal Select File -->
+
+<div class="modal fade" id="edit_file_modal" tabindex="0" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Select Image</h4>
+        </div>
+        <div class="modal-body">
+            <iframe frameborder="0"></iframe>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+              $('a.EditModalButton').on('click', function(e) {
+                  var src = $(this).attr('data-src');
+                  var height = $(this).attr('data-height') || 300;
+                  var width = $(this).attr('data-width') || 400;
+                                                    
+                  $("#edit_file_modal iframe").attr({'src':src,'height': height,'width': width});
+              });
+              
+              function closeCustomRoxyEdit(){
+                $('#edit_file_modal').modal('hide');
+              }
+              $('#update_img_url').change(function(){
+                $(window.parent.document).find('#update_thumb_image').attr('src', $('#update_img_url').val());        
+              });
+                                                                                        
+</script>
+
+<!-- /Modal Select File -->
+
+<script>
+
+    $('#edit_name_modal').on('show.bs.modal', function (event) {
+        
+      var button = $(event.relatedTarget);
+      var recipient_id = button.data('whatever');
+
+      var modal = $(this);
+      modal.find('.modal-title').text('Edit Image Name');
+      modal.find('.modal-body #slide_data_id').val(recipient_id);
+      modal.find('.modal-body #update_img_name').val($("#img_name"+recipient_id).text()); 
+      
+    });
+    
+    $('#edit_image_modal').on('show.bs.modal', function (event) {
+        
+      var button = $(event.relatedTarget); 
+      var recipient_id = button.data('whatever'); 
+      
+      var modal = $(this);
+      modal.find('.modal-title').text('Edit Image url/link');
+      modal.find('.modal-body #slide_data_id_edit_image').val(recipient_id);
+      modal.find('.modal-body #update_img_url').attr('value', $("#img_href"+recipient_id).attr("href"));
+      modal.find('.modal-body #update_thumb_image').attr('src', $("#img_href"+recipient_id).attr("href"));
+      modal.find('.modal-body #update_img_link').val($("#img_link"+recipient_id).attr("href"));
+      
+    })
+    
+    $('#edit_content_modal').on('show.bs.modal', function (event) {
+        
+      var button = $(event.relatedTarget); 
+      var recipient_id = button.data('whatever'); 
+      
+      var modal = $(this);
+      modal.find('.modal-title').text('Edit Content');
+      modal.find('.modal-body #slide_data_id_edit_content').val(recipient_id);
+      
+      var cont_html = $("#content"+recipient_id).html();
+      
+      CKEDITOR.instances['update_content'].setData(cont_html)
+      
+      modal.find('.modal-body #update_content_link').attr('value', $("#content_link"+recipient_id).attr("href"));
+      
+    })
+    
+</script>
+
+<!-- /Modal Edit -->
 
 <!-- Menu II -->
 <script src="components/nestedSortable/jquery.mjs.nestedSortable.js"></script>
@@ -569,6 +849,136 @@
     });
     
     $(document).ready(function(){
+        
+         $("#update-img-name").click(function(){
+            
+            var slide_data_id = $('input[name=slide_data_id]').val()
+            
+            var formData = {
+                'a'                     : 'updateImgName',
+                'slide_data_id'              : slide_data_id,
+                'update_img_name'              : $('input[name=update_img_name]').val(),
+            };
+             
+            $.ajax({
+              type: "POST",                                     
+              url:  'functions/update_slide.php',
+              dataType: 'json',                             
+              data: formData,
+                                                          
+              success: function(data)          
+              {               
+                var new_img_name = data[0]['slide_data_name'];                          //get image name
+                
+                // Edit New Value
+                
+                $("#img_name"+slide_data_id).text(new_img_name);
+                               
+                // hide modal
+                $('#edit_name_modal').modal('hide');                                 
+
+                
+                toastr["success"]("Update Image Name Success","Update Success");
+                
+                $('#toArray').trigger('click');
+                
+                $(document).trigger('readyAgain');
+              } 
+            });
+
+         });
+         
+         
+         $("#update-image").click(function(){
+            
+            var slide_data_id = $('input[name=slide_data_id_edit_image]').val()
+            
+            var formData = {
+                'a'                     : 'updateImage',
+                'slide_data_id'              : slide_data_id,
+                'update_img_url'              : $('input[name=update_img_url]').val(),
+                'update_img_link'              : $('input[name=update_img_link]').val(),
+            };
+             
+            $.ajax({
+              type: "POST",                                     
+              url:  'functions/update_slide.php',
+              dataType: 'json',                             
+              data: formData,
+                                                          
+              success: function(data)          
+              {               
+                var new_img_url = data[0]['slide_data_img_url'];                          //get image url
+                var new_img_link = data[0]['slide_data_img_link'];                          //get image link
+                
+                // Edit New Value
+                
+                $("#img_href"+slide_data_id).attr("href", new_img_url);
+                
+                $("#img_url"+slide_data_id).css( "background-image", "url("+new_img_url+")" );
+                
+                $("#img_link"+slide_data_id).attr("href", new_img_link);
+                $('#img_link'+slide_data_id).text(new_img_link);
+                
+                //
+                
+                $('#edit_image_modal').modal('hide');                                         // hide modal
+                
+                toastr["success"]("Update Image Success","Update Success");
+                
+                $('#toArray').trigger('click');
+                
+                $(document).trigger('readyAgain');
+              } 
+            });
+
+         });
+         
+         
+         $("#update-content").click(function(){
+            
+            var slide_data_id = $('input[name=slide_data_id_edit_content]').val()
+            var update_cont_value = CKEDITOR.instances['update_content'].getData();
+            
+            var formData = {
+                'a'                             : 'updateContent',
+                'slide_data_id'                 : slide_data_id,
+                'update_content'                : update_cont_value,
+                'update_content_link'           : $('input[name=update_content_link]').val(),
+            };
+             
+            $.ajax({
+              type: "POST",                                     
+              url:  'functions/update_slide.php',
+              dataType: 'json',                             
+              data: formData,
+                                                          
+              success: function(data)          
+              {               
+                var new_content = data[0]['slide_data_content'];                          //get content url
+                var new_content_link = data[0]['slide_data_content_link'];                //get content link
+                
+                // Edit New Value
+
+                
+                $("#content"+slide_data_id).html(new_content);
+                
+                $("#content_link"+slide_data_id).attr("href", new_content_link);
+                $('#content_link'+slide_data_id).text(new_content_link);
+                
+                //
+                
+                $('#edit_content_modal').modal('hide');                                         // hide modal
+                
+                toastr["success"]("Update Content Success","Update Success");
+                
+                $('#toArray').trigger('click');
+                
+                $(document).trigger('readyAgain');
+              } 
+            });
+
+         });
              
 
          $("#create-img").click(function(){
@@ -577,6 +987,7 @@
             var cont_value = CKEDITOR.instances['content'].getData();
             var img_url = $('input[name=img_url]').val();
             img_url = escape(img_url);
+            //cont_value = cont_value.replace(/<p>/g, '').replace(/<\/p>/g, '');
             
             var formData = {
                 'a'                     : 'addImg',
@@ -606,7 +1017,15 @@
                 var content = data[0]['slide_data_content'];                           //get content
                 var content_link = data[0]['slide_data_content_link'];                 //get content_link
 
-                
+                /*  Have data-
+                 *  
+                 *  data-img_name
+                 *  data-img_url
+                 *  data-img_link
+                 *  data-content_link      
+                 * 
+                */
+               
                 $("#sora-menu").append(
                                          
                                         "<li class='mjs-nestedSortable-leaf' id='menuItem_"+slide_data_id+"'>"+
@@ -618,7 +1037,8 @@
                                         "<span></span>"+
                                         "</span>"+
                                         "<span>"+
-                                        "<span data-id='"+slide_data_id+"' class='itemTitle'>"+img_name+"</span>"+
+                                        "<span data-id='"+slide_data_id+"' class='itemTitle' id='img_name"+slide_data_id+"'>"+img_name+" </span>"+
+                                        " <button id='edit_name_btn' name='edit_name' class='btn btn-default btn-xs' data-toggle='modal' data-target='#edit_name_modal' data-whatever='"+slide_data_id+"'><i class='fa fa-pencil fa-fw'></i> Edit Name</button>"+     //Add Button
                                         "<span title='Click to delete item.' data-id='"+slide_data_id+"' class='deleteMenu ui-icon ui-icon-closethick'>"+
                                         "<span></span>"+
                                         "</span>"+
@@ -626,27 +1046,28 @@
                                         "<div id='menuEdit"+slide_data_id+"' class='menuEdit'>"+                         //Handle
                                         "<div class='panel panel-primary'>"+
                                         "<div class='panel-heading'>"+
-                                        "Image"+
+                                        "<button id='edit_image_btn' name='edit_image' class='btn btn-default btn-xs' data-toggle='modal' data-target='#edit_image_modal' data-whatever='"+slide_data_id+"' ><i class='fa fa-pencil fa-fw'></i> Edit Image</button>"+       //Add Button
                                         "</div>"+
-                                        "<a href='"+img_link+"' target='_blank'><div style='background-image:url("+".."+img_url+"); position:relative; width: 100%; height: 0; padding-bottom: 50%; background-repeat: no-repeat; background-position: center center; background-size: cover;'></div></a>"+
+                                        "<a href='"+img_url+"' target='_blank' id='img_href"+slide_data_id+"'><div id='img_url"+slide_data_id+"' style='background-image:url("+img_url+"); position:relative; width: 100%; height: 0; padding-bottom: 50%; background-repeat: no-repeat; background-position: center center; background-size: cover;'></div></a>"+
                                         "</div>"+
                                         "<div class='panel-footer'>"+
                                         
                                         "<div class='panel panel-red'>"+
                                         "<div class='panel-heading'>"+
-                                        "Image Url"+
+                                        "Image Link"+
                                         "</div>"+
                                         "<div class='panel-body'>"+
-                                        "<p><a href='"+img_url+"' target='_blank'>"+img_url+"</a></p>"+
+                                        "<p><a href='"+img_link+"' target='_blank' id='img_link"+slide_data_id+"'>"+img_link+"</a></p>"+
                                         "</div>"+
                                         "</div>"+
 
                                         "<div class='panel panel-green'>"+
                                         "<div class='panel-heading'>"+
-                                        "Content"+
+                                        "<button id='edit_content_btn' name='edit_content' class='btn btn-default btn-xs' data-toggle='modal' data-target='#edit_content_modal' data-whatever='"+slide_data_id+"'><i class='fa fa-pencil fa-fw'></i> Edit Content</button>"+       //Add Button
                                         "</div>"+
                                         "<div class='panel-body'>"+
-                                        "<p><a href='"+content_link+"' target='_blank'>"+content+"</a></p>"+
+                                        "<div id='content"+slide_data_id+"'>"+content+"</div><br>"+
+                                        "<p><a href='"+content_link+"' target='_blank' id='content_link"+slide_data_id+"'>"+content_link+"</a></p>"+
                                         "</div>"+
                                         "</div>"+
                                         
@@ -659,10 +1080,10 @@
                 
                 $(".form-control[name=img_name]").val("");
                 
-                //$('#customRoxyImage').attr('src', '../uploads/sora_admin/sora_new_image.png');
-                $(window.parent.document).find('#customRoxyImage').attr('src', "../uploads/sora_admin/sora_new_image.png");
-                $(window.parent.document).find('#thumb').attr('value', "/uploads/sora_admin/sora_new_image.png");  
-                //$('#thumb').val("/uploads/sora_admin/sora_new_image.png");             
+                //$('#customRoxyImage').attr('src', '../sora_new_image.png');
+                $(window.parent.document).find('#customRoxyImage').attr('src', "../sora_new_image.png");
+                $(window.parent.document).find('#thumb').attr('value', "/sora_new_image.png");  
+                //$('#thumb').val("/sora_new_image.png");             
 
                 $(".form-control[name=img_link]").val("");
                 CKEDITOR.instances.content.setData('');
@@ -749,8 +1170,7 @@
               } 
             });
 
-           });
-        
+           });        
         
     });     
     

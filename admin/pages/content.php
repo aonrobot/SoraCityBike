@@ -97,7 +97,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="">
                                     
                                         <div class="form-group">
                                             <label>Type</label>
@@ -164,20 +164,39 @@
                                         
                                         <div class="form-group">
                                             <label>Thumbnail</label><br>
-                                            <!-- <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
-                                            <input name="thumb" type="hidden"> -->
-                                            <a href="javascript:openCustomRoxy()"><img src="../uploads/sora_admin/sora_blank_thumb.png" id="customRoxyImage" style="width:400px; height: 300px;"></a>
-                                            <input id="thumb" name="thumb" type="hidden" value="/uploads/sora_admin/sora_blank_thumb.png">
-                                            <div id="roxyCustomPanel" style="display: none;">
-                                              <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
-                                            </div>
+                                            
+                                            <input id="thumb" name="thumb" type="hidden" value="/sora_blank_thumb.png">
+                                            
+                                            <a class="modalButton" data-toggle="modal" data-src="components/fileman_custom/index.html?integration=custom" data-height=450 data-width=100% data-target="#file_modal"><img src="../sora_blank_thumb.png" id="customRoxyImage" style="width:400px; height: 300px;"></a>
+                                                
+                                                <div class="modal fade" id="file_modal" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+                                                      <div class="modal-dialog modal-lg">
+                                                         <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title" id="myModalLabel">Select Thumbnail</h4>
+                                                           </div>
+                                                         <div class="modal-body">
+                                                              <iframe frameborder="0"></iframe>
+                                                         </div>
+                                                        </div><!-- /.modal-content -->
+                                                     </div><!-- /.modal-dialog -->
+                                                  </div><!-- /.modal -->
+                                                </div>
+                                            
                                         </div>
                                         <script>
-                                            function openCustomRoxy(){
-                                              $('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
-                                            }
+                                            $('a.modalButton').on('click', function(e) {
+                                                var src = $(this).attr('data-src');
+                                                var height = $(this).attr('data-height') || 300;
+                                                var width = $(this).attr('data-width') || 400;
+                                            
+                                                $("#file_modal iframe").attr({'src':src,
+                                                                           'height': height,
+                                                                           'width': width});
+                                            });
                                             function closeCustomRoxy(){
-                                              $('#roxyCustomPanel').dialog('close');
+                                              $('#file_modal').modal('hide');
                                             }
                                         </script>
 
