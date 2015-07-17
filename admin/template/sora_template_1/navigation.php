@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" target="_blank" href="<?php echo $site_path[0];?>"><i class="fa fa-gear fa-fw"></i><?php echo ' '.$site_name; ?></a>
+                <a class="navbar-brand" target="_blank" href="<?php if($site_path[0]=='')echo '/'; else echo $site_path[0];?>"><i class="fa fa-gear fa-fw"></i><?php echo ' '.$site_name; ?></a>
             </div>
             
             <!-- /.navbar-header -->

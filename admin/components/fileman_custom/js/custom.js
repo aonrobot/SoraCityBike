@@ -35,6 +35,7 @@ function FileSelected(file){
    */
    $(window.parent.document).find('#customRoxyImage').attr('src', file.fullPath);
    $(window.parent.document).find('#thumb').attr('value', file.fullPath);
+   //$("#thumb").val(file.fullPath);
    window.parent.closeCustomRoxy();
 }
 function GetSelectedValue(){

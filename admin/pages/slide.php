@@ -158,18 +158,16 @@
                                             
                                             <?php
                                                     // Check Where This Slide?
-                                                    $in_cont = $database->count("content", array("slide_id" => $slide_id));
-                                                    $in_cat = $database->count("category", array("slide_id" => $slide_id));
-                                                    
+                                                    $where_is = $database->select("slide",'slide_type', array("slide_id" => $slide_id));
                                             ?>
                                             
                                             <div class="col-lg-4 form-group">
                                                 <label>Type</label>
                                                 <select name="type" id="type" class="form-control">
-                                                    <option value="content" <?php if($in_cont>0) echo "selected='true'";?> >Content Slide</option>
-                                                    <option value="category" <?php if($in_cat>0) echo "selected='true'";?> >Category Slide</option>
-                                                    <option value="video">Video Slide</option>
-                                                    <option value="home">Home Slide</option>  
+                                                    <option value="content" <?php if(!strcmp($where_is[0],"content")) echo "selected";?> >Content Slide</option>
+                                                    <option value="category" <?php if(!strcmp($where_is[0],"category")) echo "selected";?> >Category Slide</option>
+                                                    <option value="video" <?php if(!strcmp($where_is[0],"video")) echo "selected";?>>Video Slide</option>
+                                                    <option value="home" <?php if(!strcmp($where_is[0],"home")) echo "selected";?>>Home Slide</option>  
                                                 </select>
                                             </div>
 
@@ -235,7 +233,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <a href="javascript:openCustomRoxy()" class="btn btn-success">Upload New Image</a>
+                                                <a href="javascript:openCustomRoxy()" class="btn btn-primary">Select Image From Server</a>
                                                 <div id="roxyCustomPanel" style="display: none;">
                                                   <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
                                                 </div>
@@ -571,18 +569,20 @@
     });
     
     $(document).ready(function(){
-                     
-        
+             
+
          $("#create-img").click(function(){
             
             //---------------------------------------  POST FORM IMAGE-----------------------------------
             var cont_value = CKEDITOR.instances['content'].getData();
+            var img_url = $('input[name=img_url]').val();
+            img_url = escape(img_url);
             
             var formData = {
                 'a'                     : 'addImg',
                 'slide_id'              : $('input[name=slide_id]').val(),
                 'img_name'              : $('input[name=img_name]').val(),
-                'img_url'               : $('input[name=img_url]').val(),
+                'img_url'               : img_url,
                 'img_link'              : $('input[name=img_link]').val(),
                 'content'               : cont_value,
                 'content_link'          : $('input[name=content_link]').val()
@@ -628,7 +628,7 @@
                                         "<div class='panel-heading'>"+
                                         "Image"+
                                         "</div>"+
-                                        "<a href='"+img_link+"' target='_blank'><div style='background-image:url("+img_url+"); position:relative; width: 100%; height: 0; padding-bottom: 50%; background-repeat: no-repeat; background-position: center center; background-size: cover;'></div></a>"+
+                                        "<a href='"+img_link+"' target='_blank'><div style='background-image:url("+".."+img_url+"); position:relative; width: 100%; height: 0; padding-bottom: 50%; background-repeat: no-repeat; background-position: center center; background-size: cover;'></div></a>"+
                                         "</div>"+
                                         "<div class='panel-footer'>"+
                                         
@@ -659,8 +659,10 @@
                 
                 $(".form-control[name=img_name]").val("");
                 
-                $('#customRoxyImage').attr('src', '../uploads/sora_admin/sora_new_image.png');  
-                $('#thumb').val("/uploads/sora_admin/sora_new_image.png");             
+                //$('#customRoxyImage').attr('src', '../uploads/sora_admin/sora_new_image.png');
+                $(window.parent.document).find('#customRoxyImage').attr('src', "../uploads/sora_admin/sora_new_image.png");
+                $(window.parent.document).find('#thumb').attr('value', "/uploads/sora_admin/sora_new_image.png");  
+                //$('#thumb').val("/uploads/sora_admin/sora_new_image.png");             
 
                 $(".form-control[name=img_link]").val("");
                 CKEDITOR.instances.content.setData('');

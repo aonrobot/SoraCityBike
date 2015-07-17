@@ -67,6 +67,7 @@
                                             </td>
                                             <td class="center"><?php echo $data['cont_modified'];?></td>
                                             <td>
+                                                <a href="index.php?p=content&a=edit&id=<?php echo $data['id'];?>&lang=<?php echo $data['lang_id'];?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i></a>
                                                 <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-recycle"> Delete</i>
                                             </td>
                                         </tr>
