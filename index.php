@@ -213,7 +213,7 @@ $lang=$database->select("language",'*');
 
             $('#stickyalias').css('display', 'block');
           } else {
-            $('#stickyheader').css({position: 'static', top: '0px'});
+            $('#stickyheader').css({position: 'relative', top: '0px'});
             $('#stickyalias').css('display', 'none');
           }
         });
@@ -233,11 +233,13 @@ $lang=$database->select("language",'*');
       foreach ($slide as $a) {?><!-- 
     --><div class="item" >
     <div class="slidein">
-      <img class="item" src=<?php echo "'".$a['slide_data_img_url']."'"; ?>>
+      <a href=<?php echo "'".$a['slide_data_img_link']."'"; ?> style="margin:0px;"><img class="item" src=<?php echo "'".$a['slide_data_img_url']."'"; ?>></a>
+      <a href=<?php echo "'".$a['slide_data_content_link']."'"; ?> style="margin:0px;">
       <span class="caption simple-caption" >
-        <h3 style="margin-left:10px;"><?php echo $a['slide_data_name']; ?></h3>  
-        <p style="margin-left:10px; color:white;"> <?php echo $a['slide_data_content']; ?></p>   
+        <h4 style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name']; ?></h4>  
+        <?php echo $a['slide_data_content']; ?>  
       </span>
+      </a>
     </div>
             </div><!--
           --><?php } ?>  
@@ -259,7 +261,7 @@ $lang=$database->select("language",'*');
               $slide_video = $database->select("slide_data"
                 ,["[>]slide" => ["slide_id" => "slide_id"]]
                 ,["slide_data_id","slide_data_name","slide_data_img_url"]
-                ,["slide_type[=]"=>"video"]);
+                ,["slide_type[=]"=>"video","ORDER"=>"slide_data_order"]);
               foreach ($slide_video as $key ) {
                 ?><!-- --><iframe class="itemvideo" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> width="580" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><!-- --><?php } ?>
               </div>
@@ -313,8 +315,7 @@ $lang=$database->select("language",'*');
         <div class="content row">
          <div class="container head-content" id="results" align="center">
           <h4 class="pero-font large-font underline ">stories</h4>
-          <p class="pero-font">Kinfolk is a slow lifestyle magazine that explores ways for readers to simplify their lives<br>
-           cultivate community and spend more time with their friends and family.</p>
+          
 
 
            <?php 
