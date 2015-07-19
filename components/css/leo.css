@@ -56,12 +56,10 @@ body {
 }
 
 .box-slider .itemzoom {
-	padding-bottom:10px;
+	padding-bottom:15px;
 	display: inline-block;
 	text-align: center;
 	height:400px;
-	
-	
 	position:relative;
 }
 
