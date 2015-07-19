@@ -46,7 +46,7 @@ $lang=$database->select("language",'*');
   <link rel="icon" href="components/img/favicon2.png">
 
   <title> <?php echo $datas[0]['cont_name'];  ?> | Sora City Bike</title>
-
+  <link rel="stylesheet" type="text/css" href="components/css/cobox.css">
   <link href="components/css/bootstrap.css" rel="stylesheet">
   <link href="components/css/sora-default.css" rel="stylesheet">
   <link href="components/css/leo.css" rel="stylesheet">
@@ -228,9 +228,8 @@ $slide = $database->select("slide_data"
   <div class="items-wrapper">
      
    
-   <?php foreach ($slide as $key) { ?><!-- --><div class="item" >
-     <img class="item" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>  onClick="showImage(id);" id=<?php echo '"'.$key['slide_data_id'].'"';?>  alt="" >
-     </div><!-- --><?php } ?>
+   <?php foreach ($slide as $key) { ?><!-- --><a href=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> class="itemzoom"><span class="zoom"></span><img class="itemzoom" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>  
+      alt="" ></a><!-- --><?php } ?>
           
 
   </div>
@@ -243,13 +242,9 @@ $slide = $database->select("slide_data"
 </div>
 
 
-   <div id="largeImgPanel" onclick="hideImg(this);">
-           <img id="largeImg" style="margin: 0; padding: 0; height:500px;" />
-  </div>
 
 
-
-
+<script type="text/javascript" src="components/js/cobox.js"></script>
 <script type="text/javascript" src="components/js/horizontal_box_slider.js"></script>
 <script type="text/javascript" src="components/js/jquery.horizontal_box_slider.js"></script>
 
@@ -258,7 +253,7 @@ $slide = $database->select("slide_data"
 
 var leonardo_da_vinci_machines = $("#leonardo_da_vinci_machines");
 var items_wrapper = leonardo_da_vinci_machines.find(".items-wrapper");
-var da_slider = items_wrapper.horizontalBoxSlider(".item");
+var da_slider = items_wrapper.horizontalBoxSlider(".itemzoom");
 var left_button = leonardo_da_vinci_machines.find(".left");
 var right_button = leonardo_da_vinci_machines.find(".right");
 
@@ -271,8 +266,7 @@ left_button.click(function(){
 
 
 
-
-
+/*
  function showImage(a) {
 
   //alert(a);
@@ -316,7 +310,7 @@ function hideImg(obj) {
 
 }
 
-
+*/
 
 </script>
 

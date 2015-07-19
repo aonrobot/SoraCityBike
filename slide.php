@@ -13,10 +13,10 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
   <div class="items-wrapper">
      
 	 
-	 <?php foreach ($slide as $key) { ?><!-- --><div class="item" >
-     <img class="item" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>  onClick="showImage(id);" id=<?php echo '"'.$key['slide_data_id'].'"';?>  alt="" >
-     </div><!-- --><?php } ?>
-          
+	
+    
+      <?php foreach ($slide as $key) { ?><!-- --><a href=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> class="itemzoom"><span class="zoom"></span><img class="itemzoom" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>  
+      alt="" ></a><!-- --><?php } ?>
 
   </div>
 
@@ -28,13 +28,11 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
 </div>
 
 
-   <div id="largeImgPanel" onclick="hideImg(this);">
-           <img id="largeImg" style="margin: 0; padding: 0; height:500px;" />
-  </div>
 
 
 
-
+<script type="text/javascript" src="components/js/cobox.js"></script>
+<script type="text/javascript" src="components/js/jquery.js"></script>
 <script type="text/javascript" src="components/js/horizontal_box_slider.js"></script>
 <script type="text/javascript" src="components/js/jquery.horizontal_box_slider.js"></script>
 
@@ -43,7 +41,7 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
 
 var leonardo_da_vinci_machines = $("#leonardo_da_vinci_machines");
 var items_wrapper = leonardo_da_vinci_machines.find(".items-wrapper");
-var da_slider = items_wrapper.horizontalBoxSlider(".item");
+var da_slider = items_wrapper.horizontalBoxSlider(".itemzoom");
 var left_button = leonardo_da_vinci_machines.find(".left");
 var right_button = leonardo_da_vinci_machines.find(".right");
 
@@ -56,7 +54,7 @@ left_button.click(function(){
 
 
 
-
+/*
 
  function showImage(a) {
 
@@ -102,7 +100,7 @@ function hideImg(obj) {
 }
 
 
-
+*/
 </script>
 
 <!-- End slide with zoom picture -->

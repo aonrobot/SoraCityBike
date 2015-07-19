@@ -55,6 +55,37 @@ body {
 	
 }
 
+.box-slider .itemzoom {
+	padding-bottom:10px;
+	display: inline-block;
+	text-align: center;
+	height:400px;
+	
+	
+	position:relative;
+}
+
+
+.itemzoom .zoom{
+	background:url(../img/pluszoom.png);
+	position:absolute;
+	top:10px;
+	right:10px;
+	width:21px;
+	height:21px;
+	z-index:999;
+	display:none;
+	
+		
+}
+.itemzoom:hover .zoom{
+	display:block;
+		
+}
+
+
+
+
 .box-slider .itemvideo {
 	padding-bottom:10px;
 	display: inline-block;

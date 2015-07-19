@@ -18,6 +18,7 @@
               <link href="components/css/sora-default.css" rel="stylesheet">
               <link href="components/css/leo.css" rel="stylesheet">
               <script src="components/js/jquery.js"></script>
+			  <link rel="stylesheet" type="text/css" href="components/css/cobox.css">
 
             </head>
 
