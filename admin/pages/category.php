@@ -1,6 +1,6 @@
 <!-- Page Content -->
 <div id="page-wrapper">
-	<div class="container-fluid">
+	<div class="container-fluid" id="fakeLoader">
 		<div class="row">
 			<div class="col-lg-12">
 				<!-- Start Content -->
@@ -231,7 +231,7 @@
 
                                             ),
 
-                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_order','cont_id'),
+                                            array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_order','cont_id','cat_id'),
 
                                             array("AND" => array("cat_id" => $cat_id, "cont_order[!]" => '-1'),"ORDER" => "cont_order")
 
@@ -258,7 +258,7 @@
                                             
                                             <!------------------------ Ordering ----------------------------->
 											<td>
-											    <a href="#" class="ordering" data-type="text" data-pk="<?php echo $data['cont_id'];?>" data-url="query.php?a=editvaluecat&c=cont_order&cat_id=<?php echo $cat_id;?>" data-title="Edit below here" ><?php echo $data['cont_order'];?></a>
+											    <a class="ordering" data-type="text" data-pk="<?php echo $data['cont_id'];?>" data-url="query.php?a=editvaluecat&c=cont_order&cat_id=<?php echo $cat_id;?>" data-title="Edit below here" ><?php echo $data['cont_order'];?></a>
 											</td>
 											
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
@@ -285,7 +285,7 @@
                                     </tbody>
                                 </table>
                              </div>
-                              <!-- /.table-responsive -->
+                              <!-- /.table-responsive -->             
                         </div>
                           <!-- /.panel-body -->
                     </div>
@@ -329,7 +329,11 @@
 		  $.fn.editable.defaults.mode = 'inline';
 		
 		  $('.name').editable({});
-		  $('.ordering').editable({});
+		  $('.ordering').editable({
+		      success: function() {
+                    window.location = "index.php?p=category&a=edit&id=<?php echo $cat_id;?>&noti=SUpdateOrder";
+              }
+		  });
 		  $('.type').editable({
 				
 			  	source: [
@@ -337,18 +341,14 @@
 	            {value: 'category', text: 'Category'},
 	            {value: 'story', text: 'Story'},
 	            {value: 'news', text: 'News'}
-	            
-	            
+  
 	        ]
-	        
-	     
+
 			});
 
  		});
  			
  	 });
-			
-			
 
 </script>
 <script src="components/Editablecss/js/bootstrap-editable.js"></script>
