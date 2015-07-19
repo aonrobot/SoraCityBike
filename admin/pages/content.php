@@ -21,6 +21,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+                                            <th><input type="checkbox" id="checkAll"/></th>
                                             <th>ID</th>
                                             <th>Title</th>
                                             <th>Name</th>
@@ -48,6 +49,15 @@
                                                     $link_edit = "index.php?p=content&a=edit&id=".$data['id']."&lang=".$data['cont_lang_id'];
                                     ?>
                                         <tr>
+                                            
+                                            <td style="text-align: center;">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="checkItem" name="checkItem[]" type="checkbox" value="<?php echo $data['id'];?>">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            
                                             <td><?php echo $data['cont_id'];?></td>
                                             <td><a href="<?php echo $link_edit?>"><?php echo $data['cont_title'];?></a></td>
                                             <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
@@ -75,6 +85,55 @@
                                             <?php continue;} }?>
                                     </tbody>
                                 </table>
+                                
+                                <!-- Multi Action -->
+
+                                <div class="row">
+                                    <div class="col col-lg-4">
+                                        <select name="cont_action" class="form-control">
+                                            <option value="delete">Delete Content</option>
+                                        </select>
+                                    </div>
+                                    <div class="col col-lg-4">
+                                        <button id="cont_action_btn" class="btn btn-success">
+                                            Action All Select
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <script>
+                                    $("#checkAll").click(function() {
+                                        $('input:checkbox').not(this).prop('checked', this.checked);
+                                    });
+                                
+                                    $("#cont_action_btn").click(function() {
+                                        
+                                        var checked = []
+                                        $("input[name='checkItem[]']:checked").each(function ()
+                                        {
+                                            checked.push(parseInt($(this).val()));
+                                        });
+                                                                                
+                                        var formData = {
+                                            'a' : 'multiActionCont',
+                                            'checkItem' : checked,
+                                            'action' : $('select[name=cont_action]').val(),
+                                        };
+
+                                        $.ajax({
+                                            type : "POST",
+                                            url : 'functions/ajaxQuery.php',
+                                            data : formData,
+                                            success : function(data) {
+                                                window.location.href = "index.php?p=content&s=show&noti=SDelMultiContent";
+                                            }
+                                        });
+                                
+                                    });
+                                
+                                </script>
+                                
+                                <!-- /Multi Action -->
 
                          </div>
                           <!-- /.table-responsive -->
@@ -147,8 +206,8 @@
                                             </select>
                                         </div>
                                         
-                                        <div class="form-group">
-                                            <label>Category</label><br>
+                                        <div class="form-group" id="category_list">
+                                            <a href="index.php?p=category" target="_blank"><label>Category </label></a><a class="btn btn-success btn-xs" style="margin-left: 6px;" data-toggle='modal' data-target='#add_cat_modal'><i class="fa fa-plus fa-lg"></i></a><br>
                                             <?php
                                                 $datas = $database->select("category", "*");
                                             ?>
@@ -618,13 +677,72 @@
 </div>
 <!-- / #page-wrapper -->
 
+<!------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- Modal -->
+
+<div class="modal fade" id="add_cat_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+          <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="add_cat_modal_label">Add New Category</h4>
+          </div>
+          
+          <div class="modal-body">
+          <div class="container-fluid">
+          <div class="row">
+              
+            <form data-toggle="validator" role="form" action="javascript: void(0)">
+            
+                <div class="col-lg-12 form-group">
+                    <label>Name</label>
+                    <input name="add_cat_name" class="form-control" placeholder="Enter Content Name" required>
+                </div>
+            
+                <div class="col-lg-12 form-group">
+                    <label>Slug</label>
+                    <input name="add_cat_slug" class="form-control" placeholder="Enter Slug Name" required>
+                </div>
+            
+                <div class="col-lg-12 form-group">
+                    <label>Type</label>
+                    <select name="add_cat_type" class="form-control">
+                        <option value="category">Category</option>
+                        <option value="story">Story</option>
+                        <option value="news">News</option>
+                    </select>
+                </div>
+
+            </form>
+          
+          </div>    <!-- Row -->
+          </div>    <!-- container-fluid -->  
+          </div>
+        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id="add-cat-btn" class="btn btn-success" type="button">Add New Category</button>
+          </div>
+          
+     </div>
+  </div>
+</div>
+
+<!--/Modal-->
+
 <script>
 
     <?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
         //DataTable
         $('#dataTables-example').DataTable({
             responsive: true,
-            "order": [[ 0, "desc" ]]
+            "order": [[ 1, "desc" ]],
+            "columnDefs": [
+                { "width": "3px", "targets": 0 },
+                { "orderable": false, "targets": 0 }
+            ]
         });
     <?php }?>    
     
@@ -634,10 +752,45 @@
             debug : 1
         });
         
-        //$("#input-700").fileinput({
-        //    uploadUrl : "http://localhost/uploads/thumbnail/",
-        //    maxFileCount : 1
-        //});
+        $("#add-cat-btn").click(function(){
+                        
+            var formData = {
+                'a'                     : 'addCategoryInContent',
+                'name'                  : $('input[name=add_cat_name]').val(),
+                'slug'                  : $('input[name=add_cat_slug]').val(),
+                'type'                  : $('select[name=add_cat_type]').val(),
+            };
+            
+            console.log(formData);
+             
+            $.ajax({
+              type: "POST",                                     
+              url:  'functions/ajaxQuery.php',
+              dataType: 'json',                             
+              data: formData,
+                                                          
+              success: function(data)          
+              {     
+                    var cat_id = data[0]['cat_id'];                         
+                    var cat_name = data[0]['cat_name'];  
+                                     
+                    $("#category_list").append(
+                        
+                        "<div class='checkbox'>"+
+                        "<label>"+
+                        "<input name='category[]' type='checkbox' value='"+cat_id+"'> "+cat_name+
+                        "</label>"+
+                        "</div>"
+                        
+                    );
+                    
+                    $('#add_cat_modal').modal('hide');
+                    
+                    toastr["success"]("Add Success","Add New Category");
+              } 
+            });
+
+         });
 
     });
     
