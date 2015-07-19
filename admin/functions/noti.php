@@ -88,6 +88,10 @@
           toastr["success"]("Remove Favorite This Content Success","Remove Success");
         <?php }?>
         
+        <?php if(!strcmp($_GET['noti'], 'SUpdateOrder')){?>
+          toastr["success"]("Update Ordering Success","Update Success");
+        <?php }?>
+        
         // Slide
         <?php if(!strcmp($_GET['noti'], 'SAddSlide')){?>
           toastr["success"]("Create Slide Success","Create Success");
