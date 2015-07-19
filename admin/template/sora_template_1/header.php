@@ -44,6 +44,9 @@
         <!-- Notification -->
         <link href="components/notification/toastr.css" rel="stylesheet"/>
         
+        <!-- animsition CSS (Loading Effect)-->
+        <link rel="stylesheet" href="components/animsition/dist/css/animsition.min.css">
+        
 		
 		<!------------------------    JS     ----------------------------------------->
 		
@@ -63,15 +66,6 @@
 		
 		<!-- Bootstrap Core JavaScript -->
 		<script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
-		
-		<?php //include('config/tiny.php'); ?>
-		
-		<!-- Tiny Editoe 
-		
-		<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.1.2/tinymce.min.js"></script>
-    	<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.1.2/jquery.tinymce.min.js"></script> -->
-    	
-    	<!-- CKEditor -->
     	
     	<script src="components/ckeditor/ckeditor.js"></script> 
   		<script src="components/ckeditor/adapters/jquery.js"></script> 
@@ -101,12 +95,12 @@
 		<script src="<?php echo $D_TEMPLATE; ?>dist/js/sb-admin-2.js"></script>
 		
 		<!-- Notification JS -->
-		<script src="components/notification/toastr.js"></script>		
-	
+		<script src="components/notification/toastr.js"></script>
+
 	</head>
 	
 	<body>
 	
-		<div id="wrapper">
+		<div id="wrapper" class="animsition">
 		
 		<?php include ($D_TEMPLATE . 'navigation.php'); ?>
