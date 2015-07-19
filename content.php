@@ -67,6 +67,8 @@ $lang=$database->select("language",'*');
       <?php 
       echo '<span class=" pero-font uppercase time_text">'.date('D j M').'</span>';
 
+
+
       ?>
     </div>
     <div class="col-xs-4 col-xs-offset-4 brand-social" align="center">
@@ -78,8 +80,7 @@ $lang=$database->select("language",'*');
             onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="components/img/icon/icon-pt-type2.png"/></a>
             <a href="https://www.vimeo.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
               onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src="components/img/icon/icon-ve-type2.png"/></a>
-              <br class="hid_br">
-               <?php
+              <?php
               
               foreach ($lang as $a) {?>
 
@@ -98,12 +99,12 @@ $lang=$database->select("language",'*');
                       lang: e
                     }
                   }).done(function() {
-                        
+                       
                   });
                  
               }
               </script>
-            
+            </div>
           </div>
 
           <div class="brand row">
@@ -115,7 +116,6 @@ $lang=$database->select("language",'*');
 
 
           </div>
-
           <hr class="top_line">
 
           <nav class="bg-gray navbar navbar-default " role="navigation" id="stickyheader">
@@ -152,7 +152,8 @@ $lang=$database->select("language",'*');
                     $link = "";
                   }    
 
- echo '<div class="dropdown-toggle bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" data-hover="dropdown" data-delay="100" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>                  <?php echo $menu['obj_name']; ?>
+                  echo '<div class="dropdown-toggle bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" data-hover="dropdown" data-delay="100" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>
+                  <?php echo $menu['obj_name']; ?>
                   <?php if ($menu['obj_type'] == 'category') echo '<span><img class="dropdown-span" src="components/img/down-btn.png"/></span>'; ?>
                 </div>
                 <?php if ($menu['obj_type'] == 'category') { ?>
@@ -184,9 +185,9 @@ $lang=$database->select("language",'*');
         </div>
         <!-- /.container -->
       </nav>
-    
+
       <div id="stickyalias"></div>
-<!-- ////////////////////////////////////    THIS  IS END OF TOPMENU       ///////////////////////////////////////////////////// -->
+      <!-- ////////////////////////////////////    THIS  IS END OF TOPMENU       ///////////////////////////////////////////////////// -->
 
       <script>
 
@@ -207,7 +208,7 @@ $lang=$database->select("language",'*');
 
       </script>
 
-<!-- ////////////////////////////////////    THIS  IS SLIDE       ///////////////////////////////////////////////////// -->
+      <!-- ////////////////////////////////////    THIS  IS SLIDE       ///////////////////////////////////////////////////// -->
 
       
 

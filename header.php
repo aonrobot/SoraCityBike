@@ -164,11 +164,11 @@
         var stickyHeaderTop = $('#stickyheader').offset().top;
         $(window).scroll(function(){
                 if( $(window).scrollTop() > stickyHeaderTop ) {
-                        $('#stickyheader').css({position: 'fixed',width:'100%'});
-
+                        $('#stickyheader').css({position: 'fixed',width:'100%',top: '0px'});
+					
                         $('#stickyalias').css('display', 'block');
                 } else {
-                        $('#stickyheader').css({position: 'static', top: '0px'});
+                        $('#stickyheader').css({position: 'relative', top: '0px'});
                         $('#stickyalias').css('display', 'none');
                 }
         });
