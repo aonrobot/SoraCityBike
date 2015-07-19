@@ -143,7 +143,7 @@ $lang=$database->select("language",'*');
                   <span class="icon-bar"></span>
 
                 </button>
-                <a class="pero-font navbar-brand" href="index.html"><b>Sora City Bike</b></a>
+                <a class="pero-font navbar-brand" href="index.php"><b>Sora City Bike</b></a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -314,7 +314,7 @@ $lang=$database->select("language",'*');
         <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
         <div class="content row">
          <div class="container head-content" id="results" align="center">
-          <h4 class="pero-font large-font underline ">stories</h4>
+          <center><h4 class="pero-font large-font underline ">stories</h4></center>
           
 
 
