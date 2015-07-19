@@ -2,7 +2,7 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="">
 				<!-- Start Content -->
 
 				<?php $users = \Fr\LS::getUser();?>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="">
+                                <div class="col-lg-12">
                                     
                                         <div class="form-group">
                                             <label>Type</label>
