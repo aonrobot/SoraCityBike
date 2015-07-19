@@ -4,47 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header"><i class="fa fa-dashboard fa-1x"></i> Menu</h1>
-                <?php
-                
-                // JSON TO ARRAY CODE 
-                
-                /*
-                    $json = '[{"id":0},{"id":107,"children":[{"id":108},{"id":109},{"id":111}]},{"id":110},{"id":112}]';
-                    echo "<pre>";
-                    print_r(json_decode($json, true));
-                    echo "</pre>";
-                    echo "<pre>";
-                    var_dump(json_decode($json, true));
-                    echo "</pre>";
-                    
-                    $array = json_decode($json, true);
-                    echo $array[1]['children'][0]['id'].'<br>';
-                    
-                    $objs = array();
-                    
-                    
-                    for($i = 1 ; $i < count($array) ; $i++){
-                        if($array[$i]['children'][0]['id'] == ''){
-                            echo $i." not have children ".$array[$i]['id'].'<br>';
-                            $obj = array("obj_id"=>$array[$i]['id'], "parent_id"=>"0", "menu_order"=>$i);
-                            array_push($objs,$obj);
-                        }else{
-                            echo $i." have children ".$array[$i]['id'].'<br>';
-                            $obj = array("obj_id"=>$array[$i]['id'], "parent_id"=>"0", "menu_order"=>$i);
-                            array_push($objs,$obj);
-                            for($j = 0 ; $j < count($array[$i]['children']) ; $j++){
-                                $obj = array("obj_id"=>$array[$i]['children'][$j]['id'], "parent_id"=>$array[$i]['id'], "menu_order"=>$j+1);
-                                array_push($objs,$obj);
-                            }
-                        }
-                    }
-                    
-                    echo "<pre>";
-                    print_r($objs);
-                    echo "</pre>";
-                    */
-                ?> 
-                    
+                                    
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <b>Add Menu</b>
