@@ -87,7 +87,7 @@
            header( 'Location: index.php?p=category&noti=SAddCategory' ) ;
            exit();
     }
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     if(!strcmp($_GET['a'], 'addFooter')){
