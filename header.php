@@ -9,16 +9,16 @@
               <meta name="viewport" content="width=device-width, initial-scale=1">
               <meta name="description" content="">
               <meta name="author" content="">
-              <link rel="shortcut icon" href="/components/img/favicon2.png">
-              <link rel="icon" href="/components/img/favicon2.png">
+              <link rel="shortcut icon" href="components/img/favicon2.png">
+              <link rel="icon" href="components/img/favicon2.png">
 
               <title>Sora City Bike</title>
               
-              <link href="/components/css/bootstrap.css" rel="stylesheet">
-              <link href="/components/css/sora-default.css" rel="stylesheet">
-              <link href="/components/css/leo.css" rel="stylesheet">
-              <script src="/components/js/jquery.js"></script>
-			  <link rel="stylesheet" type="text/css" href="/components/css/cobox.css">
+              <link href="components/css/bootstrap.css" rel="stylesheet">
+              <link href="components/css/sora-default.css" rel="stylesheet">
+              <link href="components/css/leo.css" rel="stylesheet">
+              <script src="components/js/jquery.js"></script>
+			  <link rel="stylesheet" type="text/css" href="components/css/cobox.css">
 
             </head>
 
@@ -57,13 +57,13 @@
                  </div>
                     <div class="col-xs-4 col-xs-offset-4 brand-social" align="center">
                         <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" 
-                        onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="/components/img/icon/icon-fb-type2.png"/></a>
+                        onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src="components/img/icon/icon-fb-type2.png"/></a>
                          <a href="https://www.instragram.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" 
-                        onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="/components/img/icon/icon-ig-type2.png"/></a>
+                        onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src="components/img/icon/icon-ig-type2.png"/></a>
                          <a href="https://www.pinterest.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" 
-                        onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="/components/img/icon/icon-pt-type2.png"/></a>
+                        onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="components/img/icon/icon-pt-type2.png"/></a>
                         <a href="https://www.vimeo.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
-                        onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src="/components/img/icon/icon-ve-type2.png"/></a>
+                        onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src="components/img/icon/icon-ve-type2.png"/></a>
                         <?php
                         foreach ($lang as $a) {
 
@@ -79,7 +79,7 @@
                 
                     
                     <div class="col-xs-4 col-xs-offset-4 brand-logo ">
-                        <a href="index.php"><img class="logo_img" src="/components/img/LOGO-(with-cloud)2.png"/></a>
+                        <a href="index.php"><img class="logo_img" src="components/img/LOGO-(with-cloud)2.png"/></a>
                     </div>
                  
 
@@ -122,7 +122,7 @@
 
                                echo '<div class="bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>
                                <?php echo $menu['obj_name']; ?>
-                               <?php if ($menu['obj_type'] == 'category') echo '<span><img class="dropdown-span" src="/components/img/down-btn.png"/></span>'; ?>
+                               <?php if ($menu['obj_type'] == 'category') echo '<span><img class="dropdown-span" src="components/img/down-btn.png"/></span>'; ?>
                            </div>
                            <?php if ($menu['obj_type'] == 'category') { ?>
                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">

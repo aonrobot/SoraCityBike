@@ -1,31 +1,12 @@
-RewriteEngine On
-
-RewriteRule ^content/([a-zA-Z0-9-/]+)/$ content.php?id=$1 [L,NC]
-
-#RewriteRule ^content/(\w+)\.html content.php?id=$1 [L]
-
-#RewriteBase /
-
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule . content.php [L,QSA]
-
-#RewriteRule ^(\w+)\.html content.php?id=$1 [L]
-
-#RewriteRule ^content/([a-zA-Z0-9-/]+)/?$ /content.php?id=$1 [L]
-
-# EX
-
-#RewriteRule ^author/(.*)/?$ /category-author.php?author=$1 [L,NC]
-#RewriteRule ^type/(.*)/?$ /category-type.php?type=$1 [L,NC]
-#RewriteRule ^category/(.*)/?$ /category.php?cat=$1 [L,NC]
-#RewriteRule ^date/(.*)/(.*)/?$ /date.php?year=$1&month=$2 [L,NC]
-#RewriteRule ^([a-zA-Z0-9-/]+)$ /post.php?slug=$1 [L,NC]
-
-#this returns the page toogood.org.uk/test/index.php?slug=x to toogood.org.uk/x
-#RewriteRule ^test/([a-zA-Z0-9-/]+)$ /test/index.php?slug=$1 [QSA]
-#this returns the page toogood.org.uk/test/index.php?slug=x to toogood.org.uk/test/x
-
-
 ErrorDocument 404 /404.html
 
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteBase /SoraCityBike/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([a-zA-Z0-9-/]+)$ index.php?p=$1&id=$2 [QSA]
+</IfModule>

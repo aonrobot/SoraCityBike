@@ -134,24 +134,6 @@
            exit();
     }
     
-    if(!strcmp($_GET['a'], 'addDefaultLang')){
-        
-          $count = $database->count('site_meta',array('meta_key'=>'site_default_lang'));
-          if($count == 0){
-              $database->insert("site_meta", array(
-                    "meta_key" => 'site_default_lang',
-                    "meta_value" => $_POST['lang']
-              ));
-           }else{
-              $database->update("site_meta", array(
-                    "meta_value" => $_POST['lang']
-              ),array("meta_key" => 'site_default_lang'));
-           }
-           
-           header( 'Location: index.php?p=content&s=language&noti=SSetLang' ) ;
-           exit();
-    }
-    
     if(!strcmp($_GET['a'], 'addSlide')){
         
           $last_slide = $database->insert("slide", array(

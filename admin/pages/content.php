@@ -621,37 +621,6 @@
                           <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    
-                    <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <b>Set Site Default Langguage</b>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                <div class="col-lg-12">
-                                    
-                                    <form method="post" role="form" action="query.php?a=addDefaultLang" data-toggle="validator">
-                                        <div class="col-lg-3 form-group">                            
-                                            <select name="lang" class="form-control">
-                                                 <?php
-                                                    $datas = $database->select("language","*");
-                                                    foreach ($datas as $data) {
-                                                ?>
-                                                <option value="<?php echo $data['lang_id'];?>">( <?php echo $data['lang_code'];?> ) <?php echo $data['lang_name'];?></option>
-                                                <?php }?>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-3 form-group">
-                                            <button id="cont_action_btn" class="btn btn-success">
-                                                Set
-                                            </button>
-                                        </div>
-                                    </form>
-                                    
-                                </div>
-                                </div>                                                                 
-                            </div>
-                    </div>
 
                     <div class="panel panel-default">
                             <div class="panel-heading">
@@ -659,7 +628,6 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                
                                 <div class="dataTable_wrapper">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
@@ -673,22 +641,13 @@
                                         <tbody>
                                         <?php
                                                 $datas = $database->select("language","*");
-                                                $site_default_lang_id = $database->select("site_meta",'meta_value',array('meta_key'=>'site_default_lang'));
                                                 foreach ($datas as $data) {
                                         ?>
                  <!-- Bite did hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
                                             <tr>
                                                 <td><?php echo $data['lang_id'];?></td>
-                                                <td>
-                                                    <a href="#" class="name" data-type="text" data-pk="<?php echo $data['lang_id'];?>" data-url="query.php?a=editvaluelang&c=lang_code" data-title="Edit below here" >
-                                                        <?php echo $data['lang_code'];?>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="name" data-type="text" data-pk="<?php echo $data['lang_id'];?>" data-url="query.php?a=editvaluelang&c=lang_name" data-title="Edit below here" >
-                                                        <?php echo $data['lang_name'];?>
-                                                    </a><?php if($site_default_lang_id[0] == $data['lang_id']) echo "&nbsp;&nbsp;.<a class='btn btn-warning btn-xs'>Site Default Language</a>";?>
-                                                </td>
+                                                <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['lang_id'];?>" data-url="query.php?a=editvaluelang&c=lang_code" data-title="Edit below here" ><?php echo $data['lang_code'];?></a></td>
+                                                <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['lang_id'];?>" data-url="query.php?a=editvaluelang&c=lang_name" data-title="Edit below here" ><?php echo $data['lang_name'];?></a></td>
                                                 <td>
                                                     
                                                     <?php if($data['lang_id']){?>
