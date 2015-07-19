@@ -80,6 +80,7 @@ $lang=$database->select("language",'*');
             onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src="/components/img/icon/icon-pt-type2.png"/></a>
             <a href="https://www.vimeo.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
 
+
               onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src="components/img/icon/icon-ve-type2.png"/></a>
               <?php
 
@@ -154,10 +155,8 @@ $lang=$database->select("language",'*');
                     $link = "";
                   }    
 
-
-                  echo '<div class="dropdown-toggle bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" data-hover="dropdown" data-delay="100" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>
-                  <?php echo $menu['obj_name']; ?>
-                  <?php if ($menu['obj_type'] == 'category') echo '<span><img class="dropdown-span" src="components/img/down-btn.png"/></span>'; ?>
+ echo '<div class="dropdown-toggle bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" data-hover="dropdown" data-delay="100" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>                  <?php echo $menu['obj_name']; ?>
+                  <?php if ($menu['obj_type'] == 'category') echo '<span><img class="dropdown-span" src="/components/img/down-btn.png"/></span>'; ?>
 
                 </div>
                 <?php if ($menu['obj_type'] == 'category') { ?>
