@@ -68,6 +68,10 @@
           toastr["success"]("Delete Language Success","Delete Error");
         <?php }?>
         
+        <?php if(!strcmp($_GET['noti'], 'SSetLang')){?>
+-          toastr["success"]("Set Success","Set Site Default Language");
+-        <?php }?>
+        
         <?php if(!strcmp($_GET['noti'], 'SDelMultiContent')){?>
           toastr["success"]("Delete Success", "Delete All Content");
         <?php }?>
