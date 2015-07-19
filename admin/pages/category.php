@@ -56,7 +56,9 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
+                                
                                 <div class="dataTable_wrapper">
+                                                                            
                                     <table class="table table-striped table-bordered table-hover" id="show-cat">
                                         <thead>
                                             <tr>
@@ -66,26 +68,28 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
+                                        <!------------------------------ bite and aon was here ------------------------------------------------------------------->
                                         <tbody>
                                         <?php
                                                 $datas = $database->select("category","*",array("ORDER" => "cat_id"));
                                                 foreach ($datas as $data) {
                                                 $link_edit = "index.php?p=category&a=edit&id=".$data['cat_id'];
                                         ?>
-                                            <!------------------------------ bite and aon was here ------------------------------------------------------------------->
+                                            
                                             <tr>
                                                 <td><?php echo $data['cat_id'];?></td>
                                                 <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_name" data-title="Edit below here" ><?php echo $data['cat_name'];?></a></td>
                                                 <td><a href="#" class="type" data-type="select" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_type" data-title="Edit below here" ><?php echo $data['cat_type'];?><a></td>
                                                 <td>
                                                     <a href="<?php echo $link_edit;?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i></a>
-                                                    <a href="query.php?a=del&w=category&i=<?php echo $data['cat_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i>
+                                                    <a href="query.php?a=del&w=category&i=<?php echo $data['cat_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
                                                 </td>
                                             </tr>
     
                                         <?php }?>
                                         </tbody>
                                     </table>
+      
                              </div>
                               <!-- /.table-responsive -->
                         </div>
@@ -309,7 +313,7 @@
         //DataTable
         $('#show-cat').DataTable({
             responsive: true,
-            "order": [[ 0, "desc" ]]
+            "order": [[ 0, "desc" ]],
         });
     <?php }?>   
 
