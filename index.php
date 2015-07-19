@@ -314,7 +314,7 @@ $lang=$database->select("language",'*');
         <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
         <div class="content row">
          <div class="container head-content" id="results" align="center">
-          <h4 class="pero-font large-font underline ">stories</h4>
+          <center><h4 class="pero-font large-font underline ">stories</h4></center>
           
 
 
