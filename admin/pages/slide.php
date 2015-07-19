@@ -102,7 +102,7 @@
                   <!-- bite fixx herreeeeeeeeeeeeeeeeeeeee --->                       
                                         <tr>
                                             <td><?php echo $data['slide_id'];?></td>
-                                            <td><a href="<?php echo $link_edit?>"><?php echo $data['slide_name'];?></a></td>
+                                            <td><a class="slide_name" data-type="text" data-pk="<?php echo $data['slide_id'];?>" data-url="query.php?a=editvalueslide&c=slide_name" data-title="Edit below here" ><?php echo $data['slide_name'];?></a></td>
                                             
                                             <?php if(!strcmp($data['cont_name'], '')){?>
                                             <td><?php echo $data['cat_name'];?></td>
@@ -1313,6 +1313,8 @@
          
    	     $(function() {
 		 $.fn.editable.defaults.mode = 'inline';
+		 
+		 $('.slide_name').editable({});
 		
 		 $('.slidetype').editable({
 		 	
