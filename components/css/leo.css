@@ -61,24 +61,28 @@ body {
 	text-align: center;
 	height:400px;
 	
-}
-
-
-a:hover .zoomicon{
-	visibility:visible;
-
-
-}
-.zoomicon {
-	position:absolute;
-	top: 10px;
-	right: 10px;
-	width: 21px;
-	height: 21px;
-	z-index:1000;
-
 	
-	}
+	position:relative;
+}
+
+
+.itemzoom .zoom{
+	background:url(../img/pluszoom.png);
+	position:absolute;
+	top:10px;
+	right:10px;
+	width:21px;
+	height:21px;
+	z-index:999;
+	display:none;
+	
+		
+}
+.itemzoom:hover .zoom{
+	display:block;
+		
+}
+
 
 
 

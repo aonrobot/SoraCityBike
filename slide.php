@@ -13,10 +13,10 @@ $slide = $database->select("slide_data",["slide_data_id","slide_data_name","slid
   <div class="items-wrapper">
      
 	 
-	 <?php foreach ($slide as $key) { ?><!-- --><a href=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>><img class="itemzoom" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>
-      alt=""><span class="zoomicon"><img
-   src="components/img/pluszoom.png" ></span></a><!-- --><?php } ?>
-          
+	
+    
+      <?php foreach ($slide as $key) { ?><!-- --><a href=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> class="itemzoom"><span class="zoom"></span><img class="itemzoom" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?>  
+      alt="" ></a><!-- --><?php } ?>
 
   </div>
 
@@ -51,11 +51,6 @@ right_button.click(function(){
 left_button.click(function(){
 	da_slider.previous();
 });
-
-
-
-
-
 
 
 
