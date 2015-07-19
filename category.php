@@ -49,8 +49,8 @@ $lang=$database->select("language",'*');
   <link rel="shortcut icon" href="components/img/favicon2.png">
   <link rel="icon" href="components/img/favicon2.png">
 
-  <title><?php echo $datas[0]['cat_name'] ?> | Sora City Bike</title>
-
+  <title> <?php echo $datas[0]['cont_name'];  ?> | Sora City Bike</title>
+  <link rel="stylesheet" type="text/css" href="components/css/cobox.css">
   <link href="components/css/bootstrap.css" rel="stylesheet">
   <link href="components/css/sora-default.css" rel="stylesheet">
   <link href="components/css/leo.css" rel="stylesheet">
