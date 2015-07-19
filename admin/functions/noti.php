@@ -49,23 +49,27 @@
         // Content
         
         <?php if(!strcmp($_GET['noti'], 'SAddContent')){?>
-          toastr["success"]("Create Content Success","Create Success");
+          toastr["success"]("Create Success","Create New Content");
         <?php }?>
         <?php if(!strcmp($_GET['noti'], 'SUpdateContent')){?>
-          toastr["success"]("Update Content Success","Update Success");
+          toastr["success"]("Update Success","Update Content");
         <?php }?>
         <?php if(!strcmp($_GET['noti'], 'SDelContent')){?>
 		  toastr["success"]("Delete Content Success","Delete Success");
 		<?php }?>
 		
 		<?php if(!strcmp($_GET['noti'], 'SAddLang')){?>
-          toastr["success"]("Create Language Success","Create Success");
+          toastr["success"]("Create New Language","Create Success");
         <?php }?>
         <?php if(!strcmp($_GET['noti'], 'SDelLang')){?>
           toastr["success"]("Delete Language Success","Delete Success");
         <?php }?>
         <?php if(!strcmp($_GET['noti'], 'EDelLang')){?>
           toastr["success"]("Delete Language Success","Delete Error");
+        <?php }?>
+        
+        <?php if(!strcmp($_GET['noti'], 'SDelMultiContent')){?>
+          toastr["success"]("Delete Success", "Delete All Content");
         <?php }?>
 		
 		
