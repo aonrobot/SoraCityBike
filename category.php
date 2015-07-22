@@ -1,28 +1,8 @@
-<?php include('counter.php');?>
+
 <?php include('config/config.php'); ?>
 <?php include('header.php');?>
 
-      <script>
 
-        $(function(){
-        // Check the initial Poistion of the Sticky Header
-        var stickyHeaderTop = $('#stickyheader').offset().top;
-
-        
-
-        $(window).scroll(function(){
-          if( $(window).scrollTop() > stickyHeaderTop ) {
-            $('#stickyheader').css({position: 'fixed',width:'100%',top: '0px'});
-
-            $('#stickyalias').css('display', 'block');
-          } else {
-            $('#stickyheader').css({position: 'relative', top: '0px'});
-            $('#stickyalias').css('display', 'none');
-          }
-        });
-      });
-
-      </script>
 
  <!-- ////////////////////////////////////    THIS  IS SLIDE       ///////////////////////////////////////////////////// -->
 

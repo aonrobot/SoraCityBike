@@ -1,4 +1,4 @@
-<?php include('counter.php');?>
+
 <?php include('config/config.php'); ?>
 <?php include('header.php');?>
 

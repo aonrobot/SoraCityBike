@@ -15,8 +15,6 @@ $default_lang=$lang_def[0]['meta_value'];
 
 if(!isset($_SESSION['lang_session']))
  $_SESSION['lang_session'] = $default_lang;
-
-echo $_SESSION['lang_session'];
 ?>
 
 
@@ -35,7 +33,19 @@ echo $_SESSION['lang_session'];
   <link rel="shortcut icon" href=<?php echo '"'.$site_path.'/components/img/favicon2.png"'?>>
   <link rel="icon" href=<?php echo '"'.$site_path.'/components/img/favicon2.png"'?>>
 
-  <title>Sora City Bike</title>
+  <title>
+  <?php
+
+  if(empty($_GET['id'])){
+     echo 'Sora City Bike';
+    
+}
+else{
+  $title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$_GET['id']]]);
+  echo $title[0]["cont_title"].' | Sora City Bike';
+}
+  ?>
+  </title>
 
   <link href=<?php echo '"'.$site_path.'/'.'components/css/bootstrap.css'.'"'; ?> rel="stylesheet">
   <link href=<?php echo '"'.$site_path.'/'.'components/css/sora-default.css'.'"'; ?> rel="stylesheet">
@@ -88,12 +98,12 @@ echo $_SESSION['lang_session'];
                 
                  $.ajax({
                     type: 'POST',
-                    url: "/SoraCityBike/change_lang.php",
+                    url: <?php echo '"'.$site_path.'/change_lang.php"'?>,
                     data: {
                       lang: e
                     }
                   }).done(function() {
-                       alert('hi');
+                      
                   });
                  
               }
@@ -137,7 +147,7 @@ echo $_SESSION['lang_session'];
                     if ($menu['obj_type'] == 'content') {
 
                       $datas = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $menu['obj_url']]);
-                      echo $datas[0]["cont_slug"];
+                      
                       $link = "'".$site_path."/content/".$menu['obj_url']."/".$datas[0]["cont_slug"]."'";
 
                     }
@@ -164,10 +174,12 @@ echo $_SESSION['lang_session'];
                       if ($a['obj_type']=='content')
                       { 
                         $datas = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $menu['obj_url']]);
+                        
                          echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
                       }
                       elseif ($a['obj_type']=='category') { 
                         $datas = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $menu['obj_url']]);
+                        
                          echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
                       }
                      
