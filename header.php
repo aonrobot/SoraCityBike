@@ -51,6 +51,7 @@ if(!isset($_SESSION['lang_session']))
 <link href=<?php echo '"'.$site_path.'/'.'components/css/bootstrap.css'.'"'; ?> rel="stylesheet">
 <link href=<?php echo '"'.$site_path.'/'.'components/css/sora-default.css'.'"'; ?> rel="stylesheet">
 <link href=<?php echo '"'.$site_path.'/'.'components/css/leo.css'.'"'; ?> rel="stylesheet">
+<link href=<?php echo '"'.$site_path.'/'.'components/css/cobox.css'.'"'; ?> rel="stylesheet">
 <script src=<?php echo '"'.$site_path.'/'.'components/js/jquery.js'.'"'; ?>></script>
 
 </head>
