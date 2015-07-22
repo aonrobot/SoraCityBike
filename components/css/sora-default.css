@@ -326,7 +326,10 @@ margin: 0px;
     width: auto;
 
 }
+.simple-caption>p{
+    line-height: 70%;
 
+}
 .nav>li>div {
     /*padding-top: 18px;
     padding-bottom: 18px;
