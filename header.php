@@ -42,7 +42,7 @@ if(!isset($_SESSION['lang_session']))
    else{
 
     $title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$_GET['id']]]);
-    
+
     echo $title[0]["cont_title"].' | Sora City Bike';
   }
   ?>
@@ -152,14 +152,10 @@ if(!isset($_SESSION['lang_session']))
 
 
 
-
-
-
-
-
               <?php
 
               foreach ($top_menu as $menu ) { 
+                
                 echo '<li id="menu_'.$menu['menu_id'].'">';
                 if ($menu['obj_type'] == 'content') {
 
@@ -175,17 +171,38 @@ if(!isset($_SESSION['lang_session']))
                else {
                 $datas_cat = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $menu['obj_url']]);
                 $link = "'".$site_path."/category/".$menu['obj_url']."/".$datas_cat[0]["cat_slug"]."'";
-
               }    
-
               echo '<div class="dropdown-toggle bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" 
               data-hover="dropdown" data-delay="100" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>
               <?php echo $menu['obj_name']; ?>
-              <?php if ($menu['obj_type'] == 'category') echo '<span><img class="dropdown-span" src="'.$site_path.'/components/img/down-btn.png"/></span>'; ?>
+
+
+
+              <?php 
+              $check=0;
+              foreach ($sub_menu as $a ){
+                  if ($menu['obj_id']==$a['parent_id']) {
+                    $check=$check+1;
+                    if ($check==1) {
+                       echo '<span><img class="dropdown-span" src="'.$site_path.'/components/img/down-btn.png"/></span>'; 
+                    }}}
+              ?>
+
+
             </div>
-            <?php if ($menu['obj_type'] == 'category') { ?>
+
+
+            <?php 
+             $check=0;
+              foreach ($sub_menu as $a ){
+                  if ($menu['obj_id']==$a['parent_id']) {
+                    $check=$check+1;
+                    if ($check==1) { {
+
+            ?>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
               <?php
+
               foreach ($sub_menu as $a ) {
                 $sub=$a['parent_id'];
                 $top=$menu['obj_id'];
@@ -214,7 +231,7 @@ if(!isset($_SESSION['lang_session']))
 
 
             </ul>
-            <?php } ?>
+            <?php }}}} ?>
           </li>
           <?php } ?>
 
