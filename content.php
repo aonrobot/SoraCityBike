@@ -10,7 +10,7 @@
 
 <!-- slide with zoom picture -->
 <?php 
-
+  
  $content_db = $database->select("content",["id","slide_id","cont_name"],["id[=]"  => $_GET['id']]);
 foreach ($content_db as $key) {
  

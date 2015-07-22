@@ -10,7 +10,8 @@
 
 <!-- slide with zoom picture -->
 <?php 
- 
+echo $_GET['id'];
+ $datas = $database->select("category",["cat_id","slide_id","cat_name"],["cat_id[=]"  => $_GET['id']]);
 
 foreach ($datas as $key) {
  $slide_id= $key['slide_id'];
@@ -41,10 +42,10 @@ $slide = $database->select("slide_data"
 
 
 
-<script type="text/javascript" src="components/js/cobox.js"></script>
-<script type="text/javascript" src="components/js/horizontal_box_slider.js"></script>
-<script type="text/javascript" src="components/js/jquery.horizontal_box_slider.js"></script>
 
+<script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/cobox.js"'?>></script>
+<script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
+<script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/jquery.horizontal_box_slider.js"'?>></script>
 <script>
 
 
@@ -178,12 +179,10 @@ function hideImg(obj) {
 
 
 
-          <script src="components/js/jquery.js"></script>
-          <script src="components/js/sora-default.js"></script>
-          <script src="components/js/bootstrap.min.js"></script>
-         
-  
-            <script src="components/js/bootstrap-hover-dropdown.js"></script>
+          <script src=<?php echo '"'.$site_path.'/components/js/jquery.js"'?>></script>
+          <script src=<?php echo '"'.$site_path.'/components/js/sora-default.js"'?>></script>
+          <script src=<?php echo '"'.$site_path.'/components/js/bootstrap.min.js"'?>></script>
+          <script src=<?php echo '"'.$site_path.'/components/js/bootstrap-hover-dropdown.js"'?>></script>
 
 
         </body>

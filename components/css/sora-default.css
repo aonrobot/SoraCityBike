@@ -220,9 +220,10 @@ hr {
 }
 
 footer {
-    margin-top: 8em;
-    background: #fff;
-    background: rgba(255,255,255,0.9);
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background: #f8f8f8;
+   
 }
 
 footer p {
