@@ -502,7 +502,7 @@ iframe{
 /** Caption 1: Simple **/
 .slidein .simple-caption {
     margin:none;
-    height: 10%;
+
     width: 100%;
     display: block;
     bottom: 0px;
@@ -510,18 +510,17 @@ iframe{
     overflow:hidden;
     line-height: 120%;
     padding: 15px;
+
+	max-height: 10%;
+	transition: max-height 0.65s ease-out;
 }
 
 
 
-/** Simple Caption :hover Behaviour **/
+
 .slidein .simple-caption:hover {
-
-    height: auto;
-    width: 100%;
-    display: block; 
-    text-align: left;
-    overflow:hidden;
-    
+	 max-height: 100%;
+    transition: max-height 0.75s ease-in;
 
 }
+
