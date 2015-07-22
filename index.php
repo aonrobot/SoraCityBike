@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <button class="bg-gray pero-font btn btn-default" onclick="toggle_visibility('hideMe');">show films <span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
+          <button class="bg-gray pero-font btn btn-default" id="aa" >show films <span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
         </div>
 
         <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
@@ -87,6 +87,28 @@
           left_button2.click(function(){
             da_slider2.previous();
           });
+		  
+		  
+		  
+		  
+		  
+		  
+		 
+	 $(document).ready(function () {
+	    $('#aa').click('click', function () {
+			var arrow = $(".dropdown-span");
+	        $('#hideMe').slideToggle(function() {
+            if ($('#hideMe').css('display') == 'none') {
+					arrow.attr("src", arrow.attr("src").replace("/components/img/up-btn.png","/components/img/down-btn.png"));
+				} else {
+					
+					arrow.attr("src", arrow.attr("src").replace("/components/img/down-btn.png", "/components/img/up-btn.png"));
+            }
+        });
+    });
+
+});
+		  
         </script>
 
 
