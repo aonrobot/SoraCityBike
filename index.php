@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:1em;">show films <span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
+          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:1em;"><font>show films </font><span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
         </div>
 
         <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
@@ -102,10 +102,12 @@
 			var arrow = $(".dropdown-span");
 	        $('#hideMe').slideToggle(function() {
             if ($('#hideMe').css('display') == 'none') {
+				$('#aa').find("font").text('show films ');
 					arrow.attr("src", arrow.attr("src").replace("/components/img/up-btn.png","/components/img/down-btn.png"));
 					  $('html,body').animate({scrollTop: $('.slide1').offset().top}, 200);
+					  
 				} else {
-					
+					$('#aa').find("font").text('hide films ');
 					arrow.attr("src", arrow.attr("src").replace("/components/img/down-btn.png", "/components/img/up-btn.png"));
 					
 					if(this.offsetTop < 625  ){
