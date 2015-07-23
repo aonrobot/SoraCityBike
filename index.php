@@ -95,20 +95,33 @@
 		  
 		 
 	 $(document).ready(function () {
-	    $('#aa').click('click', function () {
+		 
+	    $('#aa').click('click', function (e) {
+			e.preventDefault();
+			
 			var arrow = $(".dropdown-span");
 	        $('#hideMe').slideToggle(function() {
             if ($('#hideMe').css('display') == 'none') {
 					arrow.attr("src", arrow.attr("src").replace("/components/img/up-btn.png","/components/img/down-btn.png"));
+					  $('html,body').animate({scrollTop: $('body').offset().top}, 600);
 				} else {
 					
 					arrow.attr("src", arrow.attr("src").replace("/components/img/down-btn.png", "/components/img/up-btn.png"));
+					
+					if(this.offsetTop < 625  ){
+						
+							$('html,body').animate({scrollTop: $('.itemvideo').offset().top-50}, 600);
+					}else{
+						
+					
+						$('html,body').animate({scrollTop: $('.itemvideo').offset().top-110}, 600);
+					}
             }
         });
     });
 
 });
-		  
+		
         </script>
 
 
