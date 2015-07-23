@@ -103,7 +103,7 @@
 	        $('#hideMe').slideToggle(function() {
             if ($('#hideMe').css('display') == 'none') {
 					arrow.attr("src", arrow.attr("src").replace("/components/img/up-btn.png","/components/img/down-btn.png"));
-					  $('html,body').animate({scrollTop: $('body').offset().top}, 600);
+					  $('html,body').animate({scrollTop: $('.slide1').offset().top}, 200);
 				} else {
 					
 					arrow.attr("src", arrow.attr("src").replace("/components/img/down-btn.png", "/components/img/up-btn.png"));
