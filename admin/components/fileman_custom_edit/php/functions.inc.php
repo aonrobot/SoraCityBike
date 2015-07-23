@@ -244,6 +244,7 @@ class RoxyFile{
    * @return string
    */
   static function CleanupFilename($filename, $sep = '_'){
+    $dangerous_characters = array(" ", '"', "'", "&", "/", "\\", "?", "#");
     $str = '';
     if(strpos($filename,'.')){
       $ext = self::GetExtension($filename) ;
@@ -256,7 +257,7 @@ class RoxyFile{
     if(mb_strlen($name) > 32)
       $name = mb_substr($name, 0, 32);
     $str = str_replace('.php', '', $str);
-    $str = mb_ereg_replace("[^\\w]", $sep, $name);
+    $str = mb_ereg_replace($dangerous_characters, $sep, $name);
     
     $str = mb_ereg_replace("$sep+", $sep, $str).($ext?'.'.$ext:'');
 
