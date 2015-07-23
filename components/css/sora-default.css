@@ -512,7 +512,7 @@ iframe{
     padding: 15px;
 
 	max-height: 10%;
-	transition: max-height 0.3s ease-out;
+	transition: max-height 1s ease-out;
 }
 
 
@@ -520,7 +520,7 @@ iframe{
 
 .slidein .simple-caption:hover {
 	 max-height: 100%;
-    transition: max-height 0.5s ease-in;
+    transition: max-height 1s ease-in;
 
 }
 
