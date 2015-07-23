@@ -6,10 +6,10 @@ session_start();
 
 $lang=$database->select("language",'*');
 $site=$database->select("site_meta",'*',["meta_key[=]" => 'site_path']);
-$site_path=$site[0]['meta_value'];
+$site_path=$site['meta_value'];
 
 $lang_def=$database->select("site_meta",'*',["meta_key[=]" => 'site_default_lang']);
-$default_lang=$lang_def[0]['meta_value'];
+$default_lang=$lang_def['meta_value'];
 
 
 if(!isset($_SESSION['lang_session']))
