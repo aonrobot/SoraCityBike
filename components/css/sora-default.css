@@ -79,7 +79,7 @@ hr {
     letter-spacing: 2px;
 }
 .large-font{
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .underline{
@@ -512,7 +512,7 @@ iframe{
     padding: 15px;
 
 	max-height: 10%;
-	transition: max-height 1s ease-out;
+	transition: max-height 1s ease-in-out;
 }
 
 
@@ -520,7 +520,7 @@ iframe{
 
 .slidein .simple-caption:hover {
 	 max-height: 100%;
-    transition: max-height 1s ease-in;
+    transition: max-height 1s ease-in-out;
 
 }
 
