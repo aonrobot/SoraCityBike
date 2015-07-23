@@ -96,7 +96,7 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Menu Stucture</h3>
+                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Menu Structure</h3>
                                                 <section id="demo">
                                                     <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("content_meta",'meta_value',array("meta_key" => 'menu')); echo $menu[0]; ?> </ol>
                                                 </section><!-- END #demo -->
@@ -106,7 +106,7 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <p><em>This Menu has <code>max sub-menu</code> '2' Levels.</em></p>
+                                                <p><em>Each Menu has maximum<code>" 2 Category Levels "</code>( Menu >> Category >> Sub-Category )</em></p>
                                                 <input name="menu-structure" type="hidden" id="menu-structure"></input>
                                                 <br><br><button id="toArray" name="toArray" class="btn btn-primary"><i class="fa fa-send fa-1x"></i> Save Menu</button>
                                             </div>

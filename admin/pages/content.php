@@ -2,7 +2,7 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="">
+			<div class="col-lg-12">
 				<!-- Start Content -->
 
 				<?php $users = \Fr\LS::getUser();?>
@@ -222,7 +222,9 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label>Thumbnail</label><br>
+                                            <label>Thumbnail </label><a id="rest_thumb" class="btn btn-danger btn-xs" style="margin-left: 8px;">Reset Thumbnail</a><br>
+                                            
+                                            
                                             
                                             <input id="thumb" name="thumb" type="hidden" value="/sora_blank_thumb.png">
                                             
@@ -241,7 +243,7 @@
                                                         </div><!-- /.modal-content -->
                                                      </div><!-- /.modal-dialog -->
                                                   </div><!-- /.modal -->
-                                                </div>
+                                        </div>
                                             
                                         </div>
                                         <script>
@@ -257,10 +259,8 @@
                                             function closeCustomRoxy(){
                                               $('#file_modal').modal('hide');
                                             }
+                                            
                                         </script>
-
-                                </div>
-                                <!-- /.col-lg-12 (nested) -->
 
                             </div>
                             <!-- /.row (nested) -->
@@ -278,7 +278,7 @@
                                 <div class="col-lg-12">
 
                                         <div class="form-group">
-                                            <label>Tilte</label>
+                                            <label>Title</label>
                                             <input name="title" class="form-control" placeholder="Enter Content Title">
                                         </div>
 
@@ -324,7 +324,7 @@
                             <input name="user_id" type="hidden" value="<?php echo $users['id'];?>">
                             <button type="submit" class="btn btn-primary save_btn">Create Content</button>
 
-                        </form>
+                        
 
                         </div>
                         <!-- /.panel-body -->
@@ -332,7 +332,7 @@
                     </div>
                     <!-- /.panel -->
 
-
+                </form>
 
 
                 <?php }?>
@@ -378,10 +378,11 @@
                             <b>Multilanguage Content </b><br>
                         </div>
                         <div class="panel-body">
+                            
+                            <form method="post" role="form" action="query.php?a=updateContent" data-toggle="validator">
+                                
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="post" role="form" action="query.php?a=updateContent" data-toggle="validator">
-
                                         <div class="form-group">
 
                                             <label><i class="fa fa-language fa-2x"></i> Available Language </label>
@@ -483,7 +484,7 @@
                                         
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Thumbnail</label><br>
+                                                <label>Thumbnail</label><a id="rest_thumb" class="btn btn-danger btn-xs" style="margin-left: 8px;">Reset Thumbnail</a><br>
                                                 <!-- <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
                                                 <input name="thumb" type="hidden"> -->
                                                 <a href="javascript:openCustomRoxy()"><img src="<?php echo $contents[0]['cont_thumbnail'];?>" id="customRoxyImage" style="width:400px; height: 300px;"></a>
@@ -570,7 +571,7 @@
 
                                                 <button type="submit" class="btn btn-primary save_btn">Update Content</button>
 
-                                                </form>
+                                                
                                          </div>
 
                                     </div>
@@ -578,6 +579,9 @@
 
                                 </div>
                                 <!-- /.row (nested) -->
+                                
+                                </form>
+                                
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -609,7 +613,7 @@
                                         </div>
 
                                         <div class="col-lg-2">
-                                            <button style="margin-top: 20px;" type="submit" class="btn btn-primary save_btn">Add Language</button>
+                                            <button style="margin-top: 20px;" type="submit" class="btn btn-primary">Add Language</button>
                                         </div>
                                     </form>
                                 </div>
@@ -624,7 +628,7 @@
                     
                     <div class="panel panel-default">
                             <div class="panel-heading">
-                                <b>Set Site Default Langguage</b>
+                                <b>Set Site Default Language</b>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
@@ -708,8 +712,9 @@
                      <!-- /.panel -->
 
 				<?php }?>
+				
 
-			</div>
+            </div>
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
@@ -788,6 +793,11 @@
     <?php }?>    
     
     $(document).ready(function() {
+        
+        $('#rest_thumb').click(function() {
+            $('#customRoxyImage').attr('src', '../sora_blank_thumb.png');
+            $('#thumb').attr('value', '/sora_blank_thumb.png');
+        });
         
         $("#canvas").gridmanager({
             debug : 1

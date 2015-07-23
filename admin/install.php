@@ -213,9 +213,9 @@ function rand_string($length) {
                            $txt = " ),\n";
                            fwrite($configfile, $txt);
                            
-                           $txt = "'login_page' => '/".$site_path."/admin/login.php',\n";
+                           $txt = "'login_page' => '".$site_path."/admin/login.php',\n";
                            fwrite($configfile, $txt);
-                           $txt = "'home_page' => '/".$site_path."/admin/index.php'\n";
+                           $txt = "'home_page' => '".$site_path."/admin/index.php'\n";
                            fwrite($configfile, $txt);
                            
                            $txt = " ));\n";
@@ -248,7 +248,7 @@ function rand_string($length) {
                             <div class="col-lg-12">
                                 <form action="install.php?step=1" method="POST"> 
                                     <div class="form-group">
-                                        <label>Site Path</label>
+                                        <label>Site Path ( ex. /xxxx )</label>
                                         <input class="form-control" name="site_path" placeholder="Root Is Emtry" value="">
                                     </div>
                                     <div class="form-group">
@@ -308,7 +308,7 @@ function rand_string($length) {
                                         <input class="form-control" name="site_title" placeholder="Site Title">
                                     </div>
                                     <div class="form-group">
-                                        <label>Site Path</label>
+                                        <label>Site Path ( ex. /xxxx )</label>
                                         <input class="form-control" name="site_path" placeholder="Root Is Emtry" value="">
                                     </div>
                                     <div class="form-group">
