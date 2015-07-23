@@ -81,8 +81,8 @@
                                                 <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_name" data-title="Edit below here" ><?php echo $data['cat_name'];?></a></td>
                                                 <td><a href="#" class="type" data-type="select" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_type" data-title="Edit below here" ><?php echo $data['cat_type'];?><a></td>
                                                 <td>
-                                                    <a href="<?php echo $link_edit;?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"> Edit</i></a>
-                                                    <a href="query.php?a=del&w=category&i=<?php echo $data['cat_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-recycle"> Delete</i></a>
+                                                    <a href="<?php echo $link_edit;?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"></i></a>
+                                                    <a href="query.php?a=del&w=category&i=<?php echo $data['cat_id'];?>" class="btn btn-danger" style="margin-right: 8px;"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
     
