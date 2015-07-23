@@ -79,7 +79,7 @@ hr {
     letter-spacing: 2px;
 }
 .large-font{
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .underline{
@@ -140,15 +140,15 @@ hr {
 
 }
 .hidden-content{
-
+	margin-top:50px;
 	height:100%;
 	
     
     color: #000;
-    transition: height 0.5s;
+   /* transition: height 0.5s;
     -moz-transition: height 0.5s; /* Firefox 4 */
-    -webkit-transition: height 0.5s; /* Safari and Chrome */
-    -o-transition: height 0.5s; /* Opera */
+   /*  -webkit-transition: height 0.5s; /* Safari and Chrome */
+   /* -o-transition: height 0.5s; /* Opera */ 
 }
 
 .hidden-btn{
@@ -157,14 +157,18 @@ hr {
     
 }
 
-
+.readmore_btn{
+    color: #fff;
+    text-decoration: underline;
+    margin-bottom: -5px;
+}
 
 .category{
     margin-bottom: 1em;
     margin-top: 3em;
 }
 .category-box{
-    margin-top: 30px;
+    margin-top: 30px;   
     padding-top:1em ;
     height: 400px;
     overflow: hidden;
@@ -176,6 +180,7 @@ hr {
 }
 .title_content{
     margin-bottom: 3em;
+    text-align: center;
 }
 .content-box{
     margin-left: 20em ;
@@ -215,9 +220,10 @@ hr {
 }
 
 footer {
-    margin-top: 8em;
-    background: #fff;
-    background: rgba(255,255,255,0.9);
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background: #f8f8f8;
+   
 }
 
 footer p {
@@ -320,7 +326,10 @@ margin: 0px;
     width: auto;
 
 }
+.simple-caption>p{
+    line-height: 70%;
 
+}
 .nav>li>div {
     /*padding-top: 18px;
     padding-bottom: 18px;
@@ -355,8 +364,8 @@ margin: 0px;
 }
 .content{
     margin: auto;
-    margin-top: 5em;
-    margin-bottom: 5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 
@@ -493,26 +502,25 @@ iframe{
 /** Caption 1: Simple **/
 .slidein .simple-caption {
     margin:none;
-    height: 10%;
+
     width: 100%;
     display: block;
     bottom: 0px;
     text-align: left;
     overflow:hidden;
     line-height: 120%;
-    padding: 10px;
+    padding: 15px;
+
+	max-height: 10%;
+	transition: max-height 1s ease-in-out;
 }
 
 
 
-/** Simple Caption :hover Behaviour **/
+
 .slidein .simple-caption:hover {
-
-    height: auto;
-    width: 100%;
-    display: block; 
-    text-align: left;
-    overflow:hidden;
-    
+	 max-height: 100%;
+    transition: max-height 1s ease-in-out;
 
 }
+

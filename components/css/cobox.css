@@ -49,14 +49,15 @@
 }
 .cobox-nav:hover:before {
   display: block;
+   opacity:1;
 
   
 }
 .cobox-nav:before {
-  display: none;
+
   content: "";
   background-image: url(../img/nav1.png);
- 
+ opacity:.5;
   position: absolute;
   top: 50%;
   margin-top: -22px;

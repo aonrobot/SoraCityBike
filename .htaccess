@@ -12,7 +12,9 @@ RewriteEngine On
 
 #RewriteRule ^(\w+)\.html content.php?id=$1 [L]
 
-RewriteRule ^content/([a-zA-Z0-9-/]+)/([a-zA-Z0-9-/]+)/?$ /content.php?id=$1&slug=$2 [L,NC]
+RewriteRule ^content/([0-9]*)/([a-zA-Z0-9-/]+) /SoraCityBike/content.php?id=$1 [L,NC]
+RewriteRule ^category/([0-9]*)/([a-zA-Z0-9-/]+) /SoraCityBike/category.php?id=$1 [L,NC]
+RewriteRule ^blog/([0-9]*)/([a-zA-Z0-9-/]+) /SoraCityBike/blog.php?id=$1 [L,NC]
 
 # EX
 
@@ -27,5 +29,5 @@ RewriteRule ^content/([a-zA-Z0-9-/]+)/([a-zA-Z0-9-/]+)/?$ /content.php?id=$1&slu
 #this returns the page toogood.org.uk/test/index.php?slug=x to toogood.org.uk/test/x
 
 
-ErrorDocument 404 /404.php
+ErrorDocument 404 /SoraCityBike/404.php
 
