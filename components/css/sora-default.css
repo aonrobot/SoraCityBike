@@ -87,7 +87,12 @@ hr {
     border-bottom:1px solid black;
     padding-bottom:5px; 
 }
+.slide-header{
 
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 1em;
+}
 .brand ,
 .address-bar {
     display: none;
