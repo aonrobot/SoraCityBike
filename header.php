@@ -67,7 +67,7 @@ if(!isset($_SESSION['lang_session']))
     <div class="col-xs-4 brand-time " align="center">
       <?php 
 
-      echo '<span class=" pero-font uppercase time_text">'.date('D j M').'</span>';
+      echo '<span class=" pero-font uppercase time_text"><b>'.date('D j M').'</b></span>';
 
 
 
