@@ -519,7 +519,9 @@ iframe{
 	max-height: 10%;
 	
 
-	
+-webkit-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
+   -moz-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
+     -o-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s; 
 	transition: max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
    
 }
@@ -531,8 +533,16 @@ iframe{
 	max-height:100%;
 
 
-   		
+   	-webkit-transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000);
+	-moz-transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
+	-o-transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000); 	 
     transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000);
+	
+	
+	
+	-webkit-transition-delay: 0s;
+	-moz-transition-delay: 0s;
+	-o-transition-delay: 0s;
 	transition-delay: 0s;
 	
 
