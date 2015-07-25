@@ -74,16 +74,16 @@ if(!isset($_SESSION['lang_session']))
       ?>
     </div>
     <div class="col-xs-4 col-xs-offset-4 brand-social" align="center">
-      <a href="https://www.facebook.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" 
+      <a href="https://www.facebook.com/soracity" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" 
         onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src=<?php echo '"'.$site_path.'/components/img/icon/icon-fb-type2.png"/'?>></a>
 
-        <a href="https://www.instragram.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" 
+         <a href="https://instagram.com/soracity/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ig')" 
           onmouseout="logo_mouseout('icon-ig')" id="icon-ig" src=<?php echo '"'.$site_path.'/components/img/icon/icon-ig-type2.png"/'?>></a>
 
-          <a href="https://www.pinterest.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" 
+          <a href="https://www.pinterest.com/soracity/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-pt')" 
             onmouseout="logo_mouseout('icon-pt')" id="icon-pt" src=<?php echo '"'.$site_path.'/components/img/icon/icon-pt-type2.png"/'?>></a>
 
-            <a href="https://www.vimeo.com/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
+            <a href="https://www.vimeo.com/soracity/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
               onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src=<?php echo '"'.$site_path.'/components/img/icon/icon-ve-type2.png"/'?>></a>
 
               <?php
