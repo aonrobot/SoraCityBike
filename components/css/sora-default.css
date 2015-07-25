@@ -512,20 +512,28 @@ iframe{
     display: block;
     bottom: 0px;
     text-align: left;
-    overflow:hidden;
+	overflow: hidden;
     line-height: 120%;
     padding: 15px;
 
 	max-height: 10%;
-	transition: max-height 1s ease-in-out;
+	
+
+	
+	transition: max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
+   
 }
 
 
 
 
 .slidein .simple-caption:hover {
-	 max-height: 100%;
-    transition: max-height 1s ease-in-out;
+	max-height:100%;
+
+
+   		
+    transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000);
+	transition-delay: 0s;
+	
 
 }
-
