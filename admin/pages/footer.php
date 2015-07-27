@@ -76,9 +76,9 @@
                                             <th>ID</th>
                                             <th>Title</th>
                                             <th>Link</th>
-                                            <th>Link Target</th>
-                                            <th>Link Position</th>
-                                            <th>Link Order</th>
+                                            <th>Target</th>
+                                            <th>Position</th>
+                                            <th>Order</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
