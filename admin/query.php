@@ -102,6 +102,9 @@
           ));
           
           $url = $_POST['link'];
+          $link_target = $_POST['link_target'];
+          $link_posi = $_POST['link_position'];
+          $link_order = $_POST['link_order'];
         
           if((strpos($_POST['link'], 'http://')===false && strpos($_POST['link'], 'https://')===false) ) $url = 'http://'.$_POST['link'];
           
@@ -114,7 +117,19 @@
           $database->insert("content_meta", array(
                 "cont_id" => $last,
                 "meta_key" => 'footer.link_target',
-                "meta_value" => $_POST['link_target'],
+                "meta_value" => $link_target
+          ));
+          
+          $database->insert("content_meta", array(
+                "cont_id" => $last,
+                "meta_key" => 'footer.link_position',
+                "meta_value" => $link_posi,
+          ));
+          
+          $database->insert("content_meta", array(
+                "cont_id" => $last,
+                "meta_key" => 'footer.link_order',
+                "meta_value" => $link_order
           ));
            
            

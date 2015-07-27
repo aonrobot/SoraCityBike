@@ -22,11 +22,26 @@
                                                             <label>Title</label>
                                                             <input name="title" class="form-control" placeholder="Enter Title Name" required>
                                                         </div>
-                
-                                                        <div class="col-lg-4 form-group">
+                                                        
+                                                        <div class="col-lg-8 form-group">
                                                             <label>Link</label>
                                                             <input name="link" class="form-control" placeholder="Enter Link" required>
                                                         </div>
+
+                                                        
+                                                        <div class="col-lg-4 form-group">
+                                                            <label>Link Order</label>
+                                                            <input name="link_order" class="form-control" placeholder="Enter Link Order(Number)" required>
+                                                        </div>
+                                                        
+                                                        <div class="col-lg-4 form-group">
+                                                            <label>Link Position</label>
+                                                            <select name="link_position" class="form-control">
+                                                                <option value="right">Right</option>
+                                                                <option value="center">Center</option>
+                                                            </select>
+                                                        </div>
+
                 
                                                         <div class="col-lg-4 form-group">
                                                             <label>Link Target</label>
@@ -62,33 +77,34 @@
                                             <th>Title</th>
                                             <th>Link</th>
                                             <th>Link Target</th>
+                                            <th>Link Position</th>
+                                            <th>Link Order</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                            $datas = $database->select("content"
-                                            
-                                            , array("[<]content_meta" => array("id" => "cont_id"),)
-                                            
-                                            ,array('id','cont_name','cont_id','meta_key','meta_value')
-                                            
-                                            ,array('cont_type' => 'footer')
-                                            
-                                            );
-                                            
-                                            print_r($datas);
+                                            $datas = $database->select("content",array('id','cont_name'),array('cont_type' => 'footer'));
                                             
                                             foreach ($datas as $data) {
 
                                     ?>
+                                        <?php
+                                                $footer_link = $database->select("content_meta",'meta_value',array('AND'=>array('cont_id'=>$data['id'] , 'meta_key'=>'footer.link')));
+                                                $footer_link_target = $database->select("content_meta",'meta_value',array('AND'=>array('cont_id'=>$data['id'] , 'meta_key'=>'footer.link_target')));
+                                                $footer_link_position = $database->select("content_meta",'meta_value',array('AND'=>array('cont_id'=>$data['id'] , 'meta_key'=>'footer.link_position')));
+                                                $footer_link_order = $database->select("content_meta",'meta_value',array('AND'=>array('cont_id'=>$data['id'] , 'meta_key'=>'footer.link_order')));
+                                                print_r($data['id']);
+                                        ?>
                                         <tr>
                                             <td><?php echo $data['id'];?></td>
                                             <td><?php echo $data['cont_name'];?></td>
-                                            <td><?php echo $data['cont_name'];?></td>
-                                            <td><?php echo $data['cont_name'];?></td>
+                                            <td><?php echo $footer_link[0];?></td>
+                                            <td><?php echo $footer_link_target[0];?></td>
+                                            <td><?php echo $footer_link_position[0];?></td>
+                                            <td><?php echo $footer_link_order[0];?></td>
                                             <td>
-                                                <a href="query.php?a=del&w=footer&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-recycle"> Delete</i>
+                                                <a href="query.php?a=del&w=footer&i=<?php echo $data['id'];?>" class="btn btn-danger"> <i class="fa fa-recycle"></i></a> 
                                             </td>
                                         </tr>
 
@@ -115,20 +131,15 @@
 
 <script>
 
-    <?php if(!strcmp($_GET['s'], 'show')){?>
-        //DataTable
-        $('#dataTables-example').DataTable({
-            responsive: true,
-            "order": [[ 0, "desc" ]]
-        });
-    <?php }?>    
+    //DataTable
+    $('#dataTables-example').DataTable({
+         responsive: true,
+         "order": [[ 0, "desc" ]]
+    });
+ 
 
-    $(document).ready(function() {
-        var gm = jQuery("#canvas").data('gridmanager');
-        $(".save_btn").on("click", function(e) {
-            gm.getContent();
-    
-        });
+    $(document).ready(function() {        
+        
         //bite was here
         var cat_src = [];
     
