@@ -94,7 +94,6 @@
                                                 $footer_link_target = $database->select("content_meta",'meta_value',array('AND'=>array('cont_id'=>$data['id'] , 'meta_key'=>'footer.link_target')));
                                                 $footer_link_position = $database->select("content_meta",'meta_value',array('AND'=>array('cont_id'=>$data['id'] , 'meta_key'=>'footer.link_position')));
                                                 $footer_link_order = $database->select("content_meta",'meta_value',array('AND'=>array('cont_id'=>$data['id'] , 'meta_key'=>'footer.link_order')));
-                                                print_r($data['id']);
                                         ?>
                                         <tr>
                                             <td><?php echo $data['id'];?></td>
