@@ -10,6 +10,11 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		
+		<!-- Font CSS -->
+        <link href="css/CustomFonts/fonts.css" rel="stylesheet">
+        
+        <!------------------------------------------------------------------------------->
+		
 		<!-- Bootstrap Core CSS -->
 		<link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         

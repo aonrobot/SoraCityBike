@@ -86,6 +86,11 @@
     }
     
     
-    
+    if(!strcmp($a, 'selectSitePath')){
+        
+        $site_path = $database->select("site_meta","meta_value",array("meta_key" => 'site_path')); 
+        
+        echo $site_path[0];
+    }
 
 ?>
