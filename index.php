@@ -18,7 +18,7 @@
       <a href=<?php echo "'".$a['slide_data_img_link']."'"; ?> style="margin:0px;"><img class="item" src=<?php echo "'".$a['slide_data_img_url']."'"; ?>></a>
       <a href=<?php echo "'".$a['slide_data_content_link']."'"; ?> style="margin:0px;">
       <span class="caption simple-caption" >
-        <h4 style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name']; ?></h4>  
+        <p class='pero-font slide-header' style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name']; ?></p>  
         <?php echo $a['slide_data_content']; ?>  
         <p class="readmore_btn">read more</p>
       </span>
@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:1em;">show films <span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
+          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:1em;"><font>show films </font><span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
         </div>
 
         <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
@@ -87,41 +87,43 @@
           left_button2.click(function(){
             da_slider2.previous();
           });
-		  
-		  
-		  
-		  
-		  
-		  
-		 
-	 $(document).ready(function () {
-		 
-	    $('#aa').click('click', function (e) {
-			e.preventDefault();
-			
-			var arrow = $(".dropdown-span");
-	        $('#hideMe').slideToggle(function() {
+      
+      
+      
+      
+      
+      
+     
+   $(document).ready(function () {
+     
+      $('#aa').click('click', function (e) {
+      e.preventDefault();
+      
+      var arrow = $(".dropdown-span");
+          $('#hideMe').slideToggle(function() {
             if ($('#hideMe').css('display') == 'none') {
-					arrow.attr("src", arrow.attr("src").replace("/components/img/up-btn.png","/components/img/down-btn.png"));
-					  $('html,body').animate({scrollTop: $('.slide1').offset().top}, 200);
-				} else {
-					
-					arrow.attr("src", arrow.attr("src").replace("/components/img/down-btn.png", "/components/img/up-btn.png"));
-					
-					if(this.offsetTop < 625  ){
-						
-							$('html,body').animate({scrollTop: $('.itemvideo').offset().top-50}, 600);
-					}else{
-						
-					
-						$('html,body').animate({scrollTop: $('.itemvideo').offset().top-110}, 600);
-					}
+        $('#aa').find("font").text('show films ');
+          arrow.attr("src", arrow.attr("src").replace("/components/img/up-btn.png","/components/img/down-btn.png"));
+            $('html,body').animate({scrollTop: $('.slide1').offset().top}, 200);
+            
+        } else {
+          $('#aa').find("font").text('hide films ');
+          arrow.attr("src", arrow.attr("src").replace("/components/img/down-btn.png", "/components/img/up-btn.png"));
+          
+          if(this.offsetTop < 625  ){
+            
+              $('html,body').animate({scrollTop: $('.itemvideo').offset().top-50}, 600);
+          }else{
+            
+          
+            $('html,body').animate({scrollTop: $('.itemvideo').offset().top-110}, 600);
+          }
             }
         });
     });
 
 });
-		
+    
         </script>
 
 
@@ -152,19 +154,19 @@
             );
 
             ?>
-		
+    
             <?php 
-			
-			$countsto = 0;
-			foreach ($datas as $data ) {
-			
+      
+      $countsto = 0;
+      foreach ($datas as $data ) {
+      
               if ($data['cat_type']=='story') {
-				
+        
                 $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
-			          $link = "'".$site_path."/content/".$data['cont_id']."/".$a[0]["cont_slug"]."'"; 
+                $link = "'".$site_path."/content/".$data['cont_id']."/".$a[0]["cont_slug"]."'"; 
 
                 ?>
-				
+        
                 <div class="col-md-4 category-box">
 
                   <a href=<?php echo $link?>><img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/></a>
@@ -179,8 +181,8 @@
 
 
               </div> 
-					<center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" style="margin-top:-2em;">show more</a></center>
-		
+          <center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" style="margin-top:0em;">show more</a></center>
+    
             </div>
 
             <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
@@ -199,8 +201,8 @@
             </footer>
 
             <!-- jQuery -->
-		
-	
+    
+  
 
 
             <script src=<?php echo '"'.$site_path.'/components/js/jquery.js"'?>></script>
@@ -208,29 +210,29 @@
             <script src=<?php echo '"'.$site_path.'/components/js/bootstrap.min.js"'?>></script>
             <script src=<?php echo '"'.$site_path.'/components/js/bootstrap-hover-dropdown.js"'?>></script>
 
-				
+        
                 
-             <script>		
-				$(document).ready(function(){
-					var limit =6;
-					var per_page = 6;
-					
-					jQuery('#results> div.category-box:gt('+(limit-1)+')').hide();
-					
-					if (jQuery('#results > div.category-box').length <= limit) {
-						jQuery('#results-show-more').hide();
-					}
-					
-					jQuery('#results-show-more').bind('click', function(event){
-						event.preventDefault();
-						limit += per_page;
-						jQuery('#results > div.category-box:lt('+(limit)+')').show();
-						if (jQuery('#results > div.category-box').length <= limit) {
-							jQuery(this).hide();
-						}
-					});
-				});
-				 </script>   
+             <script>   
+        $(document).ready(function(){
+          var limit =6;
+          var per_page = 6;
+          
+          jQuery('#results> div.category-box:gt('+(limit-1)+')').hide();
+          
+          if (jQuery('#results > div.category-box').length <= limit) {
+            jQuery('#results-show-more').hide();
+          }
+          
+          jQuery('#results-show-more').bind('click', function(event){
+            event.preventDefault();
+            limit += per_page;
+            jQuery('#results > div.category-box:lt('+(limit)+')').show();
+            if (jQuery('#results > div.category-box').length <= limit) {
+              jQuery(this).hide();
+            }
+          });
+        });
+         </script>   
                 
           </body>
           </html>

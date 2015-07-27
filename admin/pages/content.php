@@ -422,7 +422,7 @@
 
 
                                         <div class="form-group">
-                                            <label>Tilte</label>
+                                            <label>Title</label>
                                             <input name="title" class="form-control" placeholder="Enter Content Title" value="<?php echo $contents[0]['cont_title'];?>">
                                         </div>
                                         <br />

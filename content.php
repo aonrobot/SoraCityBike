@@ -2,7 +2,19 @@
 <?php include('config/config.php'); ?>
 <?php include('header.php');?>
 
-    
+<?php
+function curPageURL() {
+ $pageURL = 'http';
+ if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+ $pageURL .= "://";
+ if ($_SERVER["SERVER_PORT"] != "80") {
+  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+ } else {
+  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+ }
+ return $pageURL;
+}
+?>    
 
       <!-- ////////////////////////////////////    THIS  IS SLIDE       ///////////////////////////////////////////////////// -->
 
@@ -47,6 +59,8 @@ $slide = $database->select("slide_data"
 <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/cobox.js"'?>></script>
 <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
 <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/jquery.horizontal_box_slider.js"'?>></script>
+<script src=<?php echo '"'.$site_path.'/components/js/jquery.prettySocial.min.js"'?>></script>
+
 
 <script>
 
@@ -89,13 +103,19 @@ left_button.click(function(){
     <div class="title_content"><h4 class="pero-font large-font underline "><?php echo $datas[0]["cont_title"]; ?></h4></div>
     <?php 
     echo $datas[0]["cont_content"];
+    
     ?>
+    <p>share</p>
+    <a href="#" data-type="facebook" data-url=<?php echo curPageURL(); ?> data-title="hellasdasdaoooo" data-description="WTFsadasdasdadaddasdasddude"
+     data-media="http://sonnyt.com/assets/imgs/prettySocial.png" class="prettySocial fa fa-facebook" style='color:#000'><b>facebook</b></a>
   </div>
 
 
 </div>
 
-
+<script type="text/javascript" class="source">
+      $('.prettySocial').prettySocial();
+    </script>
 
 
 <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
