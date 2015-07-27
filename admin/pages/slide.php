@@ -910,12 +910,13 @@
               {               
                 var new_img_url = data[0]['slide_data_img_url'];                          //get image url
                 var new_img_link = data[0]['slide_data_img_link'];                          //get image link
+				new_img_url = escape(new_img_url);
                 
                 // Edit New Value
                 
                 $(window.parent.document).find("#img_href"+slide_data_id).attr("href", new_img_url);
                 
-                $(window.parent.document).find("#img_url"+slide_data_id).css( "background-image", "url("+new_img_url+")" );
+                $(window.parent.document).find("#img_url"+slide_data_id).css( "backgroundImage", "url("+new_img_url+")" );
                 
                 $(window.parent.document).find("#img_link"+slide_data_id).attr("href", new_img_link);
                 $(window.parent.document).find('#img_link'+slide_data_id).text(new_img_link);
