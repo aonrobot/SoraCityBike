@@ -36,8 +36,8 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     else if(!strcmp($a, 'updateMenuStructure')){
-        
-        //$database->update("content_meta", array("meta_value" => $_POST['structure']),array("meta_id" => '1'));    //Old
+               
+        $user_id = $_POST['user_id'];
         
         $count_cont = $database->count("content", array("cont_name" => 'menu-structure'));
         
@@ -45,7 +45,7 @@
         
         if($count_cont == 0){
             $last_cont = $database->insert("content", array(
-               "user_id" => '1',                                    //****** User Id 
+               "user_id" => $user_id,                                    //****** User Id 
                "cont_name" => 'menu-structure',
                "cont_slug" => 'menu-structure',
                "cont_status" => 'private',

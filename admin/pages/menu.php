@@ -1,4 +1,5 @@
 <!-- Page Content -->
+<input type="hidden" name="user_id" value="<?php echo $details['id'];?>">
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -365,6 +366,7 @@
                
                var formData = {
                 'a'                 : 'updateMenuStructure',
+                'user_id'           : $('input[name=user_id]').val(),
                 'structure'         : $('input[name=menu-structure]').val()
                };
                  

@@ -136,13 +136,15 @@
     
     else if(!strcmp($a, 'updateImageStructure')){
         
+        $user_id = $_POST['user_id'];
+        
         $count_cont = $database->count("content", array("cont_name" => 'slide-structure'));
         
         $count_meta = $database->count("content_meta", array("meta_key" => 'slide:'.$_POST['slide_id']));
         
         if($count_cont == 0){
             $last_cont = $database->insert("content", array(
-               "user_id" => '1',                                    //****** User Id 
+               "user_id" => $user_id,                                   //****** User Id 
                "cont_name" => 'slide-structure',
                "cont_slug" => 'slide-structure',
                "cont_status" => 'private',

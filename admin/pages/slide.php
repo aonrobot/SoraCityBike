@@ -1,4 +1,5 @@
 <!-- Page Content -->
+<input type="hidden" name="user_id" value="<?php echo $details['id'];?>">
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -1257,6 +1258,7 @@
                
                var formData = {
                 'a'                 : 'updateImageStructure',
+                'user_id'           : $('input[name=user_id]').val(),
                 'slide_id'          : $('input[name=slide_id]').val(),
                 'structure'         : $('input[name=img-structure]').val()
                };
