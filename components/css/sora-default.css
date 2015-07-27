@@ -52,7 +52,7 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
+    
     font-family: pero , verdana, helvetica, sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
@@ -146,6 +146,7 @@ hr {
 }
 .hidden-content{
 	margin-top:50px;
+
 	height:100%;
 	
     
@@ -198,6 +199,7 @@ hr {
 	height:200px;
 
 }
+
 @media only screen and (max-width: 1000px){
 
 	.index-img{
@@ -381,10 +383,50 @@ margin: 0px;
 .content{
     margin: auto;
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 5em;
 }
 
+.navbar-fixed-bottom{
+        position: fixed;
+      background-color: #eee;
+      height: 30px;
+     
 
+     
+
+}
+.footer-bar{
+    
+    vertical-align:middle;
+    margin-top: -3px;
+}
+.footer-text{
+    
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-left: 30px;
+    font-weight: 100;
+}
+.footer-link{
+    text-decoration: none; 
+    color: #000;
+
+}
+
+.footer-link:visited {
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-link:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-link:active {
+    text-decoration: none;
+    color: #000;
+}
 }
 
 .box-slider {
