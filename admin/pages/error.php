@@ -15,6 +15,12 @@
                     <a href="index.php?p=content&s=show" class="btn btn-danger">Go To Content List</a>
                 <?php };?>
                 
+                <?php if(!strcmp($_GET['a'], 'delUser')){?>
+                    <h1 class="page-header text-warning"><i class="text-danger fa fa-exclamation-triangle fa-2x"></i> Error Can't Delete User</h1>
+                    <h3>This User Have One More Content. Please Delete All Content After</h3><br>
+                    <a href="index.php?p=content&s=show" class="btn btn-danger">Go To Content List</a>
+                <?php };?>
+                
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>

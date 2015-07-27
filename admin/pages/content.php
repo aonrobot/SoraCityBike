@@ -27,6 +27,7 @@
                                             <th>Name</th>
                                             <th>Status</th>
                                             <th>Category</th>
+                                            <th>By</th>
                                             <th>Modified</th>
                                             <th>Action</th>
                                         </tr>
@@ -37,7 +38,7 @@
 
                                             "[<]content_translation" => array("id" => "cont_id"),)
                                             
-                                            ,array('id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_id')
+                                            ,array('id','user_id','cont_lang_id','cont_name','lang_id','cont_title','cont_author','cont_slug','cont_status','cont_type','cont_modified','cont_id')
                                             
                                             );
                                             
@@ -75,6 +76,8 @@
                                             <td>
                                                  <code><a href="#" class="category" data-type="checklist" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><?php echo $str_cat;?></a></code><br>&nbsp;
                                             </td>
+                                            <?php $by = $database->select("users",'username',array('id'=>$data['user_id']));?>
+                                            <td><?php echo $by[0];?></td>
                                             <td class="center"><?php echo $data['cont_modified'];?></td>
                                             <td>
                                                 <a href="index.php?p=content&a=edit&id=<?php echo $data['id'];?>&lang=<?php echo $data['lang_id'];?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"></i></a>

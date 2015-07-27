@@ -184,6 +184,8 @@
     
     if(!strcmp($_GET['a'], 'updateContent')){
         
+        $date = date('Y-m-d H:i:s');
+        
         $cont_id = $_POST['content_id'];
         
         $chk_lang = $database->count("content_translation", array(
@@ -220,6 +222,7 @@
             "cont_author" => $_POST['author'],
             "cont_slug" => $slug,
             "cont_status" => $_POST['status'],
+            "cont_modified" => $date,
             "cont_type" => $_POST['type'],
             "cont_thumbnail" => $_POST['thumb']
             
@@ -609,6 +612,21 @@
            exit();
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    if(!strcmp($_GET['a'], 'updateUserEmail')){
+        
+          $user_id = $_POST['user_id'];
+          $email = $_POST['newEmail'];
+        
+          $database->update("users", array(
+                "email" => $email
+           ),array('id' => $user_id));          
+           
+           header( 'Location: index.php?p=userInfo&noti=SUpdateUserEmail' ) ;
+           exit();
+    }
+
 
     /////////////////////////////////////////////// DELETE ////////////////////////////////////////////////////////////////////////
     
@@ -732,6 +750,26 @@
                 
                 header( 'Location: index.php?p=footer&noti=SDelFooter' ) ;
                 exit();                     
+        
+                break;
+                
+            case 'user':
+            
+                $count_content = $database->count("content", array(
+                    "user_id" => $_GET['i']
+                ));
+                
+
+                if($count_content == 0) {
+                    $database->delete("users", array("id" => $_GET['i']));
+                    header( 'Location: index.php?p=manUser' ) ;
+                    exit();                   
+                } 
+                else{
+                    header( 'Location: index.php?p=error&a=delUser&noti=EDelUser' ) ;
+                    exit(); 
+                }
+                                   
         
                 break;
                                 

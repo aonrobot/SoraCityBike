@@ -92,10 +92,40 @@
                                 <form action="<?php echo \Fr\LS::curPageURL(); ?>" method="POST">
                                     <div class="form-group">
                                         <label>New Name</label>
-                                        <input class="form-control" name="newName" placeholder="New name" placeholder="Current Password">
+                                        <input class="form-control" name="newName" placeholder="New name" placeholder="New Name" value="<?php echo $details['name'];?>">
                                     </div>
                                     <button type='submit' class="btn btn-success">
                                         Change Name
+                                    </button>
+                                    <button type="reset" class="btn btn-primary">
+                                        Reset
+                                    </button>
+                                </form>
+                            </div>
+                            <!-- /.col-lg-12 (nested) -->
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Change Email
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form action="query.php?a=updateUserEmail" method="post">
+                                    <div class="form-group">
+                                        <label>New Email</label>
+                                        <input class="form-control" name="newEmail" placeholder="New Email" placeholder="Email" value="<?php echo $details['email'];?>"/>
+                                    </div>
+                                    <input type="hidden" name="user_id" value="<?php echo $details['id'];?>"/>
+                                    <button type='submit' class="btn btn-success">
+                                        Change Email
                                     </button>
                                     <button type="reset" class="btn btn-primary">
                                         Reset

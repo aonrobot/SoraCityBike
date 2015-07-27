@@ -23,7 +23,6 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-			    <?php $details = \Fr\LS::getUser();?>
 				<h1 class="page-header"><i class="fa fa-bicycle fa-1x"></i> Hi, <?php echo $details['name'];?> :)</h1>
 				<p>You registered on this website <strong><?php echo \Fr\LS::joinedSince(); ?></strong> ago.</p>
 			</div>

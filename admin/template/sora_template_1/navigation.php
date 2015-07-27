@@ -19,6 +19,8 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="index.php?p=addUser"><i class="fa fa-plus fa-fw"></i> Add New Admin User</a>
                         </li>
+                        <li><a href="index.php?p=manUser"><i class="fa fa-user-md fa-fw"></i> Manage Admin User</a>
+                        </li>
                         <li><a href="index.php?p=userInfo"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="index.php?p=reset"><i class="fa fa-refresh fa-fw"></i> Forget Password</a>

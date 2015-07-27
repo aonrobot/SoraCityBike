@@ -119,6 +119,14 @@
           toastr["success"]("Delete Footer Success","Delete Success");
         <?php }?>
         
+        //User
+        <?php if(!strcmp($_GET['noti'], 'EDelUser')){?>
+          toastr["error"]("Delete Error","Can't Delete User");
+        <?php }?>
+        <?php if(!strcmp($_GET['noti'], 'SUpdateUserEmail')){?>
+          toastr["success"]("Update Success","Update New Email Success");
+        <?php }?>
+        
 	}); 
 	
 </script>
