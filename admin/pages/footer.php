@@ -46,8 +46,8 @@
                                                         <div class="col-lg-4 form-group">
                                                             <label>Link Target</label>
                                                             <select name="link_target" class="form-control">
-                                                                <option value="_blank">New window (Blank)</option>
                                                                 <option value="_self">Same frame as it was clicked (Self)</option>
+                                                                <option value="_blank">New window (Blank)</option>
                                                                 <option value="_parent">Parent frameset (Parent)</option>
                                                                 <option value="_top">Full body of the window (Top)</option>
                                                             </select>
