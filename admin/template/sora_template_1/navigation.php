@@ -72,13 +72,13 @@
                         <li>
                             <a href="index.php?p=slide"><i class="fa fa-picture-o fa-fw"></i> Slide</a>
                         </li>
-                        
+
                         <li>
-                            <a href="index.php?p=filemanager"><i class="fa fa-file-image-o fa-fw"></i> Image Manager</a>
+                            <a href="index.php?p=footer"><i class="fa fa-info fa-fw"></i> Footer</a>
                         </li>
                         
                         <li>
-                            <a href="index.php?p=footer"><i class="fa fa-info fa-fw"></i> Footer</a>
+                            <a href="http://file.soracity.bike" target="_blank"><i class="fa fa-file-image-o fa-fw"></i> Image Manager</a>
                         </li>
                         
                     </ul>
