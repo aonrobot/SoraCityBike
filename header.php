@@ -1,8 +1,10 @@
 <?php 
 
+
+
 session_start();
 
-
+include '/counter.php';
 
 $lang=$database->select("language",'*');
 $site=$database->select("site_meta",'*',["meta_key[=]" => 'site_path']);
