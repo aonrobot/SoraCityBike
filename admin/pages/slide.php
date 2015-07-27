@@ -872,7 +872,7 @@
                 
                 // Edit New Value
                 
-                $("#img_name"+slide_data_id).text(new_img_name);
+                $(window.parent.document).find("#img_name"+slide_data_id).text(new_img_name);
                                
                 // hide modal
                 $('#edit_name_modal').modal('hide');                                 
@@ -913,12 +913,12 @@
                 
                 // Edit New Value
                 
-                $("#img_href"+slide_data_id).attr("href", new_img_url);
+                $(window.parent.document).find("#img_href"+slide_data_id).attr("href", new_img_url);
                 
-                $("#img_url"+slide_data_id).css( "background-image", "url("+new_img_url+")" );
+                $(window.parent.document).find("#img_url"+slide_data_id).css( "background-image", "url("+new_img_url+")" );
                 
-                $("#img_link"+slide_data_id).attr("href", new_img_link);
-                $('#img_link'+slide_data_id).text(new_img_link);
+                $(window.parent.document).find("#img_link"+slide_data_id).attr("href", new_img_link);
+                $(window.parent.document).find('#img_link'+slide_data_id).text(new_img_link);
                 
                 //
                 
@@ -961,10 +961,10 @@
                 // Edit New Value
 
                 
-                $("#content"+slide_data_id).html(new_content);
+                $(window.parent.document).find("#content"+slide_data_id).html(new_content);
                 
-                $("#content_link"+slide_data_id).attr("href", new_content_link);
-                $('#content_link'+slide_data_id).text(new_content_link);
+                $(window.parent.document).find("#content_link"+slide_data_id).attr("href", new_content_link);
+                $(window.parent.document).find('#content_link'+slide_data_id).text(new_content_link);
                 
                 //
                 
