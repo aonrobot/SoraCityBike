@@ -28,7 +28,6 @@
                                             <th>Username</th>
                                             <th>Name</th>
                                             <th>E-mail</th>
-                                            <th>Password</th>
                                             <th>Created</th>
                                             <th>Action</th>
                                         </tr>
@@ -47,7 +46,6 @@
                                             <td><?php echo $data['username'];?></td>
                                             <td><?php echo $data['name'];?></td>
                                             <td><?php echo $data['email'];?></td>
-                                            <td><?php echo $data['password'];?></td>
                                             <td><?php echo $data['created'];?></td>
                                             <td>
                                                 <?php if($data['id'] != $details['id']){?>
@@ -78,3 +76,15 @@
 </div>
 <!-- /#page-wrapper -->
 
+<script>
+    
+    $('#dataTables-example').DataTable({
+            responsive: true,
+            "order": [[ 1, "desc" ]],
+            "columnDefs": [
+                { "width": "3px", "targets": 0 },
+                { "orderable": false, "targets": 0 }
+            ]
+        });
+        
+</script>
