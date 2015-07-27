@@ -146,6 +146,7 @@ hr {
 }
 .hidden-content{
 	margin-top:50px;
+
 	height:100%;
 	
     
@@ -382,7 +383,7 @@ margin: 0px;
 .content{
     margin: auto;
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 5em;
 }
 
 .navbar-fixed-bottom{
