@@ -24,14 +24,13 @@ function curPageURL() {
 <?php 
   
  $content_db = $database->select("content",["id","slide_id","cont_name"],["id[=]"  => $_GET['id']]);
-foreach ($content_db as $key) {
- 
- $slide_id= $key['slide_id'];
-}
+
+ $slide_id = $content_db[0]["slide_id"];
+
 $slide = $database->select("slide_data"
-  ,["slide_data_id","slide_data_name","slide_data_img_url"]
-  ,["slide_id[=]" => $slide_id]
-  ,["ORDER"=>"slide_data_order"]
+  ,["slide_data_id","slide_data_name","slide_data_img_url","slide_data_order"]
+  ,["slide_id[=]" => $slide_id,"ORDER"=>"slide_data_order"]
+
   );
 
 ?>

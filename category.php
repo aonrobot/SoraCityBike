@@ -18,8 +18,7 @@ foreach ($datas as $key) {
 }
 $slide = $database->select("slide_data"
   ,["slide_data_id","slide_data_name","slide_data_img_url"]
-  ,["slide_id[=]" => $slide_id]
-  ,["ORDER"=>"slide_data_order"]
+  ,["slide_id[=]" => $slide_id,"ORDER"=>"slide_data_order"]
   );
 ?>
 <div id="leonardo_da_vinci_machines" class="box-slider">
