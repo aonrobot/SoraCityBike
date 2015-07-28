@@ -36,7 +36,7 @@ if(!isset($_SESSION['lang_session']))
 		<?php
 
 		if(empty($_GET['id'])){
-			echo 'Sora City Bike';
+			echo 'sora city';
 
 		}
 		else{
