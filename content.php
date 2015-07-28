@@ -115,11 +115,12 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
             <span class="rrssb-text">facebook</span>
           </a>
         /
-          <a href="https://twitter.com/intent/tweet?text=Ridiculously%20Responsive%20Social%20Sharing%20Buttons%20by%20%40dbox%20and%20%40joshuatuscan%3A%20http%3A%2F%2Fkurtnoble.com%2Flabs%2Frrssb%20%7C%20http%3A%2F%2Fkurtnoble.com%2Flabs%2Frrssb%2Fmedia%2Frrssb-preview.png"
-          class="popup">
+          <?php echo '<a href="https://twitter.com/intent/tweet?text='.urlencode($datas[0]["cont_title"]).urlencode(curPageURL()).'" class="popup">' ?>
           <span class="rrssb-text">twitter</span>
         </a>
+
     </ul>
+
   
   </div>
 
