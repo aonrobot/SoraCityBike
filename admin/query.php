@@ -329,6 +329,18 @@
         ), array("id" => $pk
         ));
     }
+	if(!strcmp($_GET['a'], 'editvaluelink')){
+    	$pk= $_POST['pk'];
+    	$value= $_POST['value'];
+		$column = $_GET['c'];
+        $database->update("content_meta", array(
+            $column => $value
+        
+        ), array("meta_id" => $pk
+        ));
+    }
+	
+	
 
     if(!strcmp($_GET['a'], 'editvalue2')){
          
