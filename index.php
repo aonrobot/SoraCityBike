@@ -46,7 +46,7 @@
                 ,["slide_data_id","slide_data_name","slide_data_img_url"]
                 ,["slide_type[=]"=>"video","ORDER"=>"slide_data_order"]);
               foreach ($slide_video as $key ) {
-                ?><!-- --><iframe class="itemvideo" src=<?php echo '"'.$key['slide_data_img_url'].'"'; ?> width="580" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><!-- --><?php } ?>
+                ?><!-- --><iframe class="itemvideo" src=<?php echo '"'.str_replace("http://","https://",$key['slide_data_img_url']).'"'; ?> width="580" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><!-- --><?php } ?>
               </div>
               <div class="buttons">
                 <button  class="left left2"></button>
