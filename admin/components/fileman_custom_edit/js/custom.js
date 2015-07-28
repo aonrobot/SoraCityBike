@@ -33,6 +33,7 @@ function FileSelected(file){
    * height - if the file is image, this will be the height of the original image, 0 otherwise
    * 
    */
+  
    $(window.parent.document).find('#update_thumb_image').attr('src', file.fullPath);
    $(window.parent.document).find('#update_img_url').attr('value', file.fullPath);
    window.parent.closeCustomRoxyEdit();

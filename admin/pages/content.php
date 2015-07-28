@@ -292,7 +292,7 @@
                                         <script>
                                                 
                                                 CKEDITOR.replace( 'description', {
-                                                                                                        
+                                                    customConfig: '<?php echo $site_path[0];?>/admin/js/ck_config.js' ,                                                   
                                                     wordcount: {
                                                         showCharCount: true,
                                                         maxWordCount: 4000,

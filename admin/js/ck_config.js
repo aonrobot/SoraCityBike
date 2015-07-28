@@ -12,16 +12,18 @@ CKEDITOR.editorConfig = function( config ) {
     config.wordcount = {
 
         // Whether or not you want to show the Word Count
-        showWordCount: false,
+        showWordCount: true,
     
         // Whether or not you want to show the Char Count
         showCharCount: true,
         
         // Maximum allowed Word Count
-        maxWordCount: 4,
+        //maxWordCount: 4,
     
         // Maximum allowed Char Count
-        maxCharCount: 10
+        //maxCharCount: 10
     };
+    
+
     
 };
