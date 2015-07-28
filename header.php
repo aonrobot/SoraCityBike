@@ -47,7 +47,10 @@ if(!isset($_SESSION['lang_session']))
 		}
 		?>
 	</title>
-
+	
+	<!-- RRSSB Social Share CSS -->
+    <link rel="stylesheet" href="<?php echo $site_path;?>/components/css/rrssb.css" />
+    
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/bootstrap.css'.'"'; ?> rel="stylesheet">
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/sora-default.css'.'"'; ?> rel="stylesheet">
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/leo.css'.'"'; ?> rel="stylesheet">
