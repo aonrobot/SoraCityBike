@@ -97,8 +97,8 @@
                                         ?>
                                         <tr>
                                             <td><?php echo $data['id'];?></td>
-                                            <td><?php echo $data['cont_name'];?></td>
-                                            <td><?php echo $footer_link[0];?></td>
+                                            <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
+                                            <td><a href="#" class="footerlink" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvaluelink&c=content_meta&where=footer.link" data-title="Edit below here" ><?php echo $footer_link[0];?></a></td>
                                             <td><?php echo $footer_link_target[0];?></td>
                                             <td><?php echo $footer_link_position[0];?></td>
                                             <td><?php echo $footer_link_order[0];?></td>
@@ -168,6 +168,7 @@
             $.fn.editable.defaults.mode = 'inline';
     
             $('.name').editable({});
+			$('.footerlink').editable({});
             $('.status').editable({
     
                 source : [{
