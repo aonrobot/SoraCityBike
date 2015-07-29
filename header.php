@@ -17,6 +17,12 @@ if(!isset($_SESSION['lang_session']))
 ?>
 
 
+<?php 
+    
+    if(isset($_GET['id']))
+        $content_db = $database->select("content",['cont_thumbnail'],["id[=]"  => $_GET['id']]);
+
+?>
 
 <!DOCTYPE html>
 
@@ -47,6 +53,10 @@ if(!isset($_SESSION['lang_session']))
 		}
 		?>
 	</title>
+	
+	<?php if(isset($_GET['id'])){ ?>
+	<meta property="og:image" content="<?php echo 'https://www.soracity.bike'.$content_db[0]["cont_thumbnail"];?>"/>
+	<?php };?>
 	
 	<!-- RRSSB Social Share CSS -->
     <link rel="stylesheet" href="<?php echo $site_path;?>/components/css/rrssb.css" />

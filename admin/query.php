@@ -46,7 +46,7 @@
          
            $resizeObj = new resize($thumb_url);
 
-           $resizeObj -> resizeImage(200, 200, 'auto');
+           $resizeObj -> resizeImage(600, 315, 'auto');
  
            $resizeObj -> saveImage('../images/thumbnail/'.$last.'-'.$slug.'-thumbnail.png', 100);     
           
@@ -268,7 +268,7 @@
          
         $resizeObj = new resize($thumb_url);
 
-        $resizeObj -> resizeImage(200, 200, 'auto');
+        $resizeObj -> resizeImage(600, 315, 'auto');
  
         $resizeObj -> saveImage($resize_img_name, 100);
         

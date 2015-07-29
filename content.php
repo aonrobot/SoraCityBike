@@ -104,8 +104,6 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
     echo $datas[0]["cont_content"];
     
     ?>
-    
-
 
     <div class="share-box">
       
