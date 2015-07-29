@@ -99,9 +99,9 @@
                                             <td><?php echo $data['id'];?></td>
                                             <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
                                             <td><a href="#" class="footerlink" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvaluelink&c=meta_value&where=footer.link" data-title="Edit below here" ><?php echo $footer_link[0];?></a></td>
-                                            <td><?php echo $footer_link_target[0];?></td>
-                                            <td><?php echo $footer_link_position[0];?></td>
-                                            <td><?php echo $footer_link_order[0];?></td>
+                                            <td><a href="#" class="footertarget" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvaluetarget&c=meta_value&where=footer.link_target" data-title="Edit below here"  ><?php echo $footer_link_target[0];?></a></td>
+                                            <td><a href="#" class="footerposition" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalueposition&c=meta_value&where=footer.link_position" data-title="Edit below here"  ><?php echo $footer_link_position[0];?></a></td>
+                                            <td><a href="#" class="footerorder" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalueorder&c=meta_value&where=footer.link_order" data-title="Edit below here" ><?php echo $footer_link_order[0];?></a></td>
                                             <td>
                                                 <a href="query.php?a=del&w=footer&i=<?php echo $data['id'];?>" class="btn btn-danger"> <i class="fa fa-recycle"></i></a> 
                                             </td>
@@ -169,6 +169,35 @@
     
             $('.name').editable({});
 			$('.footerlink').editable({});
+			$('.footertarget').editable({
+    
+                source : [{
+                    text : '_self',
+                    value : '_self'
+                }, {
+                    value : '_parent',
+                    text : '_parent'
+                }, {
+                    value : '_blank',
+                    text : '_blank'
+                }, {
+                    value : '_top',
+                    text : '_top'
+                }]
+    
+            });
+			$('.footerposition').editable({
+    
+                source : [{
+                    text : 'right',
+                    value : 'right'
+                }, {
+                    value : 'center',
+                    text : 'center'
+                }]
+    
+            });
+			$('.footerorder').editable({});
             $('.status').editable({
     
                 source : [{

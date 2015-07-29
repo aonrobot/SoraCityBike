@@ -393,6 +393,41 @@
         );
     }
 	
+	if(!strcmp($_GET['a'], 'editvaluetarget')){
+    	$pk= $_POST['pk'];
+    	$value= $_POST['value'];
+		$column = $_GET['c'];
+		$footer = $_GET['where'];
+        $database->update("content_meta", array(
+            $column => $value
+        
+        ), array('AND'=>array("cont_id" => $pk,'meta_key' => $footer)) 
+        );
+    }
+	
+	if(!strcmp($_GET['a'], 'editvalueposition')){
+    	$pk= $_POST['pk'];
+    	$value= $_POST['value'];
+		$column = $_GET['c'];
+		$footer = $_GET['where'];
+        $database->update("content_meta", array(
+            $column => $value
+        
+        ), array('AND'=>array("cont_id" => $pk,'meta_key' => $footer)) 
+        );
+    }
+	if(!strcmp($_GET['a'], 'editvalueorder')){
+    	$pk= $_POST['pk'];
+    	$value= $_POST['value'];
+		$column = $_GET['c'];
+		$footer = $_GET['where'];
+        $database->update("content_meta", array(
+            $column => $value
+        
+        ), array('AND'=>array("cont_id" => $pk,'meta_key' => $footer)) 
+        );
+    }
+	
 	
 
     if(!strcmp($_GET['a'], 'editvalue2')){
