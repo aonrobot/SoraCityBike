@@ -385,11 +385,12 @@
     	$pk= $_POST['pk'];
     	$value= $_POST['value'];
 		$column = $_GET['c'];
+		$footer = $_GET['where'];
         $database->update("content_meta", array(
             $column => $value
         
-        ), array("meta_id" => $pk
-        ));
+        ), array('AND'=>array("cont_id" => $pk,'meta_key' => $footer)) 
+        );
     }
 	
 	
