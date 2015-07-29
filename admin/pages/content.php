@@ -229,7 +229,7 @@
                                             
                                             
                                             
-                                            <input id="thumb" name="thumb" type="hidden" value="/sora_blank_thumb.png">
+                                            <input id="thumb" name="thumb" type="hidden" value="<?php echo $site_path[0]?>/sora_blank_thumb.png">
                                             
                                             <a class="modalButton" data-toggle="modal" data-src="components/fileman_custom/index.html?integration=custom" data-height=450 data-width=100% data-target="#file_modal"><img src="../sora_blank_thumb.png" id="customRoxyImage" style="width:400px; height: 300px;"></a>
                                                 

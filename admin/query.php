@@ -12,8 +12,11 @@
     */ 
     //Include Functions
     require_once 'functions/functions.php';
+    include("functions/resize-class.php");
     
     include('../config/db_connect.php'); 
+    
+    include('../config/admin_config.php');
     
 
     //////////////////////////////////////////////   INSERT  //////////////////////////////////////////////////
@@ -23,7 +26,6 @@
           $date = date('Y-m-d H:i:s');
         
           $slug = sanitize($_POST['slug']);
-          
         
           $last = $database->insert("content", array(
                 "user_id" => $_POST['user_id'],
@@ -34,7 +36,26 @@
                 "cont_status" => $_POST['status'],
                 "cont_modified" => $date,
                 "cont_type" => $_POST['type'],
-                "cont_thumbnail" => $_POST['thumb']
+                
+           ));
+           
+           //Create New Thumbnail 200*200px//
+
+           if(!strcmp($site_path[0], ''))$thumb_url = '..'.$_POST['thumb'];
+           else $thumb_url = str_replace($site_path[0],"..",$_POST['thumb']);
+         
+           $resizeObj = new resize($thumb_url);
+
+           $resizeObj -> resizeImage(200, 200, 'auto');
+ 
+           $resizeObj -> saveImage('../images/thumbnail/'.$last.'-'.$slug.'-thumbnail.png', 100);     
+          
+           // End Create New Thumbnail 200*200px//  
+           
+           //Update Thumbnail To Database
+           $database->update("content", array(
+                "cont_thumbnail" => $site_path[0].'/images/thumbnail/'.$last.'-'.$slug.'-thumbnail.png'      
+           ), array("id" => $last
            ));
            
            //$last = $database->max("content", "id");
@@ -232,6 +253,37 @@
         
         $slug = sanitize($_POST['slug']);
         
+        // Update New Thumbnail 200*200px //
+        
+        $old_img_name = $database->select('content','cont_thumbnail',array("id" => $cont_id));
+        $old_img_name = $old_img_name[0];
+
+        if(!strcmp($site_path[0], NULL))$old_img_name = '..'.$old_img_name;
+        else $old_img_name = str_replace($site_path[0],"..",$old_img_name);
+
+        if(!strcmp($site_path[0], NULL))$thumb_url = '..'.$_POST['thumb'];
+        else $thumb_url = str_replace($site_path[0],"..",$_POST['thumb']); 
+
+        $resize_img_name = '../images/thumbnail/'.$cont_id.'-'.$slug.'-thumbnail.png'; 
+         
+        $resizeObj = new resize($thumb_url);
+
+        $resizeObj -> resizeImage(200, 200, 'auto');
+ 
+        $resizeObj -> saveImage($resize_img_name, 100);
+        
+        if(strcmp($resize_img_name, $old_img_name))
+        {
+            $files = glob($old_img_name); // get all file names
+            foreach($files as $file){
+                if(is_file($file)){
+                    unlink($file);
+                }
+            }
+        }    
+          
+        // End Update New Thumbnail 200*200px //
+        
         $database->update("content", array(
             "cont_name" => $_POST['name'],
             "cont_author" => $_POST['author'],
@@ -239,7 +291,7 @@
             "cont_status" => $_POST['status'],
             "cont_modified" => $date,
             "cont_type" => $_POST['type'],
-            "cont_thumbnail" => $_POST['thumb']
+            "cont_thumbnail" => $site_path[0].'/images/thumbnail/'.$cont_id.'-'.$slug.'-thumbnail.png'
             
         ), array("id" => $cont_id
         ));
@@ -693,6 +745,12 @@
                      
                 }
 
+                //Del Thumbnail
+                $files = glob('../images/thumbnail/'.$cont_id.'-*.png'); // get all file names
+                foreach($files as $file){
+                  if(is_file($file)) unlink($file);
+                }
+                
                 $database->delete("content_meta", array("cont_id" => $_GET['i']));
                 $database->delete("content_translation", array("cont_id" => $_GET['i']));     
                 $database->delete("content", array("id" => $_GET['i']));
