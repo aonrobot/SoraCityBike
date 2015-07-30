@@ -263,10 +263,10 @@ if(!isset($_SESSION['lang_session']))
 								
 								<nav class="navbar navbar-default navbar-fixed-bottom">
 									
-										<div class="pero-font col-xs-2 footer-bar" align="center">
+										<div class="pero-font col-xs-3 footer-bar" align="center">
 											<h5>©soracity 2015</h5>
 										</div>
-										<div class="pero-font col-xs-8" align="center">
+										<div class="pero-font col-xs-6" align="center">
 										<?php 
 											$footer_link=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link']]);
 											//$footer_link_target=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link_target']]);
@@ -275,7 +275,7 @@ if(!isset($_SESSION['lang_session']))
 											
 										 } ?>
 										</div> 
-										<div class="pero-font col-xs-2 footer-bar" align="center">
+										<div class="pero-font col-xs-3 footer-bar" align="center">
 											<h5>issue 1</h5>
 										</div>
 									
