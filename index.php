@@ -181,7 +181,7 @@
 
 
               </div> 
-          <center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" style="margin-top:0em;">show more</a></center>
+          <center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" >show more</a></center>
     
             </div>
 

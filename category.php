@@ -10,7 +10,6 @@
 
 <!-- slide with zoom picture -->
 <?php 
-echo $_GET['id'];
  $datas = $database->select("category",["cat_id","slide_id","cat_name"],["cat_id[=]"  => $_GET['id']]);
 
 foreach ($datas as $key) {
@@ -142,11 +141,11 @@ function hideImg(obj) {
             //echo $data["cont_order"];
                 if ($data['cat_id']==$id){
               $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
-
+              $link = "'".$site_path."/content/".$data['cont_id']."/".$a[0]["cont_slug"]."'"; 
               ?>
 
               <div class="col-md-4 category-box">
-                <img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/>
+               <a href=<?php echo $link?>><img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/></a>
                 <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
                 <p class="pero-font text-content">
                   <?php echo $data["cont_description"]; ?> 

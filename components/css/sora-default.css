@@ -366,7 +366,13 @@ hr {
 	.category-box{
 		height:100%;
 	}
+    #results-show-more{
+    margin-bottom: 4em;
+  }
+
 } 
+
+
 .navbar{
      z-index: 101;
 }
@@ -421,10 +427,12 @@ footer p {
 
 }
 
-
 /*//////////////////////////////////////////////////////////////////////////////////*/
 
 @media screen and (min-width:768px) {
+   #results-show-more{
+    margin-bottom: 0em;
+  }
     .hid_br{
         display: none;
     }
@@ -551,6 +559,8 @@ margin: 0px;
      
 
 }
+
+}
 .footer-bar{
     
     vertical-align:middle;
@@ -583,7 +593,7 @@ margin: 0px;
     text-decoration: none;
     color: #000;
 }
-}
+
 .share-box{
   width:400px;
   left:40%;
