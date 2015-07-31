@@ -170,7 +170,7 @@
                 <div class="col-md-4 category-box">
 
                   <a href=<?php echo $link?>><img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/></a>
-                  <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
+                  <a href=<?php echo $link?>><p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p></a>
                   <p class="pero-font text-content">
                     <?php echo $data["cont_description"]; ?> 
                      <?php echo '<a href='.$link.'><b>READ MORE</b></a>'; ?>

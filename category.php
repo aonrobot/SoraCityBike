@@ -121,7 +121,7 @@ function hideImg(obj) {
 
 <div class="content row">
   <div class="pero-font container main_content" align="center">
-        <h4 class="pero-font large-font underline   ">categorys</h4><br>
+        <h4 class="pero-font large-font underline   ">categories</h4><br>
      <?php 
            $lang_id=$_SESSION['lang_session'];
            $id=$_GET["id"];
