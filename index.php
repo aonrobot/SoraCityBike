@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:1em;"><font>show films </font><span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
+          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:-0.45em;"><font>show films </font><span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
         </div>
 
         <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
@@ -173,7 +173,7 @@
                   <a href=<?php echo $link?>><p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p></a>
                   <p class="pero-font text-content">
                     <?php echo $data["cont_description"]; ?> 
-                     <?php echo '<a href='.$link.'><b>READ MORE</b></a>'; ?>
+                     <?php echo '<a href='.$link.'><b>read more</b></a>' ?>
                   </p>
                 </div>
 
