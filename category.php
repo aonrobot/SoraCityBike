@@ -149,7 +149,7 @@ function hideImg(obj) {
                 <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
                 <p class="pero-font text-content">
                   <?php echo $data["cont_description"]; ?> 
-                  <?php echo '<a href="content.php?id='.$data["cont_id"].'"><b>READ MORE</b></a>'; ?>
+                 <a href=<?php echo $link?>><b>READ MORE</b></a>';
                 </p>
               </div>
 
