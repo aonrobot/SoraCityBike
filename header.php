@@ -225,12 +225,12 @@ if(!isset($_SESSION['lang_session']))
 																{ 
 																	$datas = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $menu['obj_url']]);
 
-																	echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cont_slug"].'" style="text-align:center;">'.$a['obj_name'].'</a></li>' ;
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 																elseif ($a['obj_type']=='category') { 
 																	$datas = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $menu['obj_url']]);
 
-																	echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cat_slug"].'" style="text-align:center;">'.$a['obj_name'].'</a></li>' ;
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 
 															}

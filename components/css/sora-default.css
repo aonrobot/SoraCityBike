@@ -371,6 +371,14 @@ hr {
   }
 
 } 
+@media only screen and (max-width: 1000px){
+
+	.dropdownmenu{
+		text-align:center;
+	}
+
+} 
+
 
 
 .navbar{
