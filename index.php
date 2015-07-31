@@ -171,10 +171,11 @@
 
                   <a href=<?php echo $link?>><img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/></a>
                   <a href=<?php echo $link?>><p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p></a>
-                  <p class="pero-font text-content">
-                    <?php echo $data["cont_description"]; ?> 
-                     <?php echo '<a href='.$link.'><b>read more</b></a>' ?>
-                  </p>
+                  <span class="pero-font text-content">
+                    <?php echo $data["cont_description"]; ?>
+                   </span>
+                   <p class="pero-font text-content"><?php echo '<a href='.$link.'><b>read more</b></a>' ?></p>
+                  
                 </div>
 
                 <?php }}  ?>
