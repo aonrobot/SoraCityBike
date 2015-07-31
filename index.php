@@ -99,7 +99,7 @@
       $('#aa').click('click', function (e) {
       e.preventDefault();
       
-      var arrow = $(".dropdown-span");
+      var arrow = $("#video_btn");
           $('#hideMe').slideToggle(function() {
             if ($('#hideMe').css('display') == 'none') {
         $('#aa').find("font").text('show films ');
