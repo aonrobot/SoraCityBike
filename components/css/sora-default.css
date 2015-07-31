@@ -602,7 +602,7 @@ margin: 0px;
 
 .share-box{
   width:400px;
-  left:40%;
+
   position:absolute;
   font-size:13px;
   margin-bottom: 50px;
@@ -764,10 +764,10 @@ iframe{
 	max-height:100%;
 
 
-   	-webkit-transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000);
-	-moz-transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
-	-o-transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000); 	 
-    transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000);
+   	-webkit-transition-timing-function:cubic-bezier(1, 0.000, 0.680, 1.000);
+	-moz-transition-timing-function: cubic-bezier(1, 0.000, 0.680, 1.000);
+	-o-transition-timing-function:cubic-bezier(1, 0.000, 0.680, 1.000); 	 
+    transition-timing-function:cubic-bezier(1, 0.000, 0.680, 1.000);
 	
 	
 	
