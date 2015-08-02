@@ -330,15 +330,17 @@ hr {
     margin-top: 3em;
 }
 .category-box{
-    margin-top: 25px;   
-    padding-top:1em ;
-    height: 380px;
+
+    
+    height: 420px;
     overflow: hidden;
+	padding-left:7px;
+	padding-right:7px;
 }
 
 .head-content{
-    padding-right: 5em;
-    padding-left: 5em;
+    padding-right: 2em;
+    padding-left: 2em;
 }
 .title_content{
     margin-bottom: 3em;
@@ -352,7 +354,8 @@ hr {
 .index-img{
     display: inline-block;
     width: 100%;
-	height:200px;
+	
+	height: 237px;
 
 }
 
@@ -396,15 +399,23 @@ hr {
     font-size: 15px;
     font-weight: 600;
     text-decoration: underline;
+	line-height:1.3;
     
 }
+.text-headerbox{
+    width:100%;
+	height:4em;
+	padding-bottom:20px;
+    
+}
+
 .main_content{
 }
 .text-content{
     text-align: left;
     font-size: 15px;
     height: auto;
-    
+  
 }
 
 footer {

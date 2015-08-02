@@ -134,7 +134,7 @@
         <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
         <div class="content row">
          <div class="container head-content" id="results" align="center">
-          <center><h4 class="pero-font large-font underline ">stories</h4></center>
+          <center style="padding-bottom:2.3em;"><h4 class="pero-font large-font underline ">stories</h4></center>
           
 
 
@@ -170,8 +170,8 @@
                 <div class="col-md-4 category-box">
 
                   <a href=<?php echo $link?>><img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/></a>
-                  <a href=<?php echo $link?>><p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p></a>
-                  <span class="pero-font text-content">
+                  <div class="text-headerbox"><a href=<?php echo $link?>><p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p></a></div>
+                  <span class="pero-font text-content" style="padding-top:30px;">
                     <?php echo $data["cont_description"]; ?>
                    </span>
                    <p class="pero-font text-content"><?php echo '<a href='.$link.'><b>read more</b></a>' ?></p>
@@ -185,7 +185,7 @@
           <center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" >show more</a></center>
     
             </div>
-
+			<hr style="max-width:70%;margin-top:-3em;">
             <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
 
 
