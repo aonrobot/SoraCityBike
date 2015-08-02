@@ -132,6 +132,7 @@
 
     //DataTable
     $('#dataTables-example').DataTable({
+        paging: false,
          responsive: true,
          "order": [[ 0, "desc" ]]
     });

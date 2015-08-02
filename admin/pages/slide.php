@@ -800,6 +800,7 @@
     <?php if(strcmp($_GET['a'], 'edit')){?> 
         //DataTable
          $('#show-slide').DataTable({
+             paging: false,
              responsive: true,
              "order": [[ 0, "desc" ]]
          });
