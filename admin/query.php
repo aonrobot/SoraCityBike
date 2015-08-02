@@ -97,11 +97,11 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     if(!strcmp($_GET['a'], 'addCategory')){
-        
+          $slug = sanitize($_POST['slug']);
           $database->insert("category", array(
                 "cat_name" => $_POST['name'],
                 "cat_type" => $_POST['type'],
-                "cat_slug" => $_POST['slug']
+                "cat_slug" => $slug
            ));
            
            
@@ -559,6 +559,10 @@
                 $database->update("category_relationships", array($column => $value)
                 ,array("AND" => array("cont_id" => $pk, "cat_id" => $cat_id)));
 			    
+            }
+            else if(!strcmp($column, 'cat_slug')){
+                $value_slug = sanitize($value);
+                $database->update("category", array($column => $value_slug), array("cat_id" => $pk));
             }			
             else{
                 $database->update("category", array($column => $value), array("cat_id" => $pk));
