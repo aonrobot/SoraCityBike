@@ -64,6 +64,7 @@
                                             <tr>
                                                 <th>id</th>
                                                 <th>Name</th>
+                                                <th>Slug</th>
                                                 <th>Type</th>
                                                 <th>Action</th>
                                             </tr>
@@ -79,6 +80,7 @@
                                             <tr>
                                                 <td><?php echo $data['cat_id'];?></td>
                                                 <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_name" data-title="Edit below here" ><?php echo $data['cat_name'];?></a></td>
+                                                <td><a href="#" class="slug" data-type="text" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_slug" data-title="Edit below here" ><?php echo $data['cat_slug'];?></a></td>
                                                 <td><a href="#" class="type" data-type="select" data-pk="<?php echo $data['cat_id'];?>" data-url="query.php?a=editvaluecat&c=cat_type" data-title="Edit below here" ><?php echo $data['cat_type'];?><a></td>
                                                 <td>
                                                     <a href="<?php echo $link_edit;?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"></i></a>
@@ -312,6 +314,7 @@
     <?php if(strcmp($_GET['a'], 'edit')){?>
         //DataTable
         $('#show-cat').DataTable({
+            paging: false,
             responsive: true,
             "order": [[ 0, "desc" ]],
         });
@@ -319,10 +322,12 @@
 
     //DataTable
     $('#show-content').DataTable({
+        paging: false,
         responsive: true,
 
     });
     $('#show-fav-content').DataTable({
+        paging: false,
         responsive: true,
 
     });
@@ -333,6 +338,7 @@
 		  $.fn.editable.defaults.mode = 'inline';
 		
 		  $('.name').editable({});
+		  $('.slug').editable({});
 		  $('.ordering').editable({
 		      success: function() {
                     window.location = "index.php?p=category&a=edit&id=<?php echo $cat_id;?>&noti=SUpdateOrder";
