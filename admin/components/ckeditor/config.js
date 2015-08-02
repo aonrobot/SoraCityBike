@@ -22,12 +22,14 @@ CKEDITOR.editorConfig = function(config) {
     // config.uiColor = '#AADC6E';
 
     
-    config.extraPlugins = 'widget';
-
-    config.extraPlugins = 'lineutils';
-
-    config.extraPlugins = 'oembed,widget';
-
+    config.extraPlugins = 'widget,lineutils,oembed,locationmap,fontawesome';
+    
+    config.locationMapPath = site_path + '/admin/components/ckeditor/plugins/locationmap/';
+    
+    config.contentsCss = site_path + '/admin/components/font-awesome/css/font-awesome.min.css';
+    
+    config.allowedContent = true;
+        
 
     config.filebrowserBrowseUrl = roxyFileman;
 
