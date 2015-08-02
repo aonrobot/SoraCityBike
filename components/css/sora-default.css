@@ -746,6 +746,7 @@ iframe{
 
 
 
+
 /** Caption 1: Simple **/
 .slidein .simple-caption {
     margin:none;
@@ -761,11 +762,14 @@ iframe{
 	max-height: 10%;
 	
 
--webkit-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
-   -moz-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
-     -o-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s; 
-	transition: max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
-   
+-webkit-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
+   -moz-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
+     -o-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9); 
+	transition: max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
+
+	
+
+	
 }
 
 
@@ -774,12 +778,10 @@ iframe{
 .slidein .simple-caption:hover {
 	max-height:100%;
 
-
-   	-webkit-transition-timing-function:cubic-bezier(1, 0.000, 0.680, 1.000);
-	-moz-transition-timing-function: cubic-bezier(1, 0.000, 0.680, 1.000);
-	-o-transition-timing-function:cubic-bezier(1, 0.000, 0.680, 1.000); 	 
-    transition-timing-function:cubic-bezier(1, 0.000, 0.680, 1.000);
-	
+   	-webkit-transition-timing-function:cubic-bezier(1, 0.000, 0.9, 1.000);
+	-moz-transition-timing-function: cubic-bezier(1, 0.000, 0.9, 1.000);
+	-o-transition-timing-function:cubic-bezier(1, 0.000, 0.9, 1.000); 	 
+    transition-timing-function:cubic-bezier(1, 0.000, 0.9, 1.000);
 	
 	
 	-webkit-transition-delay: 0s;
