@@ -109,7 +109,7 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
       
       <ul class="rrssb-buttons clearfix">
        <p>share</p><br> 
-          <?php echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.curPageURL().'" class="popup">'?>
+          <?php echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.urlencode('https://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']).'" class="popup">'?>
             <span class="rrssb-text">facebook</span>
           </a>
         /
