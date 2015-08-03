@@ -98,7 +98,7 @@ if(!isset($_SESSION['lang_session']))
 
 						<a href="https://www.vimeo.com/soracity/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
 							onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src=<?php echo '"'.$site_path.'/components/img/icon/icon-ve-type2.png"/'?>></a>
-
+							<br class="br-header">
 							<?php
 
 							foreach ($lang as $a) {?>
@@ -149,7 +149,7 @@ if(!isset($_SESSION['lang_session']))
 								<span class="icon-bar"></span>
 
 							</button>
-							<a class="pero-font navbar-brand" href="index.php"><b>Sora City Bike</b></a>
+							<a class="pero-font navbar-brand" href=<?php echo '"'.$site_path.'/index.php"'; ?>><img class="logo_img" src=<?php echo '"'.$site_path.'/components/img/LOGO-(with-cloud)2.png"/'?>></a>
 						</div>
 
 						<!-- Collect the nav links, forms, and other content for toggling -->
