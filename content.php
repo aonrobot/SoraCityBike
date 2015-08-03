@@ -99,7 +99,7 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
 
 <div class="content row">
   <div class="pero-font container main_content">
-    <div class="title_content"><h4 class="pero-font large-font underline "><?php echo $datas[0]["cont_title"]; ?></h4></div>
+   
     <?php 
     echo $datas[0]["cont_content"];
     
