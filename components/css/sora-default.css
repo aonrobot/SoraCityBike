@@ -585,9 +585,11 @@ margin: 0px;
     font-size: 1em;
 }
 .content{
-    margin: auto;
+    
     margin-top: 2em;
     margin-bottom: 5em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 
