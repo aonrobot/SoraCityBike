@@ -86,7 +86,7 @@ if(!isset($_SESSION['lang_session']))
 
 			?>
 		</div>
-		<div class="col-xs-4 col-xs-offset-4 brand-social" align="center">
+		<div class="col-xs-4 col-xs-offset-4 brand-social" align="center" style="left:-6%;">
 			<a href="https://www.facebook.com/soracity" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" 
 				onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src=<?php echo '"'.$site_path.'/components/img/icon/icon-fb-type2.png"/'?>></a>
 
@@ -263,7 +263,7 @@ if(!isset($_SESSION['lang_session']))
 								
 								<nav class="navbar navbar-default navbar-fixed-bottom">
 									
-										<div class="pero-font col-xs-3 footer-bar" align="center">
+										<div class="pero-font col-xs-3 footer-bar" align="left" style="padding-left:3.7%;">
 											<h5>©soracity 2015</h5>
 										</div>
 										<div class="pero-font col-xs-6" align="center">
@@ -275,7 +275,7 @@ if(!isset($_SESSION['lang_session']))
 											
 										 } ?>
 										</div> 
-										<div class="pero-font col-xs-3 footer-bar" align="center">
+										<div class="pero-font col-xs-3 footer-bar" align="right" style="padding-right:3.7%;">
 											<h5>issue 1</h5>
 										</div>
 									
