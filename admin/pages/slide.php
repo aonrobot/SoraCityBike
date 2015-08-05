@@ -47,7 +47,7 @@
                                             <label>Category</label>
                                             <select class="form-control" name="cat_id">
                                                     <?php foreach ($cats as $cat) { ?>
-                                                        <option value="<?php echo $cat['id'];?>"><?php echo $cat['cat_name'];?></option>
+                                                        <option value="<?php echo $cat['cat_id'];?>"><?php echo $cat['cat_name'];?></option>
                                                     <?php } ?>                                                 
                                             </select>
                                         </div>

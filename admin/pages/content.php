@@ -518,7 +518,7 @@
 
                                             <div class="form-group">
                                                 <label>Slug</label>
-                                                <input required name="slug" class="form-control" placeholder="Enter Slug Name" value="<?php echo $content_info[0]['cont_slug'];?>">
+                                                <input name="slug" class="form-control" placeholder="Enter Slug Name" value="<?php echo $content_info[0]['cont_slug'];?>">
                                             </div>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -546,7 +546,7 @@
                                             <div class="form-group">
                                                 <label>Category</label><br>
                                                 <?php
-                                                    $datas = $database->select("category", "*");
+                                                    $datas = $database->select("category", "*" ,array("ORDER" => "cat_name"));
                                                     $cats = $database->select("category_relationships", "cat_id", array("cont_id" => $id));
                                                 ?>
                                                 <?php foreach ($datas as $data) { ?>
