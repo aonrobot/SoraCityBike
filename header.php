@@ -49,7 +49,7 @@ if(!isset($_SESSION['lang_session']))
 
 			$title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$_GET['id']]]);
 
-			echo $title[0]["cont_title"].' | Sora City Bike';
+			echo $title[0]["cont_title"].' | sora city';
 		}
 		?>
 	</title>
@@ -65,6 +65,7 @@ if(!isset($_SESSION['lang_session']))
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/sora-default.css'.'"'; ?> rel="stylesheet">
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/leo.css'.'"'; ?> rel="stylesheet">
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/cobox.css'.'"'; ?> rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" >
 	<script src=<?php echo '"'.$site_path.'/'.'components/js/jquery.js'.'"'; ?>></script>
 
 </head>

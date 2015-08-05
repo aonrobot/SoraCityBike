@@ -18,8 +18,9 @@
       <a href=<?php echo "'".$a['slide_data_img_link']."'"; ?> style="margin:0px;"><img class="item" src=<?php echo "'".$a['slide_data_img_url']."'"; ?>></a>
       <a href=<?php echo "'".$a['slide_data_content_link']."'"; ?> style="margin:0px;">
       <span class="caption simple-caption" >
-        <p class='pero-font slide-header' style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name']; ?></p>  
-        <?php echo $a['slide_data_content']; ?>  
+        <p class='pero-font slide-header' style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name'] ?></p>  
+        <?php echo $a['slide_data_content']; ?> 
+
         <p class="readmore_btn">read more</p>
       </span>
       </a>
@@ -134,7 +135,7 @@
         <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
         <div class="content row">
          <div class="container head-content" id="results" align="center">
-          <center style="padding-bottom:2.3em;"><h4 class="pero-font large-font underline ">stories</h4></center>
+          <center style="padding-bottom:2.5em;"><h4 class="pero-font large-font underline ">stories</h4></center>
           
 
 
@@ -185,7 +186,8 @@
           <center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" >show more</a></center>
     
             </div>
-			<hr style="max-width:70%;margin-top:-3em;">
+      <hr style="max-width:70%;margin-top:-3em;">
+
             <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
 
 
