@@ -356,7 +356,7 @@ hr {
 	height: 237px;
 
 }
-
+/*//////////////////////////////////////////////////////////////////////////////////////////*/
 @media only screen and (max-width: 1000px){
 
 	.index-img{
@@ -373,7 +373,9 @@ hr {
 
 } 
 @media only screen and (max-width: 768px){
-
+.footer-br{
+  display: block;
+}
 	.dropdownmenu{
 		text-align:center;
 	}
@@ -398,6 +400,10 @@ hr {
   height: 15px !important;
 }
 } 
+
+
+
+
 
 
 
@@ -591,7 +597,9 @@ margin: 0px;
     margin-left: 1em;
     margin-right: 1em;
 }
-
+.footer-br{
+  display: none;
+}
 
 
 }
@@ -605,6 +613,7 @@ margin: 0px;
     vertical-align:middle;
     margin-top: -3px;
 }
+
 .footer-text{
     
     letter-spacing: 2px;
