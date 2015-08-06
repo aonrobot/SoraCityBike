@@ -43,14 +43,12 @@ if(!isset($_SESSION['lang_session']))
 
 		if(empty($_GET['id'])){
 			echo 'sora city';
-
 		}
 		else{
-
 			$title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$_GET['id']]]);
-
 			echo $title[0]["cont_title"].' | sora city';
 		}
+
 		?>
 	</title>
 	
@@ -224,14 +222,12 @@ if(!isset($_SESSION['lang_session']))
 															if ($sub==$top) {
 																if ($a['obj_type']=='content')
 																{ 
-																	$datas = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $menu['obj_url']]);
-
-																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
+																	$dat = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $a['obj_url']]);
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$dat[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 																elseif ($a['obj_type']=='category') { 
-																	$datas = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $menu['obj_url']]);
-
-																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
+																	$dat2 = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $a['obj_url']]);
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$dat2[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 
 															}
