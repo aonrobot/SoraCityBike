@@ -78,7 +78,7 @@ if(!isset($_SESSION['lang_session']))
 
 	<!-- ////////////////////////////////////    THIS  IS TOP MENU       ///////////////////////////////////////////////////// -->
 	<div class="row row_navbar">
-		<div class="col-xs-4 brand-time " align="center">
+		<div class="col-md-4 col-xs-5 brand-time " align="center">
 			<?php 
 
 			echo '<span class=" pero-font uppercase time_text"><b>'.date('D j M').'</b></span>';
@@ -87,7 +87,7 @@ if(!isset($_SESSION['lang_session']))
 
 			?>
 		</div>
-		<div class="col-xs-4 col-xs-offset-4 brand-social" align="center" style="left:-6%;">
+		<div class="col-md-4 col-md-offset-4 col-xs-5 col-xs-offset-2 brand-social" align="center" style="left:-6%;">
 			<a href="https://www.facebook.com/soracity" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" 
 				onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src=<?php echo '"'.$site_path.'/components/img/icon/icon-fb-type2.png"/'?>></a>
 
@@ -271,9 +271,12 @@ if(!isset($_SESSION['lang_session']))
 										<?php 
 											$footer_link=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link']]);
 											//$footer_link_target=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link_target']]);
+											$i=0;
 											foreach ($footer_link as $key ) {
+												
+												if ($i==2) {echo '<br class="footer-br">';}
 												echo '<a href="'.$key['meta_value'].'" class="footer-link pero-font "><span class="footer-text">'.$key['cont_name'].'</span></a>';
-											
+												$i=$i+1;
 										 } ?>
 										</div> 
 										<div class="pero-font col-xs-3 footer-bar" align="right" style="padding-right:3.7%;">
