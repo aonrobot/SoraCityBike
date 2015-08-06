@@ -46,7 +46,11 @@ if(!isset($_SESSION['lang_session']))
 		}
 		else{
 			$title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$_GET['id']]]);
-			echo $title[0]["cont_title"].' | sora city';
+			if (empty($title[0]["cont_title"])) {
+				$title = $database->select("category","*",["cat_id[=]"=>$_GET['id']]);
+				echo $title[0]["cat_name"];
+			}
+			else{echo $title[0]["cont_title"];}
 		}
 
 		?>
