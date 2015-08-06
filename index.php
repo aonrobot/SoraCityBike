@@ -207,8 +207,8 @@
                 
              <script>   
         $(document).ready(function(){
-          var limit =6;
-          var per_page = 6;
+          var limit =9;
+          var per_page = 9;
           
           jQuery('#results> div.category-box:gt('+(limit-1)+')').hide();
           
