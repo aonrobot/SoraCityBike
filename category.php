@@ -114,7 +114,15 @@ function hideImg(obj) {
 
 <!-- ////////////////////////////////////    THIS  IS END OF SLIDE       ///////////////////////////////////////////////////// -->
 
-        <hr style="max-width:70%;margin-top:2em;">
+        <hr class="endofslide" style="max-width:70%;margin-top:2em;">
+
+		<script>
+			if( $('.itemzoom').is(':empty') ) {
+				
+			}else{
+				$('.endofslide').css("margin-top","0.2em");
+			}
+		</script>
 
 <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
 
