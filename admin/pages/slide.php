@@ -32,7 +32,7 @@
                                             </select>
                                         </div>
                                         
-                                        <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
+                                        <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content' , "ORDER" => "cont_name")); ?>
                                         <div class="col-lg-2 form-group" id="div-content">
                                             <label>Content</label>
                                             <select class="form-control" name="cont_id">
@@ -42,7 +42,7 @@
                                             </select>
                                         </div>
                                         
-                                        <?php $cats = $database->select("category", array('cat_id','cat_name')); ?>
+                                        <?php $cats = $database->select("category", array('cat_id','cat_name') ,array("ORDER" => "cat_name")); ?>
                                         <div class="col-lg-2 form-group" id="div-category">
                                             <label>Category</label>
                                             <select class="form-control" name="cat_id">

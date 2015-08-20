@@ -212,7 +212,7 @@
                                         <div class="form-group" id="category_list">
                                             <a href="index.php?p=category" target="_blank"><label>Category </label></a><a class="btn btn-success btn-xs" style="margin-left: 6px;" data-toggle='modal' data-target='#add_cat_modal'><i class="fa fa-plus fa-lg"></i></a><br>
                                             <?php
-                                                $datas = $database->select("category", "*");
+                                                $datas = $database->select("category", "*" ,array("ORDER" => "cat_name"));
                                             ?>
                                             <?php foreach ($datas as $data) { ?>
                                             <div class="checkbox">

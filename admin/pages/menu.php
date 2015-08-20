@@ -36,8 +36,8 @@
                                         <?php
                                             
                                             // Select Content
-                                            $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content'));
-                                            $categorys = $database->select("category", array('cat_id','cat_name'));
+                                            $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content' ,"ORDER" => "cont_name"));
+                                            $categorys = $database->select("category", array('cat_id','cat_name') ,array("ORDER" => "cat_name"));
                                             
                                         ?>
                                         
