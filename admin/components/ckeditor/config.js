@@ -20,7 +20,10 @@ CKEDITOR.editorConfig = function(config) {
     // Define changes to default configuration here. For example:
     // config.language = 'fr';
     // config.uiColor = '#AADC6E';
-
+    
+    config.font_defaultLabel = 'Pero-Regular';
+    
+    config.fontSize_defaultLabel = '14px';
     
     config.extraPlugins = 'widget,lineutils,oembed,locationmap,fontawesome';
     
@@ -57,6 +60,15 @@ CKEDITOR.editorConfig = function(config) {
     config.font_names = config.font_names + 'Pero Regular/Pero-Regular;';
     config.font_names = config.font_names + 'Pero SemiBold/Pero-SemiBold;';
     config.font_names = config.font_names + 'Pero SemiLight/Pero-SemiLight;';
+    
+    /*-------------------------------------------------------------- RSU ---------------------------------------------------------*/
+
+    config.font_names = config.font_names + 'RSU light/RSU_light;';
+    config.font_names = config.font_names + 'RSU Regular/RSU_Regular;';
+    config.font_names = config.font_names + 'RSU Txt Regular/RSU_Text_Regular;';
+    config.font_names = config.font_names + 'RSU BOLD/RSU_BOLD;';
+    config.font_names = config.font_names + 'RSU Txt Bold/RSU_Text_Bold;';
+    config.font_names = config.font_names + 'RSU Txt Italic/RSU_Text_Italic;';
 
     /*-------------------------------------------------------------- Arabica ---------------------------------------------------------*/
 

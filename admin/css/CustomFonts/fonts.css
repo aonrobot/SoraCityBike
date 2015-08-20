@@ -215,3 +215,30 @@
    font-family: "WDB_Bangna";   
    src: local("WDB_Bangna"), url("/SoraCityBike/admin/css/CustomFonts/WDB_Bangna.ttf") format("truetype"); /*non-IE*/  
 }
+
+/*-------------------------------------------------------------- RSU ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "RSU_light";   
+   src: local("RSU_light"), url("/SoraCityBike/admin/css/CustomFonts/RSU_light.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Regular";   
+   src: local("RSU_Regular"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Regular.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Regular";   
+   src: local("RSU_Text_Regular"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Text_Regular.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_BOLD";   
+   src: local("RSU_BOLD"), url("/SoraCityBike/admin/css/CustomFonts/RSU_BOLD.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Bold";   
+   src: local("RSU_Text_Bold"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Text_Bold.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Italic";   
+   src: local("RSU_Text_Italic"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Text_Italic.ttf") format("truetype"); /*non-IE*/  
+}
