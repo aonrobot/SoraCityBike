@@ -16,18 +16,38 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <form method="post" role="form" action="query.php?a=addCategory" data-toggle="validator">
+                                            
+                                            <div class="col-lg-12 form-group">
+                                                <?php
+                                                    $count = $database->count("language", "*");
+                                                    $datas = $database->select("language", "*");
+                                                    $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang'));
+                                                ?>
+                                                <!-- Pull in Database from language list -->
+                                                <label>Language</label>
+                                                <select name="lang" class="form-control">
+                                                <?php foreach ($datas as $data) { ?>
+                                                    <option value="<?php echo $data['lang_id'];?>" <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo 'selected';?>> <?php echo $data['lang_name'];?> <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo '(Default Language)';?></option>
+                                                <?php } ?>
+                                                </select>
+                                            </div>
+                                        
+                                            <div class="col-lg-6 form-group">
+                                                <label>Title</label>
+                                                <input name="title" class="form-control" placeholder="Enter Category Name" required>
+                                            </div>
     
-                                            <div class="col-lg-4 form-group">
+                                            <div class="col-lg-6 form-group">
                                                 <label>Name</label>
-                                                <input name="name" class="form-control" placeholder="Enter Content Name" required>
+                                                <input name="name" class="form-control" placeholder="Enter Category Name" required>
+                                            </div>
+    
+                                            <div class="col-lg-6 form-group">
+                                                <label>Slug</label>
+                                                <input name="slug" class="form-control" placeholder="Enter Category Slug" required>
                                             </div>
     
                                             <div class="col-lg-4 form-group">
-                                                <label>Slug</label>
-                                                <input name="slug" class="form-control" placeholder="Enter Slug Name" required>
-                                            </div>
-    
-                                            <div class="col-lg-2 form-group">
                                                 <label>Type</label>
                                                 <select name="type" class="form-control">
                                                     <option value="category">Category</option>
@@ -73,8 +93,10 @@
                                         <tbody>
                                         <?php
                                                 $datas = $database->select("category","*",array("ORDER" => "cat_id"));
+                                                $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang')); // Get Defalut Language
+                                                
                                                 foreach ($datas as $data) {
-                                                $link_edit = "index.php?p=category&a=edit&id=".$data['cat_id'];
+                                                $link_edit = "index.php?p=category&a=edit&id=".$data['cat_id']."&lang=".$default_lang[0];
                                         ?>
                                             
                                             <tr>
@@ -107,16 +129,122 @@
                     <?php
                             //Important Parameter
 
-                            $cat_id = $_GET['id'];      // Slide Id
+                            $cat_id = $_GET['id'];      // Cat Id
                             
-                            //Find Category Name
-                            $cat_name = $database->select("category","cat_name",array("cat_id"=>$cat_id));
+                            // Default Language Id
+                            $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang')); // Get Defalut Language
+                            if(!isset($_GET['lang'])) $lang = $default_lang[0];
+                            else $lang = $_GET['lang']; 
+                            
+                            $lang_name = $database->select("language", "lang_name" , array("lang_id" => $lang));
+                            $lang_name = $lang_name[0];
+                            
+                            // Language Select
+                            $count = $database->count("language", "*");
+                            $languages = $database->select("language", "*");
+                            
+                            // Check Did it have language in category_relationships
+                            $chk_lang = $database->count("category_translation", array(
+                                "AND" => array("cat_id" => $cat_id, "lang_id" => $lang)
+                            ));
+                            
+                            //All Available Language
+                            $available_langs = $database->select("category_translation",array("[>]language" => array("lang_id" => "lang_id")),array("lang_name"),array("cat_id" => $cat_id,));
 
+                            //Category Select
+                            $categorys = $database->select("category", array(
+
+                            "[><]category_translation" => array("cat_id" => "cat_id"),
+
+                            ), array('category.cat_id','cat_name','cat_title','lang_id'
+                            ), array("AND" => array("category_translation.cat_id" => $cat_id, "lang_id" => $lang)) // Where
+                            );
+                            
+                            //var_dump($categorys);
+                            
                     ?>
-                    <h1 class="page-header"><a href="index.php?p=category"><i class="fa fa-cubes fa-1x"></i></a> <?php echo $cat_name[0];?></h1>
+                    <h1 class="page-header"><a href="index.php?p=category"><i class="fa fa-cubes fa-1x"></i></a> <?php echo $categorys[0]['cat_name'];?></h1>
                     
                     
                     <!-- ===================================== Favorite Content ========================================== -->
+                    
+                    <form method="post" role="form" action="query.php?a=updateCategory" data-toggle="validator">
+                        
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <b>Category Info</b><br>
+                        </div>
+                        <div class="panel-body">                  
+                           
+                            <div class="row">
+                                <div class="col-lg-12">
+                                        <div class="form-group">
+
+                                            <label><i class="fa fa-language fa-2x"></i> Available Language </label>
+                                            <?php foreach ($available_langs as $available_lang) { ?>
+
+                                                    <code><?php echo $available_lang['lang_name'];?></code>&nbsp;
+
+                                            <?php }; ?>
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                                <!-- Pull in Database from language list -->
+                                                <label>Language</label>
+                                                <select name="lang" class="form-control" onchange="location = 'index.php?p=category&a=edit&id=<?php echo $cat_id;?>&lang='+this.options[this.selectedIndex].value";>
+
+                                                <?php foreach ($languages as $data) {
+                                                        if($data['lang_id'] == $lang) {?>
+
+                                                            <option value="<?php echo $data['lang_id'];?>" selected><?php echo $data['lang_name'];?></option>
+
+                                                <?php } else { ?>
+
+                                                            <option value="<?php echo $data['lang_id'];?>"><?php echo $data['lang_name'];?></option>
+                                                            
+                                                <?php } } ?>
+
+                                                </select>
+                                        </div>
+
+                                        <?php if($chk_lang == 0){ ?>
+                                                <input name="cat_id" type="hidden" value="<?php echo $cat_id;?>" />
+                                                <button type="submit" class="btn btn-success" style="margin-bottom: 15px;">Create <b><?php echo $lang_name;?></b> Language Category Title</button>
+
+                                        <?php } else { ?>
+
+
+                                        <div class="form-group">
+                                            <label>Title</label>
+                                            <input name="title" class="form-control" placeholder="Enter Content Title" value="<?php echo $categorys[0]['cat_title'];?>"/>
+                                        </div>
+                                        <br/>
+                                       
+                                        <?php }?>
+                                        
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Update Category Info</button>
+                                        </div>
+                                        
+
+                                </div>
+                                <!-- /.col-lg-12 (nested) -->
+
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    
+                    <input name="cat_id" type="hidden" value="<?php echo $cat_id;?>" />
+                    
+                    
+                    
+                    </form>
+                    
                     
                     <div class="panel panel-default">
                         <div class="panel-heading">

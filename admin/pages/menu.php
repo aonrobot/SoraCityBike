@@ -5,7 +5,44 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header"><i class="fa fa-dashboard fa-1x"></i> Menu</h1>
-                                    
+                
+                    <?php
+                            //Important Parameter
+
+                            //$menu_id = $_GET['id'];      // Menu Id
+                            
+                            // Default Language Id
+                            $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang')); // Get Defalut Language
+                            if(!isset($_GET['lang'])) $lang = $default_lang[0];
+                            else $lang = $_GET['lang'];
+                            
+                            // Find Menu Id by lang id 
+                                                       
+                            $menu_id_bylang = $database->select("menu","menu_id",array('lang_id'=>$lang));
+                            
+                            $menu_id = $menu_id_bylang[0];
+                            
+                            // 
+                            
+                            $lang_name = $database->select("language", "lang_name" , array("lang_id" => $lang));
+                            $lang_name = $lang_name[0];
+                            
+                            // Language Select
+                            $count = $database->count("language", "*");
+                            $languages = $database->select("language", "*");
+                            
+                            // Check Did it have language in menu
+                            $chk_lang = $database->count("menu", array("lang_id" => $lang));
+                            
+                            //All Available Language
+                            $available_langs = $database->select("menu",array("[>]language" => array("lang_id" => "lang_id")),array("lang_name"));
+
+                            
+                            //var_dump($categorys);
+                            
+                    ?>                    
+                     
+                                      
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <b>Add Menu</b>
@@ -13,6 +50,47 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
+                                        
+                                    <div class="form-group">
+
+                                            <label><i class="fa fa-language fa-2x"></i> Available Language </label>
+                                            <?php foreach ($available_langs as $available_lang) { ?>
+
+                                                    <code><?php echo $available_lang['lang_name'];?></code>&nbsp;
+
+                                            <?php }; ?>
+
+                                    </div>
+                                    
+                                    <form method="post" role="form" action="functions/update_menu.php" data-toggle="validator"> 
+
+                                    <div class="form-group">
+
+                                            <!-- Pull in Database from language list -->
+                                            <label>Language</label>
+                                            <select name="lang" class="form-control" onchange="location = 'index.php?p=menu&lang=' + this.options[this.selectedIndex].value";>
+
+                                            <?php foreach ($languages as $data) {
+                                                    if($data['lang_id'] == $lang) {?>
+
+                                                        <option value="<?php echo $data['lang_id'];?>" selected><?php echo $data['lang_name'];?></option>
+
+                                            <?php } else { ?>
+
+                                                        <option value="<?php echo $data['lang_id'];?>"><?php echo $data['lang_name'];?></option>
+                                                            
+                                            <?php } } ?>
+
+                                            </select>
+                                    </div>
+                                    
+                                    <?php if($chk_lang == 0){ ?>
+                                                        
+                                            <button type="submit" class="btn btn-success" style="margin-bottom: 15px;">Create <b><?php echo $lang_name;?></b> Language Menu</button>                 
+                                    
+                                    <?php } else { ?>
+                                        
+                                    </form>
                                         
                                     <form data-toggle="validator" role="form" action="javascript: void(0)">
                                         <div class="col-lg-3">
@@ -99,7 +177,7 @@
                                             <div class="form-group">
                                                 <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Menu Structure</h3>
                                                 <section id="demo">
-                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("content_meta",'meta_value',array("meta_key" => 'menu')); echo $menu[0]; ?> </ol>
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("menu",'menu_structure', array("lang_id" => $lang)); echo $menu[0]; ?> </ol>
                                                 </section><!-- END #demo -->
                                                 
                                             </div>
@@ -109,6 +187,8 @@
                                             <div class="form-group">
                                                 <p><em>Each Menu has maximum<code>" 2 Category Levels "</code>( Menu >> Category >> Sub-Category )</em></p>
                                                 <input name="menu-structure" type="hidden" id="menu-structure"></input>
+                                                <input type="hidden" name="lang_id" value="<?php echo $lang;?>">    <!-- Language ID -->
+                                                <input type="hidden" name="menu_id" value="<?php echo $menu_id;?>"> <!-- Menu ID -->
                                                 <br><br><button id="toArray" name="toArray" class="btn btn-primary"><i class="fa fa-send fa-1x"></i> Save Menu</button>
                                             </div>
                                         </div>
@@ -118,6 +198,8 @@
                                 </div>
                             </div>
                     </div>
+                    
+                    <?php }?>
                 
             </div>
             <!-- /.col-lg-12 -->
@@ -366,7 +448,7 @@
                
                var formData = {
                 'a'                 : 'updateMenuStructure',
-                'user_id'           : $('input[name=user_id]').val(),
+                'menu_id'           : $('input[name=menu_id]').val(),
                 'structure'         : $('input[name=menu-structure]').val()
                };
                  
@@ -382,10 +464,12 @@
                 
                arraied = $('ol.sortable').nestedSortable('toArray', {startDepthCount: 0});
                var jsonString = JSON.stringify(arraied);
+               var menu_id = $('input[name=menu_id]').val();
+               //alert(menu_id);
                //alert(jsonString);
                $.ajax({
                     type: "POST",
-                    url: "functions/update_menu.php",
+                    url: "functions/update_menu.php?menu_id="+menu_id,
                     data: {data : jsonString}, 
                     cache: false,
             

@@ -29,7 +29,8 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     else if(!strcmp($a, 'delMenu')){
-                
+        
+        $database->delete("menu_obj", array("obj_id" => $_POST['obj_id']));        
         $database->delete("object", array("obj_id" => $_POST['obj_id']));  
     }
     
@@ -37,7 +38,7 @@
     
     else if(!strcmp($a, 'updateMenuStructure')){
                
-        $user_id = $_POST['user_id'];
+        /*$user_id = $_POST['user_id'];
         
         $count_cont = $database->count("content", array("cont_name" => 'menu-structure'));
         
@@ -70,53 +71,86 @@
             
             $database->update("content_meta", array("meta_value" => $_POST['structure']),array("meta_key" => 'menu'));
         }
-        //var_dump($database->error());            
+        //var_dump($database->error());*/
+        
+        //New Update Structure
+        
+        $menu_id = $_POST['menu_id'];
+
+        $database->update("menu", array("menu_structure" => $_POST['structure']),array("menu_id" => $menu_id));            
     }
     else{
         
-        $datas = json_decode($_POST['data'],true);
-    
-        $i = 1;
-        $even = 1;
-        $odd = 1;
-        
-        print_r($datas);
-        
-        $database->query("DELETE FROM menu;");
-        
-        foreach ($datas as $data) {
-            
-            if($data['depth'] == 0)continue;
-            
-            // echo(($data['left']+$data['right']+$data['depth']) % 2);
-            // echo "<br>";
-            
-            if((($data['left']+$data['right']+$data['depth']) % 2) == 0){
-                $odd = 1;
-                $parent = $data['parent_id'];
-                if($parent == null)$parent = "0";
-                $database->insert("menu", array(
-                    "menu_id" => $i,
-                    "obj_id" => $data['item_id'],
-                    "parent_id" => $parent,
-                    "menu_order" => $even
-                ));
-                $even++;
-            }
-            else{
-                $parent = $data['parent_id'];
-                if($parent == null)$parent = "0";
-                $database->insert("menu", array(
-                    "menu_id" => $i,
-                    "obj_id" => $data['item_id'],
-                    "parent_id" => $data['parent_id'],
-                    "menu_order" => $odd
-                ));
+        $chk_lang = $database->count("menu", array("lang_id" => $_POST['lang']));
                 
-                $odd++;
+        if($chk_lang==0 && isset($_POST['lang'])){
+            
+            $database->insert("menu", array(
+                "lang_id" => $_POST['lang']
+           ));
+           
+           //var_dump($database->error());
+           
+           $head = 'Location: ../index.php?p=menu&lang='.$_POST['lang'];
+           header( $head ) ;
+           exit();
+        }
+        else{
+            
+            $menu_id = $_GET['menu_id'];
+            
+            console.log('Hello');
+        
+            $datas = json_decode($_POST['data'],true);
+        
+            $i = 1;
+            $even = 1;
+            $odd = 1;
+            
+            print_r($datas);
+            
+            $database->query("DELETE FROM menu_obj WHERE menu_id = '". $menu_id ."';");
+            
+            foreach ($datas as $data) {
+                
+                if($data['depth'] == 0)continue;
+                
+                // echo(($data['left']+$data['right']+$data['depth']) % 2);
+                // echo "<br>";
+                
+                if((($data['left']+$data['right']+$data['depth']) % 2) == 0){
+                    $odd = 1;
+                    $parent = $data['parent_id'];
+                    if($parent == null)$parent = "0";
+                    $database->insert("menu_obj", array(
+                        //"menu_obj_id" => $i,
+                        "menu_id" => $menu_id,
+                        "obj_id" => $data['item_id'],
+                        "parent_id" => $parent,
+                        "menu_order" => $even
+                    ));
+                    $even++;
+                }
+                else{
+                    $parent = $data['parent_id'];
+                    if($parent == null)$parent = "0";
+                    $database->insert("menu_obj", array(
+                        //"menu_obj_id" => $i,
+                        "menu_id" => $menu_id,
+                        "obj_id" => $data['item_id'],
+                        "parent_id" => $data['parent_id'],
+                        "menu_order" => $odd
+                    ));
+                    
+                    $odd++;
+                }
+        
+                $i++;
             }
-    
-            $i++;
+            
+            //Delete All Duplicate Row (menu_id, obj_id, menu_order) Why it Insert many data???
+            $database->query("DELETE FROM menu_obj WHERE menu_obj_id NOT IN(SELECT MIN(menu_obj_id) FROM menu_obj GROUP BY menu_id, obj_id, menu_order)");
+
         }
     }
     

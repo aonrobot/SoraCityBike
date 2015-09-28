@@ -42,6 +42,8 @@
                                             
                                             );
                                             
+                                            $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang')); // Get Defalut Language
+                                            
                                             foreach ($datas as $data) {
 
                                                 if(!strcmp($data['lang_id'], $data['cont_lang_id'])){
@@ -80,7 +82,7 @@
                                             <td><?php echo $by[0];?></td>
                                             <td class="center"><?php echo $data['cont_modified'];?></td>
                                             <td>
-                                                <a href="index.php?p=content&a=edit&id=<?php echo $data['id'];?>&lang=<?php echo $data['lang_id'];?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"></i></a>
+                                                <a href="index.php?p=content&a=edit&id=<?php echo $data['id'];?>&lang=<?php echo $default_lang[0];?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"></i></a>
                                                 <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -172,12 +174,13 @@
                                                 <?php
                                                     $count = $database->count("language", "*");
                                                     $datas = $database->select("language", "*");
+                                                    $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang'));
                                                 ?>
                                                 <!-- Pull in Database from language list -->
-                                                <label>Default Language</label>
+                                                <label>Language</label>
                                                 <select name="lang" class="form-control">
                                                 <?php foreach ($datas as $data) { ?>
-                                                    <option value="<?php echo $data['lang_id'];?>"><?php echo $data['lang_name'];?></option>
+                                                    <option value="<?php echo $data['lang_id'];?>" <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo 'selected';?>> <?php echo $data['lang_name'];?> <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo '(Default Language)';?></option>
                                                 <?php } ?>
                                                 </select>
                                         </div>
@@ -343,7 +346,7 @@
                             //Important Parameter
 
                             $id = $_GET['id'];      // Content Id
-                            $lang = $_GET['lang'];  // Default Language Id
+                            $lang = $_GET['lang']; // Default Language Id
                             $lang_name = $database->select("language", "lang_name" , array("lang_id" => $lang));
                             $lang_name = $lang_name[0];
 

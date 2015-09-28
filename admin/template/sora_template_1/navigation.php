@@ -60,9 +60,9 @@
                                 <li>
                                     <a href="index.php?p=content&s=create">Create Content</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="index.php?p=content&s=language">Language</a>
-                                </li>
+                                </li>-->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -77,6 +77,10 @@
 
                         <li>
                             <a href="index.php?p=footer"><i class="fa fa-info fa-fw"></i> Footer</a>
+                        </li>
+                        
+                        <li>
+                            <a href="index.php?p=language"><i class="fa fa-language fa-fw"></i> Language</a>
                         </li>
                         
                         <li>
