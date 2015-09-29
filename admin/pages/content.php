@@ -42,6 +42,8 @@
                                             
                                             );
                                             
+                                            $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang')); // Get Defalut Language
+                                            
                                             foreach ($datas as $data) {
 
                                                 if(!strcmp($data['lang_id'], $data['cont_lang_id'])){
@@ -69,18 +71,18 @@
                                                         $str_cat = "";
                                                                                                                 
                                                         foreach ($cats as $cat) {
-                                                            $str_cat = $str_cat.$cat['cat_name'].' ';
+                                                            $str_cat = $str_cat.'&ordm; <code>'.$cat['cat_name'].'</code><br>';
                                                         }
                                             ?>
                                                 
                                             <td>
-                                                 <code><a href="#" class="category" data-type="checklist" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><?php echo $str_cat;?></a></code><br>&nbsp;
+                                                 <a href="#" class="category" data-type="checklist" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue2&c=cat_name" data-title="Edit below here" ><p><?php echo $str_cat;?></p></a>
                                             </td>
                                             <?php $by = $database->select("users",'username',array('id'=>$data['user_id']));?>
                                             <td><?php echo $by[0];?></td>
                                             <td class="center"><?php echo $data['cont_modified'];?></td>
                                             <td>
-                                                <a href="index.php?p=content&a=edit&id=<?php echo $data['id'];?>&lang=<?php echo $data['lang_id'];?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"></i></a>
+                                                <a href="index.php?p=content&a=edit&id=<?php echo $data['id'];?>&lang=<?php echo $default_lang[0];?>" class="btn btn-primary" style="margin-right: 8px;"><i class="fa fa-edit"></i></a>
                                                 <a href="query.php?a=del&w=content&i=<?php echo $data['id'];?>" class="btn btn-danger"  style="margin-right: 8px;" ><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -172,12 +174,13 @@
                                                 <?php
                                                     $count = $database->count("language", "*");
                                                     $datas = $database->select("language", "*");
+                                                    $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang'));
                                                 ?>
                                                 <!-- Pull in Database from language list -->
-                                                <label>Default Language</label>
+                                                <label>Language</label>
                                                 <select name="lang" class="form-control">
                                                 <?php foreach ($datas as $data) { ?>
-                                                    <option value="<?php echo $data['lang_id'];?>"><?php echo $data['lang_name'];?></option>
+                                                    <option value="<?php echo $data['lang_id'];?>" <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo 'selected';?>> <?php echo $data['lang_name'];?> <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo '(Default Language)';?></option>
                                                 <?php } ?>
                                                 </select>
                                         </div>
@@ -212,7 +215,7 @@
                                         <div class="form-group" id="category_list">
                                             <a href="index.php?p=category" target="_blank"><label>Category </label></a><a class="btn btn-success btn-xs" style="margin-left: 6px;" data-toggle='modal' data-target='#add_cat_modal'><i class="fa fa-plus fa-lg"></i></a><br>
                                             <?php
-                                                $datas = $database->select("category", "*");
+                                                $datas = $database->select("category", "*" ,array("ORDER" => "cat_name"));
                                             ?>
                                             <?php foreach ($datas as $data) { ?>
                                             <div class="checkbox">
@@ -311,9 +314,6 @@
                                         <div class="form-group">
                                             <label>Content</label>
                                                 <div id="canvas">
-                                                    <div class="row">
-                                                        <!-- Pull in Database from english language content -->
-                                                    </div>
                                                 </div>
                                         </div>
 
@@ -346,7 +346,7 @@
                             //Important Parameter
 
                             $id = $_GET['id'];      // Content Id
-                            $lang = $_GET['lang'];  // Default Language Id
+                            $lang = $_GET['lang']; // Default Language Id
                             $lang_name = $database->select("language", "lang_name" , array("lang_id" => $lang));
                             $lang_name = $lang_name[0];
 
@@ -375,15 +375,15 @@
                     ?>
                     
                     <h1 class="page-header"><a href="index.php?p=content&s=show"><i class="fa fa-book fa-1x"></i></a> <?php echo $contents[0]['cont_title'];?></h1>
-
+                    
+                    <form method="post" role="form" action="query.php?a=updateContent" data-toggle="validator">
+                         
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <b>Multilanguage Content </b><br>
                         </div>
-                        <div class="panel-body">
-                            
-                            <form method="post" role="form" action="query.php?a=updateContent" data-toggle="validator">
-                                
+                        <div class="panel-body">                  
+                           
                             <div class="row">
                                 <div class="col-lg-12">
                                         <div class="form-group">
@@ -393,7 +393,7 @@
 
                                                     <code><?php echo $available_lang['lang_name'];?></code>&nbsp;
 
-                                            <?php } ?>
+                                            <?php }; ?>
 
                                         </div>
 
@@ -421,12 +421,12 @@
                                                 <input name="content_id" type="hidden" value="<?php echo $id;?>" />
                                                 <button type="submit" class="btn btn-success">Create <?php echo $lang_name;?> Language Content</button>
 
-                                        <?php } else { ;?>
+                                        <?php } else { ?>
 
 
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input name="title" class="form-control" placeholder="Enter Content Title" value="<?php echo $contents[0]['cont_title'];?>">
+                                            <input name="title" class="form-control" placeholder="Enter Content Title" value="<?php echo $contents[0]['cont_title'];?>"/>
                                         </div>
                                         <br />
 
@@ -434,10 +434,9 @@
                                             <label>Description</label>
                                             <textarea id="description" name="description" class="form-control" rows="3" style="resize: none;"><?php echo $contents[0]['cont_description'];?></textarea>
                                         </div>
-                                        <script>
-                                                
+                                        <script>                                                
                                                 CKEDITOR.replace( 'description', {
-                                                                                                        
+                                                    customConfig: '<?php echo $site_path[0];?>/admin/js/ck_config.js' ,                                                    
                                                     wordcount: {
                                                         showCharCount: true,
                                                         maxWordCount: 4000,
@@ -451,18 +450,18 @@
                                                      
                                                     }
                                                 );
-                                            </script>
-
+                                        </script>
+                                        
                                         <div class="form-group">
-                                                <label>Content</label>
+                                            <label>Content</label>
                                                 <div id="canvas">
-                                                        <?php echo $contents[0]['cont_content'];?>
+                                                    <?php echo $contents[0]['cont_content'];?>
                                                 </div>
                                         </div>
 
+                                        <textarea name="txt_content" id="say_some" style="display:none;">-</textarea>
 
-
-                                        <?php } ;?>
+                                        <?php }?>
 
 
 
@@ -475,7 +474,10 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-
+                    
+                    <?php 
+                            $content_info = $database->select("content",'*', array("id" => $id));
+                    ?>
 
                     <div class="panel panel-default">
                             <div class="panel-heading">
@@ -490,8 +492,8 @@
                                                 <label>Thumbnail</label><a id="rest_thumb" class="btn btn-danger btn-xs" style="margin-left: 8px;">Reset Thumbnail</a><br>
                                                 <!-- <input id="input-700" name="kartik-input-700[]" type="file" class="file-loading">
                                                 <input name="thumb" type="hidden"> -->
-                                                <a href="javascript:openCustomRoxy()"><img src="<?php echo $contents[0]['cont_thumbnail'];?>" id="customRoxyImage" style="width:400px; height: 300px;"></a>
-                                                <input id="thumb" name="thumb" type="hidden" value="<?php echo $contents[0]['cont_thumbnail'];?>">
+                                                <a href="javascript:openCustomRoxy()"><img src="<?php echo $content_info[0]['cont_thumbnail'];?>" id="customRoxyImage" style="width:400px; height: 300px;"></a>
+                                                <input id="thumb" name="thumb" type="hidden" value="<?php echo $content_info[0]['cont_thumbnail'];?>">
                                                 <div id="roxyCustomPanel" style="display: none;">
                                                   <iframe src="components/fileman_custom/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
                                                 </div>
@@ -509,17 +511,17 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input required name="name" class="form-control" placeholder="Enter Content Name" value="<?php echo $contents[0]['cont_name'];?>">
+                                                <input required name="name" class="form-control" placeholder="Enter Content Name" value="<?php echo $content_info[0]['cont_name'];?>">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Author</label>
-                                                <input name="author" class="form-control" placeholder="Enter Author Name" value="<?php echo $contents[0]['cont_author'];?>">
+                                                <input name="author" class="form-control" placeholder="Enter Author Name" value="<?php echo $content_info[0]['cont_author'];?>">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Slug</label>
-                                                <input required name="slug" class="form-control" placeholder="Enter Slug Name" value="<?php echo $contents[0]['cont_slug'];?>">
+                                                <input name="slug" class="form-control" placeholder="Enter Slug Name" value="<?php echo $content_info[0]['cont_slug'];?>">
                                             </div>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -528,26 +530,26 @@
                                             <div class="form-group">
                                                 <label>Status</label>
                                                 <select name="status" class="form-control">
-                                                    <option value="published"   <?php if(!strcmp($contents[0]['cont_status'], "published"))echo "selected";?> >Published</option>
-                                                    <option value="future"      <?php if(!strcmp($contents[0]['cont_status'], "future"))echo "selected";?> >Future</option>
-                                                    <option value="draft"       <?php if(!strcmp($contents[0]['cont_status'], "draft"))echo "selected";?> >Draft</option>
-                                                    <option value="pending"     <?php if(!strcmp($contents[0]['cont_status'], "pending"))echo "selected";?> >Pending</option>
-                                                    <option value="private"     <?php if(!strcmp($contents[0]['cont_status'], "private"))echo "selected";?> >Private</option>
-                                                    <option value="trash"       <?php if(!strcmp($contents[0]['cont_status'], "trash"))echo "selected";?> >Trash</option>
+                                                    <option value="published"   <?php if(!strcmp($content_info[0]['cont_status'], "published"))echo "selected";?> >Published</option>
+                                                    <option value="future"      <?php if(!strcmp($content_info[0]['cont_status'], "future"))echo "selected";?> >Future</option>
+                                                    <option value="draft"       <?php if(!strcmp($content_info[0]['cont_status'], "draft"))echo "selected";?> >Draft</option>
+                                                    <option value="pending"     <?php if(!strcmp($content_info[0]['cont_status'], "pending"))echo "selected";?> >Pending</option>
+                                                    <option value="private"     <?php if(!strcmp($content_info[0]['cont_status'], "private"))echo "selected";?> >Private</option>
+                                                    <option value="trash"       <?php if(!strcmp($content_info[0]['cont_status'], "trash"))echo "selected";?> >Trash</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Type</label>
                                                 <select name="type" class="form-control">
-                                                    <option value="content"     <?php if(!strcmp($contents[0]['cont_type'], "content"))echo "selected";?> >Content</option>
+                                                    <option value="content"     <?php if(!strcmp($content_info[0]['cont_type'], "content"))echo "selected";?> >Content</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Category</label><br>
                                                 <?php
-                                                    $datas = $database->select("category", "*");
+                                                    $datas = $database->select("category", "*" ,array("ORDER" => "cat_name"));
                                                     $cats = $database->select("category_relationships", "cat_id", array("cont_id" => $id));
                                                 ?>
                                                 <?php foreach ($datas as $data) { ?>
@@ -568,8 +570,6 @@
 
                                          <div class="col-lg-12">
 
-                                                <textarea name="txt_content" id="say_some" style="display:none;">-</textarea>
-
                                                 <input name="content_id" type="hidden" value="<?php echo $id;?>" />
 
                                                 <button type="submit" class="btn btn-primary save_btn">Update Content</button>
@@ -583,13 +583,13 @@
                                 </div>
                                 <!-- /.row (nested) -->
                                 
-                                </form>
+                                
                                 
                             </div>
                             <!-- /.panel-body -->
                         </div>
                         <!-- /.panel -->
-
+                </form>
 
                 <?php }?>
 
@@ -786,6 +786,7 @@
     <?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
         //DataTable
         $('#dataTables-example').DataTable({
+            paging: false,
             responsive: true,
             "order": [[ 1, "desc" ]],
             "columnDefs": [
@@ -876,7 +877,7 @@
     
                 }
     
-                console.log(cat_src);
+                //console.log(cat_src);
     
             }
         });

@@ -82,6 +82,9 @@
 		<?php if(!strcmp($_GET['noti'], 'SAddCategory')){?>
           toastr["success"]("Create Category Success","Create Success");
         <?php }?>
+        <?php if(!strcmp($_GET['noti'], 'SUpdateCategory')){?>
+          toastr["success"]("Update Category Success","Update Success");
+        <?php }?>
 		<?php if(!strcmp($_GET['noti'], 'SDelCategory')){?>
           toastr["success"]("Delete Category Success","Delete Success");
         <?php }?>

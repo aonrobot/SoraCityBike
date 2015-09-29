@@ -14,10 +14,12 @@
         
         $img_link = $_POST['img_link'];
         
-        $content_link = $_POST['content_link'];       
+        $content_link = $_POST['content_link'];   
         
         $last_img = $database->insert("slide_data", array(
                 "slide_id" => $_POST['slide_id'],
+                "lang_id" => $_POST['lang_id'],
+                "slide_structure_id" => $_POST['structure_id'],
                 "slide_data_name" => $_POST['img_name'],
                 "slide_data_img_url" => $_POST['img_url'],
                 "slide_data_img_link" => $img_link,
@@ -34,6 +36,32 @@
         echo json_encode($img); 
     }
     
+    else if(!strcmp($a, 'addVideo')){
+        
+        $str_url = $_POST['img_url'];
+        
+        if(strpos($str_url,'https://vimeo.com/') !== false){
+        
+            $str_url = explode("https://vimeo.com/",$str_url);
+            $video_url = "http://player.vimeo.com/video/".$str_url[1]."?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f";
+                    
+            $last_img = $database->insert("slide_data", array(
+                    "slide_id" => $_POST['slide_id'],
+                    "lang_id" => $_POST['lang_id'],
+                    "slide_structure_id" => $_POST['structure_id'],
+                    "slide_data_name" => $_POST['img_name'],
+                    "slide_data_img_url" => $video_url,
+               ));  
+               
+            
+               
+            $img = $database->select("slide_data",array('slide_data_id','slide_data_name','slide_data_img_url')
+                                    ,array("slide_data_id"=>$last_img)); 
+        
+            echo json_encode($img); 
+        }
+    }
+    
     else if(!strcmp($a, 'updateImgName')){
         
         $slide_data_id = $_POST['slide_data_id'];
@@ -44,9 +72,8 @@
         
                 "slide_data_name" => $new_img_name,
 
-           ),array("slide_data_id" => $slide_data_id));  
+           ),array("AND" => array("slide_data_id" => $slide_data_id , "lang_id" => $_POST['lang_id'])));  
            
-        
            
         $img = $database->select("slide_data",array('slide_data_id','slide_data_name','slide_data_img_url'
         
@@ -68,7 +95,7 @@
                 "slide_data_img_url" => $new_img_url,
                 "slide_data_img_link" => $new_img_link,
 
-           ),array("slide_data_id" => $slide_data_id));  
+           ),array("AND" => array("slide_data_id" => $slide_data_id , "lang_id" => $_POST['lang_id'])));  
            
         
            
@@ -92,7 +119,7 @@
                 "slide_data_content" => $new_content,
                 "slide_data_content_link" => $new_content_link,
 
-           ),array("slide_data_id" => $slide_data_id));  
+           ),array("AND" => array("slide_data_id" => $slide_data_id , "lang_id" => $_POST['lang_id'])));  
            
         
            
@@ -103,69 +130,19 @@
         echo json_encode($img); 
     }
     
-    else if(!strcmp($a, 'addVideo')){
-        
-        $str_url = $_POST['img_url'];
-        
-        if(strpos($str_url,'https://vimeo.com/') !== false){
-        
-            $str_url = explode("https://vimeo.com/",$str_url);
-            $video_url = "http://player.vimeo.com/video/".$str_url[1]."?title=0&amp;byline=0&amp;portrait=0&amp;color=6fde9f";
-                    
-            $last_img = $database->insert("slide_data", array(
-                    "slide_id" => $_POST['slide_id'],
-                    "slide_data_name" => $_POST['img_name'],
-                    "slide_data_img_url" => $video_url,
-               ));  
-               
-            
-               
-            $img = $database->select("slide_data",array('slide_data_id','slide_data_name','slide_data_img_url')
-                                    ,array("slide_data_id"=>$last_img)); 
-        
-            echo json_encode($img); 
-        }
-    }
-    
     else if(!strcmp($a, 'delImgData')){
                 
-        $database->delete("slide_data", array("slide_data_id" => $_POST['slide_data_id']));  
+        $database->delete("slide_data", array("AND" => array("slide_data_id" => $slide_data_id , "lang_id" => $_POST['lang_id'])));  
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     else if(!strcmp($a, 'updateImageStructure')){
         
-        $user_id = $_POST['user_id'];
-        
-        $count_cont = $database->count("content", array("cont_name" => 'slide-structure'));
-        
-        $count_meta = $database->count("content_meta", array("meta_key" => 'slide:'.$_POST['slide_id']));
-        
-        if($count_cont == 0){
-            $last_cont = $database->insert("content", array(
-               "user_id" => $user_id,                                   //****** User Id 
-               "cont_name" => 'slide-structure',
-               "cont_slug" => 'slide-structure',
-               "cont_status" => 'private',
-               "cont_thumbnail" => 'no',
-               )); 
-        }
-        
-        if($count_meta == 0){
-            
-            $cont_id = $database->select("content",'id',array("cont_name" => 'slide-structure'));
-            
-            $database->insert("content_meta", array(
-               "cont_id" => $cont_id[0],
-               "meta_key" => 'slide:'.$_POST['slide_id'],
-               "meta_value" => $_POST['structure']
-               )); 
-               
-        }else{
-            
-            $database->update("content_meta", array("meta_value" => $_POST['structure']),array("meta_key" => 'slide:'.$_POST['slide_id']));
-        }
+        //$slide_id = $_POST['slide_id'];
+
+        $database->update("slide_structure", array("slide_structure" => $_POST['structure']), array("slide_structure_id" => $_POST['structure_id']));
+
 
         //var_dump($database->error());            
     }

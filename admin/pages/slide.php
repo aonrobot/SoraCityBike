@@ -1,5 +1,7 @@
 <!-- Page Content -->
 <input type="hidden" name="user_id" value="<?php echo $details['id'];?>">
+
+
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -17,6 +19,21 @@
                                 <div class="col-lg-12">
                                     <form method="post" role="form" action="query.php?a=addSlide" data-toggle="validator">
                                         
+                                        <div class="col-lg-12 form-group">
+                                                <?php
+                                                    $count = $database->count("language", "*");
+                                                    $datas = $database->select("language", "*");
+                                                    $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang'));
+                                                ?>
+                                                <!-- Pull in Database from language list -->
+                                                <label>Language</label>
+                                                <select name="lang" class="form-control">
+                                                <?php foreach ($datas as $data) { ?>
+                                                    <option value="<?php echo $data['lang_id'];?>" <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo 'selected';?>> <?php echo $data['lang_name'];?> <?php  if(!strcmp($data['lang_id'], $default_lang[0]))echo '(Default Language)';?></option>
+                                                <?php } ?>
+                                                </select>
+                                        </div>
+                                        
                                         <div class="col-lg-4 form-group">
                                             <label>Slide Name</label>
                                             <input name="name" class="form-control" placeholder="Enter Content Name" required="">
@@ -32,7 +49,7 @@
                                             </select>
                                         </div>
                                         
-                                        <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content')); ?>
+                                        <?php $contents = $database->select("content", array('id','cont_name'),array('cont_type'=>'content' , "ORDER" => "cont_name")); ?>
                                         <div class="col-lg-2 form-group" id="div-content">
                                             <label>Content</label>
                                             <select class="form-control" name="cont_id">
@@ -42,12 +59,12 @@
                                             </select>
                                         </div>
                                         
-                                        <?php $cats = $database->select("category", array('cat_id','cat_name')); ?>
+                                        <?php $cats = $database->select("category", array('cat_id','cat_name') ,array("ORDER" => "cat_name")); ?>
                                         <div class="col-lg-2 form-group" id="div-category">
                                             <label>Category</label>
                                             <select class="form-control" name="cat_id">
                                                     <?php foreach ($cats as $cat) { ?>
-                                                        <option value="<?php echo $cat['id'];?>"><?php echo $cat['cat_name'];?></option>
+                                                        <option value="<?php echo $cat['cat_id'];?>"><?php echo $cat['cat_name'];?></option>
                                                     <?php } ?>                                                 
                                             </select>
                                         </div>
@@ -97,7 +114,7 @@
 
                                             );           
                                             foreach ($datas as $data) {
-                                                $link_edit = "index.php?p=slide&a=edit&id=".$data['slide_id'];
+                                                $link_edit = "index.php?p=slide&a=edit&id=".$data['slide_id']."&lang=".$default_lang[0];
                                     ?>       
                                     
                   <!-- bite fixx herreeeeeeeeeeeeeeeeeeeee --->                       
@@ -136,13 +153,90 @@
                             //Important Parameter 
                             
                             $slide_id = $_GET['id'];      // Slide Id
-                            $slide_type = $database->select("slide",array("slide_type","slide_name"),array("slide_id" => $slide_id));  
+                            $slide_type = $database->select("slide",array("slide_type","slide_name"),array("slide_id" => $slide_id));
+                            
+                            //*********** Multi Language
+                            
+                                // Default Language Id
+                                $default_lang = $database->select("site_meta",'meta_value',array('meta_key'=> 'site_default_lang')); // Get Defalut Language
+                                if(!isset($_GET['lang'])) $lang = $default_lang[0];
+                                else $lang = $_GET['lang']; 
+                                
+                                $lang_name = $database->select("language", "lang_name" , array("lang_id" => $lang));
+                                $lang_name = $lang_name[0];
+                                
+                                // Language Select
+                                $count = $database->count("language", "*");
+                                $languages = $database->select("language", "*");
+                                
+                                // Check Did it have language in category_relationships
+                                $chk_lang = $database->count("slide_data", array(
+                                    "AND" => array("slide_id" => $slide_id, "lang_id" => $lang)
+                                ));
+                                
+                                //All Available Language
+                                $available_langs = $database->select("slide_data",array("[>]language" => array("lang_id" => "lang_id")),array("lang_name"),array("slide_id" => $slide_id,));
+                                
+                                //Get Structure id
+                                $structure_id = $database->select("slide_data","slide_structure_id", array(
+                                    "AND" => array("slide_id" => $slide_id, "lang_id" => $lang)
+                                ));
+                                $structure_id = $structure_id[0];
+                            
+                            //*********** End Multi
                             
                             //Check This Slide Id has Content Data?
-                            $chk_cont_meta = $database->count("content_meta", array("meta_key" => 'slide:'.$slide_id));
-                            if($chk_cont_meta == 0) $database->delete("slide_data", array("slide_id" => $slide_id));                        
+                            //$chk_cont_meta = $database->count("content_meta", array("meta_key" => 'slide:'.$slide_id));
+                            //if($chk_cont_meta == 0) $database->delete("slide_data", array("slide_id" => $slide_id));                        
                                         
                     ?>
+                    
+                   <input type="hidden" name="structure_id" value="<?php echo $structure_id;?>">
+                   <input type="hidden" name="lang_id" value="<?php echo $lang;?>">
+                   
+                   <h1> <?php echo $slide_id.":".$lang.":".$structure_id;?></h1>
+                   <h1> <?php echo "Check Language -> ".$chk_lang?></h1>
+                    
+
+
+                                        <label style="margin-top: 25px;"><i class="fa fa-language fa-2x"></i> Available Language </label>
+                                            <?php foreach ($available_langs as $available_lang) { ?>
+
+                                                    <code><?php echo $available_lang['lang_name']; ?></code>&nbsp;
+
+                                            <?php }; ?>
+
+                                        </div>
+                                        
+                                        <form method="post" role="form" action="query.php?a=updateSlide" data-toggle="validator">
+                                            
+                                        <div class="form-group">
+
+                                                <!-- Pull in Database from language list -->
+                                                <label>Language</label>
+                                                <select name="lang" class="form-control" onchange="location = 'index.php?p=slide&a=edit&id=<?php echo $slide_id; ?>&lang='+this.options[this.selectedIndex].value";>
+
+                                                <?php foreach ($languages as $data) {
+                                                        if($data['lang_id'] == $lang) {?>
+
+                                                            <option value="<?php echo $data['lang_id']; ?>" selected><?php echo $data['lang_name']; ?></option>
+
+                                                <?php } else { ?>
+
+                                                            <option value="<?php echo $data['lang_id']; ?>"><?php echo $data['lang_name']; ?></option>
+                                                            
+                                                <?php } } ?>
+
+                                                </select>
+                                        </div>
+                                        <?php if($chk_lang == 0){ ?>
+                                                <input name="slide_id" type="hidden" value="<?php echo $slide_id; ?>" />
+                                                <button type="submit" class="btn btn-success" style="margin-bottom: 15px;">Create <b><?php echo $lang_name; ?></b> Language Slide</button>
+                                        
+                                        </form>
+
+                    
+                    <?php } else { //Open Else Check Language?>
                     
                     <?php if(!strcmp($slide_type[0]['slide_type'], 'content') || !strcmp($slide_type[0]['slide_type'], 'category') || !strcmp($slide_type[0]['slide_type'], 'home')){?>
                         
@@ -154,6 +248,8 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
+                                    
+                                    <!-- Update Slide -->
                                     <div class="col-lg-12">
                                         <form method="post" role="form" action="query.php?a=updateSlide">
                                             
@@ -356,7 +452,7 @@
                                                 <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Slide Structure</h3>
                                                 
                                                 <section id="demo">
-                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("content_meta",'meta_value',array("meta_key"=>'slide:'.$slide_id)); echo $menu[0]; ?> </ol>
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("slide","slide_structure",array("slide_id" => $slide_id)); echo $menu[0]; ?> </ol>
                                                 </section><!-- END #demo -->
                                                 
                                             </div>
@@ -374,6 +470,8 @@
                                 </div>
                             </div>
                     </div>
+                    
+                    
                     
                     <?php }?>
                       
@@ -520,9 +618,9 @@
                     
                     <?php }?>
                     
-                <?php }?>
+                    <?php } //Close Else Check Language?>
                  
-                
+             <?php }?>   
                 
             
             <!-- /.col-lg-12 -->
@@ -800,6 +898,7 @@
     <?php if(strcmp($_GET['a'], 'edit')){?> 
         //DataTable
          $('#show-slide').DataTable({
+             paging: false,
              responsive: true,
              "order": [[ 0, "desc" ]]
          });
@@ -857,8 +956,10 @@
             
             var formData = {
                 'a'                     : 'updateImgName',
-                'slide_data_id'              : slide_data_id,
-                'update_img_name'              : $('input[name=update_img_name]').val(),
+                'slide_data_id'         : slide_data_id,
+                'lang_id'               : $('input[name=lang_id]').val(),         //Multi Lang
+                'structure_id'          : $('input[name=structure_id]').val(),    //Multi Lang 
+                'update_img_name'       : $('input[name=update_img_name]').val(),
             };
              
             $.ajax({
@@ -895,10 +996,12 @@
             var slide_data_id = $('input[name=slide_data_id_edit_image]').val()
             
             var formData = {
-                'a'                     : 'updateImage',
-                'slide_data_id'              : slide_data_id,
-                'update_img_url'              : $('input[name=update_img_url]').val(),
-                'update_img_link'              : $('input[name=update_img_link]').val(),
+                'a'                       : 'updateImage',
+                'slide_data_id'           : slide_data_id, 
+                'lang_id'                 : $('input[name=lang_id]').val(),         //Multi Lang
+                'structure_id'            : $('input[name=structure_id]').val(),    //Multi Lang 
+                'update_img_url'          : $('input[name=update_img_url]').val(),
+                'update_img_link'         : $('input[name=update_img_link]').val(),
             };
              
             $.ajax({
@@ -945,6 +1048,8 @@
             var formData = {
                 'a'                             : 'updateContent',
                 'slide_data_id'                 : slide_data_id,
+                'lang_id'                       : $('input[name=lang_id]').val(),         //Multi Lang
+                'structure_id'                  : $('input[name=structure_id]').val(),    //Multi Lang 
                 'update_content'                : update_cont_value,
                 'update_content_link'           : $('input[name=update_content_link]').val(),
             };
@@ -994,6 +1099,8 @@
             var formData = {
                 'a'                     : 'addImg',
                 'slide_id'              : $('input[name=slide_id]').val(),
+                'lang_id'               : $('input[name=lang_id]').val(),         //Multi Lang
+                'structure_id'          : $('input[name=structure_id]').val(),    //Multi Lang 
                 'img_name'              : $('input[name=img_name]').val(),
                 'img_url'               : img_url,
                 'img_link'              : $('input[name=img_link]').val(),
@@ -1107,6 +1214,8 @@
             var formData = {
                 'a'                     : 'addVideo',
                 'slide_id'              : $('input[name=slide_id]').val(),
+                'lang_id'               : $('input[name=lang_id]').val(),         //Multi Lang
+                'structure_id'          : $('input[name=structure_id]').val(),    //Multi Lang 
                 'img_name'              : $('input[name=img_name]').val(),
                 'img_url'               : $('input[name=img_url]').val(),
 
@@ -1258,8 +1367,8 @@
                
                var formData = {
                 'a'                 : 'updateImageStructure',
-                'user_id'           : $('input[name=user_id]').val(),
-                'slide_id'          : $('input[name=slide_id]').val(),
+                //'slide_id'          : $('input[name=slide_id]').val(),
+                'structure_id'      : $('input[name=structure_id]').val(),    //Multi Lang 
                 'structure'         : $('input[name=img-structure]').val()
                };
                  

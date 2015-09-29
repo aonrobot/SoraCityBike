@@ -155,3 +155,90 @@
    src: local("Pero-SemiLight"), url("/SoraCityBike/admin/css/CustomFonts/Pero-SemiLight.otf") format("truetype"); /*non-IE*/  
 }
 
+/*-------------------------------------------------------------- Arabica ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "Arabica";   
+   src: local("Arabica"), url("/SoraCityBike/admin/css/CustomFonts/Arabica.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "Arabica-Italic";   
+   src: local("Arabica-Italic"), url("/SoraCityBike/admin/css/CustomFonts/Arabica-Italic.ttf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- EL-SymbolsStd ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "EL-SymbolsStd";   
+   src: local("EL-SymbolsStd"), url("/SoraCityBike/admin/css/CustomFonts/EL-SymbolsStd.otf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- Guifx-v2-Transports ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "Guifx-v2-Transports";   
+   src: local("Guifx-v2-Transports"), url("/SoraCityBike/admin/css/CustomFonts/Guifx-v2-Transports.ttf") format("truetype"); /*non-IE*/
+}  
+
+/*-------------------------------------------------------------- LayijiMahaniyom-Bao ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "LayijiMahaniyom-Bao-1-2";   
+   src: local("LayijiMahaniyom-Bao-1-2"), url("/SoraCityBike/admin/css/CustomFonts/LayijiMahaniyom-Bao-1-2.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "LayijiMahaniyom-Bao-1-5";   
+   src: local("LayijiMahaniyom-Bao-1-5"), url("/SoraCityBike/admin/css/CustomFonts/LayijiMahaniyom-Bao-1-5.ttf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- NoticeStd ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "NoticeStd";   
+   src: local("NoticeStd"), url("/SoraCityBike/admin/css/CustomFonts/NoticeStd.otf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- Socialico ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "Socialico";   
+   src: local("Socialico"), url("/SoraCityBike/admin/css/CustomFonts/Socialico.otf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "Socialico-Plus";   
+   src: local("Socialico-Plus"), url("/SoraCityBike/admin/css/CustomFonts/Socialico-Plus.otf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- WDB_Bangna ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "WDB_Bangna";   
+   src: local("WDB_Bangna"), url("/SoraCityBike/admin/css/CustomFonts/WDB_Bangna.ttf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- RSU ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "RSU_light";   
+   src: local("RSU_light"), url("/SoraCityBike/admin/css/CustomFonts/RSU_light.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Regular";   
+   src: local("RSU_Regular"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Regular.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Regular";   
+   src: local("RSU_Text_Regular"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Text_Regular.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_BOLD";   
+   src: local("RSU_BOLD"), url("/SoraCityBike/admin/css/CustomFonts/RSU_BOLD.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Bold";   
+   src: local("RSU_Text_Bold"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Text_Bold.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Italic";   
+   src: local("RSU_Text_Italic"), url("/SoraCityBike/admin/css/CustomFonts/RSU_Text_Italic.ttf") format("truetype"); /*non-IE*/  
+}

@@ -101,6 +101,9 @@
 		
 		<!-- Notification JS -->
 		<script src="components/notification/toastr.js"></script>
+		
+		<!-- For CKEditor Font Awesome -->
+		<script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 
 	</head>
 	
