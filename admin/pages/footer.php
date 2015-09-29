@@ -116,28 +116,7 @@
                                                     
                                                     if(!strcmp($default_lang[0], $data['lang_id'])){
                                                     $link_edit = "index.php?p=footer&a=edit&id=".$data['footer_id']."&lang=".$default_lang[0];
-                                        ?>
-<<<<<<< HEAD
-                                        <tr>
-                                            <td><?php echo $data['id'];?></td>
-                                            <td><a href="#" class="name" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalue&c=cont_name" data-title="Edit below here" ><?php echo $data['cont_name'];?></a></td>
-                                            <td><a href="#" class="footerlink" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvaluelink&c=meta_value&where=footer.link" data-title="Edit below here" ><?php echo $footer_link[0];?></a></td>
-                                            <td><a href="#" class="footertarget" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvaluetarget&c=meta_value&where=footer.link_target" data-title="Edit below here"  ><?php echo $footer_link_target[0];?></a></td>
-                                            <td><a href="#" class="footerposition" data-type="select" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalueposition&c=meta_value&where=footer.link_position" data-title="Edit below here"  ><?php echo $footer_link_position[0];?></a></td>
-                                            <td><a href="#" class="footerorder" data-type="text" data-pk="<?php echo $data['id'];?>" data-url="query.php?a=editvalueorder&c=meta_value&where=footer.link_order" data-title="Edit below here" ><?php echo $footer_link_order[0];?></a></td>
-                                            <td>
-                                                <a href="query.php?a=del&w=footer&i=<?php echo $data['id'];?>" class="btn btn-danger"> <i class="fa fa-recycle"></i></a> 
-                                            </td>
-                                        </tr>
-
-                                            <?php } ?>
-                                    </tbody>
-                                </table>
-
-                         </div>
-                          <!-- /.table-responsive -->
-=======
-                                            
+                                        ?>                                            
                                             <tr>
                                                 <td><?php echo $data['footer_title'];?></td>
                                                 <td><a href="#" class="footerlink" data-type="text" data-pk="<?php echo $data['footer_id'];?>" data-url="query.php?a=editvaluefooter&c=footer_link" data-title="Edit below here" > <?php echo $data['footer_link'];?></a></td>
@@ -160,7 +139,6 @@
                               <!-- /.table-responsive -->
                         </div>
                           <!-- /.panel-body -->
->>>>>>> d22e4657e75226bf279d199603c1de1ac305f39c
                     </div>
                      <!-- /.panel -->
 
@@ -226,8 +204,8 @@
 
                                             <?php }; ?>
 
-                                        </div>
 
+                                        </div>
                                         <div class="form-group">
 
                                                 <!-- Pull in Database from language list -->
