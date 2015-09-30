@@ -31,7 +31,7 @@
            
         $img = $database->select("slide_data",array('slide_data_id','slide_data_name','slide_data_img_url'
         
-        ,'slide_data_img_link','slide_data_content','slide_data_content_link'),array("slide_data_id"=>$last_img)); 
+        ,'slide_data_img_link','slide_data_content','slide_data_content_link'),array("slide_data_id"=>$last_img));
     
         echo json_encode($img); 
     }
@@ -131,6 +131,8 @@
     }
     
     else if(!strcmp($a, 'delImgData')){
+        
+        $slide_data_id = $_POST['slide_data_id'];
                 
         $database->delete("slide_data", array("AND" => array("slide_data_id" => $slide_data_id , "lang_id" => $_POST['lang_id'])));  
     }

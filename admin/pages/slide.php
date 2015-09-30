@@ -452,7 +452,7 @@
                                                 <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Slide Structure</h3>
                                                 
                                                 <section id="demo">
-                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("slide","slide_structure",array("slide_id" => $slide_id)); echo $menu[0]; ?> </ol>
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("slide_structure","slide_structure",array("slide_structure_id" => $structure_id)); echo $menu[0]; ?> </ol>
                                                 </section><!-- END #demo -->
                                                 
                                             </div>
