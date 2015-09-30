@@ -132,7 +132,9 @@
     
     else if(!strcmp($a, 'delImgData')){
                 
-        $database->delete("slide_data", array("AND" => array("slide_data_id" => $slide_data_id , "lang_id" => $_POST['lang_id'])));  
+		$slide_data_id = $_POST['slide_data_id'];		
+        
+		$database->delete("slide_data", array("slide_data_id" => $slide_data_id ));
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////

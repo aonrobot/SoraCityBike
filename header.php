@@ -23,7 +23,7 @@ if(!isset($_SESSION['lang_session']))
         $content_db = $database->select("content",['cont_thumbnail'],["id[=]"  => $_GET['id']]);
 
 ?>
-
+<?php $lang_id=$_SESSION['lang_session']; ?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -161,11 +161,12 @@ if(!isset($_SESSION['lang_session']))
 							<ul class="nav navbar-nav">
 
 								<?php 
-								$top_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[=]" => 0]);
-								$sub_menu=$database->select("menu", ["[>]object" => ["obj_id" => "obj_id"]],"*",["parent_id[>]" => 0]);
+								$land = $database->select('menu','menu_id',array('lang_id'=>$lang_id));
+								$top_menu=$database->select("menu_obj", ["[>]object" => ["obj_id" => "obj_id"]],"*",["AND" =>["parent_id[=]" => 0,"menu_id" => $land]]);
+								$sub_menu=$database->select("menu_obj", ["[>]object" => ["obj_id" => "obj_id"]],"*",["AND" =>["parent_id[>]" => 0,"menu_id" => $land]]);
 								?>
 
-
+							
 
 
 

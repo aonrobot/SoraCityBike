@@ -99,7 +99,7 @@ $slide = $database->select("slide_data"
 
 <?php
 
-$lang_id=$_SESSION['lang_session'];
+
 $id=$_GET["id"];
 $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lang_id,"cont_id[=]"=>$id]]);
 ?>
