@@ -472,11 +472,13 @@
     	$pk= $_POST['pk'];
     	$value= $_POST['value'];
 		$column = $_GET['c'];
+
         $database->update("footer", array(
             $column => $value
         
         ), array("footer_id" => $pk
         ));
+
     }
 	
 	

@@ -22,160 +22,250 @@
 }
 @font-face {  
    font-family: "SILPAKORN70NEW";   
-   src: local("SILPAKORN70NEW"), url("/SoraCityBike/admin/css/CustomFonts/SILPAKORN70NEW.ttf") format("truetype"); /*non-IE*/  
+   src: local("SILPAKORN70NEW"), url("/admin/css/CustomFonts/SILPAKORN70NEW.ttf") format("truetype"); /*non-IE*/  
    
    font-family: "SILPAKORN70NEW_Ita";   
-   src: local("SILPAKORN70NEW_Ita"), url("/SoraCityBike/admin/css/CustomFonts/SILPAKORN70NEW_Ita.ttf") format("truetype"); /*non-IE*/  
+   src: local("SILPAKORN70NEW_Ita"), url("/admin/css/CustomFonts/SILPAKORN70NEW_Ita.ttf") format("truetype"); /*non-IE*/  
 }
 
 /*-------------------------------------------------------------- HelveticaNeueLTCom ---------------------------------------------------------*/
 
 @font-face{
    font-family: "HelveticaNeueLTCom-Bd";   
-   src: local("HelveticaNeueLTCom-Bd"), url("/SoraCityBike/admin/css/CustomFonts/HelveticaNeueLTCom-Bd.ttf") format("truetype"); /*non-IE*/  
+   src: local("HelveticaNeueLTCom-Bd"), url("/admin/css/CustomFonts/HelveticaNeueLTCom-Bd.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "HelveticaNeueLTCom-Cn";   
-   src: local("HelveticaNeueLTCom-Cn"), url("/SoraCityBike/admin/css/CustomFonts/HelveticaNeueLTCom-Cn.ttf") format("truetype"); /*non-IE*/  
+   src: local("HelveticaNeueLTCom-Cn"), url("/admin/css/CustomFonts/HelveticaNeueLTCom-Cn.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "HelveticaNeueLTCom-Hv";   
-   src: local("HelveticaNeueLTCom-Hv"), url("/SoraCityBike/admin/css/CustomFonts/HelveticaNeueLTCom-Hv.ttf") format("truetype"); /*non-IE*/  
+   src: local("HelveticaNeueLTCom-Hv"), url("/admin/css/CustomFonts/HelveticaNeueLTCom-Hv.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "HelveticaNeueLTCom-Lt";   
-   src: local("HelveticaNeueLTCom-Lt"), url("/SoraCityBike/admin/css/CustomFonts/HelveticaNeueLTCom-Lt.ttf") format("truetype"); /*non-IE*/  
+   src: local("HelveticaNeueLTCom-Lt"), url("/admin/css/CustomFonts/HelveticaNeueLTCom-Lt.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "HelveticaNeueLTCom-Md";   
-   src: local("HelveticaNeueLTCom-Md"), url("/SoraCityBike/admin/css/CustomFonts/HelveticaNeueLTCom-Md.ttf") format("truetype"); /*non-IE*/  
+   src: local("HelveticaNeueLTCom-Md"), url("/admin/css/CustomFonts/HelveticaNeueLTCom-Md.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "HelveticaNeueLTCom-Th";   
-   src: local("HelveticaNeueLTCom-Th"), url("/SoraCityBike/admin/css/CustomFonts/HelveticaNeueLTCom-Th.ttf") format("truetype"); /*non-IE*/  
+   src: local("HelveticaNeueLTCom-Th"), url("/admin/css/CustomFonts/HelveticaNeueLTCom-Th.ttf") format("truetype"); /*non-IE*/  
 }
 
 /*-------------------------------------------------------------- THSarabunNew ---------------------------------------------------------*/
 
 @font-face{
    font-family: "THSarabunNew-Bold";   
-   src: local("THSarabunNew-Bold"), url("/SoraCityBike/admin/css/CustomFonts/THSarabunNew-Bold.ttf") format("truetype"); /*non-IE*/  
+   src: local("THSarabunNew-Bold"), url("/admin/css/CustomFonts/THSarabunNew-Bold.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "THSarabunNew-BoldItalic";   
-   src: local("THSarabunNew-BoldItalic"), url("/SoraCityBike/admin/css/CustomFonts/THSarabunNew-BoldItalic.ttf") format("truetype"); /*non-IE*/  
+   src: local("THSarabunNew-BoldItalic"), url("/admin/css/CustomFonts/THSarabunNew-BoldItalic.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "THSarabunNew-Italic";   
-   src: local("THSarabunNew-Italic"), url("/SoraCityBike/admin/css/CustomFonts/THSarabunNew-Italic.ttf") format("truetype"); /*non-IE*/  
+   src: local("THSarabunNew-Italic"), url("/admin/css/CustomFonts/THSarabunNew-Italic.ttf") format("truetype"); /*non-IE*/  
 }
 
 /*-------------------------------------------------------------- Quark ---------------------------------------------------------*/
 
 @font-face{
    font-family: "Quark-Bold";   
-   src: local("Quark-Bold"), url("/SoraCityBike/admin/css/CustomFonts/Quark-Bold.otf") format("truetype"); /*non-IE*/  
+   src: local("Quark-Bold"), url("/admin/css/CustomFonts/Quark-Bold.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Quark-Light";   
-   src: local("Quark-Light"), url("/SoraCityBike/admin/css/CustomFonts/Quark-Light.otf") format("truetype"); /*non-IE*/  
+   src: local("Quark-Light"), url("/admin/css/CustomFonts/Quark-Light.otf") format("truetype"); /*non-IE*/  
 }
 
 /*-------------------------------------------------------------- bangna-new ---------------------------------------------------------*/
 
 @font-face{
    font-family: "bangna-new";   
-   src: local("bangna-new"), url("/SoraCityBike/admin/css/CustomFonts/bangna-new.ttf") format("truetype"); /*non-IE*/  
+   src: local("bangna-new"), url("/admin/css/CustomFonts/bangna-new.ttf") format("truetype"); /*non-IE*/  
 }
 
 /*-------------------------------------------------------------- BSRUBANSOMDEJ ---------------------------------------------------------*/
 
 @font-face{
    font-family: "BSRUBANSOMDEJ-Black";   
-   src: local("BSRUBANSOMDEJ-Black"), url("/SoraCityBike/admin/css/CustomFonts/BSRUBANSOMDEJ-Black.otf") format("truetype"); /*non-IE*/  
+   src: local("BSRUBANSOMDEJ-Black"), url("/admin/css/CustomFonts/BSRUBANSOMDEJ-Black.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "BSRUBANSOMDEJ-Bold";   
-   src: local("BSRUBANSOMDEJ-Bold"), url("/SoraCityBike/admin/css/CustomFonts/BSRUBANSOMDEJ-Bold.otf") format("truetype"); /*non-IE*/  
+   src: local("BSRUBANSOMDEJ-Bold"), url("/admin/css/CustomFonts/BSRUBANSOMDEJ-Bold.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "BSRUBANSOMDEJ-BoldOblique";   
-   src: local("BSRUBANSOMDEJ-BoldOblique"), url("/SoraCityBike/admin/css/CustomFonts/BSRUBANSOMDEJ-BoldOblique.otf") format("truetype"); /*non-IE*/  
+   src: local("BSRUBANSOMDEJ-BoldOblique"), url("/admin/css/CustomFonts/BSRUBANSOMDEJ-BoldOblique.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "BSRUBANSOMDEJ-Oblique";   
-   src: local("BSRUBANSOMDEJ-Oblique"), url("/SoraCityBike/admin/css/CustomFonts/BSRUBANSOMDEJ-Oblique.otf") format("truetype"); /*non-IE*/  
+   src: local("BSRUBANSOMDEJ-Oblique"), url("/admin/css/CustomFonts/BSRUBANSOMDEJ-Oblique.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "BSRUBANSOMDEJ-Regular";   
-   src: local("BSRUBANSOMDEJ-Regular"), url("/SoraCityBike/admin/css/CustomFonts/BSRUBANSOMDEJ-Regular.otf") format("truetype"); /*non-IE*/  
+   src: local("BSRUBANSOMDEJ-Regular"), url("/admin/css/CustomFonts/BSRUBANSOMDEJ-Regular.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "BSRUBANSOMDEJ-SemiBold";   
-   src: local("BSRUBANSOMDEJ-SemiBold"), url("/SoraCityBike/admin/css/CustomFonts/BSRUBANSOMDEJ-SemiBold.otf") format("truetype"); /*non-IE*/  
+   src: local("BSRUBANSOMDEJ-SemiBold"), url("/admin/css/CustomFonts/BSRUBANSOMDEJ-SemiBold.otf") format("truetype"); /*non-IE*/  
 }
 
 /*-------------------------------------------------------------- Oxygen ---------------------------------------------------------*/
 
 @font-face{
    font-family: "Oxygen";   
-   src: local("Oxygen"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen"), url("/admin/css/CustomFonts/Oxygen.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Oxygen-Bold";   
-   src: local("Oxygen-Bold"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen-Bold.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen-Bold"), url("/admin/css/CustomFonts/Oxygen-Bold.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Oxygen-BoldItalic";   
-   src: local("Oxygen-BoldItalic"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen-BoldItalic.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen-BoldItalic"), url("/admin/css/CustomFonts/Oxygen-BoldItalic.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Oxygen-Italic";   
-   src: local("Oxygen-Italic"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen-Italic.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen-Italic"), url("/admin/css/CustomFonts/Oxygen-Italic.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Oxygen-Light";   
-   src: local("Oxygen-Light"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen-Light.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen-Light"), url("/admin/css/CustomFonts/Oxygen-Light.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Oxygen-LightItalic";   
-   src: local("Oxygen-LightItalic"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen-LightItalic.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen-LightItalic"), url("/admin/css/CustomFonts/Oxygen-LightItalic.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Oxygen-Thin";   
-   src: local("Oxygen-Thin"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen-Thin.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen-Thin"), url("/admin/css/CustomFonts/Oxygen-Thin.ttf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Oxygen-ThinItalic";   
-   src: local("Oxygen-ThinItalic"), url("/SoraCityBike/admin/css/CustomFonts/Oxygen-ThinItalic.ttf") format("truetype"); /*non-IE*/  
+   src: local("Oxygen-ThinItalic"), url("/admin/css/CustomFonts/Oxygen-ThinItalic.ttf") format("truetype"); /*non-IE*/  
 }
 
 /*-------------------------------------------------------------- Pero ---------------------------------------------------------*/
 
 @font-face{
    font-family: "Pero-Bold";   
-   src: local("Pero-Bold"), url("/SoraCityBike/admin/css/CustomFonts/Pero-Bold.otf") format("truetype"); /*non-IE*/  
+   src: local("Pero-Bold"), url("/admin/css/CustomFonts/Pero-Bold.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Pero-ExtraLight";   
-   src: local("Pero-ExtraLight"), url("/SoraCityBike/admin/css/CustomFonts/Pero-ExtraLight.otf") format("truetype"); /*non-IE*/  
+   src: local("Pero-ExtraLight"), url("/admin/css/CustomFonts/Pero-ExtraLight.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Pero-Light";   
-   src: local("Pero-Light"), url("/SoraCityBike/admin/css/CustomFonts/Pero-Light.otf") format("truetype"); /*non-IE*/  
+   src: local("Pero-Light"), url("/admin/css/CustomFonts/Pero-Light.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Pero-Regular";   
-   src: local("Pero-Regular"), url("/SoraCityBike/admin/css/CustomFonts/Pero-Regular.otf") format("truetype"); /*non-IE*/  
+   src: local("Pero-Regular"), url("/admin/css/CustomFonts/Pero-Regular.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Pero-SemiBold";   
-   src: local("Pero-SemiBold"), url("/SoraCityBike/admin/css/CustomFonts/Pero-SemiBold.otf") format("truetype"); /*non-IE*/  
+   src: local("Pero-SemiBold"), url("/admin/css/CustomFonts/Pero-SemiBold.otf") format("truetype"); /*non-IE*/  
 }
 @font-face{
    font-family: "Pero-SemiLight";   
-   src: local("Pero-SemiLight"), url("/SoraCityBike/admin/css/CustomFonts/Pero-SemiLight.otf") format("truetype"); /*non-IE*/  
+   src: local("Pero-SemiLight"), url("/admin/css/CustomFonts/Pero-SemiLight.otf") format("truetype"); /*non-IE*/  
 }
+
+/*-------------------------------------------------------------- Arabica ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "Arabica";   
+   src: local("Arabica"), url("/admin/css/CustomFonts/Arabica.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "Arabica-Italic";   
+   src: local("Arabica-Italic"), url("/admin/css/CustomFonts/Arabica-Italic.ttf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- EL-SymbolsStd ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "EL-SymbolsStd";   
+   src: local("EL-SymbolsStd"), url("/admin/css/CustomFonts/EL-SymbolsStd.otf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- Guifx-v2-Transports ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "Guifx-v2-Transports";   
+   src: local("Guifx-v2-Transports"), url("/admin/css/CustomFonts/Guifx-v2-Transports.ttf") format("truetype"); /*non-IE*/
+}  
+
+/*-------------------------------------------------------------- LayijiMahaniyom-Bao ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "LayijiMahaniyom-Bao-1-2";   
+   src: local("LayijiMahaniyom-Bao-1-2"), url("/admin/css/CustomFonts/LayijiMahaniyom-Bao-1-2.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "LayijiMahaniyom-Bao-1-5";   
+   src: local("LayijiMahaniyom-Bao-1-5"), url("/admin/css/CustomFonts/LayijiMahaniyom-Bao-1-5.ttf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- NoticeStd ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "NoticeStd";   
+   src: local("NoticeStd"), url("/admin/css/CustomFonts/NoticeStd.otf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- Socialico ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "Socialico";   
+   src: local("Socialico"), url("/admin/css/CustomFonts/Socialico.otf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "Socialico-Plus";   
+   src: local("Socialico-Plus"), url("/admin/css/CustomFonts/Socialico-Plus.otf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- WDB_Bangna ---------------------------------------------------------*/
+@font-face{
+   font-family: "WDB_Bangna";   
+   src: local("WDB_Bangna"), url("/admin/css/CustomFonts/WDB_Bangna.ttf") format("truetype"); /*non-IE*/  
+}
+
+/*-------------------------------------------------------------- RSU ---------------------------------------------------------*/
+
+@font-face{
+   font-family: "RSU_light";   
+   src: local("RSU_light"), url("/admin/css/CustomFonts/RSU_light.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Regular";   
+   src: local("RSU_Regular"), url("/admin/css/CustomFonts/RSU_Regular.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Regular";   
+   src: local("RSU_Text_Regular"), url("/admin/css/CustomFonts/RSU_Text_Regular.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_BOLD";   
+   src: local("RSU_BOLD"), url("/admin/css/CustomFonts/RSU_BOLD.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Bold";   
+   src: local("RSU_Text_Bold"), url("/admin/css/CustomFonts/RSU_Text_Bold.ttf") format("truetype"); /*non-IE*/  
+}
+@font-face{
+   font-family: "RSU_Text_Italic";   
+   src: local("RSU_Text_Italic"), url("/admin/css/CustomFonts/RSU_Text_Italic.ttf") format("truetype"); /*non-IE*/  
+}
+
+
+
 
 
 
@@ -218,8 +308,9 @@ p {
     font-family: pero , verdana, helvetica, sans-serif;
     font-weight: 300;
     font-size: 1em;
-    line-height: 1.6;
+    line-height:1.89;
     color: #000;
+
 }
 
 hr {
@@ -330,15 +421,16 @@ hr {
     margin-top: 3em;
 }
 .category-box{
-    margin-top: 30px;   
-    padding-top:1em ;
-    height: 400px;
+
+   padding-left:7px;
+  padding-right:7px;
+    height: 420px;
     overflow: hidden;
 }
 
 .head-content{
-    padding-right: 5em;
-    padding-left: 5em;
+    padding-right: 2em;
+    padding-left: 2em;
 }
 .title_content{
     margin-bottom: 3em;
@@ -352,10 +444,22 @@ hr {
 .index-img{
     display: inline-block;
     width: 100%;
-	height:200px;
+	height: 237px;
 
 }
-
+@media screen and (max-width:1200px) and (min-width:1000px){
+	.index-img{
+    
+	height: 171px;
+	
+}
+	
+	.category-box{
+	
+		height: 345px;
+	}
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////*/
 @media only screen and (max-width: 1000px){
 
 	.index-img{
@@ -366,7 +470,46 @@ hr {
 	.category-box{
 		height:100%;
 	}
+    #results-show-more{
+    margin-bottom: 4em;
+  }
+
 } 
+@media only screen and (max-width: 768px){
+.footer-br{
+  display: block;
+}
+	.dropdownmenu{
+		text-align:center;
+	}
+  .logo_img{
+    max-height: 2em;
+    margin-top: -5px;
+
+}
+.brand-time{
+  margin-top: 10px;  
+}
+.brand-social{
+  
+}
+.top_line{
+  margin: 2px;
+}
+#stickyheader{
+  margin: 0px;
+}
+.navbar-fixed-bottom{
+  height: 15px !important;
+}
+} 
+
+
+
+
+
+
+
 .navbar{
      z-index: 101;
 }
@@ -382,6 +525,14 @@ hr {
     font-size: 15px;
     font-weight: 600;
     text-decoration: underline;
+    line-height:1.3;
+    
+}
+
+.text-headerbox{
+    width:100%;
+  height:4em;
+  padding-bottom:20px;
     
 }
 .main_content{
@@ -421,10 +572,16 @@ footer p {
 
 }
 
-
 /*//////////////////////////////////////////////////////////////////////////////////*/
 
 @media screen and (min-width:768px) {
+
+  .br-header{
+  display: none;
+}
+   #results-show-more{
+    margin-bottom: 0em;
+  }
     .hid_br{
         display: none;
     }
@@ -501,7 +658,7 @@ margin: 0px;
 
 }
 .simple-caption>p{
-    line-height: 70%;
+    line-height: 0.99;
 
 }
 .nav>li>div {
@@ -509,7 +666,7 @@ margin: 0px;
     padding-bottom: 18px;
     padding-right: 10px;
     padding-left: 10px;*/
-    padding: 18px;
+    padding: 15px;
     position: relative;
     color: #777;
     text-decoration: none;
@@ -537,25 +694,29 @@ margin: 0px;
     font-size: 1em;
 }
 .content{
-    margin: auto;
+    
     margin-top: 2em;
     margin-bottom: 5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.footer-br{
+  display: none;
 }
 
+
+}
 .navbar-fixed-bottom{
         position: fixed;
       background-color: #eee;
       height: 30px;
-     
-
-     
-
 }
 .footer-bar{
-    
+     color:#666666;
     vertical-align:middle;
     margin-top: -3px;
 }
+
 .footer-text{
     
     letter-spacing: 2px;
@@ -569,6 +730,21 @@ margin: 0px;
 
 }
 
+@media screen and (max-width: 486px){
+	.footer-text{
+    
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-left: 10px;
+    font-weight: 100;
+	}
+	.footer-link{
+    text-decoration: none; 
+    color: #000;
+
+	}
+
+}
 .footer-link:visited {
     text-decoration: none;
     color: #000;
@@ -583,10 +759,9 @@ margin: 0px;
     text-decoration: none;
     color: #000;
 }
-}
+
 .share-box{
   width:400px;
-  left:40%;
   position:absolute;
   font-size:13px;
   margin-bottom: 50px;
@@ -734,10 +909,10 @@ iframe{
 	max-height: 10%;
 	
 
--webkit-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
-   -moz-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
-     -o-transition:  max-height .9s cubic-bezier(0, 1, 0, 1) -.1s; 
-	transition: max-height .9s cubic-bezier(0, 1, 0, 1) -.1s;
+-webkit-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
+   -moz-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
+     -o-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9); 
+  transition: max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
    
 }
 
@@ -748,10 +923,10 @@ iframe{
 	max-height:100%;
 
 
-   	-webkit-transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000);
-	-moz-transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
-	-o-transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000); 	 
-    transition-timing-function:cubic-bezier(0.420, 0.000, 0.580, 1.000);
+   	-webkit-transition-timing-function:cubic-bezier(1, 0.000, 0.9, 1.000);
+  -moz-transition-timing-function: cubic-bezier(1, 0.000, 0.9, 1.000);
+  -o-transition-timing-function:cubic-bezier(1, 0.000, 0.9, 1.000);    
+    transition-timing-function:cubic-bezier(1, 0.000, 0.9, 1.000);
 	
 	
 	

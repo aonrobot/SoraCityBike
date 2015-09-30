@@ -85,8 +85,15 @@ $slide = $database->select("slide_data"
 
 <!-- ////////////////////////////////////    THIS  IS END OF SLIDE       ///////////////////////////////////////////////////// -->
 
-<hr style="max-width:70%;margin-top:2em;">
+<hr class="endofslide" style="max-width:70%;margin-top:2em;">
 
+<script>
+	if( $('.itemzoom').is(':empty') ) {
+		
+	}else{
+		$('.endofslide').css("margin-top","0.2em");
+	}
+</script>
 <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
 
 
@@ -99,7 +106,7 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
 
 <div class="content row">
   <div class="pero-font container main_content">
-    <div class="title_content"><h4 class="pero-font large-font underline "><?php echo $datas[0]["cont_title"]; ?></h4></div>
+   
     <?php 
     echo $datas[0]["cont_content"];
     
@@ -108,15 +115,16 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
     <div class="share-box">
       
       <ul class="rrssb-buttons clearfix">
-       <p>share</p><br> 
-          <?php echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.urlencode('https://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']).'" class="popup">'?>
-            <span class="rrssb-text">facebook</span>
+
+       <p>share :
+          <?php echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.curPageURL().'" class="popup">'?>
+            <span class="rrssb-text" style="color:#666666; font-style: italic;">facebook</span>
           </a>
         /
           <?php echo '<a href="https://twitter.com/intent/tweet?text='.urlencode($datas[0]["cont_title"]).'%20'.urlencode(curPageURL()).'" class="popup">' ?>
-          <span class="rrssb-text">twitter</span>
+          <span class="rrssb-text" style="color:#666666; font-style: italic;">twitter</span>
         </a>
-
+		</p>
     </ul>
 
   

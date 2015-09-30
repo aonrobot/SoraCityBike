@@ -10,7 +10,6 @@
 
 <!-- slide with zoom picture -->
 <?php 
-echo $_GET['id'];
  $datas = $database->select("category",["cat_id","slide_id","cat_name"],["cat_id[=]"  => $_GET['id']]);
 
 foreach ($datas as $key) {
@@ -115,14 +114,22 @@ function hideImg(obj) {
 
 <!-- ////////////////////////////////////    THIS  IS END OF SLIDE       ///////////////////////////////////////////////////// -->
 
-        <hr style="max-width:70%;margin-top:2em;">
+        <hr class="endofslide" style="max-width:70%;margin-top:2em;">
+
+		<script>
+			if( $('.itemzoom').is(':empty') ) {
+				
+			}else{
+				$('.endofslide').css("margin-top","0.2em");
+			}
+		</script>
 
 <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
 
 
 <div class="content row">
   <div class="pero-font container main_content" align="center">
-        <h4 class="pero-font large-font underline   ">categorys</h4><br>
+        <center style="padding-bottom:2.5em;"><h4 class="pero-font large-font underline   ">categories</h4><br></center>
      <?php 
            $lang_id=$_SESSION['lang_session'];
            $id=$_GET["id"];
@@ -142,23 +149,25 @@ function hideImg(obj) {
             //echo $data["cont_order"];
                 if ($data['cat_id']==$id){
               $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
-
+              $link = "'".$site_path."/content/".$data['cont_id']."/".$a[0]["cont_slug"]."'"; 
               ?>
 
               <div class="col-md-4 category-box">
-                <img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/>
-                <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
-                <p class="pero-font text-content">
-                  <?php echo $data["cont_description"]; ?> 
-                  <?php echo '<a href="content.php?id='.$data["cont_id"].'"><b>READ MORE</b></a>'; ?>
-                </p>
-              </div>
+
+                  <a href=<?php echo $link?>><img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/></a>
+                  <div class="text-headerbox"><a href=<?php echo $link?>><p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p></a></div>
+                  <span class="pero-font text-content" style="padding-top:30px;">
+                    <?php echo $data["cont_description"]; ?>
+                   </span>
+                   <p class="pero-font text-content"><?php echo '<a href='.$link.'><b>read more</b></a>' ?></p>
+                  
+                </div>
 
               <?php }} ?>
 
 </div>
 </div>
-
+<hr style="max-width:70%;margin-top:-3em;">
 
 <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
 

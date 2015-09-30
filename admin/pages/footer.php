@@ -140,6 +140,7 @@
                               <!-- /.table-responsive -->
                         </div>
                           <!-- /.panel-body -->
+
                     </div>
                      <!-- /.panel -->
 
@@ -322,6 +323,7 @@
             $.fn.editable.defaults.mode = 'inline';
     
             $('.name').editable({});
+
             $('.footerlink').editable({});
             $('.footertarget').editable({
     

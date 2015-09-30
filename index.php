@@ -18,8 +18,9 @@
       <a href=<?php echo "'".$a['slide_data_img_link']."'"; ?> style="margin:0px;"><img class="item" src=<?php echo "'".$a['slide_data_img_url']."'"; ?>></a>
       <a href=<?php echo "'".$a['slide_data_content_link']."'"; ?> style="margin:0px;">
       <span class="caption simple-caption" >
-        <p class='pero-font slide-header' style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name']; ?></p>  
-        <?php echo $a['slide_data_content']; ?>  
+        <p class='pero-font slide-header' style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name'] ?></p>  
+        <?php echo $a['slide_data_content']; ?> 
+
         <p class="readmore_btn">read more</p>
       </span>
       </a>
@@ -54,7 +55,7 @@
               </div>
             </div>
           </div>
-          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:1em;"><font>show films </font><span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
+          <button class="bg-gray pero-font btn btn-default" id="aa" style="margin-top:-0.45em;"><font>show films </font><span><img id="video_btn" class="dropdown-span" src=<?php echo '"'.$site_path.'/components/img/down-btn.png" /'?>></span></button> 
         </div>
 
         <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
@@ -99,7 +100,7 @@
       $('#aa').click('click', function (e) {
       e.preventDefault();
       
-      var arrow = $(".dropdown-span");
+      var arrow = $("#video_btn");
           $('#hideMe').slideToggle(function() {
             if ($('#hideMe').css('display') == 'none') {
         $('#aa').find("font").text('show films ');
@@ -134,7 +135,7 @@
         <!-- ////////////////////////////////////    THIS  IS CONTENT       ///////////////////////////////////////////////////// -->
         <div class="content row">
          <div class="container head-content" id="results" align="center">
-          <center><h4 class="pero-font large-font underline ">stories</h4></center>
+          <center style="padding-bottom:2.5em;"><h4 class="pero-font large-font underline ">stories</h4></center>
           
 
 
@@ -170,20 +171,22 @@
                 <div class="col-md-4 category-box">
 
                   <a href=<?php echo $link?>><img src=<?php echo '"'.$a[0]['cont_thumbnail'].'"';?> class="index-img"/></a>
-                  <p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p>
-                  <p class="pero-font text-content">
-                    <?php echo $data["cont_description"]; ?> 
-                     <?php echo '<a href='.$link.'><b>READ MORE</b></a>'; ?>
-                  </p>
+                  <div class="text-headerbox"><a href=<?php echo $link?>><p class="pero-font text-header"><?php echo $data["cont_title"]; ?></p></a></div>
+                  <span class="pero-font text-content" style="padding-top:30px;">
+                    <?php echo $data["cont_description"]; ?>
+                   </span>
+                   <p class="pero-font text-content"><?php echo '<a href='.$link.'><b>read more</b></a>' ?></p>
+                  
                 </div>
 
                 <?php }}  ?>
 
 
               </div> 
-          <center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" style="margin-top:0em;">show more</a></center>
+          <center><a href="#" title="" id="results-show-more" class="bg-gray pero-font btn btn-default" >show more</a></center>
     
             </div>
+      <hr style="max-width:70%;margin-top:-3em;">
 
             <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
 
@@ -204,8 +207,8 @@
                 
              <script>   
         $(document).ready(function(){
-          var limit =6;
-          var per_page = 6;
+          var limit =9;
+          var per_page = 9;
           
           jQuery('#results> div.category-box:gt('+(limit-1)+')').hide();
           

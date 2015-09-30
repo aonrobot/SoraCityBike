@@ -43,14 +43,16 @@ if(!isset($_SESSION['lang_session']))
 
 		if(empty($_GET['id'])){
 			echo 'sora city';
-
 		}
 		else{
-
 			$title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$_GET['id']]]);
-
-			echo $title[0]["cont_title"].' | Sora City Bike';
+			if (empty($title[0]["cont_title"])) {
+				$title = $database->select("category","*",["cat_id[=]"=>$_GET['id']]);
+				echo $title[0]["cat_name"];
+			}
+			else{echo $title[0]["cont_title"];}
 		}
+
 		?>
 	</title>
 	
@@ -65,6 +67,7 @@ if(!isset($_SESSION['lang_session']))
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/sora-default.css'.'"'; ?> rel="stylesheet">
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/leo.css'.'"'; ?> rel="stylesheet">
 	<link href=<?php echo '"'.$site_path.'/'.'components/css/cobox.css'.'"'; ?> rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" >
 	<script src=<?php echo '"'.$site_path.'/'.'components/js/jquery.js'.'"'; ?>></script>
 
 </head>
@@ -77,7 +80,7 @@ if(!isset($_SESSION['lang_session']))
 
 	<!-- ////////////////////////////////////    THIS  IS TOP MENU       ///////////////////////////////////////////////////// -->
 	<div class="row row_navbar">
-		<div class="col-xs-4 brand-time " align="center">
+		<div class="col-md-4 col-xs-5 brand-time " align="center">
 			<?php 
 
 			echo '<span class=" pero-font uppercase time_text"><b>'.date('D j M').'</b></span>';
@@ -86,7 +89,7 @@ if(!isset($_SESSION['lang_session']))
 
 			?>
 		</div>
-		<div class="col-xs-4 col-xs-offset-4 brand-social" align="center">
+		<div class="col-md-4 col-md-offset-4 col-xs-5 col-xs-offset-2 brand-social" align="center" style="left:-6%;">
 			<a href="https://www.facebook.com/soracity" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-fb')" 
 				onmouseout="logo_mouseout('icon-fb')" id="icon-fb" src=<?php echo '"'.$site_path.'/components/img/icon/icon-fb-type2.png"/'?>></a>
 
@@ -98,7 +101,7 @@ if(!isset($_SESSION['lang_session']))
 
 						<a href="https://www.vimeo.com/soracity/" target="_blank"><img class="social_icon" onmouseover="logo_mousein('icon-ve')" 
 							onmouseout="logo_mouseout('icon-ve')" id="icon-ve" src=<?php echo '"'.$site_path.'/components/img/icon/icon-ve-type2.png"/'?>></a>
-
+							<br class="br-header">
 							<?php
 
 							foreach ($lang as $a) {?>
@@ -149,7 +152,7 @@ if(!isset($_SESSION['lang_session']))
 								<span class="icon-bar"></span>
 
 							</button>
-							<a class="pero-font navbar-brand" href="index.php"><b>Sora City Bike</b></a>
+							<a class="pero-font navbar-brand" href=<?php echo '"'.$site_path.'/index.php"'; ?>><img class="logo_img" src=<?php echo '"'.$site_path.'/components/img/LOGO-(with-cloud)2.png"/'?>></a>
 						</div>
 
 						<!-- Collect the nav links, forms, and other content for toggling -->
@@ -223,14 +226,12 @@ if(!isset($_SESSION['lang_session']))
 															if ($sub==$top) {
 																if ($a['obj_type']=='content')
 																{ 
-																	$datas = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $menu['obj_url']]);
-
-																	echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
+																	$dat = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $a['obj_url']]);
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$dat[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 																elseif ($a['obj_type']=='category') { 
-																	$datas = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $menu['obj_url']]);
-
-																	echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$datas[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
+																	$dat2 = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $a['obj_url']]);
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$dat2[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 
 															}
@@ -263,19 +264,22 @@ if(!isset($_SESSION['lang_session']))
 								
 								<nav class="navbar navbar-default navbar-fixed-bottom">
 									
-										<div class="pero-font col-xs-2 footer-bar" align="center">
+										<div class="pero-font col-xs-3 footer-bar" align="left" style="padding-left:3.7%;">
 											<h5>©soracity 2015</h5>
 										</div>
-										<div class="pero-font col-xs-8" align="center">
+										<div class="pero-font col-xs-6" align="center">
 										<?php 
 											$footer_link=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link']]);
 											//$footer_link_target=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link_target']]);
+											$i=0;
 											foreach ($footer_link as $key ) {
+												
+												if ($i==2) {echo '<br class="footer-br">';}
 												echo '<a href="'.$key['meta_value'].'" class="footer-link pero-font "><span class="footer-text">'.$key['cont_name'].'</span></a>';
-											
+												$i=$i+1;
 										 } ?>
 										</div> 
-										<div class="pero-font col-xs-2 footer-bar" align="center">
+										<div class="pero-font col-xs-3 footer-bar" align="right" style="padding-right:3.7%;">
 											<h5>issue 1</h5>
 										</div>
 									
