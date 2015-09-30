@@ -453,6 +453,7 @@
                                                 
                                                 <section id="demo">
                                                     <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("slide_structure","slide_structure",array("slide_structure_id" => $structure_id)); echo $menu[0]; ?> </ol>
+
                                                 </section><!-- END #demo -->
                                                 
                                             </div>
@@ -593,10 +594,9 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Slide Structure</h3>
-                                                
+                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Slides Structure</h3>
                                                 <section id="demo">
-                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("content_meta",'meta_value',array("meta_key"=>'slide:'.$slide_id)); echo $menu[0]; ?> </ol>
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("slide_structure","slide_structure",array("slide_structure_id" =>    $structure_id)); var_dump($database->error()); echo $menu[0]; ?> </ol>
                                                 </section><!-- END #demo -->
                                                 
                                             </div>

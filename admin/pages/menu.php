@@ -256,6 +256,7 @@
         
         $("#create-item").click(function(){
             
+			$('#url').val($('#item').val());
             //---------------------------------------  POST FORM -----------------------------------
             var formData = {
                 'a'                 : 'addObject',
@@ -362,13 +363,7 @@
 
            });
         
-        
-    });     
-    
-    //Menu II
-    
-   $(document).on('ready readyAgain', function(){
-            var ns = $('ol.sortable').nestedSortable({
+         var ns = $('ol.sortable').nestedSortable({
                 forcePlaceholderSize: true,
                 handle: 'div',
                 helper: 'clone',
@@ -479,7 +474,9 @@
                 });
 
             });
-            
-        });         
+    });     
+    
+    //Menu II
+  
     
 </script>

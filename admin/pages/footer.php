@@ -116,8 +116,10 @@
                                                     
                                                     if(!strcmp($default_lang[0], $data['lang_id'])){
                                                     $link_edit = "index.php?p=footer&a=edit&id=".$data['footer_id']."&lang=".$default_lang[0];
+
                                         ?>
                                             
+
                                             <tr>
                                                 <td><?php echo $data['footer_title'];?></td>
                                                 <td><a href="#" class="footerlink" data-type="text" data-pk="<?php echo $data['footer_id'];?>" data-url="query.php?a=editvaluefooter&c=footer_link" data-title="Edit below here" > <?php echo $data['footer_link'];?></a></td>
@@ -206,8 +208,8 @@
 
                                             <?php }; ?>
 
-                                        </div>
 
+                                        </div>
                                         <div class="form-group">
 
                                                 <!-- Pull in Database from language list -->
@@ -325,8 +327,10 @@
             $('.name').editable({});
 
             $('.footerlink').editable({});
+
             $('.footertarget').editable({
     
+
                 source : [{
                     text : '_self',
                     value : '_self'

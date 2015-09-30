@@ -22,7 +22,9 @@
            ));  
            
         $obj_name = $database->select("object",array('obj_id','obj_name','obj_url','obj_type'),array("obj_id"=>$last_obj)); 
-    
+		
+		
+			
         echo json_encode($obj_name); 
     }
     
@@ -77,7 +79,8 @@
         
         $menu_id = $_POST['menu_id'];
 
-        $database->update("menu", array("menu_structure" => $_POST['structure']),array("menu_id" => $menu_id));            
+        $database->update("menu", array("menu_structure" => $_POST['structure']),array("menu_id" => $menu_id));      
+
     }
     else{
         
@@ -99,7 +102,7 @@
             
             $menu_id = $_GET['menu_id'];
             
-            console.log('Hello');
+       
         
             $datas = json_decode($_POST['data'],true);
         
@@ -146,12 +149,13 @@
                 }
         
                 $i++;
-            }
-            
-            //Delete All Duplicate Row (menu_id, obj_id, menu_order) Why it Insert many data???
-            $database->query("DELETE FROM menu_obj WHERE menu_obj_id NOT IN(SELECT MIN(menu_obj_id) FROM menu_obj GROUP BY menu_id, obj_id, menu_order)");
-
+            } 
+           //Delete All Duplicate Row (menu_id, obj_id, menu_order) Why it Insert many data???
+            $database->query("DELETE FROM menu_obj WHERE menu_obj_id NOT IN(SELECT MIN(menu_obj_id) FROM menu_obj GROUP BY menu_id, obj_id,parent_id, menu_order)");
         }
+		  
+
+           
     }
     
 
