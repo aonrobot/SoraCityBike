@@ -11,6 +11,8 @@
 <!-- slide with zoom picture -->
 <?php 
  $datas = $database->select("category",["cat_id","slide_id","cat_name"],["cat_id[=]"  => $_GET['id']]);
+ $lang_id=$_SESSION['lang_session'];
+           $id=$_GET["id"];
 
 foreach ($datas as $key) {
  $slide_id= $key['slide_id'];
@@ -129,11 +131,11 @@ function hideImg(obj) {
 
 <div class="content row">
   <div class="pero-font container main_content" align="center">
-        <center style="padding-bottom:2.5em;"><h4 class="pero-font large-font underline   ">categories</h4><br></center>
-     <?php 
-           $lang_id=$_SESSION['lang_session'];
-           $id=$_GET["id"];
+    <?php 
+            $cat_title = $database->select("category_translation","*",["cat_id[=]"=>$_GET['id']]);
 
+            echo '<center style="padding-bottom:2.5em;"><h4 class="pero-font large-font underline   ">'.$cat_title[0]["cat_title"].'</h4><br></center>';
+     
 
            $datas = $database->select("category_relationships", 
             array("[>]category" => array("cat_id" => "cat_id"),"[>]content_translation" => "cont_id")
