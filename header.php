@@ -266,33 +266,44 @@ if(!isset($_SESSION['lang_session']))
 								<nav class="navbar navbar-default navbar-fixed-bottom">
 										<div class="pero-font col-xs-3 footer-bar" align="left" style="padding-left:3.7%;">
 											<?php 
-											$footer_left = $database->select("footer", ["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "left"]]);
-											if($footer_left ==null)
-												echo "";
-											else
-												foreach($footer_left as $key)
-												echo '<h5><a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a></h5>';
+											$footer_left = $database->select("footer", 
+											["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",
+											
+												["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "left"],"ORDER" => "footer.footer_order"]
+												
+											);
+											foreach($footer_left as $key){
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+											}
 											 ?>
 										</div>
 										<div class="pero-font col-xs-6" align="center">
-											<?php 
-											$footer_center = $database->select("footer", ["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "center"]]);
-											if($footer_center ==null)
-												echo "";
-											else
-												foreach($footer_center as $key)
+											
+											 <?php 
+											$footer_center = $database->select("footer", 
+											["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",
+											
+												["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "center"],"ORDER" => "footer.footer_order"]
+												
+											);
+											foreach($footer_center as $key){
 												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+											}
 											 ?>
 										</div> 
 										<div class="pero-font col-xs-3 footer-bar" align="right" style="padding-right:3.7%;">
 											<?php 
-											$footer_right = $database->select("footer", ["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "right"]]);
-											if($footer_right ==null)
-												echo "";
-											else
-												foreach($footer_right as $key)
-												echo '<h5><a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a></h5>';
+											$footer_rights = $database->select("footer", 
+											["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",
+											
+												["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "right"],"ORDER" => "footer.footer_order"]
+												
+											);
+											foreach($footer_rights as $key){
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+											}
 											 ?>
+											 
 										</div>
 									
 								</nav>
