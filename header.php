@@ -161,9 +161,9 @@ if(!isset($_SESSION['lang_session']))
 							<ul class="nav navbar-nav">
 
 								<?php 
-								$land = $database->select('menu','menu_id',array('lang_id'=>$lang_id));
-								$top_menu=$database->select("menu_obj", ["[>]object" => ["obj_id" => "obj_id"]],"*",["AND" =>["parent_id[=]" => 0,"menu_id" => $land]]);
-								$sub_menu=$database->select("menu_obj", ["[>]object" => ["obj_id" => "obj_id"]],"*",["AND" =>["parent_id[>]" => 0,"menu_id" => $land]]);
+								$lang_menu = $database->select('menu','menu_id',array('lang_id'=>$lang_id));
+								$top_menu=$database->select("menu_obj", ["[>]object" => ["obj_id" => "obj_id"]],"*",["AND" =>["parent_id[=]" => 0,"menu_id" => $lang_menu]]);
+								$sub_menu=$database->select("menu_obj", ["[>]object" => ["obj_id" => "obj_id"]],"*",["AND" =>["parent_id[>]" => 0,"menu_id" => $lang_menu]]);
 								?>
 
 							
@@ -264,24 +264,46 @@ if(!isset($_SESSION['lang_session']))
 								<div id="stickyalias"></div>
 								
 								<nav class="navbar navbar-default navbar-fixed-bottom">
-									
 										<div class="pero-font col-xs-3 footer-bar" align="left" style="padding-left:3.7%;">
-											<h5>©soracity 2015</h5>
+											<?php 
+											$footer_left = $database->select("footer", 
+											["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",
+											
+												["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "left"],"ORDER" => "footer.footer_order"]
+												
+											);
+											foreach($footer_left as $key){
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+											}
+											 ?>
 										</div>
 										<div class="pero-font col-xs-6" align="center">
-										<?php 
-											$footer_link=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link']]);
-											//$footer_link_target=$database->select("content", ["[>]content_meta" => ["id" => "cont_id"]],["cont_name","meta_key","meta_value"],["AND"=>["cont_type[=]"=>'footer',"meta_key[=]"=>'footer.link_target']]);
-											$i=0;
-											foreach ($footer_link as $key ) {
+											
+											 <?php 
+											$footer_center = $database->select("footer", 
+											["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",
+											
+												["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "center"],"ORDER" => "footer.footer_order"]
 												
-												if ($i==2) {echo '<br class="footer-br">';}
-												echo '<a href="'.$key['meta_value'].'" class="footer-link pero-font "><span class="footer-text">'.$key['cont_name'].'</span></a>';
-												$i=$i+1;
-										 } ?>
+											);
+											foreach($footer_center as $key){
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+											}
+											 ?>
 										</div> 
 										<div class="pero-font col-xs-3 footer-bar" align="right" style="padding-right:3.7%;">
-											<h5>issue 1</h5>
+											<?php 
+											$footer_rights = $database->select("footer", 
+											["[>]footer_translation" => ["footer_id" => "footer_id"]],"*",
+											
+												["AND" =>["lang_id[=]" => $lang_id,"footer_position" => "right"],"ORDER" => "footer.footer_order"]
+												
+											);
+											foreach($footer_rights as $key){
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+											}
+											 ?>
+											 
 										</div>
 									
 								</nav>
