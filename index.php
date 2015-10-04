@@ -9,11 +9,13 @@
         <div class="items-wrapper">
           <?php 
 		 
-		  $lang_menu = $database->select('slide_data','slide_id',array('lang_id'=>$lang_id));
-          $slide=$database->select("slide_data"
+			$lang_menu = $database->select('slide_data','slide_id',array('lang_id'=>$lang_id));
+			$slide=$database->select("slide_data"
             , ["[>]slide" => ["slide_id" => "slide_id"]]
             ,"*"
-            ,["AND" =>["lang_id[=]" => $lang_id,"slide_type[=]" => 'home'],"ORDER"=>"slide_data_order"]);
+            ,["AND" =>["lang_id[=]" => $lang_id,"slide_type[=]" => 'home' ,"slide_data_name[!]" => '-'],"ORDER"=>"slide_data_order"]);
+			
+
       foreach ($slide as $a) {?><!-- 
     --><div class="item" >
     <div class="slidein">
