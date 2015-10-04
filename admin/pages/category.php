@@ -193,7 +193,7 @@
 
                                                 <!-- Pull in Database from language list -->
                                                 <label>Language</label>
-                                                <select name="lang" class="form-control" onchange="location = 'index.php?p=category&a=edit&id=<?php echo $cat_id;?>&lang='+this.options[this.selectedIndex].value";>
+                                                <select id="change_lang" name="lang" class="form-control" onchange="location = 'index.php?p=category&a=edit&id=<?php echo $cat_id;?>&lang='+this.options[this.selectedIndex].value";>
 
                                                 <?php foreach ($languages as $data) {
                                                         if($data['lang_id'] == $lang) {?>
@@ -207,11 +207,18 @@
                                                 <?php } } ?>
 
                                                 </select>
+                                                <script>
+                                                
+                                                    $('#change_lang').change(function(){
+                                                        $('#create_new_lang').prop('disabled',true);
+                                                    });
+                                                  
+                                                </script>
                                         </div>
 
                                         <?php if($chk_lang == 0){ ?>
                                                 <input name="cat_id" type="hidden" value="<?php echo $cat_id;?>" />
-                                                <button type="submit" class="btn btn-success" style="margin-bottom: 15px;">Create <b><?php echo $lang_name;?></b> Language Category Title</button>
+                                                <button id="create_new_lang" type="submit" class="btn btn-success" style="margin-bottom: 15px;">Create <b><?php echo $lang_name;?></b> Language Category Title</button>
 
                                         <?php } else { ?>
 

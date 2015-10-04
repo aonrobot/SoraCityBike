@@ -211,6 +211,12 @@
                 "slide_id" => $last_slide,
                 "lang_id" => $_POST['lang'],
                 "slide_structure_id" => $last_slide_structure,
+                "slide_data_name" => "-",
+                "slide_data_img_url" => "-",
+                "slide_data_content" => "-",
+                "slide_data_img_link" => "-",
+                "slide_data_content_link" => "-",
+                "slide_data_order" => "0",
            ));  
            
            
@@ -953,11 +959,32 @@
                 
             case 'lang':
             
-                $count_lang = $database->count("content_translation", array(
+                $count_cont_lang = $database->count("content_translation", array(
                     "lang_id" => $_GET['i']
                 ));
                 
-                if($count_lang == 0) {
+                $count_cat_lang = $database->count("category_translation", array(
+                    "lang_id" => $_GET['i']
+                ));
+                
+                $count_menu_lang = $database->count("menu", array(
+                    "lang_id" => $_GET['i']
+                ));
+                
+                $count_slide_lang = $database->count("slide_data", array(
+                    "lang_id" => $_GET['i']
+                ));
+                
+                $count_footer_lang = $database->count("footer_translation", array(
+                    "lang_id" => $_GET['i']
+                ));
+                
+                if( $count_cont_lang    ==      0 && 
+                    $count_cat_lang     ==      0 &&
+                    $count_menu_lang    ==      0 &&
+                    $count_slide_lang   ==      0 &&
+                    $count_footer_lang  ==      0 ){
+                        
                     $database->delete("language", array("lang_id" => $_GET['i']));
                     header( 'Location: index.php?p=language&noti=SDelLang' ) ;
                     exit();                     

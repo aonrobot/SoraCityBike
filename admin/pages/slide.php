@@ -175,7 +175,11 @@
                                 ));
                                 
                                 //All Available Language
-                                $available_langs = $database->select("slide_data",array("[>]language" => array("lang_id" => "lang_id")),array("lang_name"),array("slide_id" => $slide_id,));
+                                $available_langs = $database->select("slide_data",array("[>]language" => array("lang_id" => "lang_id")),array("lang_name"),
+                                
+                                array("AND" => array("slide_id" => $slide_id, "slide_data_name" => '-'))
+                                
+                                );
                                 
                                 //Get Structure id
                                 $structure_id = $database->select("slide_data","slide_structure_id", array(
@@ -214,7 +218,7 @@
 
                                                 <!-- Pull in Database from language list -->
                                                 <label>Language</label>
-                                                <select name="lang" class="form-control" onchange="location = 'index.php?p=slide&a=edit&id=<?php echo $slide_id; ?>&lang='+this.options[this.selectedIndex].value";>
+                                                <select id="change_lang" name="lang" class="form-control" onchange="location = 'index.php?p=slide&a=edit&id=<?php echo $slide_id; ?>&lang='+this.options[this.selectedIndex].value";>
 
                                                 <?php foreach ($languages as $data) {
                                                         if($data['lang_id'] == $lang) {?>
@@ -228,10 +232,16 @@
                                                 <?php } } ?>
 
                                                 </select>
+                                                <script>
+                                                    $('#change_lang').change(function(){
+                                                        $('#create_new_lang').prop('disabled',true);
+                                                    });
+                                                  
+                                                </script>
                                         </div>
                                         <?php if($chk_lang == 0){ ?>
                                                 <input name="slide_id" type="hidden" value="<?php echo $slide_id; ?>" />
-                                                <button type="submit" class="btn btn-success" style="margin-bottom: 15px;">Create <b><?php echo $lang_name; ?></b> Language Slide</button>
+                                                <button id="create_new_lang" type="submit" class="btn btn-success" style="margin-bottom: 15px;">Create <b><?php echo $lang_name; ?></b> Language Slide</button>
                                         
                                         </form>
 
@@ -594,9 +604,9 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Slides Structure</h3>
+                                                <h3 style="margin-bottom: 20px;"><i class="fa fa-list-ul fa-1x"></i> Slide Structure</h3>
                                                 <section id="demo">
-                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("slide_structure","slide_structure",array("slide_structure_id" =>    $structure_id)); var_dump($database->error()); echo $menu[0]; ?> </ol>
+                                                    <ol id="sora-menu" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"> <?php $menu = $database->select("slide_structure","slide_structure",array("slide_structure_id" => $structure_id)); echo $menu[0]; ?> </ol>
                                                 </section><!-- END #demo -->
                                                 
                                             </div>
@@ -1281,14 +1291,10 @@
               } 
             });
 
-           });        
-        
-    });     
-    
-    //Menu II
-    
-    $(document).on('ready readyAgain', function(){
-            var ns = $('ol.sortable').nestedSortable({
+           });
+           
+           
+           var ns = $('ol.sortable').nestedSortable({
                 forcePlaceholderSize: true,
                 handle: 'div',
                 helper: 'clone',
@@ -1397,8 +1403,16 @@
                 });
 
             });
+                   
+        
+    });     
+    
+    //Menu II
+    
+    /*$(document).on('ready readyAgain', function(){
             
-        });
+            
+        });*/
         
    <?php }?>
    
