@@ -8,10 +8,12 @@
       <div id="leonardo_da_vinci_machines" class="box-slider slide1">
         <div class="items-wrapper">
           <?php 
+		 
+		  $lang_menu = $database->select('slide_data','slide_id',array('lang_id'=>$lang_id));
           $slide=$database->select("slide_data"
             , ["[>]slide" => ["slide_id" => "slide_id"]]
             ,"*"
-            ,["slide_type[=]" => 'home',"ORDER"=>"slide_data_order"]);
+            ,["AND" =>["lang_id[=]" => $lang_id,"slide_type[=]" => 'home'],"ORDER"=>"slide_data_order"]);
       foreach ($slide as $a) {?><!-- 
     --><div class="item" >
     <div class="slidein">
