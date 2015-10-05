@@ -151,14 +151,23 @@
     
     if(!strcmp($_GET['a'], 'addlang')){
         
-          $database->insert("language", array(
+          $count = $database->count('language');
+          $first_lang  = $database->insert("language", array(
                 "lang_code" => $_POST['code'],
                 "lang_name" => $_POST['name']
-           ));
+          ));
+          
+          //Check If Data In Language = 0 record -> set last insert to default language
+          if($count == 0)
+          {
+              $database->insert("site_meta", array(
+                    "meta_key" => 'site_default_lang',
+                    "meta_value" => $first_lang
+              ));
+          }
            
-           
-           header( 'Location: index.php?p=language&noti=SAddLang' ) ;
-           exit();
+          header( 'Location: index.php?p=language&noti=SAddLang' ) ;
+          exit();
     }
     
     if(!strcmp($_GET['a'], 'addDefaultLang')){
