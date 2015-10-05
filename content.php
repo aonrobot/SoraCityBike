@@ -115,10 +115,7 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
     <div class="share-box">
       
       <ul class="rrssb-buttons clearfix">
-<<<<<<< HEAD
 
-=======
->>>>>>> 4de23e28aceb833cff27ed558d404f6cd954a89b
        <p>share :
           <?php echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.curPageURL().'" class="popup">'?>
             <span class="rrssb-text" style="color:#666666; font-style: italic;">facebook</span>
