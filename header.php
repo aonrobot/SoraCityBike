@@ -273,7 +273,7 @@ if(!isset($_SESSION['lang_session']))
 												
 											);
 											foreach($footer_left as $key){
-												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font" target="'.$key['footer_target'].'"><span class="footer-text">'.$key['footer_title'].'</span></a>';
 											}
 											 ?>
 										</div>
@@ -287,7 +287,7 @@ if(!isset($_SESSION['lang_session']))
 												
 											);
 											foreach($footer_center as $key){
-												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font"  target="'.$key['footer_target'].'"><span class="footer-text">'.$key['footer_title'].'</span></a>';
 											}
 											 ?>
 										</div> 
@@ -300,7 +300,7 @@ if(!isset($_SESSION['lang_session']))
 												
 											);
 											foreach($footer_rights as $key){
-												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font "><span class="footer-text">'.$key['footer_title'].'</span></a>';
+												echo '<a href="'.$key['footer_link'].'" class="footer-link pero-font" target="'.$key['footer_target'].'"><span class="footer-text">'.$key['footer_title'].'</span></a>';
 											}
 											 ?>
 											 
