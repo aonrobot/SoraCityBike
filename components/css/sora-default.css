@@ -284,7 +284,7 @@ b{
     font-family: pero_bold , verdana, helvetica, sans-serif;
     font-weight: 300;
     font-size: 1.1em;
-    letter-spacing: 2px; 
+    /*letter-spacing: 2px; */ 
 }
 .uppercase{
     text-transform: uppercase;
