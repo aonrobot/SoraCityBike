@@ -414,6 +414,7 @@ hr {
     color: #fff;
     text-decoration: underline;
     margin-bottom: -5px;
+	margin-top:9px;
 }
 
 .category{
@@ -714,7 +715,7 @@ margin: 0px;
 .footer-bar{
      color:#666666;
     vertical-align:middle;
-    margin-top: -3px;
+ 
 }
 
 .footer-text{
@@ -875,7 +876,7 @@ iframe{
 .slidein .caption  {
     
     margin:none;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.39);
     position: absolute;
     color: #fff;
     z-index: 100;
@@ -909,15 +910,19 @@ iframe{
 	max-height: 10%;
 	
 
--webkit-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
-   -moz-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
-     -o-transition:  max-height .9s cubic-bezier(0.123, 0, 0, 0.9); 
-  transition: max-height .9s cubic-bezier(0.123, 0, 0, 0.9);
+
+-webkit-transition:  max-height .7s cubic-bezier(0.123, 0, 0, 0.9);
+   -moz-transition:  max-height .7s cubic-bezier(0.123, 0, 0, 0.9);
+     -o-transition:  max-height .7s cubic-bezier(0.123, 0, 0, 0.9); 
+  transition: max-height .7s cubic-bezier(0.123, 0, 0, 0.9);
    
 }
 
 
 
+.caption>p{
+	line-height:20px;
+}
 
 .slidein .simple-caption:hover {
 	max-height:100%;

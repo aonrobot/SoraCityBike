@@ -115,7 +115,7 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
     <div class="share-box">
       
       <ul class="rrssb-buttons clearfix">
-
+			
        <p>share :
           <?php echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.curPageURL().'" class="popup">'?>
             <span class="rrssb-text" style="color:#666666; font-style: italic;">facebook</span>
@@ -140,7 +140,7 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
 </script>
 
 <!-- RRSSB Social Share JS -->
-<script src="<?php echo $site_path;?>/components/js/rrssb.min.js"></script>
+<script src=<?php echo '"'.$site_path.'/components/js/.js"'?>></script>
 
 
 <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->

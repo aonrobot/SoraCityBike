@@ -22,7 +22,7 @@
       <a href=<?php echo "'".$a['slide_data_img_link']."'"; ?> style="margin:0px;"><img class="item" src=<?php echo "'".$a['slide_data_img_url']."'"; ?>></a>
       <a href=<?php echo "'".$a['slide_data_content_link']."'"; ?> style="margin:0px;">
       <span class="caption simple-caption" >
-        <p class='pero-font slide-header' style="margin-top:0px;margin-buttom:8px;"><?php echo $a['slide_data_name'] ?></p>  
+        <p class='pero-font slide-header' style="margin-top:-6px;"><?php echo $a['slide_data_name'] ?></p>  
         <?php echo $a['slide_data_content']; ?> 
 
         <p class="readmore_btn">read more</p>
