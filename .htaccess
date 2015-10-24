@@ -10,11 +10,14 @@ RewriteEngine On
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteRule . content.php [L,QSA]
 
-#RewriteRule ^(\w+)\.html content.php?id=$1 [L]
+RewriteRule ^content/([0-9]*)/([a-zA-Z0-9-/]+) /content.php?id=$1 [L,NC]
 
-RewriteRule ^content/([0-9]*)/([a-zA-Z0-9-/]+) /SoraCityBike/content.php?id=$1 [L,NC]
-RewriteRule ^category/([0-9]*)/([a-zA-Z0-9-/]+) /SoraCityBike/category.php?id=$1 [L,NC]
-RewriteRule ^blog/([0-9]*)/([a-zA-Z0-9-/]+) /SoraCityBike/blog.php?id=$1 [L,NC]
+RewriteRule ^category/([0-9]*)/([a-zA-Z0-9-/]+) /category.php?id=$1 [L,NC]
+RewriteRule ^blog/([0-9]*)/([a-zA-Z0-9-/]+) /blog.php?id=$1 [L,NC]
+
+RewriteRule ^content/([0-9]*) /content.php?id=$1 [L,NC]
+RewriteRule ^category/([0-9]*) /category.php?id=$1 [L,NC]
+RewriteRule ^blog/([0-9]*) /blog.php?id=$1 [L,NC]
 
 # EX
 
@@ -28,6 +31,19 @@ RewriteRule ^blog/([0-9]*)/([a-zA-Z0-9-/]+) /SoraCityBike/blog.php?id=$1 [L,NC]
 #RewriteRule ^test/([a-zA-Z0-9-/]+)$ /test/index.php?slug=$1 [QSA]
 #this returns the page toogood.org.uk/test/index.php?slug=x to toogood.org.uk/test/x
 
+ErrorDocument 404 /404.php
 
-ErrorDocument 404 /SoraCityBike/404.php
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteRule \.(gif|jpe?g|png|bmp) /404img.png [NC,L]
+
+RewriteCond %{HTTPS} off
+# First rewrite to HTTPS:
+# Don't put www. here. If it is already there it will be included, if not
+# the subsequent rule will catch it.
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Now, rewrite any request to the wrong domain to use www.
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
 

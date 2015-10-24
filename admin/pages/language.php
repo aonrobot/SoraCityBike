@@ -80,7 +80,7 @@
                             <div class="panel-body">
                                 
                                 <div class="dataTable_wrapper">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <table class="table table-striped table-bordered table-hover" id="lang_table">
                                         <thead>
                                             <tr>
                                                 <th>id</th>
@@ -139,10 +139,8 @@
 
 
 <script>
-
-    <?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
-        //DataTable
-        $('#dataTables-example').DataTable({
+    $(document).ready(function() {
+        $('#lang_table').DataTable({
             paging: false,
             responsive: true,
             "order": [[ 1, "desc" ]],
@@ -151,50 +149,12 @@
                 { "orderable": false, "targets": 0 }
             ]
         });
-    <?php }?>    
-    
-    $(document).ready(function() {
-        
-        $("#canvas").gridmanager({
-            debug : 1
-        });
-        
-
+                
+        $(function() {
+            $.fn.editable.defaults.mode = 'inline';
+            $('.name').editable({});
+        });   
     });
-    
-    $(document).ready(function() {
-
-        
-        <?php if(!strcmp($_GET['s'], 'show') || !strcmp($_GET['s'], 'language')){?>
-        //bite was here
-        var cat_src = [];
-    
-        $.ajax({
-    
-            url : 'pages/query_category.php',
-            dataType : 'json',
-    
-            success : function(data) {
-    
-                for ( i = 0; i < data.length; i++) {
-    
-                    var cat_obj = {};
-                    cat_obj["value"] = data[i]['cat_id'];
-                    cat_obj["text"] = data[i]['cat_name'];
-    
-                    cat_src.push(cat_obj);
-    
-                }
-    
-                //console.log(cat_src);
-    
-            }
-        });
-
-        <?php }?> 
-    
-    });
-
     
 </script>
 
