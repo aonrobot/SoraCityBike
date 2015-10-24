@@ -106,7 +106,7 @@ if(!isset($_SESSION['lang_session']))
 
 							foreach ($lang as $a) {?>
 
-							<a href=""><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php echo '"a('."'".$a['lang_id']."'".');"'; ?>     ><?php echo $a['lang_code']; ?></button></a>
+							<a href=""><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php echo '"a('."'".$a['lang_id']."'".');"'; ?>> <?php echo $a['lang_code']; ?> </button></a>
 
 							<?php
 						}    
