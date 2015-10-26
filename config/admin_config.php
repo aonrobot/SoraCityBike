@@ -9,6 +9,8 @@
     $site_name = $database->select("site_meta","meta_value",array("meta_key" => 'site_name'));
     
     $site_path = $database->select("site_meta","meta_value",array("meta_key" => 'site_path'));
+    
+    $site_default_lang = $database->select("site_meta","meta_value",array("meta_key" => 'site_default_lang'));
 
 	#Template Path
 	$GLOBALS['D_TEMPLATE'] = 'template/'.$admin_template[0].'/';
