@@ -11,6 +11,8 @@ $site_path=$site[0]['meta_value'];
 $lang_def=$database->select("site_meta",'*',["meta_key[=]" => 'site_default_lang']);
 $default_lang=$lang_def[0]['meta_value'];
 
+$lang_code_menu = $database->select("language",["lang_id","lang_code"],["lang_id[=]"  => $_SESSION['lang_session']]);
+
 
 if(!isset($_SESSION['lang_session']))
 	$_SESSION['lang_session'] = $default_lang;
@@ -41,13 +43,13 @@ if(!isset($_SESSION['lang_session']))
 	<title>
 		<?php
 
-		if(empty($_GET['id'])){
+		if(empty($id)){
 			echo 'sora city';
 		}
 		else{
-			$title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$_GET['id']]]);
+			$title = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$_SESSION['lang_session'],"cont_id[=]"=>$id]]);
 			if (empty($title[0]["cont_title"])) {
-				$title = $database->select("category","*",["cat_id[=]"=>$_GET['id']]);
+				$title = $database->select("category","*",["cat_id[=]"=>$id]);
 				echo $title[0]["cat_name"];
 			}
 			else{echo $title[0]["cont_title"];}
@@ -104,13 +106,43 @@ if(!isset($_SESSION['lang_session']))
 							<br class="br-header">
 							<?php
 
-							foreach ($lang as $a) {?>
+								// make link for change language button ex. www.soracity.bike/en/slug
+								$full_url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-							<a href=""><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php echo '"a('."'".$a['lang_id']."'".');"'; ?>> <?php echo $a['lang_code']; ?> </button></a>
+								$root_url = (!empty($_SERVER['HTTPS']) ? 'https' : 'https') . '://' . $_SERVER['HTTP_HOST']. $site_path;
+								$url_current = str_replace($root_url,"",$full_url);
 
-							<?php
-						}    
-						?>
+								if(substr_count($url_current,"/") <= 1){
+
+									$url_current = 'index.php';
+								}
+								else{
+
+									$pos1 = strpos($url_current, "/");
+									$pos2 = strpos($url_current, "/" , 1);
+									if($pos2 == '')$pos2 = 1;
+
+									$url_current = substr_replace($url_current , '', $pos1, $pos2);
+								}
+
+								foreach ($lang as $a) {
+
+									$code_lang = $database->select("language",["lang_id","lang_code"],["lang_id[=]"  => $a]);
+
+									if(!strcmp($url_current,'index.php')) $url_change_lang = $root_url . '/' . $url_current;
+
+									else $url_change_lang = $root_url . '/' . $code_lang[0]["lang_code"] . $url_current;
+
+									?>
+
+									<!--<a href=""><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php //echo '"a('."'".$a['lang_id']."'".');"'; ?>> <?php //echo $a['lang_code']; ?> </button></a>-->
+
+									
+
+									<a href="<?php echo $url_change_lang;?>"><button class="lang_btn time_text bg-gray pero-font btn btn-default lowercase" id="lang_btn" onclick=<?php echo '"a('."'".$a['lang_id']."'".');"'; ?>> <?php echo $a['lang_code']; ?> </button></a>
+
+							<?php }; ?>
+
 						<script type="text/javascript">
 							function a(e){
 
@@ -173,7 +205,7 @@ if(!isset($_SESSION['lang_session']))
 								<?php
 
 								foreach ($top_menu as $menu ) { 
-									$lang_code_menu = $database->select("language",["lang_id","lang_code"],["lang_id[=]"  => $_SESSION['lang_session']]);
+									
 									
 									echo '<li id="menu_'.$menu['menu_id'].'">';
 									if ($menu['obj_type'] == 'content') {

@@ -13,7 +13,7 @@
 			$slide=$database->select("slide_data"
             , ["[>]slide" => ["slide_id" => "slide_id"]]
             ,"*"
-            ,["AND" =>["lang_id[=]" => $lang_id,"slide_type[=]" => 'home' ,"slide_data_name[!]" => '-'],"ORDER"=>"slide_data_order"]);
+            ,["AND" =>["lang_id[=]" => $lang_id,"slide_type[=]" => 'home' ,"slide_data_name[!]" => '-',"lang_id[=]" => $_SESSION['lang_session']],"ORDER"=>"slide_data_order"]);
 			
 
       foreach ($slide as $a) {?><!-- 
@@ -49,7 +49,7 @@
               $slide_video = $database->select("slide_data"
                 ,["[>]slide" => ["slide_id" => "slide_id"]]
                 ,["slide_data_id","slide_data_name","slide_data_img_url"]
-                ,["AND" =>["slide_type[=]"=>"video","slide_data_name[!]" => '-'],"ORDER"=>"slide_data_order"]);
+                ,["AND" =>["slide_type[=]"=>"video","slide_data_name[!]" => '-',"lang_id[=]" => $_SESSION['lang_session']],"ORDER"=>"slide_data_order"]);
               foreach ($slide_video as $key ) {
                 ?><!-- --><iframe class="itemvideo" src=<?php echo '"'.str_replace("http://","https://",$key['slide_data_img_url']).'"'; ?> width="580" height="332" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><!-- --><?php } ?>
               </div>

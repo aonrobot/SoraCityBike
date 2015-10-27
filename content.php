@@ -22,8 +22,10 @@ return $pageURL;
 
 <!-- slide with zoom picture -->
 <?php 
+$id=$db_cont[0]["id"];
 
-$content_db = $database->select("content",["id","slide_id","cont_name"],["id[=]"  => $_GET['id']]);
+
+$content_db = $database->select("content",["id","slide_id","cont_name"],["id[=]"  => $id]);
 
 $slide_id = $content_db[0]["slide_id"];
 
@@ -100,7 +102,7 @@ $slide = $database->select("slide_data"
 <?php
 
 
-$id=$_GET["id"];
+
 $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lang_id,"cont_id[=]"=>$id]]);
 ?>
 
