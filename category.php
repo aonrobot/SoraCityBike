@@ -153,7 +153,7 @@ function hideImg(obj) {
             //echo $data["cont_order"];
                 if ($data['cat_id']==$id){
               $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
-              $link = "'".$site_path."/content/".$data['cont_id']."/".$a[0]["cont_slug"]."'"; 
+              $link = "'".$site_path."/".$lang_code_menu[0]["lang_code"]."/".$a[0]["cont_slug"]."'"; 
               ?>
 
               <div class="col-md-4 category-box">

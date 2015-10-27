@@ -167,8 +167,9 @@
       
               if ($data['cat_type']=='story') {
         
+
                 $a=$database->select("content",'*',["id[=]"=>$data['cont_id']]);
-                $link = "'".$site_path."/content/".$data['cont_id']."/".$a[0]["cont_slug"]."'"; 
+                $link = "'".$site_path."/".$lang_code_menu[0]["lang_code"]."/".$a[0]["cont_slug"]."'"; 
 
                 ?>
         
