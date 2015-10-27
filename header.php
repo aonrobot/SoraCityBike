@@ -7,7 +7,7 @@ include 'counter.php';
 $lang=$database->select("language",'*');
 $site=$database->select("site_meta",'*',["meta_key[=]" => 'site_path']);
 $site_path=$site[0]['meta_value'];
-
+$root_url = (!empty($_SERVER['HTTPS']) ? 'https' : 'https') . '://' . $_SERVER['HTTP_HOST']. $site_path;
 $lang_def=$database->select("site_meta",'*',["meta_key[=]" => 'site_default_lang']);
 $default_lang=$lang_def[0]['meta_value'];
 
@@ -109,7 +109,7 @@ if(!isset($_SESSION['lang_session']))
 								// make link for change language button ex. www.soracity.bike/en/slug
 								$full_url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-								$root_url = (!empty($_SERVER['HTTPS']) ? 'https' : 'https') . '://' . $_SERVER['HTTP_HOST']. $site_path;
+								
 								$url_current = str_replace($root_url,"",$full_url);
 
 								if(substr_count($url_current,"/") <= 1){
@@ -165,7 +165,7 @@ if(!isset($_SESSION['lang_session']))
 
 
 					<div class="col-xs-4 col-xs-offset-4 brand-logo ">
-						<a href=<?php echo '"'.$site_path.'"'; ?>><img class="logo_img" src=<?php echo '"'.$site_path.'/components/img/LOGO-(with-cloud)2.png"/'?>></a>
+						<a href=<?php echo '"'.$root_url.'"'; ?>><img class="logo_img" src=<?php echo '"'.$site_path.'/components/img/LOGO-(with-cloud)2.png"/'?>></a>
 					</div>
 
 
@@ -210,8 +210,9 @@ if(!isset($_SESSION['lang_session']))
 									echo '<li id="menu_'.$menu['menu_id'].'">';
 									if ($menu['obj_type'] == 'content') {
 
-										$datas_con = $database->select("content",["lang_id","lang_code"],["lang_id[=]"  => $menu['obj_url']]);
+										$datas_con = $database->select("content",["id","cont_slug"],["id[=]"  => $menu['obj_url']]);
 										$link = "'".$site_path."/".$lang_code_menu[0]["lang_code"]."/".$datas_con[0]["cont_slug"]."'";
+
 
 									}
 									elseif ($menu['obj_type'] == 'link') {
