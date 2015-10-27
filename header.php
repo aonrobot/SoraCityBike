@@ -133,7 +133,7 @@ if(!isset($_SESSION['lang_session']))
 
 
 					<div class="col-xs-4 col-xs-offset-4 brand-logo ">
-						<a href=<?php echo '"'.$site_path.'/index.php"'; ?>><img class="logo_img" src=<?php echo '"'.$site_path.'/components/img/LOGO-(with-cloud)2.png"/'?>></a>
+						<a href=<?php echo '"'.$site_path.'"'; ?>><img class="logo_img" src=<?php echo '"'.$site_path.'/components/img/LOGO-(with-cloud)2.png"/'?>></a>
 					</div>
 
 
@@ -173,12 +173,13 @@ if(!isset($_SESSION['lang_session']))
 								<?php
 
 								foreach ($top_menu as $menu ) { 
-
+									$lang_code_menu = $database->select("language",["lang_id","lang_code"],["lang_id[=]"  => $_SESSION['lang_session']]);
+									
 									echo '<li id="menu_'.$menu['menu_id'].'">';
 									if ($menu['obj_type'] == 'content') {
 
-										$datas_con = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $menu['obj_url']]);
-										$link = "'".$site_path."/content/".$menu['obj_url']."/".$datas_con[0]["cont_slug"]."'";
+										$datas_con = $database->select("content",["lang_id","lang_code"],["lang_id[=]"  => $menu['obj_url']]);
+										$link = "'".$site_path."/".$lang_code_menu[0]["lang_code"]."/".$datas_con[0]["cont_slug"]."'";
 
 									}
 									elseif ($menu['obj_type'] == 'link') {
@@ -188,7 +189,7 @@ if(!isset($_SESSION['lang_session']))
 									} 
 									else {
 										$datas_cat = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $menu['obj_url']]);
-										$link = "'".$site_path."/category/".$menu['obj_url']."/".$datas_cat[0]["cat_slug"]."'";
+										$link = "'".$site_path."/".$lang_code_menu[0]["lang_code"]."/".$datas_cat[0]["cat_slug"]."'";
 									}    
 									echo '<div class="dropdown-toggle bg-gray pero-bold-font btn btn-default " type="button" id="dropdownMenu1" 
 									data-hover="dropdown" data-delay="100" data-toggle="dropdown" onclick="window.location.href='.$link.'">';?>
@@ -228,11 +229,11 @@ if(!isset($_SESSION['lang_session']))
 																if ($a['obj_type']=='content')
 																{ 
 																	$dat = $database->select("content",["id","cont_slug","cont_name"],["id[=]"  => $a['obj_url']]);
-																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$dat[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$lang_code_menu[0]["lang_code"].'/'.$dat[0]["cont_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 																elseif ($a['obj_type']=='category') { 
 																	$dat2 = $database->select("category",["cat_id","cat_slug"],["cat_id[=]"  => $a['obj_url']]);
-																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$a['obj_type'].'/'.$a['obj_url'].'/'.$dat2[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
+																	echo '<li role="presentation"><a role="menuitem" class="dropdownmenu" tabindex="-1" href="'.$site_path.'/'.$lang_code_menu[0]["lang_code"].'/'.$dat2[0]["cat_slug"].'">'.$a['obj_name'].'</a></li>' ;
 																}
 
 															}
