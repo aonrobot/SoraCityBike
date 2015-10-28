@@ -308,7 +308,7 @@ p {
     font-family: pero , verdana, helvetica, sans-serif;
     font-weight: 300;
     font-size: 1em;
-    line-height:1.89;
+    line-height:1.59;
     color: #000;
 
 }
@@ -532,7 +532,7 @@ hr {
 
 .text-headerbox{
     width:100%;
-  height:4em;
+  height:3.3em;
   padding-bottom:20px;
     
 }
