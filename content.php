@@ -140,8 +140,8 @@ $datas = $database->select("content_translation","*",["AND"=>["lang_id[=]"=>$lan
 </script>
 
 <!-- RRSSB Social Share JS -->
-<script src=<?php echo '"'.$site_path.'/components/js/.js"'?>></script>
 
+<script src="<?php echo $site_path;?>/components/js/rrssb.min.js"></script>
 
 <!-- ////////////////////////////////////    THIS  IS END OF CONTENT       ///////////////////////////////////////////////////// -->
 
