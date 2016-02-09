@@ -63,6 +63,13 @@
         </div>
 
         <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/horizontal_box_slider.js"'?>></script>
+		<script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/smoothPageScroll.js"'?>></script>
+	
+		<script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/jquery-1.9.1.js"'?>></script>
+		<script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/TweenMax.min.js"'?>></script>
+		<script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/ScrollToPlugin.min.js"'?>></script>
+
+
         <script type="text/javascript" src=<?php echo '"'.$site_path.'/components/js/jquery.horizontal_box_slider.js"'?>></script>
 
 

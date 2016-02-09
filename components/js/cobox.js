@@ -16,7 +16,7 @@
             this.outerBorder = 8;    //图片边框宽度 *2
             this.minLeft     = 10;   //距离左边或者右边的最小距离 *2
             this.minTop      = 60;   //距离上边的最小距离 *2
-            this.fadeSpeed   = 300;  //图片渐变显示的速度
+            this.fadeSpeed   = 1300;  //图片渐变显示的速度
             this.speed       = 400;  //图片宽高伸缩的速度
             this.nextClick   = true; //上下张图片切换
             this.textShow    = true; //title 文字显示

@@ -123,3 +123,7 @@ HorizontalBoxSlider.prototype.scrollToStart = function() {
 HorizontalBoxSlider.prototype.scrollToEnd = function() {
 	this.left(this.element.scrollWidth || 1E9);
 };
+
+
+
+
