@@ -18,8 +18,8 @@ Admin Function
 
 
 ### CSS 
-`Bootstrap`
+`Bootstrap`, 'cobox.css', 'leo.css', 'swiper.css', 'business-casual.css'
   
 ### ICON
-`Font Awesome` http://fortawesome.github.io/
+`Font Awesome` http://fortawesome.github.io/ , 'Bootstrap-ghyphicons'
 
